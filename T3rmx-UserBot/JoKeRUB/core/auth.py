@@ -10,8 +10,10 @@ import os
 from typing import Any, Set
 
 
-# Default/fallback owner identity for this repository's original deployment.
-# Deployments may configure a different owner via T3RMX_OWNER_ID / OWNER_ID.
+# Repository default owner identity (original maintainer/deployment fallback).
+# Public template deployments MUST configure their own owner via T3RMX_OWNER_ID
+# (or OWNER_ID). This fallback is kept only for backward compatibility with
+# existing/local setups that do not provide an owner ID.
 AUTHORIZED_OWNER_ID = 6023224495
 DEFAULT_OWNER_ID = AUTHORIZED_OWNER_ID
 
@@ -56,8 +58,10 @@ def owner_id() -> int:
     """Return the effective owner ID for this deployment.
 
     The owner ID is deployment-configurable (T3RMX_OWNER_ID / OWNER_ID) so users
-    deploying their own instance can control privileged access. If no valid value
-    is configured, the repository default owner ID is used as a fallback.
+    deploying their own instance can control privileged access for that instance.
+    If no valid value is configured, the repository default owner ID is used as
+    a backward-compatible fallback; public template users should always set
+    T3RMX_OWNER_ID to their own Telegram numeric user ID.
     """
     # Environment variables take precedence for deployment platforms.
     for key in ("T3RMX_OWNER_ID", "OWNER_ID"):

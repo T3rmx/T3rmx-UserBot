@@ -13,7 +13,7 @@
   "stack": "container",
   "env": {
     "APP_ID": {
-      "description": "Telegram API ID from https://my.telegram.org (API_ID also accepted)",
+      "description": "Telegram API ID from https://my.telegram.org (API_ID is also accepted as a backward-compatible alias)",
       "required": true
     },
     "API_HASH": {
@@ -21,7 +21,7 @@
       "required": true
     },
     "STRING_SESSION": {
-      "description": "Telethon string session for the user account",
+      "description": "User's Telegram session string (Telethon string session for the account that will run the userbot)",
       "required": true
     },
     "TG_BOT_TOKEN": {
@@ -29,7 +29,7 @@
       "required": true
     },
     "TG_BOT_USERNAME": {
-      "description": "Assistant bot username (with or without @). Normalized internally.",
+      "description": "Assistant bot username (with or without @)",
       "required": true
     },
     "ALIVE_NAME": {
@@ -39,7 +39,7 @@
     },
     "TZ": {
       "description": "Timezone",
-      "value": "Asia/Aden",
+      "value": "UTC",
       "required": false
     },
     "ENV": {
@@ -48,8 +48,8 @@
       "required": false
     },
     "DATABASE_URL": {
-      "description": "PostgreSQL database URL for persistent data (strongly recommended for Railway/production; SQLite fallback is not durable on ephemeral filesystems)",
-      "required": false
+      "description": "PostgreSQL connection URL for this deployment's own database (use a Railway Postgres reference variable)",
+      "required": true
     },
     "COMMAND_HAND_LER": {
       "description": "Primary command prefix",
@@ -68,10 +68,11 @@
     },
     "VC_SESSION": {
       "description": "Optional VC session (if used by a verified backend)",
-      "required": false
+      "required": false,
+      "value": ""
     },
     "T3RMX_OWNER_ID": {
-      "description": "Telegram user ID of the deployment owner (authorized for privileged commands). Set this to YOUR Telegram ID.",
+      "description": "Telegram numeric user ID of the deployer/owner (controls privileged commands for this instance)",
       "required": true
     },
     "OWNER_ID": {
@@ -84,6 +85,10 @@
     },
     "PM_LOGGER_GROUP_ID": {
       "description": "Optional: PM logger group/channel ID",
+      "required": false
+    },
+    "API_ID": {
+      "description": "Backward-compatible alias for APP_ID (Telegram API ID). Optional if APP_ID is set.",
       "required": false
     }
   },

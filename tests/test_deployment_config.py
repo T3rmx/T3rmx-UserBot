@@ -31,7 +31,7 @@ class TestDeploymentConfig(unittest.TestCase):
         env = data.get("env", {})
         for key in ["APP_ID", "API_HASH", "STRING_SESSION", "TG_BOT_TOKEN", "TG_BOT_USERNAME", "ALIVE_NAME", "TZ", "ENV"]:
             self.assertIn(key, env, f"missing env var {key} in app.json")
-        self.assertEqual(env.get("TZ", {}).get("value"), "Asia/Aden")
+        self.assertEqual(env.get("TZ", {}).get("value"), "UTC")
 
     def test_railway_json_valid(self):
         data = json.loads((ROOT / "railway.json").read_text(encoding="utf-8"))

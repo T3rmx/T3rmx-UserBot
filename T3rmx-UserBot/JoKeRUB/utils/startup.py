@@ -11,6 +11,71 @@ from telethon import Button, functions, types, utils
 
 from JoKeRUB import BOTLOG, BOTLOG_CHATID, PM_LOGGER_GROUP_ID
 from ..Config import Config
+
+def _env_truthy(name: str) -> bool:
+    val = os.environ.get(name)
+    return bool(val and str(val).strip())
+
+
+def _missing_required_config():
+    """Return missing required runtime variables (without exposing values)."""
+    missing = []
+
+    app_id = getattr(Config, "APP_ID", 0)
+    try:
+        app_id_ok = int(app_id) > 0
+    except Exception:
+        app_id_ok = False
+    if not app_id_ok and not (_env_truthy("APP_ID") or _env_truthy("API_ID")):
+        missing.append("APP_ID (or API_ID)")
+
+    if not (getattr(Config, "API_HASH", None) and str(getattr(Config, "API_HASH", "")).strip()):
+        missing.append("API_HASH")
+
+    if not (getattr(Config, "STRING_SESSION", None) and str(getattr(Config, "STRING_SESSION", "")).strip()):
+        missing.append("STRING_SESSION")
+
+    if not (getattr(Config, "TG_BOT_TOKEN", None) and str(getattr(Config, "TG_BOT_TOKEN", "")).strip()):
+        missing.append("TG_BOT_TOKEN")
+
+    tg_user = getattr(Config, "TG_BOT_USERNAME", None)
+    if not (tg_user and str(tg_user).strip()):
+        missing.append("TG_BOT_USERNAME")
+
+    # Owner ID is required for safe privileged-command control in deployed instances.
+    env_owner = os.environ.get("T3RMX_OWNER_ID") or os.environ.get("OWNER_ID")
+    try:
+        owner_val = int(str(env_owner).strip()) if env_owner and str(env_owner).strip() else int(getattr(Config, "T3RMX_OWNER_ID", 0) or getattr(Config, "OWNER_ID", 0) or 0)
+    except Exception:
+        owner_val = 0
+    if owner_val <= 0:
+        missing.append("T3RMX_OWNER_ID")
+
+    # Hosted/template deployments must use a persistent PostgreSQL database.
+    hosted_keys = ("RAILWAY_ENVIRONMENT", "RAILWAY_PROJECT_ID", "RAILWAY_SERVICE_ID", "DYNO", "RENDER", "RENDER_SERVICE_ID", "KUBERNETES_SERVICE_HOST")
+    on_hosted = any(os.environ.get(k) for k in hosted_keys)
+    require_pg = on_hosted or str(os.environ.get("T3RMX_REQUIRE_POSTGRES", "") or "").strip().lower() in {"1", "true", "yes", "on"}
+    if require_pg:
+        db_uri = getattr(Config, "DB_URI", None) or os.environ.get("DATABASE_URL") or os.environ.get("DB_URI")
+        if not (db_uri and str(db_uri).strip()):
+            missing.append("DATABASE_URL")
+        else:
+            dbs = str(db_uri).strip().lower()
+            if dbs.startswith("sqlite:"):
+                missing.append("DATABASE_URL (PostgreSQL required; SQLite is not durable in hosted deployments)")
+
+    return missing
+
+
+def validate_runtime_config():
+    missing = _missing_required_config()
+    if missing:
+        raise RuntimeError(
+            "Missing or invalid required configuration: "
+            + ", ".join(missing)
+            + ". Set the required environment variables and redeploy."
+        )
+
 from aiohttp import web
 from ..core.web_server import web_server
 from ..core.logger import logging
@@ -40,6 +105,7 @@ else:
 
 async def setup_bot():
     """Initialize the user session and local web server (for health/bind where needed)."""
+    validate_runtime_config()
     await l313l.connect()
     try:
         config = await l313l(functions.help.GetConfigRequest())

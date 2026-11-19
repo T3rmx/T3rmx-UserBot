@@ -73,7 +73,7 @@ class Config(object):
     # Backward-compatible core variables
     ENV = os.environ.get("ENV", "production")
     PORT = os.environ.get("PORT", None)
-    TZ = os.environ.get("TZ", "Asia/Aden")
+    TZ = os.environ.get("TZ", "UTC")
 
     # Telegram credentials (user-provided; never hardcode)
     # Accept APP_ID or API_ID for compatibility with common deploy env naming

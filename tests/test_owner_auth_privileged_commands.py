@@ -145,7 +145,7 @@ class TestOwnerPrivilegedCommands(unittest.TestCase):
         cfg_mod = types.ModuleType("JoKeRUB.Config")
         class Config:
             APP_ID = 1; API_HASH = "x"; STRING_SESSION = ""; TG_BOT_TOKEN = ""; TG_BOT_USERNAME = "t3rmx_official_bot"
-            TZ = "Asia/Aden"; ENV = "production"; ALIVE_NAME = "T3rmx UserBot"
+            TZ = "UTC"; ENV = "production"; ALIVE_NAME = "T3rmx UserBot"
             COMMAND_HAND_LER = "."; SUDO_COMMAND_HAND_LER = "،"
             T3RMX_OWNER_ID = 6023224495; T3RMX_OWNER_USERNAME = "vvsks"; OWNER_ID = 6023224495
             T3RMX_DISPLAY_NAME = "T3rmx UserBot"; T3RMX_REPOSITORY = "https://github.com/T3rmx/T3rmx-UserBot"

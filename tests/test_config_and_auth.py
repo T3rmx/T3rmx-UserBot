@@ -54,7 +54,7 @@ class TestConfigAndAuth(unittest.TestCase):
         import sample_config as sc
         importlib.reload(sc)
         cfg = sc.Config
-        self.assertEqual(cfg.TZ, "Asia/Aden")
+        self.assertEqual(cfg.TZ, "UTC")
         self.assertEqual(int(getattr(cfg, "T3RMX_OWNER_ID", 0)), 6023224495)
         self.assertEqual(getattr(cfg, "T3RMX_OWNER_USERNAME", ""), "vvsks")
         self.assertEqual(getattr(cfg, "T3RMX_DISPLAY_NAME", ""), "T3rmx UserBot")
