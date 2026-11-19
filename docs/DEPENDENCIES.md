@@ -94,3 +94,11 @@ python-dotenv==1.0.1
 - Resolve/replace legacy/ambiguous imports and Py2-era utilities (`HTMLParser`, `urllib2`, `imp`, `pkg_resources`/setuptools API behavior, `config` collisions, `bin/cmrudl.py`, assistant top-level `wget` dependency, legacy `youtube_dl` paths) in compatibility-safe passes where appropriate.
 - Complete license verification (including transitive/copyleft obligations) and produce SBOM/CVE/vulnerability review for pinned and transitive dependencies.
 - Keep runtime auto-install/external fetch disabled; perform updates only through audited, reproducible changes.
+
+## Explicit decisions for selected packages (2026-11-19)
+| Package | Decision | Rationale | Manifest action |
+|---|---|---|---|
+| `validators` | **Optional-by-design, safe to pin** | Used for URL validation in `plugins/__init__.py`, `ادوات_الروابط.py`, `اغنية.py`, `nekos.py`; lazy import with `url()` fallback keeps load safe, but absence degrades all URL-gated features. Lightweight and stable. | Candidate for `requirements.txt` pinning if full URL-feature parity is desired; current fallback is intentional. |
+| `jikanpy` | **Optional (feature-gated)** | Anime lookup helpers (`helpers/functions/jikan.py`) lazy-import and raise a clear `RuntimeError` when absent; no load-time blocker. External API dependency. | Keep out of core `requirements.txt`; document as optional feature dep. |
+| `motor` | **Not required** | Only referenced in a comment in `core/pool.py`; no live import. PostgreSQL path uses `psycopg2-binary` + SQLAlchemy. | No manifest change. |
+| `moviepy` | **Optional (feature-gated)** | Video editing helpers (`vidtools.py`, `utils/tools.py`) lazy-import with `_require_moviepy()` guard; requires ffmpeg at runtime. | Keep out of core manifest; document as optional video-feature dep. |
