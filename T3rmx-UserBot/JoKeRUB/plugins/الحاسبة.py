@@ -87,7 +87,7 @@ def _safe_calc_eval(expr: str):
 
 @l313l.on(admin_cmd(pattern="حاسبة(?:\s|$)([\s\S]*)"))
 async def icalc(e):
-    if e.client._bot:
+    if getattr(e.client, "_bot", False):
         return await e.reply(
             "**الحاسبة العلمية لـ T3rmx UserBot\n@t3rmx_official**", buttons=lst
         )

@@ -96,6 +96,8 @@ async def _(e):
         )
     except no_admin:
         return await eod(rr, "عذرا انت لست مشرف في هذه الدردشة", time=10)
+    except Exception:
+        return await eod(rr, "- لا يمكن إنشاء رابط لهذه الدردشة (الرسائل المحفوظة أو دردشة خاصة)", time=10)
     await eod(rr, f"- رابط الدردشة\n {r.link}")
 
 

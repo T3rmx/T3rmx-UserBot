@@ -28,8 +28,13 @@ async def rfilm(event):
     await event.edit("يرجى الانتظار جاري البحث عن فيلم...")
     dk = ek.encode()
     nk = ea.encode()
-    cipher_suite = Fernet(dk)
-    api_key = cipher_suite.decrypt(nk).decode()
+    if Fernet is None:
+        return await edit_or_reply(event, "- مكتبة cryptography غير متوفرة، الأمر معطل مؤقتاً")
+    try:
+        cipher_suite = Fernet(dk)
+        api_key = cipher_suite.decrypt(nk).decode()
+    except Exception:
+        return await edit_or_reply(event, "- تعذر فتح مفتاح API، الأمر معطل مؤقتاً")
     url = f"https://api.themoviedb.org/3/movie/top_rated?api_key={api_key}"
     response = requests.get(url)
     top_movies = response.json()["results"]
@@ -95,8 +100,13 @@ async def rfilm(event):
     await event.edit("يرجى الانتضار جاري البحث على مسلسل...")
     dk = ek.encode()
     nk = ea.encode()
-    cipher_suite = Fernet(dk)
-    api_key = cipher_suite.decrypt(nk).decode()
+    if Fernet is None:
+        return await edit_or_reply(event, "- مكتبة cryptography غير متوفرة، الأمر معطل مؤقتاً")
+    try:
+        cipher_suite = Fernet(dk)
+        api_key = cipher_suite.decrypt(nk).decode()
+    except Exception:
+        return await edit_or_reply(event, "- تعذر فتح مفتاح API، الأمر معطل مؤقتاً")
     url = f"https://api.themoviedb.org/3/tv/top_rated?api_key={api_key}"
     response = requests.get(url)
     top_series = response.json()["results"]

@@ -103,9 +103,13 @@ async def get_weather(event):  # sourcery no-metrics
     wind = result["wind"]["speed"]
     winddir = result["wind"]["deg"]
     cloud = result["clouds"]["all"]
+    if country not in c_tz or not c_tz[country]:
+        return await edit_or_reply(event, "- تعذر تحديد المنطقة الزمنية لهذا البلد")
+    if country not in c_tz or not c_tz[country]:
+        return await edit_or_reply(event, "- تعذر تحديد المنطقة الزمنية لهذا البلد")
     ctimezone = tz(c_tz[country][0])
     time = datetime.now(ctimezone).strftime("%A, %I:%M %p")
-    fullc_n = c_n[f"{country}"]
+    fullc_n = c_n.get(f"{country}", country)
     dirs = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"]
     div = 360 / len(dirs)
     funmath = int((winddir + (div / 2)) / div)

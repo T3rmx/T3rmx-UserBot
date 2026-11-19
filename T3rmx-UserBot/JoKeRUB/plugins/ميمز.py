@@ -144,13 +144,19 @@ async def jepvois(vois):
 async def jepvois(vois):
   rl = random.randint(2,101)
   url = f"https://t.me/QuraanJep/{rl}"
-  await vois.client.send_file(vois.chat_id,url,caption="᯽︙ BY : @t3rmx_official 🤲🏻☪️",parse_mode="html")
+  try:
+    await vois.client.send_file(vois.chat_id,url,caption="᯽︙ BY : @t3rmx_official 🤲🏻☪️",parse_mode="html")
+  except Exception:
+    await vois.edit("**تعذر إرسال الميم حالياً**")
   await vois.delete()
 @l313l.on(admin_cmd(outgoing=True, pattern="ثيم$"))
 async def jepThe(theme):
   rl = random.randint(2,510)
   url = f"https://t.me/GSSSD/{rl}"
-  await theme.client.send_file(theme.chat_id,url,caption="᯽︙ THEME BY : @t3rmx_official 🎊",parse_mode="html")
+  try:
+    await theme.client.send_file(theme.chat_id,url,caption="᯽︙ THEME BY : @t3rmx_official 🎊",parse_mode="html")
+  except Exception:
+    await theme.edit("**تعذر إرسال الميم حالياً**")
   await theme.delete()
 @l313l.on(admin_cmd(outgoing=True, pattern="لاتغلط$"))
 async def jepmeme(memejep):
