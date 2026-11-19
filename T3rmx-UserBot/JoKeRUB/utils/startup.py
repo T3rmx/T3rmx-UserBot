@@ -12,7 +12,7 @@ from telethon import Button, functions, types, utils
 from JoKeRUB import BOTLOG, BOTLOG_CHATID, PM_LOGGER_GROUP_ID
 from ..Config import Config
 from aiohttp import web
-from ..core import web_server
+from ..core.web_server import web_server
 from ..core.logger import logging
 from ..core.session import l313l
 from ..sql_helper.global_collection import (
