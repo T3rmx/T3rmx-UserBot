@@ -14,8 +14,8 @@ async def get_chatinfo(event):
     if chat:
         try:
             chat = int(chat)
-        except ValueError:
-            pass
+        except (ValueError, TypeError):
+            return await event.reply("**▾∮ رابط الكروب غير صحيح**")
     if not chat:
         if event.reply_to_msg_id:
             replied_msg = await event.get_reply_message()

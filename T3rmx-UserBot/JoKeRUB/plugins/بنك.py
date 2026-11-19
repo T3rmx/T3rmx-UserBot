@@ -119,13 +119,25 @@ async def myb(message):
          ca = await edit_or_reply(message,f"<strong>ليس لديك حساب في البنك!</strong>",parse_mode="html")
 
 
-@l313l.ar_cmd(func=lambda m:"راتب")
+_BANK_GAME_CMDS = (".المصرف", ".البنك", ".مصرف", ".كنز", ".استثمار", ".بخشيش", ".راتب")
+
+def _bank_game_filter(m):
+    text = m.text or ""
+    return (
+        m.via_bot_id is None
+        and any(text == cmd or text.startswith(cmd + " ") for cmd in _BANK_GAME_CMDS)
+    )
+
+@l313l.ar_cmd(func=_bank_game_filter)
 async def ga(message):
     mee = await message.client.get_me()
     ms = message.text
     acc = get_bank(mee.id)
     if acc is None:
-        return await edit_or_reply(message, "<strong>انت لا تملك حساب في البنك، أنشئ حساباً أولاً بـ .انشاء حساب</strong>", parse_mode="html")
+        try:
+            return await edit_or_reply(message, "<strong>انت لا تملك حساب في البنك، أنشئ حساباً أولاً بـ .انشاء حساب</strong>", parse_mode="html")
+        except Exception:
+            return await message.reply("انت لا تملك حساب في البنك، أنشئ حساباً أولاً بـ .انشاء حساب")
  
     if ms == ".المصرف" or ms == ".البنك" or ms == ".مصرف":
 
