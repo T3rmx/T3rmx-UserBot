@@ -2,7 +2,16 @@
 
 This repository includes Railway deployment configuration (`railway.json`, `Dockerfile`, `app.json`) for deploying **your own independent** T3rmx UserBot instance.
 
-> **Public template status:** A real, published Railway Marketplace template URL/ID is not included here unless it has been actually created, published, and verified. Do not fabricate template links.
+## Public Railway template
+
+[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/t3rmx-sours)
+
+- **Deploy URL:** <https://railway.com/deploy/t3rmx-sours>
+- **Template page:** <https://railway.com/template/t3rmx-sours>
+
+The template page/deploy manifest is publicly accessible and describes deployment from this repository (`main`, Dockerfile, `python3 -m JoKeRUB`, healthcheck `/health`) with a separate PostgreSQL service for each deployment. Deployers must supply their own Telegram credentials/session/bot token and `T3RMX_OWNER_ID`; each instance must use its own independent database.
+
+> **Verification status (evidenced):** deploy page reachable (`200`) and template content/manifest available. Independent fresh deployment tests, Telethon/runtime validation, and DB persistence checks are not yet fully evidenced in this repository.
 
 ## Deployment model (template-ready)
 
