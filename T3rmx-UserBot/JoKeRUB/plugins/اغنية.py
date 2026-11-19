@@ -251,7 +251,9 @@ async def shazamcmd(event):
 )
 async def _(event):
     "To search songs"
-    song = event.pattern_match.group(1)
+    song = (event.pattern_match.group(1) or "").strip()
+    if not song:
+        return await edit_or_reply(event, "**اكتب اسم الأغنية بعد الأمر، مثال:** `.بحث despacito`")
     chat = "@songdl_bot"
     reply_id_ = await reply_id(event)
     catevent = await edit_or_reply(event, SONG_SEARCH_STRING, parse_mode="html")

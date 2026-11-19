@@ -23,10 +23,15 @@ async def _(event):
     if not warn_reason:
         warn_reason = "- لا يوجد سبب ، 🗒"
     reply_message = await event.get_reply_message()
+    if not reply_message or not getattr(reply_message, 'sender_id', None):
+        return await edit_or_reply(event, "**يجب الرد على رسالة المستخدم لتحذيره**")
     limit, soft_warn = sql.get_warn_setting(event.chat_id)
-    num_warns, reasons = sql.warn_user(
-        str(reply_message.sender_id), event.chat_id, warn_reason
-    )
+    try:
+        num_warns, reasons = sql.warn_user(
+            str(reply_message.sender_id), event.chat_id, warn_reason
+        )
+    except Exception:
+        return await edit_or_reply(event, "**تعذر تسجيل التحذير حالياً**")
     if num_warns >= limit:
         sql.reset_warns(str(reply_message.sender_id), event.chat_id)
         if soft_warn:

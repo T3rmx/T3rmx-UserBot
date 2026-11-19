@@ -306,7 +306,10 @@ async def _(event):
     ]
     for i in animation_ttl:
         await asyncio.sleep(animation_interval)
-        await event.edit(animation_chars[i % 30])
+        try:
+            await event.edit(animation_chars[i % len(animation_chars)])
+        except Exception:
+            return
 
 
 @l313l.ar_cmd(

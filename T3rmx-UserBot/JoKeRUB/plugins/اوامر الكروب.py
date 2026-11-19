@@ -66,17 +66,19 @@ async def ban_user(chat_id, i, rights):
         return True, None
     except Exception as exc:
         return False, str(exc)        
-@l313l.ar_cmd(pattern="ارسل")
+@l313l.ar_cmd(pattern="ارسل(?:\s|$)([\s\S]*)")
 async def remoteaccess(event):
 
-    p = event.pattern_match.group(1)
-    m = p.split(" ")
-
+    p = (event.pattern_match.group(1) or "").strip()
+    if not p:
+        return await edit_or_reply(event, "**اكتب الأمر بالشكل:** `.ارسل <chat_id> <message>`")
+    m = p.split(" ", 1)
+    if len(m) < 2:
+        return await edit_or_reply(event, "**اكتب الأمر بالشكل:** `.ارسل <chat_id> <message>`")
     chat_id = m[0]
     try:
         chat_id = int(chat_id)
     except BaseException:
-
         pass
 
     msg = ""

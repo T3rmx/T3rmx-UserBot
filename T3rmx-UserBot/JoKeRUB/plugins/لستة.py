@@ -36,9 +36,14 @@ async def _(event):
     if not markdown_note:
         return await edit_delete(event, "᯽︙ يجب عليك وضع مسافـة لاستخدامها مع الامر ")
     catinput = "Inline buttons " + markdown_note
-    results = await event.client.inline_query(Config.TG_BOT_USERNAME, catinput)
-    await results[0].click(event.chat_id, reply_to=reply_to_id, hide_via=True)
-    await event.delete()
+    try:
+        results = await event.client.inline_query(Config.TG_BOT_USERNAME, catinput)
+        if not results:
+            return await edit_delete(event, "**تعذر إنشاء الأزرار حالياً**")
+        await results[0].click(event.chat_id, reply_to=reply_to_id, hide_via=True)
+        await event.delete()
+    except Exception:
+        return await edit_delete(event, "**تعذر إنشاء الأزرار حالياً، تأكد من تفعيل البوت المساعد**")
 
 
 def build_keyboard(buttons):

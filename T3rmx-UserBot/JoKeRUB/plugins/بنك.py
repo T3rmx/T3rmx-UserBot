@@ -178,10 +178,12 @@ async def ga(message):
               del t["كنز"]
      
     if ".استثمار" in ms:
-        value = message.text.replace(".استثمار","")
+        value = (message.text.replace(".استثمار","") or "").strip()
         if "استثمار" in t:
             ti2 = t["استثمار"] - time.time()
             return await edit_or_reply(message,"<strong> للاستثمار مجدداً انتضر {}</strong>".format(convert(ti2)),parse_mode="html")
+        if not value.isdigit():
+            return await edit_or_reply(message, "<strong>اكتب المبلغ بعد الأمر، مثال: .استثمار 100</strong>", parse_mode="html")
         lss = ["Done","Fail"]
         ls = random.choice(lss)
         ppe = acc.balance

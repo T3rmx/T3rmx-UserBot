@@ -100,12 +100,18 @@ class HuReClient(TelegramClient):
                 except Exception:
                     pass
                 if groups_only and not check.is_group:
-                    await edit_delete(check, "`This command can only be used in groups.`", 10)
+                    try:
+                        await edit_delete(check, "`This command can only be used in groups.`", 10)
+                    except Exception:
+                        pass
                     return
                 if private_only and not check.is_private:
-                    await edit_delete(
-                        check, "`This command can only be used in private chats.`", 10
-                    )
+                    try:
+                        await edit_delete(
+                            check, "`This command can only be used in private chats.`", 10
+                        )
+                    except Exception:
+                        pass
                     return
                 try:
                     await func(check)
@@ -117,6 +123,11 @@ class HuReClient(TelegramClient):
                     LOGS.error("Message was same as previous message")
                 except MessageIdInvalidError:
                     LOGS.error("Message was deleted or cant be found")
+                except Exception as e:
+                    # FloodWait during rapid testing is transient; don't escalate to traceback report spam
+                    if e.__class__.__name__ == "FloodWaitError" or "FloodWaitError" in str(type(e)):
+                        LOGS.error("FloodWait during command execution (rate-limited): %s", e)
+                        return
                 except BaseException as e:
                     LOGS.exception(e)
                     if not disable_errors and getattr(Config, "PRIVATE_GROUP_BOT_API_ID", 0):

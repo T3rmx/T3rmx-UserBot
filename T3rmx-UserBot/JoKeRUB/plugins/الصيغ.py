@@ -373,6 +373,8 @@ async def _(event):
             args = float(args)
         except ValueError:
             args = 2.0
+    if not reply or not reply.media:
+        return await edit_delete(event, "**᯽︙ يجب الرد على فيديو أولاً**")
     catevent = await edit_or_reply(event, "**᯽︙ يتـم التحويل الى متـحركه انتـظر ⏱**")
     inputfile = await reply.download_media()
     outputfile = os.path.join(Config.TEMP_DIR, "vidtogif.gif")
