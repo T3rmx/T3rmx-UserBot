@@ -1936,7 +1936,7 @@
       "handlers_on": 5,
       "patterns": [
         {
-          "pattern": "ارسل",
+          "pattern": "ارسل(?:\\s|$)([\\s\\S]*)",
           "command": null
         },
         {

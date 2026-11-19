@@ -1,6 +1,6 @@
 import os
 from pathlib import Path
-import imp
+import importlib.util
 
 from ..Config import Config
 from ..core.auth import is_owner
@@ -23,9 +23,10 @@ thumb_image_path = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY, "thumb_image.jpg"
 async def findpkg(event):
     pkgname = event.pattern_match.group(1)
     try:
-         imp.find_module(pkgname)
+         if importlib.util.find_spec(pkgname) is None:
+             raise ImportError(pkgname)
          await edit_or_reply(event, f"᯽︙ الباكج موجود ✓\n{pkgname}")
-    except ImportError:
+    except (ImportError, ValueError, ModuleNotFoundError):
          await edit_or_reply(event, f"᯽︙ الباكج غير موجود X \n{pkgname}")
 
 @l313l.ar_cmd(

@@ -2409,7 +2409,7 @@
       },
       "patterns_sample": [
         {
-          "pattern": "ارسل",
+          "pattern": "ارسل(?:\\s|$)([\\s\\S]*)",
           "command": null
         },
         {
