@@ -124,6 +124,8 @@ async def ga(message):
     mee = await message.client.get_me()
     ms = message.text
     acc = get_bank(mee.id)
+    if acc is None:
+        return await edit_or_reply(message, "<strong>انت لا تملك حساب في البنك، أنشئ حساباً أولاً بـ .انشاء حساب</strong>", parse_mode="html")
  
     if ms == ".المصرف" or ms == ".البنك" or ms == ".مصرف":
 

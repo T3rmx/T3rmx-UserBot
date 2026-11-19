@@ -16,7 +16,7 @@ async def stylish_generator(event):
     args = event.pattern_match.group(1)
     if not args:
         get = await event.get_reply_message()
-        args = get.text
+        args = get.text if get else None
     if not args:
         await edit_or_reply(event, "**اعـطنـي نـص اولا 🧸🖤**")
         return
@@ -38,7 +38,7 @@ async def stylish_generator(event):
     args = event.pattern_match.group(1)
     if not args:
         get = await event.get_reply_message()
-        args = get.text
+        args = get.text if get else None
     if not args:
         await edit_or_reply(event, "**اعـطنـي نـص اولا 🌺😗🗿**")
         return
@@ -88,7 +88,7 @@ async def stylish_generator(event):
     args = event.pattern_match.group(1)
     if not args:
         get = await event.get_reply_message()
-        args = get.text
+        args = get.text if get else None
     if not args:
         await edit_or_reply(event, "**اعـطنـي نـص اولا 🧸🖤**")
         return
@@ -111,7 +111,7 @@ async def stylish_generator(event):
     args = event.pattern_match.group(1)
     if not args:
         get = await event.get_reply_message()
-        args = get.text
+        args = get.text if get else None
     if not args:
         await edit_or_reply(event, "**اعـطنـي نـص اولا 🧸🖤**")
         return
@@ -134,7 +134,7 @@ async def stylish_generator(event):
     args = event.pattern_match.group(1)
     if not args:
         get = await event.get_reply_message()
-        args = get.text
+        args = get.text if get else None
     if not args:
         await edit_or_reply(event, "**اعـطنـي نـص اولا 🧸🖤**")
         return
@@ -157,7 +157,7 @@ async def stylish_generator(event):
     args = event.pattern_match.group(1)
     if not args:
         get = await event.get_reply_message()
-        args = get.text
+        args = get.text if get else None
     if not args:
         await edit_or_reply(event, "**اعـطنـي نـص اولا 🧸🖤**")
         return
@@ -180,7 +180,7 @@ async def stylish_generator(event):
     args = event.pattern_match.group(1)
     if not args:
         get = await event.get_reply_message()
-        args = get.text
+        args = get.text if get else None
     if not args:
         await edit_or_reply(event, "**اعـطنـي نـص اولا 🧸🖤**")
         return
@@ -203,7 +203,7 @@ async def stylish_generator(event):
     args = event.pattern_match.group(1)
     if not args:
         get = await event.get_reply_message()
-        args = get.text
+        args = get.text if get else None
     if not args:
         await edit_or_reply(event, "**اعـطنـي نـص اولا 🧸🖤**")
         return
@@ -226,7 +226,7 @@ async def stylish_generator(event):
     args = event.pattern_match.group(1)
     if not args:
         get = await event.get_reply_message()
-        args = get.text
+        args = get.text if get else None
     if not args:
         await edit_or_reply(event, "**اعـطنـي نـص اولا 🧸🖤**")
         return

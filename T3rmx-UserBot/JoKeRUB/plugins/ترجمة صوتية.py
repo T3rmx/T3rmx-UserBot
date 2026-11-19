@@ -27,12 +27,18 @@ from . import deEmojify, reply_id
 
 @l313l.ar_cmd(pattern="test(?:\s|$)([\s\S]*)")
 async def reda(event):
-    tr = translate("انا عراقي", lang_tgt="fa").replace("\ N", "\n")
-    await edit_or_reply(event, tr)
-    result = await l313l(functions.users.GetFullUserRequest(
-        id='earthlink_telecommunications'
-    ))
-    await event.reply(result.stringify())
+    try:
+        tr = translate("انا عراقي", lang_tgt="fa").replace("\ N", "\n")
+    except Exception:
+        tr = ""
+    await edit_or_reply(event, tr or "**تعذر الحصول على ترجمة حالياً**")
+    try:
+        result = await l313l(functions.users.GetFullUserRequest(
+            id='earthlink_telecommunications'
+        ))
+        await event.reply(result.stringify())
+    except Exception:
+        await event.reply("**تعذر جلب معلومات المستخدم حالياً**")
 
 
 

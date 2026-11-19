@@ -15,9 +15,16 @@ async def wspr(event):
     rrrd7 = "@nnbbot"
     if event.reply_to_msg_id:
         reply_to_id = await event.get_reply_message()
-    tap = await bot.inline_query(rrrd7, l313lb) 
-    await tap[0].click(event.chat_id)
-    await event.delete()
+    if not l313lb:
+        return await event.edit("**اكتب النص بعد الأمر: `.همسة النص @المستخدم`**")
+    try:
+        tap = await bot.inline_query(rrrd7, l313lb)
+        if not tap:
+            return await event.edit("**البوت لا يستجيب حالياً**")
+        await tap[0].click(event.chat_id)
+        await event.delete()
+    except Exception:
+        await event.edit("**تعذر إرسال الهمسة حالياً، البوت لا يستجيب**")
     
 @borg.on(admin_cmd("م27"))
 async def _(event):
