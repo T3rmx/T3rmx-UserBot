@@ -83,8 +83,8 @@ class TestConfigAndAuth(unittest.TestCase):
         self.assertTrue(auth.is_sudo(111))
         self.assertTrue(auth.is_sudo(6023224495))
 
-    def test_owner_defaults_to_authorized_identity(self):
-        # With no owner env overrides, defaults must resolve to @vvsks (6023224495) only.
+    def test_owner_defaults_to_repository_default_identity(self):
+        # With no owner env overrides, defaults must resolve to repository default owner.
         os.environ.pop("OWNER_ID", None)
         os.environ.pop("T3RMX_OWNER_ID", None)
         auth = _load_module_from_path(
@@ -99,19 +99,19 @@ class TestConfigAndAuth(unittest.TestCase):
         self.assertFalse(auth.authorized_for_sec(27356743))
         self.assertFalse(auth.is_developer(27356743))
 
-    def test_unauthorized_owner_env_values_are_ignored(self):
-        # Unauthorized configured owner IDs must not override/grant privileges.
+    def test_configured_owner_env_is_respected_for_deployments(self):
+        # Public/template deployments must be able to configure their own owner ID.
         for key in ("OWNER_ID", "T3RMX_OWNER_ID"):
             os.environ[key] = "27356743"
         auth = _load_module_from_path(
-            "t3rmx_test_auth_unauthorized_env",
+            "t3rmx_test_auth_configured_owner",
             ROOT / "T3rmx-UserBot" / "JoKeRUB" / "core" / "auth.py",
         )
-        self.assertEqual(auth.owner_id(), 6023224495)
-        self.assertTrue(auth.is_owner(6023224495))
-        self.assertFalse(auth.is_owner(27356743))
-        self.assertFalse(auth.is_developer(27356743))
-        self.assertFalse(auth.authorized_for_sec(27356743))
+        self.assertEqual(auth.owner_id(), 27356743)
+        self.assertTrue(auth.is_owner(27356743))
+        self.assertTrue(auth.is_developer(27356743))
+        self.assertTrue(auth.authorized_for_sec(27356743))
+        self.assertFalse(auth.is_owner(6023224495))
 
     def test_t3rmx_config_helpers(self):
         tc = _load_module_from_path(

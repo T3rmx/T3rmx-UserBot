@@ -15,7 +15,11 @@ from telethon import Button, types
 from telethon.errors import BotResponseTimeoutError
 from telethon.events import CallbackQuery
 from telethon.utils import get_attributes
-from wget import download
+
+try:
+    from wget import download
+except Exception:
+    download = None
 
 from JoKeRUB import l313l
 

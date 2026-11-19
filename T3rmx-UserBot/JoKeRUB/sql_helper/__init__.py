@@ -16,6 +16,9 @@ def _resolve_db_uri():
     if not uri:
         # Safe local fallback when DATABASE_URL/DB_URI is not provided
         return "sqlite:///t3rmx.db"
+    # Compatibility: some platforms provide postgres:// which SQLAlchemy 1.3 may not accept
+    if uri.startswith("postgres://"):
+        uri = "postgresql://" + uri[len("postgres://"):]
     return uri
 
 

@@ -23,3 +23,15 @@ for _mod in (
         )
     except Exception as _e:
         _LOGS.warning("Optional helper module '%s' not loaded: %s", _mod, _e)
+
+# Explicit compatibility exports commonly imported by plugins
+try:
+    from .utube import name_dl, song_dl, video_dl, thumb_dl, yt_search  # noqa: F401
+except Exception:
+    pass
+
+try:
+    from .functions import delete_conv  # noqa: F401
+except Exception:
+    pass
+

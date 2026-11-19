@@ -2,12 +2,21 @@ from os import getcwd
 from os.path import join
 from textwrap import wrap
 
-import numpy as np
-from colour import Color as asciiColor
+try:
+    import numpy as np
+except Exception:
+    np = None
+try:
+    from colour import Color as asciiColor
+except Exception:
+    asciiColor = None
 from PIL import Image, ImageDraw, ImageFont
-from wand.color import Color
-from wand.drawing import Drawing
-from wand.image import Image as catimage
+try:
+    from wand.color import Color
+    from wand.drawing import Drawing
+    from wand.image import Image as catimage
+except Exception:
+    Color = Drawing = catimage = None
 
 from .utils import _catutils
 

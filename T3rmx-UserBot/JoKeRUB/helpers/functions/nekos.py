@@ -1,9 +1,28 @@
+import os
+
 import requests
 from PIL import Image, ImageDraw, ImageFont
-from validators.url import url
+
+try:
+    from validators.url import url
+except Exception:
+    from urllib.parse import urlparse
+
+    def url(value):
+        try:
+            p = urlparse(str(value or ""))
+            return bool(p.scheme and p.netloc)
+        except Exception:
+            return False
+
+
+def _ensure_temp_dir():
+    os.makedirs("./temp", exist_ok=True)
+
 
 
 async def fakegs(search, result):
+    _ensure_temp_dir()
     imgurl = "https://i.imgur.com/wNFr5X2.jpg"
     with open("./temp/temp.jpg", "wb") as f:
         f.write(requests.get(imgurl).content)
@@ -20,6 +39,7 @@ async def fakegs(search, result):
 
 
 async def trumptweet(text):
+    _ensure_temp_dir()
     r = requests.get(
         f"https://nekobot.xyz/api/imagegen?type=trumptweet&text={text}"
     ).json()
@@ -35,6 +55,7 @@ async def trumptweet(text):
 
 
 async def changemymind(text):
+    _ensure_temp_dir()
     r = requests.get(
         f"https://nekobot.xyz/api/imagegen?type=changemymind&text={text}"
     ).json()

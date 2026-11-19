@@ -2,7 +2,19 @@
 # FILES WRITTEN BY  @vvsks
 #يابقية الله في الارض
 import requests
-from validators.url import url
+
+try:
+    from validators.url import url
+except Exception:
+    from urllib.parse import urlparse
+
+    def url(value):
+        try:
+            p = urlparse(str(value or ""))
+            return bool(p.scheme and p.netloc)
+        except Exception:
+            return False
+
 from JoKeRUB import l313l
 
 from ..core.managers import edit_delete, edit_or_reply

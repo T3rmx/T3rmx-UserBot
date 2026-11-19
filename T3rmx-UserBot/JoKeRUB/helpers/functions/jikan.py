@@ -5,18 +5,40 @@ import time
 from datetime import datetime
 from io import BytesIO, StringIO
 
-import bs4
-import jikanpy
+try:
+    import bs4
+except Exception:
+    bs4 = None
+
+try:
+    import jikanpy
+    from jikanpy import Jikan
+except Exception:
+    jikanpy = None
+    Jikan = None
+
 import requests
 from aiohttp import ClientSession
-from jikanpy import Jikan
-from telethon.tl.types import DocumentAttributeAnimated
-from telethon.utils import is_video
+
+try:
+    from telethon.tl.types import DocumentAttributeAnimated
+    from telethon.utils import is_video
+except Exception:
+    DocumentAttributeAnimated = None
+
+    def is_video(*a, **k):
+        return False
 
 from ..progress import readable_time
 from ..tools import post_to_telegraph
 
-jikan = Jikan()
+jikan = Jikan() if Jikan else None
+
+
+def _require_jikan():
+    if jikan is None or jikanpy is None:
+        raise RuntimeError("jikanpy is required for anime lookup features")
+
 
 anilisturl = "https://graphql.anilist.co"
 animnefillerurl = "https://www.animefillerlist.com/shows/"
@@ -299,6 +321,7 @@ query ($search: String) {
 
 async def get_anime_schedule(weekid):
     "get anime schedule"
+    _require_jikan()
     dayname = get_weekday(weekid)
     result = f"✙ **Scheduled animes for {dayname.title()} are : **\n\n"
     async with jikanpy.AioJikan() as animesession:
@@ -467,6 +490,7 @@ def getBannerLink(mal, kitsu_search=True, anilistid=0):
 
 
 async def get_anime_manga(search_str, search_type, _user_id):  # sourcery no-metrics
+    _require_jikan()
     if search_type == "anime_anime":
         variables = {"search": search_str}
         query = anime_query

@@ -1,7 +1,11 @@
 import logging
 import random
 
-from moviepy.editor import VideoFileClip
+try:
+    from moviepy.editor import VideoFileClip
+except Exception:  # optional dependency
+    VideoFileClip = None
+
 from PIL import Image, ImageOps
 
 from ...core.logger import logging
@@ -9,8 +13,14 @@ from ...core.logger import logging
 LOGS = logging.getLogger(__name__)
 
 
+def _require_moviepy():
+    if VideoFileClip is None:
+        raise RuntimeError("moviepy is required for this video editing feature")
+
+
 async def vid_to_gif(inputfile, outputfile, speed=None, starttime=None, endtime=None):
     try:
+        _require_moviepy()
         clip = VideoFileClip(inputfile)
         if starttime is not None and endtime is not None:
             clip = clip.subclip(int(starttime), int(endtime))
@@ -21,6 +31,7 @@ async def vid_to_gif(inputfile, outputfile, speed=None, starttime=None, endtime=
     except Exception as e:
         LOGS.error(e)
         return None
+
 
 
 async def r_frames(image, w, h, outframes):

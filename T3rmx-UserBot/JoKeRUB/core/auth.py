@@ -10,8 +10,8 @@ import os
 from typing import Any, Set
 
 
-# Authorized owner: @vvsks (Telegram ID 6023224495). This is the only identity
-# granted owner/developer privileges by default. Any configured value must match.
+# Default/fallback owner identity for this repository's original deployment.
+# Deployments may configure a different owner via T3RMX_OWNER_ID / OWNER_ID.
 AUTHORIZED_OWNER_ID = 6023224495
 DEFAULT_OWNER_ID = AUTHORIZED_OWNER_ID
 
@@ -53,36 +53,31 @@ def _get_config():
 
 
 def owner_id() -> int:
-    """Return the effective owner ID.
+    """Return the effective owner ID for this deployment.
 
-    Security policy: only the explicitly authorized owner identity (@vvsks,
-    6023224495) is granted owner privileges. Environment/config values are accepted
-    only when they match that authorized ID; otherwise they are ignored and the
-    authorized default is enforced (no silent override to an unauthorized ID).
+    The owner ID is deployment-configurable (T3RMX_OWNER_ID / OWNER_ID) so users
+    deploying their own instance can control privileged access. If no valid value
+    is configured, the repository default owner ID is used as a fallback.
     """
-    # Environment variables may be provided for deploy/config consistency but must
-    # match the authorized owner identity to be honored.
+    # Environment variables take precedence for deployment platforms.
     for key in ("T3RMX_OWNER_ID", "OWNER_ID"):
         uid = _to_int(os.environ.get(key))
         if uid is not None and uid > 0:
-            if uid == AUTHORIZED_OWNER_ID:
-                return AUTHORIZED_OWNER_ID
-            # Ignore unauthorized configured/overridden owner IDs.
-            continue
+            return uid
 
     cfg = _get_config()
     if cfg is not None:
         for key in ("T3RMX_OWNER_ID", "OWNER_ID"):
             uid = _to_int(getattr(cfg, key, None))
-            if uid is not None and uid > 0 and uid == AUTHORIZED_OWNER_ID:
-                return AUTHORIZED_OWNER_ID
+            if uid is not None and uid > 0:
+                return uid
 
     try:
         from ..t3rmx_config import T3RMX_OWNER_ID  # type: ignore
 
         uid = _to_int(T3RMX_OWNER_ID)
-        if uid is not None and uid == AUTHORIZED_OWNER_ID:
-            return AUTHORIZED_OWNER_ID
+        if uid is not None and uid > 0:
+            return uid
     except Exception:
         pass
 

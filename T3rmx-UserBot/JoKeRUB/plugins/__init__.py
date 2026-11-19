@@ -127,4 +127,44 @@ async def make_gif(event, reply, quality=None, fps=None):
     return result_p
 
 
+# Backward-compatible exports for legacy plugins that import helpers from plugins package
+try:
+    from ..helpers.functions.nekos import (  # noqa: F401
+        awooify,
+        baguette,
+        changemymind,
+        fakegs,
+        iphonex,
+        kannagen,
+        lolice,
+        moditweet,
+        phcomment,
+        threats,
+        trap,
+        trash,
+        trumptweet,
+        tweets,
+    )
+except Exception:
+    pass
+
+try:
+    from ..helpers.functions.utils import (  # noqa: F401
+        deEmojify,
+        extract_time,
+        get_message_link,
+        get_readable_time,
+        soft_deEmojify,
+        utc_to_local,
+    )
+except Exception:
+    pass
+
+try:
+    from ..helpers.utils.events import reply_id  # noqa: F401
+except Exception:
+    pass
+
+
+
 

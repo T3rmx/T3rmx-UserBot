@@ -1,14 +1,19 @@
 import asyncio
+import os
 from concurrent.futures import Future, ThreadPoolExecutor
 from functools import partial, wraps
 from typing import Any, Callable
-
-from motor.frameworks.asyncio import _EXECUTOR
 
 from .logger import logging
 
 _LOG = logging.getLogger(__name__)
 _LOG_STR = "<<<!  ||||  %s  ||||  !>>>"
+
+
+# Local thread pool executor. Avoid depending on optional external packages
+# (e.g. motor) for basic background task execution.
+_MAX_WORKERS = int(os.environ.get("T3RMX_THREADPOOL_WORKERS", "4") or 4)
+_EXECUTOR = ThreadPoolExecutor(max_workers=max(_MAX_WORKERS, 1), thread_name_prefix="t3rmx-worker")
 
 
 def submit_thread(func: Callable[[Any], Any], *args: Any, **kwargs: Any) -> Future:
@@ -32,10 +37,14 @@ def _get() -> ThreadPoolExecutor:
 
 
 def _stop():
-    _EXECUTOR.shutdown()
+    try:
+        _EXECUTOR.shutdown(wait=False, cancel_futures=True)
+    except TypeError:
+        _EXECUTOR.shutdown(wait=False)
     # pylint: disable=protected-access
     _LOG.info(f"⏳ جار تحميل  : {_EXECUTOR._max_workers} ")
 
 
 # pylint: disable=protected-access
 _LOG.info(f"⌛ اكتمل التحميل  : {_EXECUTOR._max_workers} ")
+
