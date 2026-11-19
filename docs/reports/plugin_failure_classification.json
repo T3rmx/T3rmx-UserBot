@@ -3766,7 +3766,6 @@
         }
       ],
       "config_attributes_referenced": [
-        "TELEGRAPH_SHORT_NAME",
         "TEMP_DIR"
       ],
       "config_attributes_missing_from_config": [],
