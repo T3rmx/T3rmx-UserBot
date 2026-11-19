@@ -95,9 +95,9 @@ async def _(e):
             ExportChatInviteRequest(e.chat_id),
         )
     except no_admin:
-        return await eod(rr, "عذرا انت لست مشرف في هذه الدردشة", time=10)
+        return await eod(rr, "عذرا انت لست مشرف في هذه الدردشة")
     except Exception:
-        return await eod(rr, "- لا يمكن إنشاء رابط لهذه الدردشة (الرسائل المحفوظة أو دردشة خاصة)", time=10)
+        return await eod(rr, "- لا يمكن إنشاء رابط لهذه الدردشة (الرسائل المحفوظة أو دردشة خاصة)")
     await eod(rr, f"- رابط الدردشة\n {r.link}")
 
 
