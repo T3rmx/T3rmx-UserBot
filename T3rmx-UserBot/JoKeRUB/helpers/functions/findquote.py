@@ -1,10 +1,16 @@
 import random
 
 import requests
-from bs4 import BeautifulSoup
+
+try:
+    from bs4 import BeautifulSoup
+except Exception:  # optional dependency
+    BeautifulSoup = None
 
 
 async def extract_quote(url):
+    if BeautifulSoup is None:
+        raise RuntimeError("beautifulsoup4 is required for quote extraction")
     results = []
     request = requests.get(url).text
     soup = BeautifulSoup(request, "html.parser")
