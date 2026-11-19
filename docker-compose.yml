@@ -1,0 +1,20 @@
+services:
+  t3rmx-userbot:
+    build: .
+    container_name: t3rmx-userbot
+    restart: unless-stopped
+    env_file:
+      - path: .env
+        required: false
+      - path: .env.example
+        required: false
+    environment:
+      # Backward-compatible defaults
+      TZ: ${TZ:-Asia/Aden}
+      ENV: ${ENV:-production}
+    volumes:
+      - ./downloads:/app/downloads
+      - ./temp:/app/temp
+      # Optional: persist local sqlite/db files if used
+      # - ./data:/app/data
+    command: ["python3", "-m", "JoKeRUB"]

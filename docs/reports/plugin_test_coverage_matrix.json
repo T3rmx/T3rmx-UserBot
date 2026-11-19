@@ -1,0 +1,1685 @@
+{
+  "generated_from": "docs/reports/plugin_harness_results.json (harness v4, .venv311, 2026-11-19)",
+  "summary": {
+    "total": 104,
+    "import_ok": 104,
+    "failed": 0,
+    "handler_execution_tested_plugins": 0,
+    "functional_behavior_tested_plugins": 0,
+    "integration_tested_plugins": 0
+  },
+  "coverage_axes": [
+    "Import",
+    "Registration",
+    "Handler execution",
+    "Functional behavior",
+    "Integration",
+    "Not tested"
+  ],
+  "plugins": [
+    {
+      "plugin": "__init__.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/__init__.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 0,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "afk.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/afk.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 4,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof). Runtime-optional dependencies made lazy/degraded where absent: translation features depend on googletrans via helpers.functions.functions (lazy import; googletrans unvetted/not installed in .venv311)."
+    },
+    {
+      "plugin": "احچي.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/احچي.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 2,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof). Runtime-optional dependencies made lazy/degraded where absent: speech-to-text depends on speech_recognition/pydub (lazy; pydub installed, SpeechRecognition installed earlier, ffmpeg/runtime not verified) and OCR depends on ocrspace (lazy; package/API mapping unvetted/not installed)."
+    },
+    {
+      "plugin": "ادوات_الروابط.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/ادوات_الروابط.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 3,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "اشراف عام.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/اشراف عام.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 0,
+        "bot_cmd": 0,
+        "on": 2
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "اضافة.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/اضافة.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 0,
+        "bot_cmd": 0,
+        "on": 2
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "اغنية.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/اغنية.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 4,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof). Runtime-optional dependencies made lazy/degraded where absent: audio recognition depends on ShazamAPI (lazy; unvetted/not installed); validators.url has fallback."
+    },
+    {
+      "plugin": "الادمن.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/الادمن.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 7,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "الاذاعه.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/الاذاعه.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 3,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "الاذكار.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/الاذكار.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 7,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "الانتحال.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/الانتحال.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 4,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "الاوامر.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/الاوامر.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 21,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "البروفايل.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/البروفايل.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 7,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "التثبيت.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/التثبيت.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 3,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "التجميع.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/التجميع.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 8,
+        "bot_cmd": 0,
+        "on": 14
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "التحكم.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/التحكم.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 7,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "التخزين.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/التخزين.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 7,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "التخصيص.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/التخصيص.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 7,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "الترجمه.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/الترجمه.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 3,
+        "bot_cmd": 0,
+        "on": 1
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof). Runtime-optional dependencies made lazy/degraded where absent: translation features depend on googletrans via helpers.functions.functions (lazy; unvetted/not installed)."
+    },
+    {
+      "plugin": "الترحيب.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/الترحيب.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 4,
+        "bot_cmd": 0,
+        "on": 1
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "الترحيب2.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/الترحيب2.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 1,
+        "bot_cmd": 0,
+        "on": 3
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "التقليد.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/التقليد.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 5,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "التكرار.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/التكرار.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 9,
+        "bot_cmd": 0,
+        "on": 1
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "التمبلر.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/التمبلر.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 22,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "التنظيف.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/التنظيف.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 3,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "الثكيل.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/الثكيل.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 0,
+        "bot_cmd": 0,
+        "on": 6
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "الحاسبة.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/الحاسبة.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 0,
+        "bot_cmd": 0,
+        "on": 4
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "الحماية.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/الحماية.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 10,
+        "bot_cmd": 0,
+        "on": 5
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "الخطوط.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/الخطوط.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 0,
+        "bot_cmd": 0,
+        "on": 4
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "الردود.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/الردود.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 5,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "الصلاة.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/الصلاة.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 1,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "الصلاحيات.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/الصلاحيات.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 7,
+        "bot_cmd": 0,
+        "on": 1
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "الصورة.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/الصورة.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 1,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "الصيغ.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/الصيغ.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 8,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "الفارات.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/الفارات.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 7,
+        "bot_cmd": 0,
+        "on": 1
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "الكتم.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/الكتم.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 4,
+        "bot_cmd": 0,
+        "on": 1
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "المطور.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/المطور.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 4,
+        "bot_cmd": 0,
+        "on": 1
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "الملصقات.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/الملصقات.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 3,
+        "bot_cmd": 0,
+        "on": 2
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "الموقع.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/الموقع.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 1,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "الوقت.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/الوقت.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 2,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "الوقتي.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/الوقتي.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 1,
+        "bot_cmd": 0,
+        "on": 5
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof). Runtime-optional dependencies made lazy/degraded where absent: autopic download depends on pySmartDL (lazy; pySmartDL installed in .venv311) and color parsing uses colour/webcolors fallback (colour not installed)."
+    },
+    {
+      "plugin": "الوهمي.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/الوهمي.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 0,
+        "bot_cmd": 0,
+        "on": 12
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "امونغ اس.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/امونغ اس.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 2,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "اوامر الادمن الوقتية.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/اوامر الادمن الوقتية.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 4,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "اوامر التشغيل.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/اوامر التشغيل.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 3,
+        "bot_cmd": 0,
+        "on": 2
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "اوامر الكروب.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/اوامر الكروب.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 24,
+        "bot_cmd": 0,
+        "on": 5
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "اوامر المنع.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/اوامر المنع.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 4,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "اوامري.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/اوامري.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 0,
+        "bot_cmd": 0,
+        "on": 14
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "بنك.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/بنك.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 7,
+        "bot_cmd": 0,
+        "on": 2
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "تاريخ اسماء.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/تاريخ اسماء.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 1,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "تحديث.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/تحديث.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 1,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "تحذير.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/تحذير.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 3,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "تحشيش .py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/تحشيش .py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 9,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "تحشيش.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/تحشيش.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 2,
+        "bot_cmd": 0,
+        "on": 28
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "ترجمة صوتية.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/ترجمة صوتية.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 2,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof). Runtime-optional dependencies made lazy/degraded where absent: text-to-speech depends on gtts (lazy; unvetted/not installed)."
+    },
+    {
+      "plugin": "تسلية1.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/تسلية1.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 10,
+        "bot_cmd": 0,
+        "on": 1
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "تسلية2.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/تسلية2.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 11,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "تسلية3.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/تسلية3.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 11,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "تسلية4.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/تسلية4.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 11,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "تسلية5.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/تسلية5.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 12,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "تسلية6.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/تسلية6.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 5,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "تسلية7.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/تسلية7.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 4,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "تسلية8.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/تسلية8.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 6,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "تشكيل.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/تشكيل.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 1,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "تطبيق.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/تطبيق.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 1,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "تفرعات الاوامر.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/تفرعات الاوامر.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 69,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "تلكراف.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/تلكراف.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 1,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "تنصيب.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/تنصيب.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 1,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "تهكير.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/تهكير.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 2,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "تيكتوك.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/تيكتوك.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 1,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "ذاتية.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/ذاتية.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 0,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "رسالة موقوته.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/رسالة موقوته.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 1,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "رسالة.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/رسالة.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 2,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "زغرفة.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/زغرفة.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 11,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "سرعة النت.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/سرعة النت.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 1,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "سي ام دي.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/سي ام دي.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 3,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "صور.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/صور.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 1,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof). Runtime-optional dependencies made lazy/degraded where absent: Google image download depends on selenium + browser/driver runtime (lazy in helpers.google_image_download; selenium not installed)."
+    },
+    {
+      "plugin": "ضع تكرار.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/ضع تكرار.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 2,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "طقس.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/طقس.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 1,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "فايروس كورونا.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/فايروس كورونا.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 1,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof). Runtime-optional dependencies made lazy/degraded where absent: COVID stats depend on legacy covid package/API (lazy; unvetted/possibly obsolete, not installed)."
+    },
+    {
+      "plugin": "فحص.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/فحص.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 1,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "فلم.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/فلم.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 2,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "كشف.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/كشف.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 5,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "كوكل.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/كوكل.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 3,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "لستة.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/لستة.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 1,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "متحركات ساد.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/متحركات ساد.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 9,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "متحركات كيوت.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/متحركات كيوت.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 7,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "معلومات الحساب.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/معلومات الحساب.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 2,
+        "bot_cmd": 0,
+        "on": 2
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "معلومات الكروب.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/معلومات الكروب.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 4,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "ملخص معلومات.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/ملخص معلومات.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 2,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "ملفات السورس.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/ملفات السورس.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 5,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "ملفات خارجيه.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/ملفات خارجيه.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 0,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "ملكية.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/ملكية.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 1,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "منشن.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/منشن.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 4,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "منوع.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/منوع.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 3,
+        "bot_cmd": 0,
+        "on": 14
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "ميم.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/ميم.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 9,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "ميمز.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/ميمز.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 1,
+        "bot_cmd": 0,
+        "on": 84
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "نشر تلقائي.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/نشر تلقائي.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 1,
+        "bot_cmd": 0,
+        "on": 2
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "نص.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/نص.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 0,
+        "bot_cmd": 0,
+        "on": 1
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "نوم.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/نوم.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 3,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "همسه.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/همسه.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 0,
+        "bot_cmd": 0,
+        "on": 4
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "ياعلي.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/ياعلي.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 3,
+        "bot_cmd": 0,
+        "on": 1
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    },
+    {
+      "plugin": "يوتيوب.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/يوتيوب.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 4,
+        "bot_cmd": 0,
+        "on": 1
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof). Runtime-optional dependencies made lazy/degraded where absent: YouTube/media features prefer yt-dlp (available) with legacy youtube_dl fallback (not installed); search helpers depend on youtubesearchpython (lazy; not installed); direct-download paths may depend on urlextract/wget (lazy; not installed); assistant/iytdl and utube helpers now fall back from ujson to stdlib json (ujson not installed)."
+    },
+    {
+      "plugin": "ييبنك.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/ييبنك.py",
+      "import_tested_mocked_harness_v4": true,
+      "import_result": "load_ok",
+      "registration_tested": true,
+      "handlers_registered": {
+        "ar_cmd": 1,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "handler_execution_tested": false,
+      "functional_behavior_tested": false,
+      "integration_tested": false,
+      "notes": "Mocked import/exec + handler registration evidence only (no handler execution/functional/integration/E2E proof)."
+    }
+  ]
+}

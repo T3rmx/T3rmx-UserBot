@@ -1,0 +1,232 @@
+{
+  "generated_from": "docs/reports/plugin_harness_results.json (harness v4, .venv311, 2026-11-19) + source inspection/lazy-import fixes",
+  "summary": {
+    "plugins_total": 104,
+    "plugins_load_ok_mocked_harness": 104,
+    "plugins_failed_load": 0,
+    "load_blockers_unresolved": 0,
+    "runtime_optional_or_degraded_modules": 13,
+    "notes": "All 104 plugins import/exec in mocked harness; unresolved items are runtime-optional, unvetted, legacy, or external-runtime dependencies with lazy guards/fallbacks where applied."
+  },
+  "resolved_or_mitigated_for_load": {
+    "ujson": {
+      "pypi": "ujson",
+      "status": "not_installed_lazified_fallback",
+      "python311": "installable in general but not vetted/installed in .venv311 in this run",
+      "notes": "Top-level imports in T3rmx-UserBot/JoKeRUB/helpers/functions/utube.py and T3rmx-UserBot/JoKeRUB/assistant/iytdl.py now fall back to stdlib json; يوتيوب plugin load blocker removed in mocked harness.",
+      "affected_plugins_or_paths": [
+        "يوتيوب.py (load path)",
+        "assistant/iytdl.py",
+        "helpers/functions/utube.py"
+      ]
+    },
+    "youtubesearchpython": {
+      "pypi": "youtube-search-python / youtubesearchpython",
+      "status": "not_installed_lazified_runtime_degraded",
+      "notes": "helpers.functions.utube.VideosSearch imported lazily with graceful unavailable message; يوتيوب plugin loads but search feature unavailable without package.",
+      "affected_plugins": [
+        "يوتيوب.py"
+      ]
+    },
+    "youtube_dl_to_yt_dlp": {
+      "pypi": "yt-dlp==2024.08.06 (core, present) with legacy youtube-dl fallback API path",
+      "status": "compatibility_migration_partial",
+      "notes": "يوتيوب.py prefers yt_dlp.YoutubeDL/utils and falls back to youtube_dl imports; runtime unavailable guarded. Full behavioral migration/E2E not verified.",
+      "affected_plugins": [
+        "يوتيوب.py"
+      ]
+    },
+    "harness_pool_run_in_thread": {
+      "status": "test_harness_compat_fix",
+      "notes": "scripts/plugin_harness_v4.py pool stub now provides async run_in_thread decorator compatible with helpers.functions.utube usage.",
+      "affected_plugins": [
+        "يوتيوب.py (mocked load)"
+      ]
+    }
+  },
+  "runtime_optional_unresolved_modules": {
+    "googletrans": {
+      "pypi": "googletrans (ambiguous; commonly 4.0.0rc1 or 3.1.0a0/forks)",
+      "core_or_optional": "optional",
+      "feature_area": "translation",
+      "python311": "compatibility/API stability varies; unvetted",
+      "installed_in_venv311": false,
+      "status": "not_installed_lazy_runtime_degraded_unvetted",
+      "affected_plugins": [
+        "afk.py",
+        "الترجمه.py",
+        "ترجمة صوتية.py"
+      ],
+      "affected_paths": [
+        "T3rmx-UserBot/JoKeRUB/helpers/functions/functions.py"
+      ],
+      "notes": "Lazy import/guard added; plugins load but translation-dependent behavior unavailable without package."
+    },
+    "ShazamAPI": {
+      "pypi": "ShazamAPI",
+      "core_or_optional": "optional",
+      "feature_area": "audio recognition",
+      "python311": "unvetted",
+      "installed_in_venv311": false,
+      "status": "not_installed_lazy_runtime_degraded_unvetted",
+      "affected_plugins": [
+        "اغنية.py"
+      ],
+      "notes": "External service dependency; runtime guard returns unavailable message."
+    },
+    "ocrspace": {
+      "pypi": "ocrspace (correct PyPI package/API mapping requires verification)",
+      "core_or_optional": "optional",
+      "feature_area": "OCR (OCR.Space API)",
+      "python311": "unverified",
+      "installed_in_venv311": false,
+      "status": "not_installed_lazy_runtime_degraded_ambiguous",
+      "affected_plugins": [
+        "احچي.py"
+      ],
+      "notes": "Module/API mapping ambiguous; external API/key likely required; OCR command degrades gracefully."
+    },
+    "speech_recognition": {
+      "pypi": "SpeechRecognition==3.17.0 (previously vetted/installed; current .venv311 state not present)",
+      "core_or_optional": "optional",
+      "feature_area": "speech-to-text",
+      "python311": "compatible when installed",
+      "installed_in_venv311": false,
+      "status": "not_installed_lazy_runtime_degraded",
+      "affected_plugins": [
+        "احچي.py"
+      ],
+      "notes": "Lazy import added in احچي.py; runtime unavailable without package and audio backends."
+    },
+    "pydub": {
+      "pypi": "pydub==0.25.1 (previously vetted/installed; current .venv311 state not present)",
+      "core_or_optional": "optional",
+      "feature_area": "audio conversion for STT",
+      "python311": "compatible when installed; requires ffmpeg runtime",
+      "installed_in_venv311": false,
+      "status": "not_installed_lazy_runtime_degraded",
+      "affected_plugins": [
+        "احچي.py"
+      ],
+      "notes": "Lazy import added; actual conversion requires ffmpeg (not verified)."
+    },
+    "colour": {
+      "pypi": "colour",
+      "core_or_optional": "optional",
+      "feature_area": "color parsing",
+      "python311": "likely compatible but package older/unvetted",
+      "installed_in_venv311": false,
+      "status": "not_installed_lazy_runtime_degraded_unvetted",
+      "affected_plugins": [
+        "الوقتي.py"
+      ],
+      "notes": "Lazy import/fallback logic used; webcolors available in prior installs but current .venv311 package presence not re-verified."
+    },
+    "pySmartDL": {
+      "pypi": "pySmartDL==1.3.4",
+      "core_or_optional": "optional",
+      "feature_area": "downloads (autopic)",
+      "python311": "previously vetted",
+      "installed_in_venv311": true,
+      "status": "installed_lazy_import",
+      "affected_plugins": [
+        "الوقتي.py"
+      ]
+    },
+    "covid": {
+      "pypi": "covid",
+      "core_or_optional": "optional-legacy",
+      "feature_area": "COVID stats (legacy)",
+      "python311": "unmaintained/uncertain",
+      "installed_in_venv311": false,
+      "status": "not_installed_lazy_runtime_degraded_legacy_unvetted",
+      "affected_plugins": [
+        "فايروس كورونا.py"
+      ],
+      "notes": "Legacy external API/data risk; plugin load preserved with runtime guard."
+    },
+    "gtts": {
+      "pypi": "gTTS (package name gtts/gTTS varies; unvetted)",
+      "core_or_optional": "optional",
+      "feature_area": "text-to-speech",
+      "python311": "unvetted",
+      "installed_in_venv311": false,
+      "status": "not_installed_lazy_runtime_degraded_unvetted",
+      "affected_plugins": [
+        "ترجمة صوتية.py"
+      ],
+      "notes": "External service/runtime behavior not verified."
+    },
+    "selenium": {
+      "pypi": "selenium",
+      "core_or_optional": "optional",
+      "feature_area": "browser automation/image scraping",
+      "python311": "library compatible in 4.x but requires browser/driver",
+      "installed_in_venv311": false,
+      "status": "not_installed_lazy_runtime_degraded_external_runtime",
+      "affected_plugins": [
+        "صور.py"
+      ],
+      "affected_paths": [
+        "T3rmx-UserBot/JoKeRUB/helpers/google_image_download.py"
+      ],
+      "notes": "External browser/driver runtime not available/verified."
+    },
+    "urlextract": {
+      "pypi": "urlextract",
+      "core_or_optional": "optional",
+      "feature_area": "URL extraction",
+      "python311": "unvetted",
+      "installed_in_venv311": false,
+      "status": "not_installed_lazy_runtime_degraded",
+      "affected_plugins": [
+        "يوتيوب.py"
+      ]
+    },
+    "wget": {
+      "pypi": "wget",
+      "core_or_optional": "optional",
+      "feature_area": "file download helper",
+      "python311": "unvetted",
+      "installed_in_venv311": false,
+      "status": "not_installed_lazy_runtime_degraded",
+      "affected_plugins": [
+        "يوتيوب.py"
+      ],
+      "affected_paths": [
+        "T3rmx-UserBot/JoKeRUB/assistant/iytdl.py (top-level import; not part of plugins/ harness load path)"
+      ]
+    },
+    "youtube_dl": {
+      "pypi": "youtube-dl (legacy, unmaintained)",
+      "core_or_optional": "optional-legacy",
+      "feature_area": "media download fallback",
+      "python311": "obsolete/unmaintained; not installed intentionally",
+      "installed_in_venv311": false,
+      "status": "not_installed_legacy_fallback_only",
+      "affected_plugins": [
+        "يوتيوب.py"
+      ],
+      "notes": "yt-dlp preferred; legacy fallback path unavailable without package."
+    }
+  },
+  "installed_or_previously_vetted_selected": {
+    "beautifulsoup4": "4.15.0 (previously installed/vetted; current env state not fully re-audited)",
+    "pytz": "2026.6",
+    "validators": "0.36.0",
+    "emoji": "2.16.0",
+    "prettytable": "3.19.0",
+    "pyfiglet": "1.0.4",
+    "webcolors": "25.10.0",
+    "geopy": "2.5.0",
+    "telegraph": "2.2.0",
+    "cryptography": "50.0.2",
+    "html-telegraph-poster+lxml-html-clean": "0.5.0+0.4.6",
+    "speedtest-cli": "2.1.3",
+    "cloudscraper": "1.2.71",
+    "search-engine-parser": "0.6.8 (lxml downgraded to 4.9.4 in prior step; uv pip check previously passed)",
+    "setuptools": "84.2.1 (pkg_resources fallback in ملفات السورس.py)",
+    "pySmartDL": "1.3.4 (present in .venv311)",
+    "yt-dlp": "2024.08.06 (core; present in .venv311)"
+  }
+}

@@ -1,0 +1,195 @@
+{
+  "sec_runtime": {
+    "ok": true,
+    "detail": {
+      "denied": true,
+      "allowed": true,
+      "denied_actions": [
+        [
+          "edit",
+          "**This command is restricted to the T3rmx owner.**"
+        ]
+      ],
+      "allowed_actions": [
+        [
+          "edit",
+          "`Running...`"
+        ],
+        [
+          "edit",
+          "**Command:** `echo hi`\n**Exit:** `0`\n\n```\nok\n```"
+        ]
+      ]
+    }
+  },
+  "developer_restriction_toggle": {
+    "ok": true,
+    "detail": {
+      "denied": true,
+      "enabled": true,
+      "disabled": true,
+      "actions_denied": [
+        [
+          "edit",
+          "**This command is restricted to the T3rmx owner.**"
+        ]
+      ],
+      "actions_on": [
+        [
+          "edit",
+          "**Restriction enabled for non-owner users on this instance.**"
+        ]
+      ]
+    }
+  },
+  "restart_cmd_developer_plugin": {
+    "ok": true,
+    "detail": {
+      "denied": true,
+      "allowed": true,
+      "exec_called_owner": true,
+      "denied_actions": [
+        [
+          "edit",
+          "**This command is restricted to the T3rmx owner.**"
+        ]
+      ],
+      "owner_actions": [
+        [
+          "edit",
+          "**Restarting T3rmx UserBot...**"
+        ]
+      ]
+    }
+  },
+  "restart_cmd_ops_plugin": {
+    "ok": true,
+    "detail": {
+      "denied": true,
+      "allowed": true,
+      "exec_called_owner": false,
+      "denied_actions": [
+        [
+          "eor",
+          "**هذا الأمر مخصص لمالك البوت فقط.**"
+        ]
+      ],
+      "owner_actions": [
+        [
+          "eor",
+          "᯽︙ سيتم اعادة التشغيل انتظر "
+        ],
+        [
+          "edit",
+          "0%\n▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒"
+        ],
+        [
+          "edit",
+          "4%\n█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒"
+        ],
+        [
+          "edit",
+          "8%\n██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒"
+        ],
+        [
+          "edit",
+          "20%\n█████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒"
+        ],
+        [
+          "edit",
+          "36%\n█████████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒"
+        ],
+        [
+          "edit",
+          "52%\n█████████████▒▒▒▒▒▒▒▒▒▒▒▒"
+        ],
+        [
+          "edit",
+          "84%\n█████████████████████▒▒▒▒"
+        ],
+        [
+          "edit",
+          "100%\n████████████████████████"
+        ],
+        [
+          "edit",
+          "**᯽︙ تم اعادة تشغيل بنجاح ✓ \nانتظر 2-5 دقائق**"
+        ]
+      ]
+    }
+  },
+  "shutdown_cmd_ops_plugin": {
+    "ok": true,
+    "detail": {
+      "denied": true,
+      "allowed": true,
+      "exit_called_owner": true,
+      "denied_actions": [
+        [
+          "eor",
+          "**هذا الأمر مخصص لمالك البوت فقط.**"
+        ]
+      ],
+      "owner_actions": [
+        [
+          "eor",
+          "**᯽︙ جـاري إيقـاف تشغيـل البـوت الآن ..**\n**أعد تشغيله يدوياً من بيئة النشر عند الحاجة.**"
+        ]
+      ]
+    }
+  },
+  "remote_reply_restart_handler": {
+    "ok": true,
+    "detail": {
+      "denied": true,
+      "allowed": true,
+      "exec_called_owner": false,
+      "denied_actions": [],
+      "owner_actions": [
+        [
+          "reply",
+          "**᯽︙ سيتم اعادة التشغيل بأمر المالك **"
+        ]
+      ],
+      "note": "handler checks is_owner and reply_to; Telethon decorator from_users also restricts in real runtime"
+    }
+  },
+  "remote_reply_shutdown_handler": {
+    "ok": true,
+    "detail": {
+      "denied": true,
+      "allowed": true,
+      "exit_called_owner": true,
+      "denied_actions": [],
+      "owner_actions": [
+        [
+          "reply",
+          "**᯽︙ تم استلام أمر الإيقاف من المالك.**"
+        ]
+      ],
+      "note": "handler checks is_owner and reply_to; Telethon decorator from_users also restricts in real runtime"
+    }
+  },
+  "update_execute_owner_gate": {
+    "ok": true,
+    "detail": {
+      "denied": true,
+      "allowed": true,
+      "denied_tail": "**Update available**\n• Release: https://example/release\n\n**Changelog**\nx\n\n_Security note: updates are not installed automatically. No git pull, pip install, or arbitrary code execution is performed by this command._\n\n**Execution request denied:** only the configured owner can request update actions.",
+      "owner_tail": "elease/tag and restart the service, or redeploy from the reviewed source.\n   - Docker: rebuild the image from the reviewed source/tag and recreate the container.\n   - Railway/Heroku: redeploy from the reviewed repository state/release.\n3. Ensure dependencies come from pinned manifests in the repository.\n4. Restart the bot after updating.\n\nAutomatic in-place self-mutation is intentionally disabled."
+    }
+  },
+  "auth_helpers": {
+    "ok": true,
+    "detail": {
+      "owner": true,
+      "unauth": false
+    }
+  },
+  "blockedfrom_core_guard_review": {
+    "ok": true,
+    "detail": {
+      "note": "core/client.py and core/events.py check gvarstatus(\"blockedfrom\")==\"yes\" and bypass only is_developer(owner). Developer restriction toggle is owner-only in plugins/المطور.py and sets blockedfrom. Runtime guard requires full Telethon event pipeline with DB-backed gvarstatus; not fully E2E simulated here."
+    }
+  }
+}

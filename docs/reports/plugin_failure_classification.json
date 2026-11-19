@@ -1,0 +1,5433 @@
+{
+  "generated_by": "scripts/plugin_harness_v4.py",
+  "scope": "all_plugins_load_exec_import_registration_analysis",
+  "summary": {
+    "total_plugins": 104,
+    "failed_plugins": 0,
+    "successful_plugins": 104,
+    "by_classification": {
+      "load_ok": 104
+    },
+    "analysis_notes": [
+      "Classification distinguishes missing optional external dependencies and harness/interface/config issues from suspected source defects.",
+      "exec_ok means module import/exec completed in mocked harness with handler registration counts observed; it does not prove functional correctness."
+    ]
+  },
+  "plugins": [
+    {
+      "file": "__init__.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/__init__.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/__init__.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 0,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [],
+      "config_attributes_referenced": [
+        "ALIVE_NAME",
+        "G_DRIVE_CLIENT_ID",
+        "G_DRIVE_CLIENT_SECRET",
+        "G_DRIVE_DATA",
+        "G_DRIVE_FOLDER_ID",
+        "NO_LOAD",
+        "OWNER_ID",
+        "SPAMWATCH_API",
+        "THUMB_IMAGE",
+        "TMP_DOWNLOAD_DIRECTORY"
+      ],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [
+        "possible external API/service usage"
+      ],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "afk.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/afk.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/afk.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 4,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": null,
+          "command": null
+        },
+        {
+          "pattern": null,
+          "command": null
+        },
+        {
+          "pattern": "سليب(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "سليب",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "سليب_ميديا(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "سليب_ميديا",
+            "utils"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [
+        "PM_LOGGER_GROUP_ID"
+      ],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "احچي.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/احچي.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/احچي.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 2,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "احجي(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "احجي",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "استخرج(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "استخرج",
+            "utils"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [
+        "TEMP_DIR",
+        "TMP_DOWNLOAD_DIRECTORY"
+      ],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [
+        "possible external API/service usage"
+      ],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "ادوات_الروابط.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/ادوات_الروابط.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/ادوات_الروابط.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 3,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "دنس(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "دنس",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "مصغر(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "مصغر",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "اخفاء(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "اخفاء",
+            "utils"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [
+        "possible external API/service usage"
+      ],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "اشراف عام.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/اشراف عام.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/اشراف عام.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 0,
+        "bot_cmd": 0,
+        "on": 2
+      },
+      "patterns_sample": [],
+      "config_attributes_referenced": [
+        "DOWN_ET",
+        "UP_ET"
+      ],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "اضافة.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/اضافة.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/اضافة.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 0,
+        "bot_cmd": 0,
+        "on": 2
+      },
+      "patterns_sample": [],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "اغنية.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/اغنية.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/اغنية.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 4,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "بحث(320)?(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "بحث",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "فيديو(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "فيديو",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "اسم الاغنية$",
+          "command": null
+        },
+        {
+          "pattern": "بحث2(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "بحث2",
+            "utils"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [
+        "possible external API/service usage"
+      ],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "الادمن.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/الادمن.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/الادمن.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 7,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "الصورة( -وضع| -حذف)$",
+          "command": [
+            "الصورة",
+            "aadmin"
+          ]
+        },
+        {
+          "pattern": "رفع مشرف(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "رفع مشرف",
+            "aadmin"
+          ]
+        },
+        {
+          "pattern": "تنزيل الكل(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "تنزيل الكل",
+            "aadmin"
+          ]
+        },
+        {
+          "pattern": "طرد(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "طرد",
+            "aadmin"
+          ]
+        },
+        {
+          "pattern": "حظر(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "حظر",
+            "aadmin"
+          ]
+        },
+        {
+          "pattern": "الغاء حظر(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "الغاء حظر",
+            "aadmin"
+          ]
+        },
+        {
+          "pattern": null,
+          "command": null
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [
+        "possible external API/service usage"
+      ],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "الاذاعه.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/الاذاعه.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/الاذاعه.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 3,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "وجه ?(.*)$",
+          "command": [
+            "وجه",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "حول ?(.*)$",
+          "command": [
+            "حول",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "توجيه?(.*)$",
+          "command": [
+            "توجيه",
+            "utils"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "الاذكار.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/الاذكار.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/الاذكار.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 7,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "اذكار الصباح",
+          "command": [
+            "اذكار الصباح",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اذكار المساء$",
+          "command": [
+            "اذكار المساء",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "احاديث$",
+          "command": [
+            "احاديث",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اذكار الاستيقاظ$",
+          "command": [
+            "اذكار الاستيقاظ",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اذكار النوم$",
+          "command": [
+            "اذكار النوم",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اذكار الصلاة$",
+          "command": [
+            "اذكار الصلاة",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اوامر الاذكار$",
+          "command": [
+            "اوامر الاذكار",
+            "extra"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "الانتحال.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/الانتحال.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/الانتحال.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 4,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "انتحال(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "اعادة$",
+          "command": [
+            "اعادة",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "انتحال_الدردشه",
+          "command": null
+        },
+        {
+          "pattern": "اعادة_الدردشه",
+          "command": null
+        }
+      ],
+      "config_attributes_referenced": [
+        "TEMP_DIR"
+      ],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "الاوامر.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/الاوامر.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/الاوامر.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 21,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "الاوامر(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "م1$",
+          "command": [
+            "م1",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "م2$",
+          "command": [
+            "م2",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "م3$",
+          "command": [
+            "م3",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "م4$",
+          "command": [
+            "م4",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "م5$",
+          "command": [
+            "م5",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "م6$",
+          "command": [
+            "م6",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "م7$",
+          "command": [
+            "م7",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "م8$",
+          "command": [
+            "م8",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "م9$",
+          "command": [
+            "م9",
+            "extra"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "البروفايل.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/البروفايل.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/البروفايل.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 7,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "وضع بايو (.*)",
+          "command": [
+            "وضع بايو",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "وضع اسم (.*)",
+          "command": [
+            "وضع اسم",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "وضع صورة$",
+          "command": [
+            "وضع صورة",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "وضع معرف (.*)",
+          "command": [
+            "وضع معرف",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "الحساب$",
+          "command": [
+            "الحساب",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "حذف صوره ?(.*)",
+          "command": [
+            "حذف صوره",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "انشائي$",
+          "command": [
+            "انشائي",
+            "utils"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [
+        "TMP_DOWNLOAD_DIRECTORY"
+      ],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "التثبيت.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/التثبيت.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/التثبيت.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 3,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "تثبيت( بالاشعار|$)",
+          "command": [
+            "تثبيت",
+            "admin"
+          ]
+        },
+        {
+          "pattern": "الغاء التثبيت( للكل|$)",
+          "command": [
+            "الغاء التثبيت",
+            "admin"
+          ]
+        },
+        {
+          "pattern": "الاحداث( -ر)?(?: |$)(\\d*)?",
+          "command": [
+            "الأحداث",
+            "admin"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [
+        "possible external API/service usage"
+      ],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "التجميع.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/التجميع.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/التجميع.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 8,
+        "bot_cmd": 0,
+        "on": 14
+      },
+      "patterns_sample": [
+        {
+          "pattern": "راتب وعد(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "ايقاف راتب وعد(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "بخشيش وعد(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "ايقاف بخشيش وعد(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "سرقة وعد(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "ايقاف سرقة وعد(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "استثمار وعد",
+          "command": null
+        },
+        {
+          "pattern": "ايقاف استثمار وعد",
+          "command": null
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "التحكم.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/التحكم.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/التحكم.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 7,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "sudo (on|off)$",
+          "command": [
+            "sudo",
+            "tools"
+          ]
+        },
+        {
+          "pattern": "addsudo(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "addsudo",
+            "tools"
+          ]
+        },
+        {
+          "pattern": "delsudo(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "delsudo",
+            "tools"
+          ]
+        },
+        {
+          "pattern": "vsudo$",
+          "command": [
+            "vsudo",
+            "tools"
+          ]
+        },
+        {
+          "pattern": "addscmd(s)?(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "addscmd",
+            "tools"
+          ]
+        },
+        {
+          "pattern": "rmscmd(s)?(?:\\s|$)([\\s\\S]*)?",
+          "command": [
+            "rmscmd",
+            "tools"
+          ]
+        },
+        {
+          "pattern": "vscmds( -d)?$",
+          "command": [
+            "vscmds",
+            "tools"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [
+        "SUDO_COMMAND_HAND_LER",
+        "SUDO_USERS"
+      ],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "التخزين.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/التخزين.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/التخزين.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 7,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": null,
+          "command": null
+        },
+        {
+          "pattern": null,
+          "command": null
+        },
+        {
+          "pattern": "خزن(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "خزن",
+            "البوت"
+          ]
+        },
+        {
+          "pattern": "تفعيل التخزين$",
+          "command": [
+            "تفعيل التخزين",
+            "البوت"
+          ]
+        },
+        {
+          "pattern": "تعطيل التخزين$",
+          "command": [
+            "تعطيل التخزين",
+            "البوت"
+          ]
+        },
+        {
+          "pattern": "تخزين الخاص (تفعيل|تعطيل)$",
+          "command": [
+            "تخزين الخاص",
+            "البوت"
+          ]
+        },
+        {
+          "pattern": "تخزين الكروبات (تفعيل|تعطيل)$",
+          "command": [
+            "تخزين الكروبات",
+            "البوت"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [
+        "PM_LOGGER_GROUP_ID"
+      ],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "التخصيص.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/التخصيص.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/التخصيص.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 7,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "جلب (.*)",
+          "command": null
+        },
+        {
+          "pattern": "اضف (.*)",
+          "command": null
+        },
+        {
+          "pattern": "حذف (.*)",
+          "command": null
+        },
+        {
+          "pattern": "اضف صورة (الفحص|فحص) ?(.*)",
+          "command": null
+        },
+        {
+          "pattern": "اضف صورة (البنك|بنك) ?(.*)",
+          "command": null
+        },
+        {
+          "pattern": "اضف صورة (الحماية|الحمايه|حماية|حمايه) ?(.*)",
+          "command": null
+        },
+        {
+          "pattern": "اضف صورة (الخاص|خاص) ?(.*)",
+          "command": null
+        }
+      ],
+      "config_attributes_referenced": [
+        "COMMAND_HAND_LER"
+      ],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "الترجمه.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/الترجمه.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/الترجمه.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 3,
+        "bot_cmd": 0,
+        "on": 1
+      },
+      "patterns_sample": [
+        {
+          "pattern": "ترجمة ([\\s\\S]*)",
+          "command": [
+            "ترجمة",
+            "tools"
+          ]
+        },
+        {
+          "pattern": "(الترجمة الفورية|الترجمه الفوريه|ايقاف الترجمة|ايقاف الترجمه)",
+          "command": null
+        },
+        {
+          "pattern": "لغة الترجمة",
+          "command": null
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "الترحيب.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/الترحيب.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/الترحيب.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 4,
+        "bot_cmd": 0,
+        "on": 1
+      },
+      "patterns_sample": [
+        {
+          "pattern": "ترحيب(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "ترحيب",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "حذف الترحيب$",
+          "command": [
+            "حذف الترحيب",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "الترحيب$",
+          "command": [
+            "الترحيب",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "الترحيب (تشغيل|ايقاف)$",
+          "command": [
+            "cleanwelcome",
+            "utils"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "الترحيب2.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/الترحيب2.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/الترحيب2.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 1,
+        "bot_cmd": 0,
+        "on": 3
+      },
+      "patterns_sample": [
+        {
+          "pattern": "لستة الترحيب الخاص$",
+          "command": [
+            "لستة الترحيب خاص",
+            "utils"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "التقليد.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/التقليد.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/التقليد.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 5,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "تقليد$",
+          "command": [
+            "تقليد",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "مسح المقلدهم",
+          "command": [
+            "مسح المقلدهم",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "الغاء التقليد( -a)?",
+          "command": [
+            "الغاء التقليد",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "المقلدهم( -a)?$",
+          "command": [
+            "المقلدهم",
+            "fun"
+          ]
+        },
+        {
+          "pattern": null,
+          "command": null
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "التكرار.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/التكرار.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/التكرار.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 9,
+        "bot_cmd": 0,
+        "on": 1
+      },
+      "patterns_sample": [
+        {
+          "pattern": "كرر (.*)",
+          "command": null
+        },
+        {
+          "pattern": "تكرار الملصق$",
+          "command": null
+        },
+        {
+          "pattern": "سبام (.*)",
+          "command": null
+        },
+        {
+          "pattern": "وسبام (.*)",
+          "command": null
+        },
+        {
+          "pattern": "ايقاف التكرار ?(.*)",
+          "command": null
+        },
+        {
+          "pattern": "نشر",
+          "command": null
+        },
+        {
+          "pattern": "نشر_كروبات",
+          "command": null
+        },
+        {
+          "pattern": "سوبر",
+          "command": null
+        },
+        {
+          "pattern": "ايقاف (النشر|نشر)",
+          "command": null
+        }
+      ],
+      "config_attributes_referenced": [
+        "MUKRR_ET"
+      ],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "التمبلر.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/التمبلر.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/التمبلر.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 22,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "م17$",
+          "command": [
+            "م17",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "الزغرفة$",
+          "command": [
+            "الزغرفة",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اسماء تمبلر$",
+          "command": [
+            "اسماء تمبلر",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "البايو$",
+          "command": [
+            "البايو",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "الاختصارات$",
+          "command": [
+            "الاختصارات",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "بايو اجنبي$",
+          "command": [
+            "بايو اجنبي",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "بايو عربي$",
+          "command": [
+            "بايو عربي",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "المتحركات$",
+          "command": [
+            "المتحركات",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "متحركات ساد$",
+          "command": [
+            "متحركات ساد",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "متحركات كيوت$",
+          "command": [
+            "متحركات كيوت",
+            "extra"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "التنظيف.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/التنظيف.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/التنظيف.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 3,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "مسح(\\s*| \\d+)$",
+          "command": [
+            "مسح",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "مسح رسائلي$",
+          "command": [
+            "مسح رسائلي",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "تنظيف(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "تنظيف",
+            "utils"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "الثكيل.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/الثكيل.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/الثكيل.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 0,
+        "bot_cmd": 0,
+        "on": 6
+      },
+      "patterns_sample": [],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "الحاسبة.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/الحاسبة.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/الحاسبة.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 0,
+        "bot_cmd": 0,
+        "on": 4
+      },
+      "patterns_sample": [],
+      "config_attributes_referenced": [
+        "OWNER_ID",
+        "SUDO_USERS",
+        "TG_BOT_USERNAME"
+      ],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "الحماية.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/الحماية.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/الحماية.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 10,
+        "bot_cmd": 0,
+        "on": 5
+      },
+      "patterns_sample": [
+        {
+          "pattern": null,
+          "command": null
+        },
+        {
+          "pattern": null,
+          "command": null
+        },
+        {
+          "pattern": "الحماية (تشغيل|تعطيل)$",
+          "command": null
+        },
+        {
+          "pattern": "الحماية (تشغيل|تعطيل)$",
+          "command": null
+        },
+        {
+          "pattern": "(س|سماح)(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "(ر|رفض)(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "بلوك(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "الخاص بلوك(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "انبلوك(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "المسموح لهم$",
+          "command": null
+        }
+      ],
+      "config_attributes_referenced": [
+        "COMMAND_HAND_LER",
+        "TG_BOT_USERNAME"
+      ],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "الخطوط.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/الخطوط.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/الخطوط.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 0,
+        "bot_cmd": 0,
+        "on": 4
+      },
+      "patterns_sample": [],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "الردود.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/الردود.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/الردود.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 5,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": null,
+          "command": null
+        },
+        {
+          "pattern": "رد ([\\s\\S]*)",
+          "command": [
+            "رد",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "الردود$",
+          "command": [
+            "الردود",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "حذف رد ([\\s\\S]*)",
+          "command": [
+            "حذف رد",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "حذف الردود$",
+          "command": [
+            "حذف الردود",
+            "utils"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "الصلاة.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/الصلاة.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/الصلاة.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 1,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "صلاة(?: |$)(.*)",
+          "command": [
+            "صلاة",
+            "extra"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "الصلاحيات.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/الصلاحيات.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/الصلاحيات.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 7,
+        "bot_cmd": 0,
+        "on": 1
+      },
+      "patterns_sample": [
+        {
+          "pattern": "قفل (.*)",
+          "command": [
+            "قفل",
+            "admin"
+          ]
+        },
+        {
+          "pattern": "فتح (.*)",
+          "command": [
+            "فتح",
+            "admin"
+          ]
+        },
+        {
+          "pattern": "الصلاحيات$",
+          "command": [
+            "الصلاحيات",
+            "admin"
+          ]
+        },
+        {
+          "pattern": "plock (.*)",
+          "command": [
+            "plock",
+            "admin"
+          ]
+        },
+        {
+          "pattern": "punlock (.*)",
+          "command": [
+            "punlock",
+            "admin"
+          ]
+        },
+        {
+          "pattern": "uperm(?: |$)(.*)",
+          "command": [
+            "uperm",
+            "admin"
+          ]
+        },
+        {
+          "pattern": null,
+          "command": null
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "الصورة.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/الصورة.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/الصورة.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 1,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "صورة(?: |$)(.*)",
+          "command": [
+            "صورة",
+            "extra"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "الصيغ.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/الصيغ.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/الصيغ.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 8,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "حفظ_المحتوى (.+)",
+          "command": [
+            "حفظ_المحتوى",
+            "misc"
+          ]
+        },
+        {
+          "pattern": "تحويل صورة$",
+          "command": [
+            "تحويل صورة",
+            "misc"
+          ]
+        },
+        {
+          "pattern": "الغاء سيف$",
+          "command": [
+            "الغاء سيف",
+            "misc"
+          ]
+        },
+        {
+          "pattern": "سيف(?: |$)(.*) (\\d+)",
+          "command": [
+            "سيف",
+            "misc"
+          ]
+        },
+        {
+          "pattern": "تحويل ملصق$",
+          "command": [
+            "تحويل ملصق",
+            "misc"
+          ]
+        },
+        {
+          "pattern": "تحويل (mp3|voice)$",
+          "command": [
+            "تحويل",
+            "misc"
+          ]
+        },
+        {
+          "pattern": "تحويل متحركة ?([0-9.]+)?$",
+          "command": [
+            "تحويل متحركة",
+            "misc"
+          ]
+        },
+        {
+          "pattern": "بنتيرست (.+)",
+          "command": [
+            "بنتيرست",
+            "misc"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [
+        "TEMP_DIR",
+        "TMP_DOWNLOAD_DIRECTORY"
+      ],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "الفارات.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/الفارات.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/الفارات.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 7,
+        "bot_cmd": 0,
+        "on": 1
+      },
+      "patterns_sample": [
+        {
+          "pattern": "وضع (.*)",
+          "command": null
+        },
+        {
+          "pattern": "محو (.*)",
+          "command": null
+        },
+        {
+          "pattern": "وقت(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "زخرفة الصورة(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "ميوزك(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "استخدامي$",
+          "command": null
+        },
+        {
+          "pattern": "لوك$",
+          "command": null
+        }
+      ],
+      "config_attributes_referenced": [
+        "HEROKU_API_KEY",
+        "HEROKU_APP_NAME"
+      ],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [
+        "possible external API/service usage"
+      ],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "الكتم.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/الكتم.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/الكتم.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 4,
+        "bot_cmd": 0,
+        "on": 1
+      },
+      "patterns_sample": [
+        {
+          "pattern": "كتم(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "(الغاء الكتم|الغاء كتم)(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "قائمة المكتومين",
+          "command": null
+        },
+        {
+          "pattern": null,
+          "command": null
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "المطور.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/المطور.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/المطور.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 4,
+        "bot_cmd": 0,
+        "on": 1
+      },
+      "patterns_sample": [
+        {
+          "pattern": "المطور$",
+          "command": [
+            "المطور",
+            "tools"
+          ]
+        },
+        {
+          "pattern": "sec( -a)?(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "sec",
+            "tools"
+          ]
+        },
+        {
+          "pattern": "تقييد(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "تقييد",
+            "tools"
+          ]
+        },
+        {
+          "pattern": "اعادة تشغيل$",
+          "command": [
+            "اعادة تشغيل",
+            "tools"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [
+        "possible external API/service usage"
+      ],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "الملصقات.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/الملصقات.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/الملصقات.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 3,
+        "bot_cmd": 0,
+        "on": 2
+      },
+      "patterns_sample": [
+        {
+          "pattern": "ملصق(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "ملصق",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "معلومات_الملصق$",
+          "command": [
+            "معلومات_الملصق",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "الملصقات ?([\\s\\S]*)",
+          "command": [
+            "الملصقات",
+            "fun"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "الموقع.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/الموقع.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/الموقع.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 1,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "موقع ([\\s\\S]*)",
+          "command": [
+            "موقع",
+            "extra"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "الوقت.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/الوقت.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/الوقت.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 2,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "توقيت(?:\\s|$)([\\s\\S]*)(?<![0-9])(?: |$)([0-9]+)?",
+          "command": [
+            "توقيت",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "الوقت(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "الوقت",
+            "utils"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [
+        "COUNTRY",
+        "TEMP_DIR",
+        "TZ",
+        "TZ_NUMBER"
+      ],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [
+        "possible external API/service usage"
+      ],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "الوقتي.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/الوقتي.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/الوقتي.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 1,
+        "bot_cmd": 0,
+        "on": 5
+      },
+      "patterns_sample": [
+        {
+          "pattern": "انهاء ([\\s\\S]*)",
+          "command": [
+            "انهاء",
+            "tools"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [
+        "BIO_ET",
+        "CHANGE_TIME",
+        "DEFAULT_PIC",
+        "DIGITAL_GROUP_PIC",
+        "DIGITAL_PIC",
+        "DIGITAL_PIC_COLOR",
+        "NAME_ET",
+        "PHOTO_ET"
+      ],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "الوهمي.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/الوهمي.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/الوهمي.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 0,
+        "bot_cmd": 0,
+        "on": 12
+      },
+      "patterns_sample": [],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "امونغ اس.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/امونغ اس.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/امونغ اس.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 2,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "من القاتل(|بريء) ([\\s\\S]*)",
+          "command": [
+            "من القاتل",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "القاتل(|بريء) ([\\s\\S]*)",
+          "command": [
+            "القاتل",
+            "extra"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [
+        "TEMP_DIR"
+      ],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [
+        "possible external API/service usage"
+      ],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "اوامر الادمن الوقتية.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/اوامر الادمن الوقتية.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/اوامر الادمن الوقتية.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 4,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "تقييد_مؤقت(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "تقييد_مؤقت",
+            "admin"
+          ]
+        },
+        {
+          "pattern": "حظر_مؤقت(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "حظر_مؤقت",
+            "admin"
+          ]
+        },
+        {
+          "pattern": "تقييد(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "تقييد",
+            "admin"
+          ]
+        },
+        {
+          "pattern": "الغاء تقييد(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "الغاء تقييد",
+            "admin"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "اوامر التشغيل.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/اوامر التشغيل.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/اوامر التشغيل.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 3,
+        "bot_cmd": 0,
+        "on": 2
+      },
+      "patterns_sample": [
+        {
+          "pattern": "اعادة تشغيل$",
+          "command": [
+            "اعادة تشغيل",
+            "tools"
+          ]
+        },
+        {
+          "pattern": "اطفاء$",
+          "command": [
+            "اطفاء",
+            "tools"
+          ]
+        },
+        {
+          "pattern": "التحديثات (تشغيل|ايقاف)$",
+          "command": [
+            "التحديثات",
+            "tools"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [
+        "possible external API/service usage"
+      ],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "اوامر الكروب.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/اوامر الكروب.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/اوامر الكروب.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 24,
+        "bot_cmd": 0,
+        "on": 5
+      },
+      "patterns_sample": [
+        {
+          "pattern": "ارسل",
+          "command": null
+        },
+        {
+          "pattern": "اطردني$",
+          "command": [
+            "اطردني",
+            "admin"
+          ]
+        },
+        {
+          "pattern": "تفليش بالطرد$",
+          "command": [
+            "تفليش بالطرد",
+            "admin"
+          ]
+        },
+        {
+          "pattern": "تفليش$",
+          "command": [
+            "تفليش",
+            "admin"
+          ]
+        },
+        {
+          "pattern": "حذف المحظورين$",
+          "command": [
+            "حذف المحظورين",
+            "admin"
+          ]
+        },
+        {
+          "pattern": "المحذوفين ?([\\s\\S]*)",
+          "command": [
+            "المحذوفين",
+            "admin"
+          ]
+        },
+        {
+          "pattern": "حظر_الكل(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "كتم_الكل(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "طرد_الكل(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "الغاء التفليش",
+          "command": null
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "اوامر المنع.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/اوامر المنع.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/اوامر المنع.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 4,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": null,
+          "command": null
+        },
+        {
+          "pattern": "منع(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "منع",
+            "admin"
+          ]
+        },
+        {
+          "pattern": "الغاء منع(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "الغاء منع",
+            "admin"
+          ]
+        },
+        {
+          "pattern": "قائمة المنع$",
+          "command": [
+            "قائمة المنع",
+            "admin"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "اوامري.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/اوامري.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/اوامري.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 0,
+        "bot_cmd": 0,
+        "on": 14
+      },
+      "patterns_sample": [],
+      "config_attributes_referenced": [
+        "TG_BOT_USERNAME"
+      ],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "بنك.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/بنك.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/بنك.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 7,
+        "bot_cmd": 0,
+        "on": 2
+      },
+      "patterns_sample": [
+        {
+          "pattern": "tdata",
+          "command": null
+        },
+        {
+          "pattern": "توب الفلوس(.*)",
+          "command": null
+        },
+        {
+          "pattern": "مسح حسابي(.*)",
+          "command": null
+        },
+        {
+          "pattern": "انشاء حساب(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "انشاء حساب",
+            "utils"
+          ]
+        },
+        {
+          "pattern": null,
+          "command": null
+        },
+        {
+          "pattern": "اسرق(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "اسرق",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "انشاء حساب (.*)",
+          "command": null
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "تاريخ اسماء.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/تاريخ اسماء.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/تاريخ اسماء.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 1,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "تاريخ(معرفات)?(?: |$)(.*)",
+          "command": [
+            "تاريخ",
+            "utils"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "تحديث.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/تحديث.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/تحديث.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 1,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "تحديث(?:\\s+(.*))?$",
+          "command": [
+            "تحديث",
+            "tools"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [
+        "possible external API/service usage"
+      ],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "تحذير.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/تحذير.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/تحذير.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 3,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "تحذير(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "تحذير",
+            "admin"
+          ]
+        },
+        {
+          "pattern": "التحذيرات",
+          "command": [
+            "التحذيرات",
+            "admin"
+          ]
+        },
+        {
+          "pattern": "ح(ذف) ?التحذير$",
+          "command": [
+            "حذف التحذير",
+            "admin"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "تحشيش .py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/تحشيش .py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/تحشيش .py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 9,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "نسبة الحب(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "نسبة الحب",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "نسبة الانوثة(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "نسبة الانوثة",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "نسبة الغباء(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "نسبة الغباء",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "نسبة الكذب(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "نسبة الكذب",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "نسبة الذكاء(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "نسبة الذكاء",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "نسبة الشذوذ(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "نسبة الشذوذ",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "نسبة الدياثه(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "نسبة الدياثه",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "نسبة الخيانه(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "نسبة الخيانه",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "نسبة الجمال(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "نسبة الجمال",
+            "utils"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "تحشيش.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/تحشيش.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/تحشيش.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 2,
+        "bot_cmd": 0,
+        "on": 28
+      },
+      "patterns_sample": [
+        {
+          "pattern": "رزله(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "رزله",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "مصه(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "مصه",
+            "utils"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "ترجمة صوتية.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/ترجمة صوتية.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/ترجمة صوتية.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 2,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "test(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "تكلم(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "تسلية1.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/تسلية1.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/تسلية1.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 10,
+        "bot_cmd": 0,
+        "on": 1
+      },
+      "patterns_sample": [
+        {
+          "pattern": "غبي$",
+          "command": [
+            "غبي",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "القنابل$",
+          "command": [
+            "القنابل",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "اتصل$",
+          "command": [
+            "اتصل",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "قتل$",
+          "command": [
+            "قتل",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "شنو$",
+          "command": [
+            "شنو",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "طوبة$",
+          "command": [
+            "طوبة",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "مربعات$",
+          "command": [
+            "مربعات",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "حلويات$",
+          "command": [
+            "حلويات",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "نار$",
+          "command": [
+            "نار",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "شحن$",
+          "command": [
+            "شحن",
+            "fun"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "تسلية2.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/تسلية2.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/تسلية2.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 11,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "افكر$",
+          "command": [
+            "افكر",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "متت$",
+          "command": [
+            "متت",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "ضايج$",
+          "command": [
+            "ضايج",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "ساعه$",
+          "command": [
+            "ساعه",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "مح$",
+          "command": [
+            "مح",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "قلب$",
+          "command": [
+            "قلب",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "جيم$",
+          "command": [
+            "جيم",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "الارض$",
+          "command": [
+            "الارض",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "قمر$",
+          "command": [
+            "قمر",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "اقمار$",
+          "command": [
+            "اقمار",
+            "fun"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "تسلية3.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/تسلية3.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/تسلية3.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 11,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "نجمه$",
+          "command": [
+            "نجمه",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "مكعبات$",
+          "command": [
+            "مكعبات",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "مطر$",
+          "command": [
+            "مطر",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "deploy$",
+          "command": [
+            "deploy",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "تفريغ(?: |$)(.*)",
+          "command": [
+            "تفريغ",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "فليم$",
+          "command": [
+            "فليم",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "احبك$",
+          "command": [
+            "احبك",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "طائره$",
+          "command": [
+            "طائره",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "شرطه$",
+          "command": [
+            "شرطه",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "jio$",
+          "command": [
+            "jio",
+            "fun"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [
+        "possible external API/service usage"
+      ],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "تسلية4.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/تسلية4.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/تسلية4.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 11,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "قاتل(?: |$)(.*)",
+          "command": [
+            "قاتل",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "عين$",
+          "command": [
+            "عين",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "افكرر$",
+          "command": [
+            "افكرر",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "افعى$",
+          "command": [
+            "افعى",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "رجل$",
+          "command": [
+            "رجل",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "مايكرو$",
+          "command": [
+            "مايكرو",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "فايروس$",
+          "command": [
+            "فايروس",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "قطار$",
+          "command": [
+            "قطار",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "نيكول$",
+          "command": [
+            "نيكول",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "موسيقى$",
+          "command": [
+            "موسيقى",
+            "fun"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "تسلية5.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/تسلية5.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/تسلية5.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 12,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "تحميل$",
+          "command": [
+            "تحميل",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "مربع$",
+          "command": [
+            "مربع",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "up$",
+          "command": [
+            "up",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "دائره$",
+          "command": [
+            "دائره",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "قلب$",
+          "command": [
+            "قلب",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "انيم$",
+          "command": [
+            "انيم",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "بشره$",
+          "command": [
+            "بشره",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "قرد$",
+          "command": [
+            "قرد",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "herber$",
+          "command": [
+            "herber",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "يد$",
+          "command": [
+            "يد",
+            "fun"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "تسلية6.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/تسلية6.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/تسلية6.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 5,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "ترامب(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "ترامب",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "مودي(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "مودي",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "بنر(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "بنر",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "كانا(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "كانا",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "تويت(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "تويت",
+            "fun"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "تسلية7.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/تسلية7.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/تسلية7.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 4,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "تراش$",
+          "command": [
+            "تراش",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "تهديد$",
+          "command": [
+            "تهديد",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "فخ(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "فخ",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "بورن(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "بورن",
+            "fun"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "تسلية8.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/تسلية8.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/تسلية8.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 6,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "نص(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "نص",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "ستيكر ?(?:(.*?) ?; )?([\\s\\S]*)",
+          "command": [
+            "ستيكر",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "هونك(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "هونك",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "تغريد(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "تغريد",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "دوغي(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "دوغي",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "غلاكس(|ر)(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "غلاكس",
+            "fun"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "تشكيل.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/تشكيل.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/تشكيل.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 1,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "تشكيل(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "تشكيل",
+            "utils"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "تطبيق.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/تطبيق.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/تطبيق.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 1,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "app ([\\s\\S]*)",
+          "command": [
+            "app",
+            "utils"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [
+        "possible external API/service usage"
+      ],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "تفرعات الاوامر.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/تفرعات الاوامر.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/تفرعات الاوامر.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 69,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "اوامر الحظر$",
+          "command": [
+            "اوامر الحظر ",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اوامر الكتم$",
+          "command": [
+            "اوامر الكتم ",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اوامر التثبيت$",
+          "command": [
+            "اوامر التثبيت ",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اوامر الاشراف$",
+          "command": [
+            "اوامر الاشراف",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اوامر التفليش$",
+          "command": [
+            "اوامر التفليش",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اوامر المحذوفين$",
+          "command": [
+            "اوامر المحذوفين",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اوامر الكروب$",
+          "command": [
+            "اوامر الكروب",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اوامر الترحيب$",
+          "command": [
+            "اوامر الترحيب",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اوامر الردود$",
+          "command": [
+            "اوامر الردود",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اوامر الحماية$",
+          "command": [
+            "اوامر الحماية",
+            "extra"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [
+        "possible external API/service usage"
+      ],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "تلكراف.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/تلكراف.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/تلكراف.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 1,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "(ت(ل)?ك(راف)?) ?(m|t|ميديا|نص)(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "تلكراف",
+            "utils"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [
+        "TELEGRAPH_SHORT_NAME",
+        "TEMP_DIR"
+      ],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "تنصيب.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/تنصيب.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/تنصيب.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 1,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "تنصيب$",
+          "command": [
+            "تنصيب",
+            "tools"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [
+        "TG_BOT_USERNAME"
+      ],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [
+        "possible external API/service usage"
+      ],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "تهكير.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/تهكير.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/تهكير.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 2,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "تهكير$",
+          "command": [
+            "تهكير",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "تهكير2$",
+          "command": [
+            "تهكير2",
+            "fun"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [
+        "possible external API/service usage"
+      ],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "تيكتوك.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/تيكتوك.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/تيكتوك.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 1,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "تك",
+          "command": null
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "ذاتية.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/ذاتية.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/ذاتية.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 0,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "رسالة موقوته.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/رسالة موقوته.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/رسالة موقوته.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 1,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "مؤقت (\\d*) ([\\s\\S]*)",
+          "command": [
+            "مؤقت",
+            "tools"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "رسالة.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/رسالة.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/رسالة.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 2,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "رسالة(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "رسالة",
+            "tools"
+          ]
+        },
+        {
+          "pattern": "ازالة التوجيه",
+          "command": null
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "زغرفة.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/زغرفة.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/زغرفة.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 11,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "زغرفة1(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "زغرفة1",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "زغرفة2(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "زغرفة2",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "زغرفة3(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "زغرفة3",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "زغرفة4(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "زغرفة4",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "زغرفة5(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "زغرفة5",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "زغرفة6(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "زغرفة6",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "زغرفة7(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "زغرفة7",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "زغرفة8(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "زغرفة8",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "زغرفة9(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "زغرفة9",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "زغرفة10(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "زغرفة10",
+            "extra"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "سرعة النت.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/سرعة النت.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/سرعة النت.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 1,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "سرعة النت(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "سرعة النت",
+            "utils"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "سي ام دي.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/سي ام دي.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/سي ام دي.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 3,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "جد بكج (.*)",
+          "command": [
+            "جد بكج",
+            "tools"
+          ]
+        },
+        {
+          "pattern": "تنصيب$",
+          "command": [
+            "تنصيب",
+            "tools"
+          ]
+        },
+        {
+          "pattern": "الغاء التنصيب (.*)",
+          "command": [
+            "الغاء التنصيب",
+            "tools"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [
+        "TMP_DOWNLOAD_DIRECTORY"
+      ],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [
+        "possible external API/service usage"
+      ],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "صور.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/صور.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/صور.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 1,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "صور(?: |$)(\\d*)? ?([\\s\\S]*)",
+          "command": [
+            "صور",
+            "misc"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [
+        "possible external API/service usage"
+      ],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "ضع تكرار.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/ضع تكرار.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/ضع تكرار.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 2,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": null,
+          "command": null
+        },
+        {
+          "pattern": "ضع تكرار(?: |$)(.*)",
+          "command": [
+            "ضع تكرار",
+            "admin"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "طقس.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/طقس.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/طقس.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 1,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "الطقس(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "الطقس",
+            "utils"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "فايروس كورونا.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/فايروس كورونا.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/فايروس كورونا.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 1,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "كورونا(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "كورونا",
+            "extra"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "فحص.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/فحص.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/فحص.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 1,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "فحص(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        }
+      ],
+      "config_attributes_referenced": [
+        "A_PIC"
+      ],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "فلم.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/فلم.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/فلم.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 2,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "فلم",
+          "command": null
+        },
+        {
+          "pattern": "مسلسل",
+          "command": null
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [
+        "possible external API/service usage"
+      ],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "كشف.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/كشف.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/كشف.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 5,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "كشف(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "كشف",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "ايدي(?: |$)(.*)",
+          "command": [
+            "ايدي",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "رابط الحساب(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "رابط الحساب",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "(الايدي|id)(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "الايدي",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "كشف_ايدي(?: (\\d+))?$",
+          "command": [
+            "كشف_ايدي",
+            "utils"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [
+        "ID_EM",
+        "TMP_DOWNLOAD_DIRECTORY"
+      ],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "كوكل.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/كوكل.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/كوكل.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 3,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "كوكل بحث ([\\s\\S]*)",
+          "command": [
+            "كوكل بحث",
+            "tools"
+          ]
+        },
+        {
+          "pattern": "البحث عن$",
+          "command": [
+            "البحث عن",
+            "tools"
+          ]
+        },
+        {
+          "pattern": "كوكل(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "كوكل",
+            "tools"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [
+        "TMP_DOWNLOAD_DIRECTORY"
+      ],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [
+        "possible external API/service usage"
+      ],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "لستة.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/لستة.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/لستة.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 1,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "لستة(?: |$)(.*)",
+          "command": [
+            "لستة",
+            "tools"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [
+        "TG_BOT_USERNAME"
+      ],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "متحركات ساد.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/متحركات ساد.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/متحركات ساد.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 9,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "س1$",
+          "command": [
+            "س1",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "س2$",
+          "command": [
+            "س2",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "س3$",
+          "command": [
+            "س3",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "س4$",
+          "command": [
+            "س4",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "س5$",
+          "command": [
+            "س5",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "س6$",
+          "command": [
+            "س6",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "س7$",
+          "command": [
+            "س7",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "س8$",
+          "command": [
+            "س8",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "س9$",
+          "command": [
+            "س9",
+            "extra"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "متحركات كيوت.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/متحركات كيوت.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/متحركات كيوت.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 7,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "ك1$",
+          "command": [
+            "ك1",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "ك2$",
+          "command": [
+            "ك2",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "ك3$",
+          "command": [
+            "ك3",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "ك4$",
+          "command": [
+            "ك4",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "ك5$",
+          "command": [
+            "ك5",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "ك6$",
+          "command": [
+            "ك6",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "ك7$",
+          "command": [
+            "ك7",
+            "extra"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "معلومات الحساب.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/معلومات الحساب.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/معلومات الحساب.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 2,
+        "bot_cmd": 0,
+        "on": 2
+      },
+      "patterns_sample": [
+        {
+          "pattern": "معلوماتي$",
+          "command": [
+            "معلوماتي",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "كروباته(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "كروباته",
+            "utils"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "معلومات الكروب.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/معلومات الكروب.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/معلومات الكروب.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 4,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "المشرفين(?: |$)(.*)",
+          "command": [
+            "المشرفين",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "البوتات(?: |$)(.*)",
+          "command": [
+            "البوتات",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "الاعضاء(?: |$)(.*)",
+          "command": [
+            "الاعضاء",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "معلومات(?: |$)(.*)",
+          "command": [
+            "معلومات",
+            "utils"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "ملخص معلومات.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/ملخص معلومات.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/ملخص معلومات.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 2,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "تخزين الكروب(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "تخزين الكروب",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "تخزين المستخدم(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "تخزين المستخدم",
+            "utils"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "ملفات السورس.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/ملفات السورس.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/ملفات السورس.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 5,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "المكاتب",
+          "command": null
+        },
+        {
+          "pattern": "الملفات$",
+          "command": [
+            "الملفات",
+            "tools"
+          ]
+        },
+        {
+          "pattern": "فاراتي$",
+          "command": [
+            "فاراتي",
+            "tools"
+          ]
+        },
+        {
+          "pattern": "متى$",
+          "command": [
+            "متى",
+            "tools"
+          ]
+        },
+        {
+          "pattern": "رابط مباشر",
+          "command": null
+        }
+      ],
+      "config_attributes_referenced": [
+        "TEMP_DIR"
+      ],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [
+        "possible external API/service usage"
+      ],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "ملفات خارجيه.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/ملفات خارجيه.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/ملفات خارجيه.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 0,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [],
+      "config_attributes_referenced": [
+        "PLUGIN_CHANNEL"
+      ],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "ملكية.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/ملكية.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/ملكية.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 1,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "ملكية (.*)",
+          "command": [
+            "ملكية",
+            "utils"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [
+        "TG_2STEP_VERIFICATION_CODE"
+      ],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [
+        "possible external API/service usage"
+      ],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "منشن.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/منشن.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/منشن.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 4,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "منشن(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "الغاء منشن",
+          "command": null
+        },
+        {
+          "pattern": "تاك(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "الغاء تاك(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "منوع.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/منوع.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/منوع.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 3,
+        "bot_cmd": 0,
+        "on": 14
+      },
+      "patterns_sample": [
+        {
+          "pattern": "توليد(.*)",
+          "command": null
+        },
+        {
+          "pattern": "المعلومات(.*)",
+          "command": null
+        },
+        {
+          "pattern": "جيك(.*)",
+          "command": null
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "ميم.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/ميم.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/ميم.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 9,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "^\\:/$",
+          "command": [
+            "\\:",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "^\\-_-$",
+          "command": [
+            "-_-",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "^\\;_;$",
+          "command": [
+            ";_;",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "هفف$",
+          "command": [
+            "هفف",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "فصخ ([\\s\\S]*)",
+          "command": [
+            "فصخ",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "عيد (\\d*) ([\\s\\S]*)",
+          "command": [
+            "عيد",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "meme",
+          "command": [
+            "meme",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "give",
+          "command": [
+            "give",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "sadmin$",
+          "command": [
+            "sadmin",
+            "fun"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "ميمز.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/ميمز.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/ميمز.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 1,
+        "bot_cmd": 0,
+        "on": 84
+      },
+      "patterns_sample": [
+        {
+          "pattern": "ازالة(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "نشر تلقائي.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/نشر تلقائي.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/نشر تلقائي.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 1,
+        "bot_cmd": 0,
+        "on": 2
+      },
+      "patterns_sample": [
+        {
+          "pattern": null,
+          "command": null
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "نص.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/نص.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/نص.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 0,
+        "bot_cmd": 0,
+        "on": 1
+      },
+      "patterns_sample": [],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "نوم.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/نوم.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/نوم.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 3,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": null,
+          "command": null
+        },
+        {
+          "pattern": null,
+          "command": null
+        },
+        {
+          "pattern": "نوم(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "نوم",
+            "utils"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [
+        "PM_LOGGER_GROUP_ID"
+      ],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "همسه.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/همسه.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/همسه.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 0,
+        "bot_cmd": 0,
+        "on": 4
+      },
+      "patterns_sample": [],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "ياعلي.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/ياعلي.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/ياعلي.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 3,
+        "bot_cmd": 0,
+        "on": 1
+      },
+      "patterns_sample": [
+        {
+          "pattern": "اشتراك",
+          "command": null
+        },
+        {
+          "pattern": "تعطيل",
+          "command": null
+        },
+        {
+          "pattern": null,
+          "command": null
+        }
+      ],
+      "config_attributes_referenced": [
+        "TG_BOT_TOKEN",
+        "TG_BOT_USERNAME"
+      ],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [
+        "possible external API/service usage"
+      ],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "يوتيوب.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/يوتيوب.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/يوتيوب.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 4,
+        "bot_cmd": 0,
+        "on": 1
+      },
+      "patterns_sample": [
+        {
+          "pattern": "تحميل ص(?: |$)(.*)",
+          "command": [
+            "تحميل ص",
+            "misc"
+          ]
+        },
+        {
+          "pattern": "تحميل ف(?: |$)(.*)",
+          "command": [
+            "تحميل ف",
+            "misc"
+          ]
+        },
+        {
+          "pattern": "يوت(?: |$)(\\d*)? ?([\\s\\S]*)",
+          "command": [
+            "يوت",
+            "misc"
+          ]
+        },
+        {
+          "pattern": "انستا (.*)",
+          "command": [
+            "انستا",
+            "misc"
+          ]
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [
+        "possible external API/service usage"
+      ],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "ييبنك.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/ييبنك.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/ييبنك.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 1,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "بنك(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        }
+      ],
+      "config_attributes_referenced": [
+        "P_PIC"
+      ],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    }
+  ]
+}

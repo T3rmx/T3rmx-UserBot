@@ -1,0 +1,73 @@
+{
+  "name": "T3rmx UserBot",
+  "description": "T3rmx UserBot is an independent, modular Telegram automation framework built with Python, designed for extensibility, reliability, security, and advanced Telegram MTProto interactions.",
+  "repository": "https://github.com/T3rmx/T3rmx-UserBot",
+  "logo": "https://raw.githubusercontent.com/T3rmx/T3rmx-UserBot/main/assets/branding/t3rmx-logo.jpg",
+  "keywords": ["telegram", "userbot", "telethon", "t3rmx", "python"],
+  "stack": "container",
+  "env": {
+    "APP_ID": {
+      "description": "Telegram API ID from https://my.telegram.org",
+      "required": true
+    },
+    "API_HASH": {
+      "description": "Telegram API hash from https://my.telegram.org",
+      "required": true
+    },
+    "STRING_SESSION": {
+      "description": "Telethon string session for the user account",
+      "required": true
+    },
+    "TG_BOT_TOKEN": {
+      "description": "Telegram bot token from @BotFather (assistant/inline features)",
+      "required": true
+    },
+    "TG_BOT_USERNAME": {
+      "description": "Assistant bot username (with or without @). Normalized internally.",
+      "required": true
+    },
+    "ALIVE_NAME": {
+      "description": "Display name for alive/profile messages",
+      "value": "T3rmx UserBot",
+      "required": false
+    },
+    "TZ": {
+      "description": "Timezone",
+      "value": "Asia/Aden",
+      "required": false
+    },
+    "ENV": {
+      "description": "Runtime environment",
+      "value": "production",
+      "required": false
+    },
+    "DATABASE_URL": {
+      "description": "Database URL (optional but recommended for persistent data)",
+      "required": false
+    },
+    "COMMAND_HAND_LER": {
+      "description": "Primary command prefix",
+      "value": ".",
+      "required": false
+    },
+    "SUDO_COMMAND_HAND_LER": {
+      "description": "Sudo command prefix",
+      "value": "،",
+      "required": false
+    },
+    "VCMODE": {
+      "description": "Enable T3rmx-VC integration intent (requires verified backend for call control)",
+      "value": "false",
+      "required": false
+    },
+    "VC_SESSION": {
+      "description": "Optional VC session (if used by a verified backend)",
+      "required": false
+    }
+  },
+  "formation": {
+    "worker": {
+      "quantity": 1
+    }
+  }
+}

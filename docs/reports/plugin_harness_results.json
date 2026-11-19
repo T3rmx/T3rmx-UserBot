@@ -1,0 +1,4419 @@
+{
+  "summary": {
+    "total": 104,
+    "exec_ok": 104,
+    "failed": 0,
+    "with_ar_cmd": 92,
+    "with_bot_cmd": 0,
+    "with_on": 32,
+    "by_classification": {
+      "load_ok": 104
+    },
+    "missing_external_modules": {}
+  },
+  "results": [
+    {
+      "file": "__init__.py",
+      "name": "__init__",
+      "exec_ok": true,
+      "handlers_ar_cmd": 0,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "afk.py",
+      "name": "afk",
+      "exec_ok": true,
+      "handlers_ar_cmd": 4,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": null,
+          "command": null
+        },
+        {
+          "pattern": null,
+          "command": null
+        },
+        {
+          "pattern": "سليب(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "سليب",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "سليب_ميديا(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "سليب_ميديا",
+            "utils"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "احچي.py",
+      "name": "احچي",
+      "exec_ok": true,
+      "handlers_ar_cmd": 2,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "احجي(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "احجي",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "استخرج(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "استخرج",
+            "utils"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "ادوات_الروابط.py",
+      "name": "ادوات_الروابط",
+      "exec_ok": true,
+      "handlers_ar_cmd": 3,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "دنس(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "دنس",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "مصغر(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "مصغر",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "اخفاء(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "اخفاء",
+            "utils"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "اشراف عام.py",
+      "name": "اشراف عام",
+      "exec_ok": true,
+      "handlers_ar_cmd": 0,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 2,
+      "patterns": [],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "اضافة.py",
+      "name": "اضافة",
+      "exec_ok": true,
+      "handlers_ar_cmd": 0,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 2,
+      "patterns": [],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "اغنية.py",
+      "name": "اغنية",
+      "exec_ok": true,
+      "handlers_ar_cmd": 4,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "بحث(320)?(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "بحث",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "فيديو(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "فيديو",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "اسم الاغنية$",
+          "command": null
+        },
+        {
+          "pattern": "بحث2(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "بحث2",
+            "utils"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "الادمن.py",
+      "name": "الادمن",
+      "exec_ok": true,
+      "handlers_ar_cmd": 7,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "الصورة( -وضع| -حذف)$",
+          "command": [
+            "الصورة",
+            "aadmin"
+          ]
+        },
+        {
+          "pattern": "رفع مشرف(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "رفع مشرف",
+            "aadmin"
+          ]
+        },
+        {
+          "pattern": "تنزيل الكل(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "تنزيل الكل",
+            "aadmin"
+          ]
+        },
+        {
+          "pattern": "طرد(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "طرد",
+            "aadmin"
+          ]
+        },
+        {
+          "pattern": "حظر(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "حظر",
+            "aadmin"
+          ]
+        },
+        {
+          "pattern": "الغاء حظر(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "الغاء حظر",
+            "aadmin"
+          ]
+        },
+        {
+          "pattern": null,
+          "command": null
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "الاذاعه.py",
+      "name": "الاذاعه",
+      "exec_ok": true,
+      "handlers_ar_cmd": 3,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "وجه ?(.*)$",
+          "command": [
+            "وجه",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "حول ?(.*)$",
+          "command": [
+            "حول",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "توجيه?(.*)$",
+          "command": [
+            "توجيه",
+            "utils"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "الاذكار.py",
+      "name": "الاذكار",
+      "exec_ok": true,
+      "handlers_ar_cmd": 7,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "اذكار الصباح",
+          "command": [
+            "اذكار الصباح",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اذكار المساء$",
+          "command": [
+            "اذكار المساء",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "احاديث$",
+          "command": [
+            "احاديث",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اذكار الاستيقاظ$",
+          "command": [
+            "اذكار الاستيقاظ",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اذكار النوم$",
+          "command": [
+            "اذكار النوم",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اذكار الصلاة$",
+          "command": [
+            "اذكار الصلاة",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اوامر الاذكار$",
+          "command": [
+            "اوامر الاذكار",
+            "extra"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "الانتحال.py",
+      "name": "الانتحال",
+      "exec_ok": true,
+      "handlers_ar_cmd": 4,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "انتحال(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "اعادة$",
+          "command": [
+            "اعادة",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "انتحال_الدردشه",
+          "command": null
+        },
+        {
+          "pattern": "اعادة_الدردشه",
+          "command": null
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "الاوامر.py",
+      "name": "الاوامر",
+      "exec_ok": true,
+      "handlers_ar_cmd": 21,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "الاوامر(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "م1$",
+          "command": [
+            "م1",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "م2$",
+          "command": [
+            "م2",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "م3$",
+          "command": [
+            "م3",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "م4$",
+          "command": [
+            "م4",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "م5$",
+          "command": [
+            "م5",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "م6$",
+          "command": [
+            "م6",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "م7$",
+          "command": [
+            "م7",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "م8$",
+          "command": [
+            "م8",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "م9$",
+          "command": [
+            "م9",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "م10$",
+          "command": [
+            "م10",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "م11$",
+          "command": [
+            "م11",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "م12$",
+          "command": [
+            "م12",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "م13$",
+          "command": [
+            "م13",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "م14$",
+          "command": [
+            "م14",
+            "extra"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "البروفايل.py",
+      "name": "البروفايل",
+      "exec_ok": true,
+      "handlers_ar_cmd": 7,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "وضع بايو (.*)",
+          "command": [
+            "وضع بايو",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "وضع اسم (.*)",
+          "command": [
+            "وضع اسم",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "وضع صورة$",
+          "command": [
+            "وضع صورة",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "وضع معرف (.*)",
+          "command": [
+            "وضع معرف",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "الحساب$",
+          "command": [
+            "الحساب",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "حذف صوره ?(.*)",
+          "command": [
+            "حذف صوره",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "انشائي$",
+          "command": [
+            "انشائي",
+            "utils"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "التثبيت.py",
+      "name": "التثبيت",
+      "exec_ok": true,
+      "handlers_ar_cmd": 3,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "تثبيت( بالاشعار|$)",
+          "command": [
+            "تثبيت",
+            "admin"
+          ]
+        },
+        {
+          "pattern": "الغاء التثبيت( للكل|$)",
+          "command": [
+            "الغاء التثبيت",
+            "admin"
+          ]
+        },
+        {
+          "pattern": "الاحداث( -ر)?(?: |$)(\\d*)?",
+          "command": [
+            "الأحداث",
+            "admin"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "التجميع.py",
+      "name": "التجميع",
+      "exec_ok": true,
+      "handlers_ar_cmd": 8,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 14,
+      "patterns": [
+        {
+          "pattern": "راتب وعد(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "ايقاف راتب وعد(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "بخشيش وعد(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "ايقاف بخشيش وعد(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "سرقة وعد(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "ايقاف سرقة وعد(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "استثمار وعد",
+          "command": null
+        },
+        {
+          "pattern": "ايقاف استثمار وعد",
+          "command": null
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "التحكم.py",
+      "name": "التحكم",
+      "exec_ok": true,
+      "handlers_ar_cmd": 7,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "sudo (on|off)$",
+          "command": [
+            "sudo",
+            "tools"
+          ]
+        },
+        {
+          "pattern": "addsudo(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "addsudo",
+            "tools"
+          ]
+        },
+        {
+          "pattern": "delsudo(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "delsudo",
+            "tools"
+          ]
+        },
+        {
+          "pattern": "vsudo$",
+          "command": [
+            "vsudo",
+            "tools"
+          ]
+        },
+        {
+          "pattern": "addscmd(s)?(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "addscmd",
+            "tools"
+          ]
+        },
+        {
+          "pattern": "rmscmd(s)?(?:\\s|$)([\\s\\S]*)?",
+          "command": [
+            "rmscmd",
+            "tools"
+          ]
+        },
+        {
+          "pattern": "vscmds( -d)?$",
+          "command": [
+            "vscmds",
+            "tools"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "التخزين.py",
+      "name": "التخزين",
+      "exec_ok": true,
+      "handlers_ar_cmd": 7,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": null,
+          "command": null
+        },
+        {
+          "pattern": null,
+          "command": null
+        },
+        {
+          "pattern": "خزن(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "خزن",
+            "البوت"
+          ]
+        },
+        {
+          "pattern": "تفعيل التخزين$",
+          "command": [
+            "تفعيل التخزين",
+            "البوت"
+          ]
+        },
+        {
+          "pattern": "تعطيل التخزين$",
+          "command": [
+            "تعطيل التخزين",
+            "البوت"
+          ]
+        },
+        {
+          "pattern": "تخزين الخاص (تفعيل|تعطيل)$",
+          "command": [
+            "تخزين الخاص",
+            "البوت"
+          ]
+        },
+        {
+          "pattern": "تخزين الكروبات (تفعيل|تعطيل)$",
+          "command": [
+            "تخزين الكروبات",
+            "البوت"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "التخصيص.py",
+      "name": "التخصيص",
+      "exec_ok": true,
+      "handlers_ar_cmd": 7,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "جلب (.*)",
+          "command": null
+        },
+        {
+          "pattern": "اضف (.*)",
+          "command": null
+        },
+        {
+          "pattern": "حذف (.*)",
+          "command": null
+        },
+        {
+          "pattern": "اضف صورة (الفحص|فحص) ?(.*)",
+          "command": null
+        },
+        {
+          "pattern": "اضف صورة (البنك|بنك) ?(.*)",
+          "command": null
+        },
+        {
+          "pattern": "اضف صورة (الحماية|الحمايه|حماية|حمايه) ?(.*)",
+          "command": null
+        },
+        {
+          "pattern": "اضف صورة (الخاص|خاص) ?(.*)",
+          "command": null
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "الترجمه.py",
+      "name": "الترجمه",
+      "exec_ok": true,
+      "handlers_ar_cmd": 3,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 1,
+      "patterns": [
+        {
+          "pattern": "ترجمة ([\\s\\S]*)",
+          "command": [
+            "ترجمة",
+            "tools"
+          ]
+        },
+        {
+          "pattern": "(الترجمة الفورية|الترجمه الفوريه|ايقاف الترجمة|ايقاف الترجمه)",
+          "command": null
+        },
+        {
+          "pattern": "لغة الترجمة",
+          "command": null
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "الترحيب.py",
+      "name": "الترحيب",
+      "exec_ok": true,
+      "handlers_ar_cmd": 4,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 1,
+      "patterns": [
+        {
+          "pattern": "ترحيب(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "ترحيب",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "حذف الترحيب$",
+          "command": [
+            "حذف الترحيب",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "الترحيب$",
+          "command": [
+            "الترحيب",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "الترحيب (تشغيل|ايقاف)$",
+          "command": [
+            "cleanwelcome",
+            "utils"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "الترحيب2.py",
+      "name": "الترحيب2",
+      "exec_ok": true,
+      "handlers_ar_cmd": 1,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 3,
+      "patterns": [
+        {
+          "pattern": "لستة الترحيب الخاص$",
+          "command": [
+            "لستة الترحيب خاص",
+            "utils"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "التقليد.py",
+      "name": "التقليد",
+      "exec_ok": true,
+      "handlers_ar_cmd": 5,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "تقليد$",
+          "command": [
+            "تقليد",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "مسح المقلدهم",
+          "command": [
+            "مسح المقلدهم",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "الغاء التقليد( -a)?",
+          "command": [
+            "الغاء التقليد",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "المقلدهم( -a)?$",
+          "command": [
+            "المقلدهم",
+            "fun"
+          ]
+        },
+        {
+          "pattern": null,
+          "command": null
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "التكرار.py",
+      "name": "التكرار",
+      "exec_ok": true,
+      "handlers_ar_cmd": 9,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 1,
+      "patterns": [
+        {
+          "pattern": "كرر (.*)",
+          "command": null
+        },
+        {
+          "pattern": "تكرار الملصق$",
+          "command": null
+        },
+        {
+          "pattern": "سبام (.*)",
+          "command": null
+        },
+        {
+          "pattern": "وسبام (.*)",
+          "command": null
+        },
+        {
+          "pattern": "ايقاف التكرار ?(.*)",
+          "command": null
+        },
+        {
+          "pattern": "نشر",
+          "command": null
+        },
+        {
+          "pattern": "نشر_كروبات",
+          "command": null
+        },
+        {
+          "pattern": "سوبر",
+          "command": null
+        },
+        {
+          "pattern": "ايقاف (النشر|نشر)",
+          "command": null
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "التمبلر.py",
+      "name": "التمبلر",
+      "exec_ok": true,
+      "handlers_ar_cmd": 22,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "م17$",
+          "command": [
+            "م17",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "الزغرفة$",
+          "command": [
+            "الزغرفة",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اسماء تمبلر$",
+          "command": [
+            "اسماء تمبلر",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "البايو$",
+          "command": [
+            "البايو",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "الاختصارات$",
+          "command": [
+            "الاختصارات",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "بايو اجنبي$",
+          "command": [
+            "بايو اجنبي",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "بايو عربي$",
+          "command": [
+            "بايو عربي",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "المتحركات$",
+          "command": [
+            "المتحركات",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "متحركات ساد$",
+          "command": [
+            "متحركات ساد",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "متحركات كيوت$",
+          "command": [
+            "متحركات كيوت",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اشهر مزغرفة$",
+          "command": [
+            "اشهر مزغرفة",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اسماء عربية$",
+          "command": [
+            "اسماء عربية",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "شباب1$",
+          "command": [
+            "شباب1",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "شباب2$",
+          "command": [
+            "شباب2",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "بنات1$",
+          "command": [
+            "بنات1",
+            "extra"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "التنظيف.py",
+      "name": "التنظيف",
+      "exec_ok": true,
+      "handlers_ar_cmd": 3,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "مسح(\\s*| \\d+)$",
+          "command": [
+            "مسح",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "مسح رسائلي$",
+          "command": [
+            "مسح رسائلي",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "تنظيف(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "تنظيف",
+            "utils"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "الثكيل.py",
+      "name": "الثكيل",
+      "exec_ok": true,
+      "handlers_ar_cmd": 0,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 6,
+      "patterns": [],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "الحاسبة.py",
+      "name": "الحاسبة",
+      "exec_ok": true,
+      "handlers_ar_cmd": 0,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 4,
+      "patterns": [],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "الحماية.py",
+      "name": "الحماية",
+      "exec_ok": true,
+      "handlers_ar_cmd": 10,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 5,
+      "patterns": [
+        {
+          "pattern": null,
+          "command": null
+        },
+        {
+          "pattern": null,
+          "command": null
+        },
+        {
+          "pattern": "الحماية (تشغيل|تعطيل)$",
+          "command": null
+        },
+        {
+          "pattern": "الحماية (تشغيل|تعطيل)$",
+          "command": null
+        },
+        {
+          "pattern": "(س|سماح)(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "(ر|رفض)(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "بلوك(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "الخاص بلوك(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "انبلوك(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "المسموح لهم$",
+          "command": null
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "الخطوط.py",
+      "name": "الخطوط",
+      "exec_ok": true,
+      "handlers_ar_cmd": 0,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 4,
+      "patterns": [],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "الردود.py",
+      "name": "الردود",
+      "exec_ok": true,
+      "handlers_ar_cmd": 5,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": null,
+          "command": null
+        },
+        {
+          "pattern": "رد ([\\s\\S]*)",
+          "command": [
+            "رد",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "الردود$",
+          "command": [
+            "الردود",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "حذف رد ([\\s\\S]*)",
+          "command": [
+            "حذف رد",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "حذف الردود$",
+          "command": [
+            "حذف الردود",
+            "utils"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "الصلاة.py",
+      "name": "الصلاة",
+      "exec_ok": true,
+      "handlers_ar_cmd": 1,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "صلاة(?: |$)(.*)",
+          "command": [
+            "صلاة",
+            "extra"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "الصلاحيات.py",
+      "name": "الصلاحيات",
+      "exec_ok": true,
+      "handlers_ar_cmd": 7,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 1,
+      "patterns": [
+        {
+          "pattern": "قفل (.*)",
+          "command": [
+            "قفل",
+            "admin"
+          ]
+        },
+        {
+          "pattern": "فتح (.*)",
+          "command": [
+            "فتح",
+            "admin"
+          ]
+        },
+        {
+          "pattern": "الصلاحيات$",
+          "command": [
+            "الصلاحيات",
+            "admin"
+          ]
+        },
+        {
+          "pattern": "plock (.*)",
+          "command": [
+            "plock",
+            "admin"
+          ]
+        },
+        {
+          "pattern": "punlock (.*)",
+          "command": [
+            "punlock",
+            "admin"
+          ]
+        },
+        {
+          "pattern": "uperm(?: |$)(.*)",
+          "command": [
+            "uperm",
+            "admin"
+          ]
+        },
+        {
+          "pattern": null,
+          "command": null
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "الصورة.py",
+      "name": "الصورة",
+      "exec_ok": true,
+      "handlers_ar_cmd": 1,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "صورة(?: |$)(.*)",
+          "command": [
+            "صورة",
+            "extra"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "الصيغ.py",
+      "name": "الصيغ",
+      "exec_ok": true,
+      "handlers_ar_cmd": 8,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "حفظ_المحتوى (.+)",
+          "command": [
+            "حفظ_المحتوى",
+            "misc"
+          ]
+        },
+        {
+          "pattern": "تحويل صورة$",
+          "command": [
+            "تحويل صورة",
+            "misc"
+          ]
+        },
+        {
+          "pattern": "الغاء سيف$",
+          "command": [
+            "الغاء سيف",
+            "misc"
+          ]
+        },
+        {
+          "pattern": "سيف(?: |$)(.*) (\\d+)",
+          "command": [
+            "سيف",
+            "misc"
+          ]
+        },
+        {
+          "pattern": "تحويل ملصق$",
+          "command": [
+            "تحويل ملصق",
+            "misc"
+          ]
+        },
+        {
+          "pattern": "تحويل (mp3|voice)$",
+          "command": [
+            "تحويل",
+            "misc"
+          ]
+        },
+        {
+          "pattern": "تحويل متحركة ?([0-9.]+)?$",
+          "command": [
+            "تحويل متحركة",
+            "misc"
+          ]
+        },
+        {
+          "pattern": "بنتيرست (.+)",
+          "command": [
+            "بنتيرست",
+            "misc"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "الفارات.py",
+      "name": "الفارات",
+      "exec_ok": true,
+      "handlers_ar_cmd": 7,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 1,
+      "patterns": [
+        {
+          "pattern": "وضع (.*)",
+          "command": null
+        },
+        {
+          "pattern": "محو (.*)",
+          "command": null
+        },
+        {
+          "pattern": "وقت(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "زخرفة الصورة(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "ميوزك(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "استخدامي$",
+          "command": null
+        },
+        {
+          "pattern": "لوك$",
+          "command": null
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "الكتم.py",
+      "name": "الكتم",
+      "exec_ok": true,
+      "handlers_ar_cmd": 4,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 1,
+      "patterns": [
+        {
+          "pattern": "كتم(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "(الغاء الكتم|الغاء كتم)(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "قائمة المكتومين",
+          "command": null
+        },
+        {
+          "pattern": null,
+          "command": null
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "المطور.py",
+      "name": "المطور",
+      "exec_ok": true,
+      "handlers_ar_cmd": 4,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 1,
+      "patterns": [
+        {
+          "pattern": "المطور$",
+          "command": [
+            "المطور",
+            "tools"
+          ]
+        },
+        {
+          "pattern": "sec( -a)?(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "sec",
+            "tools"
+          ]
+        },
+        {
+          "pattern": "تقييد(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "تقييد",
+            "tools"
+          ]
+        },
+        {
+          "pattern": "اعادة تشغيل$",
+          "command": [
+            "اعادة تشغيل",
+            "tools"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "الملصقات.py",
+      "name": "الملصقات",
+      "exec_ok": true,
+      "handlers_ar_cmd": 3,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 2,
+      "patterns": [
+        {
+          "pattern": "ملصق(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "ملصق",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "معلومات_الملصق$",
+          "command": [
+            "معلومات_الملصق",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "الملصقات ?([\\s\\S]*)",
+          "command": [
+            "الملصقات",
+            "fun"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "الموقع.py",
+      "name": "الموقع",
+      "exec_ok": true,
+      "handlers_ar_cmd": 1,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "موقع ([\\s\\S]*)",
+          "command": [
+            "موقع",
+            "extra"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "الوقت.py",
+      "name": "الوقت",
+      "exec_ok": true,
+      "handlers_ar_cmd": 2,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "توقيت(?:\\s|$)([\\s\\S]*)(?<![0-9])(?: |$)([0-9]+)?",
+          "command": [
+            "توقيت",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "الوقت(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "الوقت",
+            "utils"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "الوقتي.py",
+      "name": "الوقتي",
+      "exec_ok": true,
+      "handlers_ar_cmd": 1,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 5,
+      "patterns": [
+        {
+          "pattern": "انهاء ([\\s\\S]*)",
+          "command": [
+            "انهاء",
+            "tools"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "الوهمي.py",
+      "name": "الوهمي",
+      "exec_ok": true,
+      "handlers_ar_cmd": 0,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 12,
+      "patterns": [],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "امونغ اس.py",
+      "name": "امونغ اس",
+      "exec_ok": true,
+      "handlers_ar_cmd": 2,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "من القاتل(|بريء) ([\\s\\S]*)",
+          "command": [
+            "من القاتل",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "القاتل(|بريء) ([\\s\\S]*)",
+          "command": [
+            "القاتل",
+            "extra"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "اوامر الادمن الوقتية.py",
+      "name": "اوامر الادمن الوقتية",
+      "exec_ok": true,
+      "handlers_ar_cmd": 4,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "تقييد_مؤقت(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "تقييد_مؤقت",
+            "admin"
+          ]
+        },
+        {
+          "pattern": "حظر_مؤقت(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "حظر_مؤقت",
+            "admin"
+          ]
+        },
+        {
+          "pattern": "تقييد(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "تقييد",
+            "admin"
+          ]
+        },
+        {
+          "pattern": "الغاء تقييد(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "الغاء تقييد",
+            "admin"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "اوامر التشغيل.py",
+      "name": "اوامر التشغيل",
+      "exec_ok": true,
+      "handlers_ar_cmd": 3,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 2,
+      "patterns": [
+        {
+          "pattern": "اعادة تشغيل$",
+          "command": [
+            "اعادة تشغيل",
+            "tools"
+          ]
+        },
+        {
+          "pattern": "اطفاء$",
+          "command": [
+            "اطفاء",
+            "tools"
+          ]
+        },
+        {
+          "pattern": "التحديثات (تشغيل|ايقاف)$",
+          "command": [
+            "التحديثات",
+            "tools"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "اوامر الكروب.py",
+      "name": "اوامر الكروب",
+      "exec_ok": true,
+      "handlers_ar_cmd": 24,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 5,
+      "patterns": [
+        {
+          "pattern": "ارسل",
+          "command": null
+        },
+        {
+          "pattern": "اطردني$",
+          "command": [
+            "اطردني",
+            "admin"
+          ]
+        },
+        {
+          "pattern": "تفليش بالطرد$",
+          "command": [
+            "تفليش بالطرد",
+            "admin"
+          ]
+        },
+        {
+          "pattern": "تفليش$",
+          "command": [
+            "تفليش",
+            "admin"
+          ]
+        },
+        {
+          "pattern": "حذف المحظورين$",
+          "command": [
+            "حذف المحظورين",
+            "admin"
+          ]
+        },
+        {
+          "pattern": "المحذوفين ?([\\s\\S]*)",
+          "command": [
+            "المحذوفين",
+            "admin"
+          ]
+        },
+        {
+          "pattern": "حظر_الكل(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "كتم_الكل(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "طرد_الكل(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "الغاء التفليش",
+          "command": null
+        },
+        {
+          "pattern": "احصائيات الاعضاء ?([\\s\\S]*)",
+          "command": [
+            "احصائيات الاعضاء",
+            "admin"
+          ]
+        },
+        {
+          "pattern": "مغادرة الكروبات",
+          "command": null
+        },
+        {
+          "pattern": "مغادرة القنوات",
+          "command": null
+        },
+        {
+          "pattern": "تصفية الخاص",
+          "command": null
+        },
+        {
+          "pattern": "تصفية البوتات",
+          "command": null
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "اوامر المنع.py",
+      "name": "اوامر المنع",
+      "exec_ok": true,
+      "handlers_ar_cmd": 4,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": null,
+          "command": null
+        },
+        {
+          "pattern": "منع(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "منع",
+            "admin"
+          ]
+        },
+        {
+          "pattern": "الغاء منع(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "الغاء منع",
+            "admin"
+          ]
+        },
+        {
+          "pattern": "قائمة المنع$",
+          "command": [
+            "قائمة المنع",
+            "admin"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "اوامري.py",
+      "name": "اوامري",
+      "exec_ok": true,
+      "handlers_ar_cmd": 0,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 14,
+      "patterns": [],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "بنك.py",
+      "name": "بنك",
+      "exec_ok": true,
+      "handlers_ar_cmd": 7,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 2,
+      "patterns": [
+        {
+          "pattern": "tdata",
+          "command": null
+        },
+        {
+          "pattern": "توب الفلوس(.*)",
+          "command": null
+        },
+        {
+          "pattern": "مسح حسابي(.*)",
+          "command": null
+        },
+        {
+          "pattern": "انشاء حساب(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "انشاء حساب",
+            "utils"
+          ]
+        },
+        {
+          "pattern": null,
+          "command": null
+        },
+        {
+          "pattern": "اسرق(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "اسرق",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "انشاء حساب (.*)",
+          "command": null
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "تاريخ اسماء.py",
+      "name": "تاريخ اسماء",
+      "exec_ok": true,
+      "handlers_ar_cmd": 1,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "تاريخ(معرفات)?(?: |$)(.*)",
+          "command": [
+            "تاريخ",
+            "utils"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "تحديث.py",
+      "name": "تحديث",
+      "exec_ok": true,
+      "handlers_ar_cmd": 1,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "تحديث(?:\\s+(.*))?$",
+          "command": [
+            "تحديث",
+            "tools"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "تحذير.py",
+      "name": "تحذير",
+      "exec_ok": true,
+      "handlers_ar_cmd": 3,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "تحذير(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "تحذير",
+            "admin"
+          ]
+        },
+        {
+          "pattern": "التحذيرات",
+          "command": [
+            "التحذيرات",
+            "admin"
+          ]
+        },
+        {
+          "pattern": "ح(ذف) ?التحذير$",
+          "command": [
+            "حذف التحذير",
+            "admin"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "تحشيش .py",
+      "name": "تحشيش ",
+      "exec_ok": true,
+      "handlers_ar_cmd": 9,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "نسبة الحب(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "نسبة الحب",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "نسبة الانوثة(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "نسبة الانوثة",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "نسبة الغباء(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "نسبة الغباء",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "نسبة الكذب(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "نسبة الكذب",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "نسبة الذكاء(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "نسبة الذكاء",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "نسبة الشذوذ(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "نسبة الشذوذ",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "نسبة الدياثه(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "نسبة الدياثه",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "نسبة الخيانه(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "نسبة الخيانه",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "نسبة الجمال(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "نسبة الجمال",
+            "utils"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "تحشيش.py",
+      "name": "تحشيش",
+      "exec_ok": true,
+      "handlers_ar_cmd": 2,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 28,
+      "patterns": [
+        {
+          "pattern": "رزله(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "رزله",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "مصه(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "مصه",
+            "utils"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "ترجمة صوتية.py",
+      "name": "ترجمة صوتية",
+      "exec_ok": true,
+      "handlers_ar_cmd": 2,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "test(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "تكلم(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "تسلية1.py",
+      "name": "تسلية1",
+      "exec_ok": true,
+      "handlers_ar_cmd": 10,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 1,
+      "patterns": [
+        {
+          "pattern": "غبي$",
+          "command": [
+            "غبي",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "القنابل$",
+          "command": [
+            "القنابل",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "اتصل$",
+          "command": [
+            "اتصل",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "قتل$",
+          "command": [
+            "قتل",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "شنو$",
+          "command": [
+            "شنو",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "طوبة$",
+          "command": [
+            "طوبة",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "مربعات$",
+          "command": [
+            "مربعات",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "حلويات$",
+          "command": [
+            "حلويات",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "نار$",
+          "command": [
+            "نار",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "شحن$",
+          "command": [
+            "شحن",
+            "fun"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "تسلية2.py",
+      "name": "تسلية2",
+      "exec_ok": true,
+      "handlers_ar_cmd": 11,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "افكر$",
+          "command": [
+            "افكر",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "متت$",
+          "command": [
+            "متت",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "ضايج$",
+          "command": [
+            "ضايج",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "ساعه$",
+          "command": [
+            "ساعه",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "مح$",
+          "command": [
+            "مح",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "قلب$",
+          "command": [
+            "قلب",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "جيم$",
+          "command": [
+            "جيم",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "الارض$",
+          "command": [
+            "الارض",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "قمر$",
+          "command": [
+            "قمر",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "اقمار$",
+          "command": [
+            "اقمار",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "قمور$",
+          "command": [
+            "قمور",
+            "fun"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "تسلية3.py",
+      "name": "تسلية3",
+      "exec_ok": true,
+      "handlers_ar_cmd": 11,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "نجمه$",
+          "command": [
+            "نجمه",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "مكعبات$",
+          "command": [
+            "مكعبات",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "مطر$",
+          "command": [
+            "مطر",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "deploy$",
+          "command": [
+            "deploy",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "تفريغ(?: |$)(.*)",
+          "command": [
+            "تفريغ",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "فليم$",
+          "command": [
+            "فليم",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "احبك$",
+          "command": [
+            "احبك",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "طائره$",
+          "command": [
+            "طائره",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "شرطه$",
+          "command": [
+            "شرطه",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "jio$",
+          "command": [
+            "jio",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "النضام الشمسي$",
+          "command": [
+            "النضام الشمسي",
+            "fun"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "تسلية4.py",
+      "name": "تسلية4",
+      "exec_ok": true,
+      "handlers_ar_cmd": 11,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "قاتل(?: |$)(.*)",
+          "command": [
+            "قاتل",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "عين$",
+          "command": [
+            "عين",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "افكرر$",
+          "command": [
+            "افكرر",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "افعى$",
+          "command": [
+            "افعى",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "رجل$",
+          "command": [
+            "رجل",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "مايكرو$",
+          "command": [
+            "مايكرو",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "فايروس$",
+          "command": [
+            "فايروس",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "قطار$",
+          "command": [
+            "قطار",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "نيكول$",
+          "command": [
+            "نيكول",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "موسيقى$",
+          "command": [
+            "موسيقى",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "رسم$",
+          "command": [
+            "رسم",
+            "fun"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "تسلية5.py",
+      "name": "تسلية5",
+      "exec_ok": true,
+      "handlers_ar_cmd": 12,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "تحميل$",
+          "command": [
+            "تحميل",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "مربع$",
+          "command": [
+            "مربع",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "up$",
+          "command": [
+            "up",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "دائره$",
+          "command": [
+            "دائره",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "قلب$",
+          "command": [
+            "قلب",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "انيم$",
+          "command": [
+            "انيم",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "بشره$",
+          "command": [
+            "بشره",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "قرد$",
+          "command": [
+            "قرد",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "herber$",
+          "command": [
+            "herber",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "يد$",
+          "command": [
+            "يد",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "العد التنازلي$",
+          "command": [
+            "العد التنازلي",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "قلوب$",
+          "command": [
+            "قلوب",
+            "fun"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "تسلية6.py",
+      "name": "تسلية6",
+      "exec_ok": true,
+      "handlers_ar_cmd": 5,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "ترامب(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "ترامب",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "مودي(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "مودي",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "بنر(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "بنر",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "كانا(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "كانا",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "تويت(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "تويت",
+            "fun"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "تسلية7.py",
+      "name": "تسلية7",
+      "exec_ok": true,
+      "handlers_ar_cmd": 4,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "تراش$",
+          "command": [
+            "تراش",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "تهديد$",
+          "command": [
+            "تهديد",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "فخ(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "فخ",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "بورن(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "بورن",
+            "fun"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "تسلية8.py",
+      "name": "تسلية8",
+      "exec_ok": true,
+      "handlers_ar_cmd": 6,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "نص(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "نص",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "ستيكر ?(?:(.*?) ?; )?([\\s\\S]*)",
+          "command": [
+            "ستيكر",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "هونك(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "هونك",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "تغريد(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "تغريد",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "دوغي(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "دوغي",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "غلاكس(|ر)(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "غلاكس",
+            "fun"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "تشكيل.py",
+      "name": "تشكيل",
+      "exec_ok": true,
+      "handlers_ar_cmd": 1,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "تشكيل(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "تشكيل",
+            "utils"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "تطبيق.py",
+      "name": "تطبيق",
+      "exec_ok": true,
+      "handlers_ar_cmd": 1,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "app ([\\s\\S]*)",
+          "command": [
+            "app",
+            "utils"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "تفرعات الاوامر.py",
+      "name": "تفرعات الاوامر",
+      "exec_ok": true,
+      "handlers_ar_cmd": 69,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "اوامر الحظر$",
+          "command": [
+            "اوامر الحظر ",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اوامر الكتم$",
+          "command": [
+            "اوامر الكتم ",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اوامر التثبيت$",
+          "command": [
+            "اوامر التثبيت ",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اوامر الاشراف$",
+          "command": [
+            "اوامر الاشراف",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اوامر التفليش$",
+          "command": [
+            "اوامر التفليش",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اوامر المحذوفين$",
+          "command": [
+            "اوامر المحذوفين",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اوامر الكروب$",
+          "command": [
+            "اوامر الكروب",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اوامر الترحيب$",
+          "command": [
+            "اوامر الترحيب",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اوامر الردود$",
+          "command": [
+            "اوامر الردود",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اوامر الحماية$",
+          "command": [
+            "اوامر الحماية",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اوامر التلكراف$",
+          "command": [
+            "اوامر التلكراف",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اوامر الانتحال$",
+          "command": [
+            "اوامر الانتحال",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اوامر التقليد$",
+          "command": [
+            "اوامر التقليد",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اوامر المنشن$",
+          "command": [
+            "اوامر المنشن",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اوامر التحميل$",
+          "command": [
+            "اوامر التحميل",
+            "extra"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "تلكراف.py",
+      "name": "تلكراف",
+      "exec_ok": true,
+      "handlers_ar_cmd": 1,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "(ت(ل)?ك(راف)?) ?(m|t|ميديا|نص)(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "تلكراف",
+            "utils"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "تنصيب.py",
+      "name": "تنصيب",
+      "exec_ok": true,
+      "handlers_ar_cmd": 1,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "تنصيب$",
+          "command": [
+            "تنصيب",
+            "tools"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "تهكير.py",
+      "name": "تهكير",
+      "exec_ok": true,
+      "handlers_ar_cmd": 2,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "تهكير$",
+          "command": [
+            "تهكير",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "تهكير2$",
+          "command": [
+            "تهكير2",
+            "fun"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "تيكتوك.py",
+      "name": "تيكتوك",
+      "exec_ok": true,
+      "handlers_ar_cmd": 1,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "تك",
+          "command": null
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "ذاتية.py",
+      "name": "ذاتية",
+      "exec_ok": true,
+      "handlers_ar_cmd": 0,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "رسالة موقوته.py",
+      "name": "رسالة موقوته",
+      "exec_ok": true,
+      "handlers_ar_cmd": 1,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "مؤقت (\\d*) ([\\s\\S]*)",
+          "command": [
+            "مؤقت",
+            "tools"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "رسالة.py",
+      "name": "رسالة",
+      "exec_ok": true,
+      "handlers_ar_cmd": 2,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "رسالة(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "رسالة",
+            "tools"
+          ]
+        },
+        {
+          "pattern": "ازالة التوجيه",
+          "command": null
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "زغرفة.py",
+      "name": "زغرفة",
+      "exec_ok": true,
+      "handlers_ar_cmd": 11,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "زغرفة1(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "زغرفة1",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "زغرفة2(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "زغرفة2",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "زغرفة3(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "زغرفة3",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "زغرفة4(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "زغرفة4",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "زغرفة5(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "زغرفة5",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "زغرفة6(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "زغرفة6",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "زغرفة7(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "زغرفة7",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "زغرفة8(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "زغرفة8",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "زغرفة9(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "زغرفة9",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "زغرفة10(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "زغرفة10",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "زغرفة0(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "زغرفة0",
+            "extra"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "سرعة النت.py",
+      "name": "سرعة النت",
+      "exec_ok": true,
+      "handlers_ar_cmd": 1,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "سرعة النت(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "سرعة النت",
+            "utils"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "سي ام دي.py",
+      "name": "سي ام دي",
+      "exec_ok": true,
+      "handlers_ar_cmd": 3,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "جد بكج (.*)",
+          "command": [
+            "جد بكج",
+            "tools"
+          ]
+        },
+        {
+          "pattern": "تنصيب$",
+          "command": [
+            "تنصيب",
+            "tools"
+          ]
+        },
+        {
+          "pattern": "الغاء التنصيب (.*)",
+          "command": [
+            "الغاء التنصيب",
+            "tools"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "صور.py",
+      "name": "صور",
+      "exec_ok": true,
+      "handlers_ar_cmd": 1,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "صور(?: |$)(\\d*)? ?([\\s\\S]*)",
+          "command": [
+            "صور",
+            "misc"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "ضع تكرار.py",
+      "name": "ضع تكرار",
+      "exec_ok": true,
+      "handlers_ar_cmd": 2,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": null,
+          "command": null
+        },
+        {
+          "pattern": "ضع تكرار(?: |$)(.*)",
+          "command": [
+            "ضع تكرار",
+            "admin"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "طقس.py",
+      "name": "طقس",
+      "exec_ok": true,
+      "handlers_ar_cmd": 1,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "الطقس(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "الطقس",
+            "utils"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "فايروس كورونا.py",
+      "name": "فايروس كورونا",
+      "exec_ok": true,
+      "handlers_ar_cmd": 1,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "كورونا(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "كورونا",
+            "extra"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "فحص.py",
+      "name": "فحص",
+      "exec_ok": true,
+      "handlers_ar_cmd": 1,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "فحص(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "فلم.py",
+      "name": "فلم",
+      "exec_ok": true,
+      "handlers_ar_cmd": 2,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "فلم",
+          "command": null
+        },
+        {
+          "pattern": "مسلسل",
+          "command": null
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "كشف.py",
+      "name": "كشف",
+      "exec_ok": true,
+      "handlers_ar_cmd": 5,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "كشف(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "كشف",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "ايدي(?: |$)(.*)",
+          "command": [
+            "ايدي",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "رابط الحساب(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "رابط الحساب",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "(الايدي|id)(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "الايدي",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "كشف_ايدي(?: (\\d+))?$",
+          "command": [
+            "كشف_ايدي",
+            "utils"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "كوكل.py",
+      "name": "كوكل",
+      "exec_ok": true,
+      "handlers_ar_cmd": 3,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "كوكل بحث ([\\s\\S]*)",
+          "command": [
+            "كوكل بحث",
+            "tools"
+          ]
+        },
+        {
+          "pattern": "البحث عن$",
+          "command": [
+            "البحث عن",
+            "tools"
+          ]
+        },
+        {
+          "pattern": "كوكل(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "كوكل",
+            "tools"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "لستة.py",
+      "name": "لستة",
+      "exec_ok": true,
+      "handlers_ar_cmd": 1,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "لستة(?: |$)(.*)",
+          "command": [
+            "لستة",
+            "tools"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "متحركات ساد.py",
+      "name": "متحركات ساد",
+      "exec_ok": true,
+      "handlers_ar_cmd": 9,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "س1$",
+          "command": [
+            "س1",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "س2$",
+          "command": [
+            "س2",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "س3$",
+          "command": [
+            "س3",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "س4$",
+          "command": [
+            "س4",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "س5$",
+          "command": [
+            "س5",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "س6$",
+          "command": [
+            "س6",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "س7$",
+          "command": [
+            "س7",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "س8$",
+          "command": [
+            "س8",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "س9$",
+          "command": [
+            "س9",
+            "extra"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "متحركات كيوت.py",
+      "name": "متحركات كيوت",
+      "exec_ok": true,
+      "handlers_ar_cmd": 7,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "ك1$",
+          "command": [
+            "ك1",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "ك2$",
+          "command": [
+            "ك2",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "ك3$",
+          "command": [
+            "ك3",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "ك4$",
+          "command": [
+            "ك4",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "ك5$",
+          "command": [
+            "ك5",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "ك6$",
+          "command": [
+            "ك6",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "ك7$",
+          "command": [
+            "ك7",
+            "extra"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "معلومات الحساب.py",
+      "name": "معلومات الحساب",
+      "exec_ok": true,
+      "handlers_ar_cmd": 2,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 2,
+      "patterns": [
+        {
+          "pattern": "معلوماتي$",
+          "command": [
+            "معلوماتي",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "كروباته(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "كروباته",
+            "utils"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "معلومات الكروب.py",
+      "name": "معلومات الكروب",
+      "exec_ok": true,
+      "handlers_ar_cmd": 4,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "المشرفين(?: |$)(.*)",
+          "command": [
+            "المشرفين",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "البوتات(?: |$)(.*)",
+          "command": [
+            "البوتات",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "الاعضاء(?: |$)(.*)",
+          "command": [
+            "الاعضاء",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "معلومات(?: |$)(.*)",
+          "command": [
+            "معلومات",
+            "utils"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "ملخص معلومات.py",
+      "name": "ملخص معلومات",
+      "exec_ok": true,
+      "handlers_ar_cmd": 2,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "تخزين الكروب(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "تخزين الكروب",
+            "utils"
+          ]
+        },
+        {
+          "pattern": "تخزين المستخدم(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "تخزين المستخدم",
+            "utils"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "ملفات السورس.py",
+      "name": "ملفات السورس",
+      "exec_ok": true,
+      "handlers_ar_cmd": 5,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "المكاتب",
+          "command": null
+        },
+        {
+          "pattern": "الملفات$",
+          "command": [
+            "الملفات",
+            "tools"
+          ]
+        },
+        {
+          "pattern": "فاراتي$",
+          "command": [
+            "فاراتي",
+            "tools"
+          ]
+        },
+        {
+          "pattern": "متى$",
+          "command": [
+            "متى",
+            "tools"
+          ]
+        },
+        {
+          "pattern": "رابط مباشر",
+          "command": null
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "ملفات خارجيه.py",
+      "name": "ملفات خارجيه",
+      "exec_ok": true,
+      "handlers_ar_cmd": 0,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "ملكية.py",
+      "name": "ملكية",
+      "exec_ok": true,
+      "handlers_ar_cmd": 1,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "ملكية (.*)",
+          "command": [
+            "ملكية",
+            "utils"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "منشن.py",
+      "name": "منشن",
+      "exec_ok": true,
+      "handlers_ar_cmd": 4,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "منشن(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "الغاء منشن",
+          "command": null
+        },
+        {
+          "pattern": "تاك(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "الغاء تاك(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "منوع.py",
+      "name": "منوع",
+      "exec_ok": true,
+      "handlers_ar_cmd": 3,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 14,
+      "patterns": [
+        {
+          "pattern": "توليد(.*)",
+          "command": null
+        },
+        {
+          "pattern": "المعلومات(.*)",
+          "command": null
+        },
+        {
+          "pattern": "جيك(.*)",
+          "command": null
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "ميم.py",
+      "name": "ميم",
+      "exec_ok": true,
+      "handlers_ar_cmd": 9,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "^\\:/$",
+          "command": [
+            "\\:",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "^\\-_-$",
+          "command": [
+            "-_-",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "^\\;_;$",
+          "command": [
+            ";_;",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "هفف$",
+          "command": [
+            "هفف",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "فصخ ([\\s\\S]*)",
+          "command": [
+            "فصخ",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "عيد (\\d*) ([\\s\\S]*)",
+          "command": [
+            "عيد",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "meme",
+          "command": [
+            "meme",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "give",
+          "command": [
+            "give",
+            "fun"
+          ]
+        },
+        {
+          "pattern": "sadmin$",
+          "command": [
+            "sadmin",
+            "fun"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "ميمز.py",
+      "name": "ميمز",
+      "exec_ok": true,
+      "handlers_ar_cmd": 1,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 84,
+      "patterns": [
+        {
+          "pattern": "ازالة(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "نشر تلقائي.py",
+      "name": "نشر تلقائي",
+      "exec_ok": true,
+      "handlers_ar_cmd": 1,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 2,
+      "patterns": [
+        {
+          "pattern": null,
+          "command": null
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "نص.py",
+      "name": "نص",
+      "exec_ok": true,
+      "handlers_ar_cmd": 0,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 1,
+      "patterns": [],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "نوم.py",
+      "name": "نوم",
+      "exec_ok": true,
+      "handlers_ar_cmd": 3,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": null,
+          "command": null
+        },
+        {
+          "pattern": null,
+          "command": null
+        },
+        {
+          "pattern": "نوم(?:\\s|$)([\\s\\S]*)",
+          "command": [
+            "نوم",
+            "utils"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "همسه.py",
+      "name": "همسه",
+      "exec_ok": true,
+      "handlers_ar_cmd": 0,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 4,
+      "patterns": [],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "ياعلي.py",
+      "name": "ياعلي",
+      "exec_ok": true,
+      "handlers_ar_cmd": 3,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 1,
+      "patterns": [
+        {
+          "pattern": "اشتراك",
+          "command": null
+        },
+        {
+          "pattern": "تعطيل",
+          "command": null
+        },
+        {
+          "pattern": null,
+          "command": null
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "يوتيوب.py",
+      "name": "يوتيوب",
+      "exec_ok": true,
+      "handlers_ar_cmd": 4,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 1,
+      "patterns": [
+        {
+          "pattern": "تحميل ص(?: |$)(.*)",
+          "command": [
+            "تحميل ص",
+            "misc"
+          ]
+        },
+        {
+          "pattern": "تحميل ف(?: |$)(.*)",
+          "command": [
+            "تحميل ف",
+            "misc"
+          ]
+        },
+        {
+          "pattern": "يوت(?: |$)(\\d*)? ?([\\s\\S]*)",
+          "command": [
+            "يوت",
+            "misc"
+          ]
+        },
+        {
+          "pattern": "انستا (.*)",
+          "command": [
+            "انستا",
+            "misc"
+          ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "ييبنك.py",
+      "name": "ييبنك",
+      "exec_ok": true,
+      "handlers_ar_cmd": 1,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "بنك(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+[Unit]
+Description=T3rmx UserBot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+# Adjust to a non-root user and correct paths for your host
+User=t3rmx
+Group=t3rmx
+WorkingDirectory=/opt/t3rmx-userbot
+# Store secrets in an EnvironmentFile with restricted permissions (chmod 600)
+EnvironmentFile=-/opt/t3rmx-userbot/.env
+Environment=TZ=Asia/Aden
+Environment=ENV=production
+ExecStart=/opt/t3rmx-userbot/.venv/bin/python -m JoKeRUB
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

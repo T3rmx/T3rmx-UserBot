@@ -1,0 +1,75 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+.eggs/
+dist/
+build/
+pip-wheel-metadata/
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# Environment/secrets
+.env
+.env.*
+!.env.example
+config.py
+*.session
+*.session-journal
+*.session-journal*
+string_session*
+.session.sql
+*.sqlite
+*.sqlite3
+*.db
+*.db-journal
+
+# Runtime/downloads/temp
+downloads/
+temp/
+tmp/
+*.log
+logs/
+*.pid
+
+# IDE/editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test/coverage
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# Heroku/local platform artifacts
+.heroku/
+
+# Node (if ever present)
+node_modules/
+
+# Do not commit vendored binaries accidentally
+vendor/*.whl
+vendor/*.tar.gz
+
+# Local archives
+*.zip
+*.bak
+.venv311/
+.uv-cache/
+*.pyc

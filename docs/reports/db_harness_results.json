@@ -1,0 +1,42 @@
+[
+  {
+    "name": "sql_helper_missing_db_uri_import",
+    "ok": true,
+    "detail": "EXC AttributeError \n[ERROR- 02:33:19]- JoKeRUB.sql_helper- DB_URI is not configured. Features depending on the database might have issues.- __init__.py- 24\n[ERROR- 02:33:19]- JoKeRUB.sql_helper- 'NoneType' object has no attribute '_instantiate_plugins'- __init__.py- 27\n"
+  },
+  {
+    "name": "sql_helper_sqlite_crud",
+    "ok": true,
+    "detail": {
+      "json": {
+        "init": true,
+        "g_add_get": true,
+        "g_update": true,
+        "g_del": true,
+        "bl_add_get": true,
+        "bl_rem": true,
+        "gc_add": true,
+        "gc_rm": true,
+        "gl_add": true,
+        "gl_rm": true,
+        "pm_add": true,
+        "pm_dis": true,
+        "rollback": true,
+        "close": true
+      },
+      "tail": "JSON:{\"init\": true, \"g_add_get\": true, \"g_update\": true, \"g_del\": true, \"bl_add_get\": true, \"bl_rem\": true, \"gc_add\": true, \"gc_rm\": true, \"gl_add\": true, \"gl_rm\": true, \"pm_add\": true, \"pm_dis\": true, \"rollback\": true, \"close\": true}\n"
+    }
+  },
+  {
+    "name": "sql_helper_connection_failure",
+    "ok": true,
+    "detail": "EXC OperationalError\n"
+  },
+  {
+    "name": "postgres_infra_available",
+    "ok": false,
+    "detail": {
+      "psql": false
+    }
+  }
+]
