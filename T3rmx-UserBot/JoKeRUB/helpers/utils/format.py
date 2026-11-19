@@ -1,7 +1,16 @@
 import datetime
+import re
 
-from bs4 import BeautifulSoup
-from markdown import markdown
+try:
+    from bs4 import BeautifulSoup
+except Exception:  # optional dependency in some runtime environments
+    BeautifulSoup = None
+
+try:
+    from markdown import markdown as _markdown
+except Exception:  # optional dependency in some runtime environments
+    _markdown = None
+
 from telethon.tl.tlobject import TLObject
 from telethon.tl.types import MessageEntityPre
 from telethon.utils import add_surrogate
@@ -20,9 +29,21 @@ async def paste_message(text, pastetype="p", extension=None, markdown=True):
 
 
 def md_to_text(md):
-    html = markdown(md)
-    soup = BeautifulSoup(html, features="html.parser")
-    return soup.get_text()
+    if not md:
+        return ""
+    if _markdown is not None and BeautifulSoup is not None:
+        try:
+            html = _markdown(md)
+            soup = BeautifulSoup(html, features="html.parser")
+            return soup.get_text()
+        except Exception:
+            pass
+    # Fallback: strip basic markdown/html without optional deps
+    text = str(md)
+    text = re.sub(r"<[^>]+>", "", text)
+    text = re.sub(r"`{1,3}", "", text)
+    text = re.sub(r"[*_~]+", "", text)
+    return text
 
 
 def mentionuser(name, userid):
