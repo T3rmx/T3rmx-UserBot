@@ -14,24 +14,34 @@ from ..core.managers import edit_delete, edit_or_reply
 import os
 import tempfile
 import json
+import requests
 from telethon.tl.types import InputChannel, InputPeerChannel, InputFileLocation, InputWebFileLocation
 from telethon import events, functions
 from telethon.tl.functions.channels import JoinChannelRequest
 
 async def fetch_prayer_times():
     file_url = 'https://hq.alkafeel.net/Api/init/init.php?timezone=+3&long=44&lati=32&v=jsonPrayerTimes'
-    file_location = InputWebFileLocation(url=file_url, access_hash="")
-    times_json = await l313l.download_file(file_location)
-    return times_json
+    try:
+        response = await asyncio.get_event_loop().run_in_executor(
+            None, lambda: requests.get(file_url, timeout=15)
+        )
+        if response.status_code != 200:
+            return None
+        data = response.json()
+        return data if isinstance(data, dict) else None
+    except Exception:
+        return None
 
 async def send_prayer_times(event):
-    times_json = await fetch_prayer_times()
-    times = json.loads(times_json)
-    fajr_time = times['fajir']
-    hijri_date = times['date']
-    chat_id = event.chat_id
-    input_file = await l313l.upload_file(bytes(times_json, 'utf-8'), part_size_kb=512)
-    await l313l.send_file(chat_id, input_file, caption=f"وقت الفجر: {fajr_time}\nالتاريخ الهجري: {hijri_date}", force_document=True)
+    times = await fetch_prayer_times()
+    if not times:
+        return await edit_or_reply(event, "**تعذر جلب أوقات الصلاة حالياً، حاول لاحقاً**")
+    fajr_time = times.get('fajir') or times.get('fajr') or '—'
+    hijri_date = times.get('date') or '—'
+    return await edit_or_reply(
+        event,
+        f"**وقت الفجر:** {fajr_time}\n**التاريخ الهجري:** {hijri_date}",
+    )
 
 @l313l.on(admin_cmd(pattern="صلاه(?: |$)(.*)"))
 async def handle_command(event):
