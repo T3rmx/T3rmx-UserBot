@@ -1,7 +1,11 @@
 import os
 from typing import Optional
 
-from moviepy.editor import VideoFileClip
+try:
+    from moviepy.editor import VideoFileClip
+except Exception:  # optional dependency
+    VideoFileClip = None
+
 from PIL import Image
 
 from ...core.logger import logging
@@ -50,11 +54,13 @@ async def media_to_pic(event, reply, noedits=False):  # sourcery no-metrics
             if stderr:
                 LOGS.info(stdout + stderr)
         elif catmedia.endswith(".webm"):
+            if VideoFileClip is None:
+                return catevent, None
             clip = VideoFileClip(catmedia)
             try:
-                clip = clip.save_frame(catfile, 0.1)
+                clip.save_frame(catfile, 0.1)
             except Exception:
-                clip = clip.save_frame(catfile, 0)
+                clip.save_frame(catfile, 0)
         elif catmedia.endswith(".webp"):
             im = Image.open(catmedia)
             im.save(catfile)
@@ -62,11 +68,13 @@ async def media_to_pic(event, reply, noedits=False):  # sourcery no-metrics
         await event.client.download_media(reply, catfile, thumb=-1)
         if not os.path.exists(catfile):
             catmedia = await reply.download_media(file="./temp")
+            if VideoFileClip is None:
+                return catevent, None
             clip = VideoFileClip(catmedia)
             try:
-                clip = clip.save_frame(catfile, 0.1)
+                clip.save_frame(catfile, 0.1)
             except Exception:
-                clip = clip.save_frame(catfile, 0)
+                clip.save_frame(catfile, 0)
     elif mediatype == "Document":
         mimetype = reply.document.mime_type
         mtype = mimetype.split("/")
