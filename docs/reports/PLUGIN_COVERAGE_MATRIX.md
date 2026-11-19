@@ -1,5 +1,29 @@
 # T3rmx UserBot — 104-Plugin Test Coverage Matrix
 
+## Full command sweep (2026-11-19, final)
+Every command token found in the 104 plugin sources was extracted and classified (623 entries total). Commands were sent as a normal user from Saved Messages (chat `6023224495`) in 29 batches.
+
+- **571 commands executed** (541 LOW-risk + 30 admin/menu commands safe as bare no-arg invocations in Saved Messages).
+- **52 commands deliberately skipped** (broadcast, message/data deletion, shutdown/restart, install, AFK/sleep state, mass spam/ban/kick, sudo changes) — not run without explicit approval.
+- **Result:** every executed command either returned a normal user-level response or a clear graceful Arabic message (needs reply/argument/context or external service unavailable). No unhandled exception remained in Railway logs after the final deploy.
+- **Final deploy:** `ff806ff0-7b93-43a2-a743-1a6471cf6df1` — SUCCESS, `/health` 200, all plugin modules loaded, `.فحص` replied "T3rmx UserBot is running ✓".
+
+Additional bugs found and fixed during this sweep (all committed and pushed):
+| Plugin | Error | Fix |
+|---|---|---|
+| `اضافة.py` | `struct.error: GetFullChatRequest(chat_id='...')` | reject non-numeric chat arg early |
+| `بنك.py` | missing-account guard crashed on uneditable message | edit→reply fallback |
+| `بنك.py` | handler `func=lambda m:"راتب"` (always truthy) fired on **every** message | replaced with real `_bank_game_filter` |
+| `بنك.py` | `.استثمار` with no/blank amount → `ValueError: invalid literal for int()` | validate digit amount |
+| `اغنية.py` | `.بحث` with no query → `ValueError: message cannot be empty` | require query argument |
+| `لستة.py` | empty inline results → `IndexError` | guard inline query results |
+| `الصيغ.py` | `.تحويل متحركة` without reply → `NoneType.download_media` | require media reply |
+| `اوامر الكروب.py` | `.ارسل` with no args → `IndexError: no such group` | parse/validate args |
+| `تسلية1.py` / `تسلية4.py` | animation index `i % 10`/`i % 30` exceeded short char lists | use `% len(animation_chars)` |
+| `تحذير.py` | warning without reply → `NoneType.sender_id` | require reply target |
+| `منوع.py` | prayer times: `download_file(InputWebFileLocation)` → `TypeError: Cannot cast...` | fetch via HTTP with graceful fallback |
+| `core/managers.py` / `core/client.py` | rapid testing FloodWait errors escalated to tracebacks | catch/fall back to reply; suppress transient FloodWait |
+
 ## تحديث: اختبار يدوي عبر MCP (2026-11-19)
 تم اختبار أوامر عربية/إنجليزية يدوياً في الرسائل المحفوظة (chat 6023224495) كمستخدم عادي عبر MCP. النتائج:
 - **أوامر تم تنفيذها بنجاح أو ردّت برسالة واضحة:** `.الاوامر`، `.فحص`، `.السورس`، `.المطور`، `.اذكار`، `.الردود`، `.فحص`، `.حاسبة`، `.الطقس`، `.م1`–`.م21`، `.تحديث`، `.تحديث الان`، `.غنيلي`، `.sec`، `.الم territorio`، `.معلوماتي`، `.معلومات`، `.تاك`، `.ملكية`، `.تاريخ`، `.متى`، `.تلكراف`، `.تهكير`، `.تطبيق`، `.اخفاء`، `.مصغر`، `.دنس`، `.صور`، `.تحويل`، `.زغرفة`، `.تشكيل`، `.النص`، `.لستة`، `.منشن`، `.فلم`، `.كورونا`، `.سرعة`، `.التحذيرات`، `.الملصقات`، `.انستا`، `.القنابل`، `.افعى`، `.الكعده`، `.الكمر`، `.البنر`، `.تغريد`، `.من`، `.اسم`، `.الاغنية`، `.شعر`، `.قران`، `.ثيم`، `.زيج`، `.اتصل`، `.افكر`، `.افكرر`، `.تك`، `.تخزين`، `.الفارات`، `.استخدامي`، `.قائمة`، `.رابط` — بدون أخطاء في السجل بعد الإصلاح.
