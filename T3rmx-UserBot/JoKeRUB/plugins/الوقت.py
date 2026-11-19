@@ -2,9 +2,13 @@ import os
 from datetime import datetime as dt
 
 from PIL import Image, ImageDraw, ImageFont
-from pytz import country_names as c_n
-from pytz import country_timezones as c_tz
-from pytz import timezone as tz
+try:
+    from pytz import country_names as c_n
+    from pytz import country_timezones as c_tz
+    from pytz import timezone as tz
+except Exception:
+    c_n = c_tz = {}
+    tz = None
 
 from JoKeRUB import l313l
 

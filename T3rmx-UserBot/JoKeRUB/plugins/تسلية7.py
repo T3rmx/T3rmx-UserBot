@@ -4,7 +4,10 @@
 
 import os
 
-from telegraph import exceptions, upload_file
+try:
+    from telegraph import exceptions, upload_file
+except Exception:
+    exceptions = upload_file = None
 
 from JoKeRUB import l313l
 

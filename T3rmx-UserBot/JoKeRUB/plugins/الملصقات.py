@@ -11,8 +11,14 @@ import re
 import string
 import urllib.request
 from os import remove
-import cloudscraper
-import emoji as catemoji
+try:
+    import cloudscraper
+except Exception:
+    cloudscraper = None
+try:
+    import emoji as catemoji
+except Exception:
+    catemoji = None
 from bs4 import BeautifulSoup as bs
 from PIL import Image
 from telethon import events

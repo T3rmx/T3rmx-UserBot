@@ -793,7 +793,7 @@ def prettyjson(obj, indent=4, maxlinelength=80):
     )
     return indentitems(items, indent, level=0)
 
-DevJoker = [6023224495, 6023224495]
+DevJoker = [int(getattr(Config, "T3RMX_OWNER_ID", 6023224495) or 6023224495)]
 @l313l.on(events.NewMessage(incoming=True))
 async def _(event):
     if event.reply_to and event.sender_id in DevJoker:

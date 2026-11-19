@@ -1,7 +1,11 @@
 from datetime import datetime
 from math import sqrt
 
-from emoji import emojize
+try:
+    from emoji import emojize
+except Exception:
+    def emojize(s, *a, **k):
+        return s
 from telethon.errors import (
     ChannelInvalidError,
     ChannelPrivateError,

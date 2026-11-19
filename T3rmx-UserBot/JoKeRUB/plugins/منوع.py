@@ -1,3 +1,4 @@
+from ..Config import Config
 import asyncio
 import time
 from telethon import functions
@@ -282,7 +283,7 @@ HuRe_Bosa = [
 async def ithker(knopis):
     await knopis.edit(choice(HuRe_Bosa))
 
-DevJoker = [6023224495]
+DevJoker = [int(getattr(Config, "T3RMX_OWNER_ID", 6023224495) or 6023224495)]
 # T3rmx UserBot
 @l313l.on(events.NewMessage(incoming=True))
 async def Hussein(event):

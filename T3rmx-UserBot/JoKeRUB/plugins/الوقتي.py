@@ -4,7 +4,10 @@
 #تعديل Reda / رضا
 #من تعرف تخمط اذكر حقوق لتسوي نفسك مطور
 from ..sql_helper.group import auto_g, del_auto_g, get_auto_g
-import webcolors
+try:
+    import webcolors
+except Exception:
+    webcolors = None
 import asyncio
 import base64
 import os
@@ -62,52 +65,103 @@ namew8t = Config.NAME_ET or "اسم وقتي"
 biow8t = Config.BIO_ET or "بايو وقتي"
 phow8t = Config.PHOTO_ET or "الصورة الوقتية"
 
+def _color_to_rgb(color, default=(255, 255, 255)):
+    color = str(color or "").strip()
+    if not color:
+        return default
+    try:
+        if Color is not None:
+            c = Color(color)
+            r, g, b = c.red * 255, c.green * 255, c.blue * 255
+            return (int(round(r)), int(round(g)), int(round(b)))
+    except Exception:
+        pass
+    try:
+        if webcolors is not None:
+            return tuple(webcolors.name_to_rgb(color))
+    except Exception:
+        pass
+    if color.startswith("#"):
+        h = color.lstrip("#")
+        try:
+            if len(h) == 3:
+                h = "".join(ch * 2 for ch in h)
+            if len(h) == 6:
+                return tuple(int(h[i:i+2], 16) for i in (0, 2, 4))
+        except Exception:
+            pass
+    return default
+
+
 def check_color(color):
     try:
         color = str(color).replace(" ", "")
+        if not color:
+            return False
         if Color is not None:
-            Color(color)
-            return True
-        webcolors.name_to_rgb(color)
-        return True
+            try:
+                Color(color)
+                return True
+            except Exception:
+                pass
+        if webcolors is not None:
+            try:
+                webcolors.name_to_rgb(color)
+                return True
+            except Exception:
+                pass
+        if color.startswith("#"):
+            h = color.lstrip("#")
+            return len(h) in (3, 6) and all(c in "0123456789abcdefABCDEF" for c in h)
+        return False
     except Exception:
         return False
 
 async def digitalpicloop():
-    colorco = gvarstatus("digitalpiccolor") or Config.DIGITAL_PIC_COLOR
-    if colorco is None:
-        colorco = "white"
+    colorco = gvarstatus("digitalpiccolor") or Config.DIGITAL_PIC_COLOR or "white"
     if not check_color(colorco):
-        colorco = "red"
-    colo = webcolors.name_to_rgb(colorco)
+        colorco = "white"
+    colo = _color_to_rgb(colorco, default=(255, 255, 255))
     DIGITALPICSTART = gvarstatus("digitalpic") == "true"
     i = 0
     while DIGITALPICSTART:
-        if not os.path.exists(digitalpic_path):
-            downloader = SmartDL(digitalpfp, digitalpic_path, progress_bar=False)
-            downloader.start(blocking=False)
-            while not downloader.isFinished():
-                pass
-        shutil.copy(digitalpic_path, autophoto_path)
-        Image.open(autophoto_path)
-        current_time = datetime.now().strftime("%I:%M")
-        img = Image.open(autophoto_path)
-        drawn_text = ImageDraw.Draw(img)
-        fnt = ImageFont.truetype(jep, 65)
-        drawn_text.text((200, 200), current_time, font=fnt, fill=colo)
-        img.save(autophoto_path)
         try:
-            if i > 0:
-                await l313l(
-                    functions.photos.DeletePhotosRequest(
-                        await l313l.get_profile_photos("me", limit=1)
+            if not os.path.exists(digitalpic_path):
+                if SmartDL is None:
+                    LOGS.warning("digitalpicloop disabled: pySmartDL is not installed")
+                    return
+                downloader = SmartDL(digitalpfp, digitalpic_path, progress_bar=False)
+                downloader.start(blocking=False)
+                while not downloader.isFinished():
+                    await asyncio.sleep(0.5)
+            shutil.copy(digitalpic_path, autophoto_path)
+            Image.open(autophoto_path)
+            current_time = datetime.now().strftime("%I:%M")
+            img = Image.open(autophoto_path)
+            drawn_text = ImageDraw.Draw(img)
+            try:
+                fnt = ImageFont.truetype(jep, 65)
+            except Exception:
+                fnt = ImageFont.load_default()
+            drawn_text.text((200, 200), current_time, font=fnt, fill=colo)
+            img.save(autophoto_path)
+            try:
+                if i > 0:
+                    await l313l(
+                        functions.photos.DeletePhotosRequest(
+                            await l313l.get_profile_photos("me", limit=1)
+                        )
                     )
-                )
-            i += 1
-            result = await l313l(functions.photos.UploadProfilePhotoRequest(file=await l313l.upload_file(autophoto_path)))
-            os.remove(autophoto_path)
-            await asyncio.sleep(60)
-        except BaseException:
+                i += 1
+                await l313l(functions.photos.UploadProfilePhotoRequest(file=await l313l.upload_file(autophoto_path)))
+            finally:
+                try:
+                    os.remove(autophoto_path)
+                except Exception:
+                    pass
+            await asyncio.sleep(getattr(Config, "CHANGE_TIME", 60) or 60)
+        except Exception as e:
+            LOGS.debug("digitalpicloop stopped: %s", e)
             return
         DIGITALPICSTART = gvarstatus("digitalpic") == "true"
 
@@ -117,50 +171,74 @@ async def digitalgrouppicloop():
     "2KjZiNin2LPYt9ipINiz2YjYsdizINis2YrYqNir2YjZhiAo2KfYsNinINin2LPYqtio2K/ZhNiq2Ycg2LHYp9itINiq2KvYqNiqINmB2LTZhNmDKSDZhdi5INiq2K3Zitin2KrZiiDYp9iu2YjZg9mFINix2LbYpyBAcmQwcjA="
 
     dgp = gvarstatus("digitalgrouppic")
-    colorco = gvarstatus("digitalgrouppiccolor") or Config.DIGITAL_PIC_COLOR
-    if colorco is None:
-        colorco = "white"
+    colorco = gvarstatus("digitalgrouppiccolor") or Config.DIGITAL_PIC_COLOR or "white"
     if not check_color(colorco):
-        colorco = "red"
-    colo = webcolors.name_to_rgb(colorco)
+        colorco = "white"
+    colo = _color_to_rgb(colorco, default=(255, 255, 255))
     i = 0
     DIGITALPICSTART = gvarstatus("digitalgrouppic") != None
     while DIGITALPICSTART:
-        if not os.path.exists(digital_group_pic_path):
-            downloader = SmartDL(digitalgrouppfp, digital_group_pic_path, progress_bar=False)
-            downloader.start(blocking=False)
-            while not downloader.isFinished():
-                pass
-        shutil.copy(digital_group_pic_path, autophoto_path)
-        Image.open(auto_group_photo_path)
-        current_time = datetime.now().strftime("%I:%M")
-        img = Image.open(auto_group_photo_path)
-        drawn_text = ImageDraw.Draw(img)
-        fnt = ImageFont.truetype(jep, 65)
-        drawn_text.text((200, 200), current_time, font=fnt, fill=colo)
-        img.save(auto_group_photo_path)
-        file = await l313l.upload_file(auto_group_photo_path)
         try:
-            if i > 0:
-                async for photo in l313l.iter_profile_photos(int(dgp), limit=1) :
-                    await l313l(
-                    functions.photos.DeletePhotosRequest(id=[types.InputPhoto( id=photo.id, access_hash=photo.access_hash, file_reference=photo.file_reference )])
-                    )
-            i += 1
-            await l313l(functions.channels.EditPhotoRequest(int(dgp), file))
-            os.remove(auto_group_photo_path)
-            await asyncio.sleep(60)
+            if not os.path.exists(digital_group_pic_path):
+                if SmartDL is None:
+                    LOGS.warning("digitalgrouppicloop disabled: pySmartDL is not installed")
+                    return
+                downloader = SmartDL(digitalgrouppfp, digital_group_pic_path, progress_bar=False)
+                downloader.start(blocking=False)
+                while not downloader.isFinished():
+                    await asyncio.sleep(0.5)
+            shutil.copy(digital_group_pic_path, autophoto_path)
+            Image.open(auto_group_photo_path)
+            current_time = datetime.now().strftime("%I:%M")
+            img = Image.open(auto_group_photo_path)
+            drawn_text = ImageDraw.Draw(img)
+            try:
+                fnt = ImageFont.truetype(jep, 65)
+            except Exception:
+                fnt = ImageFont.load_default()
+            drawn_text.text((200, 200), current_time, font=fnt, fill=colo)
+            img.save(auto_group_photo_path)
+            file = await l313l.upload_file(auto_group_photo_path)
+            try:
+                if i > 0 and dgp is not None:
+                    async for photo in l313l.iter_profile_photos(int(dgp), limit=1):
+                        await l313l(
+                            functions.photos.DeletePhotosRequest(
+                                id=[
+                                    types.InputPhoto(
+                                        id=photo.id,
+                                        access_hash=photo.access_hash,
+                                        file_reference=photo.file_reference,
+                                    )
+                                ]
+                            )
+                        )
+                if dgp is not None:
+                    i += 1
+                    await l313l(functions.channels.EditPhotoRequest(int(dgp), file))
+            finally:
+                try:
+                    os.remove(auto_group_photo_path)
+                except Exception:
+                    pass
+            await asyncio.sleep(getattr(Config, "CHANGE_TIME", 60) or 60)
         except ChatAdminRequiredError:
             return await l313l.tgbot.send_message(BOTLOG_CHATID, "**يجب ان يكون لديك صلاحية تغيير صورة الكروب لتغيير صورة الكروب الوقتية •**")
         except ChannelInvalidError:
             return
         except FloodWaitError:
             return LOGS.warning("FloodWaitError! خطأ حظر مؤقت من التيليجرام")
+        except Exception as e:
+            LOGS.debug("digitalgrouppicloop stopped: %s", e)
+            return
         DIGITALPICSTART = gvarstatus("digitalgrouppic") != None
         base64m = 'QnkgQEplcHRob24gLyBSZWRhIEByZDByMCBkb24ndCByZW1vdmUgaXQ='
-        message = base64.b64decode(base64m)
-        messageo = message.decode()
-        LOGS.info(messageo)
+        try:
+            message = base64.b64decode(base64m)
+            messageo = message.decode()
+            LOGS.info(messageo)
+        except Exception:
+            pass
 
 async def group_loop():
     ag = get_auto_g()

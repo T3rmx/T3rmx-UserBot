@@ -1,4 +1,7 @@
-from geopy.geocoders import Nominatim
+try:
+    from geopy.geocoders import Nominatim
+except Exception:
+    Nominatim = None
 from telethon.tl import types
 
 from JoKeRUB import l313l

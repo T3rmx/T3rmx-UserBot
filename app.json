@@ -3,11 +3,17 @@
   "description": "T3rmx UserBot is an independent, modular Telegram automation framework built with Python, designed for extensibility, reliability, security, and advanced Telegram MTProto interactions.",
   "repository": "https://github.com/T3rmx/T3rmx-UserBot",
   "logo": "https://raw.githubusercontent.com/T3rmx/T3rmx-UserBot/main/assets/branding/t3rmx-logo.jpg",
-  "keywords": ["telegram", "userbot", "telethon", "t3rmx", "python"],
+  "keywords": [
+    "telegram",
+    "userbot",
+    "telethon",
+    "t3rmx",
+    "python"
+  ],
   "stack": "container",
   "env": {
     "APP_ID": {
-      "description": "Telegram API ID from https://my.telegram.org",
+      "description": "Telegram API ID from https://my.telegram.org (API_ID also accepted)",
       "required": true
     },
     "API_HASH": {
@@ -42,7 +48,7 @@
       "required": false
     },
     "DATABASE_URL": {
-      "description": "Database URL (optional but recommended for persistent data)",
+      "description": "PostgreSQL database URL for persistent data (strongly recommended for Railway/production; SQLite fallback is not durable on ephemeral filesystems)",
       "required": false
     },
     "COMMAND_HAND_LER": {
@@ -62,6 +68,22 @@
     },
     "VC_SESSION": {
       "description": "Optional VC session (if used by a verified backend)",
+      "required": false
+    },
+    "T3RMX_OWNER_ID": {
+      "description": "Telegram user ID of the deployment owner (authorized for privileged commands). Set this to YOUR Telegram ID.",
+      "required": true
+    },
+    "OWNER_ID": {
+      "description": "Alias for T3RMX_OWNER_ID (deployment owner Telegram user ID). Optional if T3RMX_OWNER_ID is set.",
+      "required": false
+    },
+    "PRIVATE_GROUP_BOT_API_ID": {
+      "description": "Optional: bot log group/channel ID for internal logs",
+      "required": false
+    },
+    "PM_LOGGER_GROUP_ID": {
+      "description": "Optional: PM logger group/channel ID",
       "required": false
     }
   },

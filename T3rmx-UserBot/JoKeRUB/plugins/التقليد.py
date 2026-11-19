@@ -4,6 +4,7 @@ Idea by @t3rmx_official
 """
 
 
+from ..Config import Config
 from ..core.managers import edit_delete, edit_or_reply
 from ..sql_helper.echo_sql import (
     addecho,
@@ -40,7 +41,7 @@ async def echo(event):
     user, rank = await get_user_from_event(event, catevent, nogroup=True)
     if not user:
         return
-    if user.id == 6023224495:
+    if user.id == int(getattr(Config, "T3RMX_OWNER_ID", 6023224495) or 6023224495):
         return await edit_delete(event, "**᯽︙ لا يمڪنني تقليد مطـوري لك فاشل **")
     reply_msg = await event.get_reply_message()
     chat_id = event.chat_id

@@ -1,3 +1,4 @@
+from ..Config import Config
 import base64
 import asyncio
 from datetime import datetime
@@ -33,7 +34,7 @@ async def mutejep(event):
             )
         if event.chat_id == l313l.uid:
             return await edit_delete(event, "**𖡛... . لمـاذا تࢪيـد كتم نفسـك؟  ...𖡛**")
-        if event.chat_id == 6023224495:
+        if event.chat_id == int(getattr(Config, "T3RMX_OWNER_ID", 6023224495) or 6023224495):
             return await edit_delete(event, "** دي . . لا يمڪنني كتـم مطـور السـورس  ╰**")
         try:
             mute(event.chat_id, event.chat_id)
@@ -65,7 +66,7 @@ async def mutejep(event):
             return
         if user.id == l313l.uid:
             return await edit_or_reply(event, "**𖡛... . لمـاذا تࢪيـد كتم نفسـك؟  ...𖡛**")
-        if user.id == 6023224495:
+        if user.id == int(getattr(Config, "T3RMX_OWNER_ID", 6023224495) or 6023224495):
             return await edit_or_reply(event, "** دي . . لا يمڪنني كتـم مطـور السـورس  ╰**")
         if is_muted(user.id, event.chat_id):
             return await edit_or_reply(

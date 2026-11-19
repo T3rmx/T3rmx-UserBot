@@ -11,7 +11,10 @@ import string
 from datetime import datetime
 
 from PIL import Image
-from telegraph import Telegraph, exceptions, upload_file
+try:
+    from telegraph import Telegraph, exceptions, upload_file
+except Exception:
+    Telegraph = exceptions = upload_file = None
 from telethon.utils import get_display_name
 
 from JoKeRUB import l313l
@@ -25,9 +28,25 @@ LOGS = logging.getLogger(__name__)
 plugin_category = "utils"
 
 
-telegraph = Telegraph()
-r = telegraph.create_account(short_name=Config.TELEGRAPH_SHORT_NAME)
-auth_url = r["auth_url"]
+telegraph = None
+auth_url = None
+
+
+def _get_telegraph():
+    global telegraph, auth_url
+    if telegraph is not None:
+        return telegraph
+    if Telegraph is None:
+        return None
+    try:
+        client = Telegraph()
+        r = client.create_account(short_name=getattr(Config, "TELEGRAPH_SHORT_NAME", "t3rmx") or "t3rmx")
+        telegraph = client
+        auth_url = (r or {}).get("auth_url")
+        return telegraph
+    except Exception as e:
+        LOGS.debug("Telegraph init failed: %s", e)
+        return None
 
 
 def resize_image(image):
@@ -73,11 +92,21 @@ async def _(event):
         await jokevent.edit(f"` ⌔︙تـم التحـميل الـى {downloaded_file_name}`")
         if downloaded_file_name.endswith((".webp")):
             resize_image(downloaded_file_name)
+        if upload_file is None:
+            try:
+                os.remove(downloaded_file_name)
+            except Exception:
+                pass
+            return await jokevent.edit("** ⌔︙ميزة تلكراف غير متاحة حاليًا (حزمة telegraph غير مثبتة).**")
         try:
             media_urls = upload_file(downloaded_file_name)
-        except exceptions.TelegraphException as exc:
+        except Exception as exc:
             await jokevent.edit(f"** ⌔︙خـطأ : **\n`{exc}`")
-            os.remove(downloaded_file_name)
+            try:
+                os.remove(downloaded_file_name)
+            except Exception:
+                pass
+            return
         else:
             end = datetime.now()
             ms = (end - start).seconds
@@ -107,15 +136,18 @@ async def _(event):
                 page_content += m.decode("UTF-8") + "\n"
             os.remove(downloaded_file_name)
         page_content = page_content.replace("\n", "<br>")
+        tg = _get_telegraph()
+        if tg is None:
+            return await jokevent.edit("** ⌔︙ميزة تلكراف غير متاحة حاليًا (حزمة telegraph غير مثبتة أو فشل التهيئة).**")
         try:
-            response = telegraph.create_page(title_of_page, html_content=page_content)
+            response = tg.create_page(title_of_page, html_content=page_content)
         except Exception as e:
             LOGS.info(e)
             title_of_page = "".join(
                 random.choice(list(string.ascii_lowercase + string.ascii_uppercase))
                 for _ in range(16)
             )
-            response = telegraph.create_page(title_of_page, html_content=page_content)
+            response = tg.create_page(title_of_page, html_content=page_content)
         end = datetime.now()
         ms = (end - start).seconds
         joker = f"https://telegra.ph/{response['path']}"

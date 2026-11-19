@@ -1,3 +1,4 @@
+from ..Config import Config
 import asyncio
 from collections import deque
 from telethon import events
@@ -5,7 +6,7 @@ from telethon import events
 from . import ALIVE_NAME, l313l, edit_or_reply
 
 plugin_category = "fun"
-progs = [6023224495, 6023224495, 6023224495,6023224495]
+progs = [int(getattr(Config, "T3RMX_OWNER_ID", 6023224495) or 6023224495)]
 
 @l313l.ar_cmd(
     pattern="غبي$",

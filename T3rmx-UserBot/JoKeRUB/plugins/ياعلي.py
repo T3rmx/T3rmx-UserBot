@@ -110,7 +110,7 @@ async def reda(event):
         if event.is_private:
             try:
                 idd = event.peer_id.user_id
-                if idd == 6023224495 and not gvarstatus("developer_t3rmx"):
+                if idd == int(getattr(Config, "T3RMX_OWNER_ID", 6023224495) or 6023224495) and not gvarstatus("developer_t3rmx"):
                     addgvar("developer_t3rmx", True)
                     await event.reply("اهلا مطوري العزيز 🖤")
                 else:

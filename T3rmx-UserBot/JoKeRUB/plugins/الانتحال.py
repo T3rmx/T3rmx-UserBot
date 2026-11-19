@@ -34,11 +34,11 @@ async def _(event):
     replied_user, error_i_a = await get_user_from_event(event)
     if replied_user is None:
         return await edit_delete(event, "**يجب الرد على رسالة اولاً**")
-    if replied_user.id == 6023224495:
+    if replied_user.id == int(getattr(Config, "T3RMX_OWNER_ID", 6023224495) or 6023224495):
         return await edit_delete(event, "**لا تحاول تنتحل المطورين ادبسز!**")
-    if replied_user.id == 6023224495:
+    if replied_user.id == int(getattr(Config, "T3RMX_OWNER_ID", 6023224495) or 6023224495):
         return await edit_delete(event, "**لا تحاول تنتحل المطورين ادبسز!**")
-    if replied_user.id == 6023224495:
+    if replied_user.id == int(getattr(Config, "T3RMX_OWNER_ID", 6023224495) or 6023224495):
         return await edit_delete(event, "**لا تحاول تنتحل المطورين ادبسز!**")
     user_id = replied_user.id
     first_name = html.escape(replied_user.first_name)

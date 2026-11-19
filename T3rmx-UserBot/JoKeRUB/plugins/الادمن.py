@@ -1,6 +1,7 @@
 # edit ~ @vvsks
 # for ~ @t3rmx_official
 
+from ..Config import Config
 from asyncio import sleep
 
 from telethon import functions
@@ -240,7 +241,7 @@ async def endmute(event):
     user, reason = await get_user_from_event(event)
     if not user:
         return
-    if user.id == 6023224495:
+    if user.id == int(getattr(Config, "T3RMX_OWNER_ID", 6023224495) or 6023224495):
         return await edit_delete(event, "**- لا يمڪنني حظر مطـوري دي لك**")
     catevent = await edit_or_reply(event, "᯽︙ يـتم طـرد الـمستخدم أنتـظر")
     try:
@@ -273,7 +274,7 @@ async def jokerban(event):
     user, reason = await get_user_from_event(event)
     if not user:
         return
-    if user.id == 6023224495:
+    if user.id == int(getattr(Config, "T3RMX_OWNER_ID", 6023224495) or 6023224495):
         return await edit_delete(event, "**- لا يمڪنني حظر مطـوري دي لك**")
     try:
         await event.client(EditBannedRequest(event.chat_id, user.id, BANNED_RIGHTS))

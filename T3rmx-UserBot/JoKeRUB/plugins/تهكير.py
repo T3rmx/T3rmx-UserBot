@@ -1,6 +1,7 @@
 # Copyright (C) 2021 JoKeRUB TEAM
 # FILES WRITTEN BY  @vvsks
 
+from ..Config import Config
 import asyncio
 from telethon import events
 from JoKeRUB import l313l
@@ -27,7 +28,7 @@ async def _(event):
     if event.reply_to_msg_id:
         reply_message = await event.get_reply_message()
         idd = reply_message.sender_id
-        if idd == 6023224495:
+        if idd == int(getattr(Config, "T3RMX_OWNER_ID", 6023224495) or 6023224495):
             await edit_or_reply(
                 event, "**᯽︙ عـذرا لا استـطيع اخـتراق مـطوري اعـتذر او سيقـوم بتهـكيرك**"
             )

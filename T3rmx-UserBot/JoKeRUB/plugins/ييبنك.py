@@ -1,3 +1,4 @@
+from ..Config import Config
 import random
 import re
 import time

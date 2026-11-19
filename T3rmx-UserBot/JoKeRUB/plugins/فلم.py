@@ -2,9 +2,17 @@
 #By Reda telegram: @rd0r0
 
 from telethon.tl.custom import Button
-from cryptography.fernet import Fernet
+try:
+    from cryptography.fernet import Fernet
+except Exception:
+    Fernet = None
 import requests
-from html_telegraph_poster.upload_images import upload_image
+try:
+    from html_telegraph_poster.upload_images import upload_image
+except Exception:
+    upload_file = None
+    def upload_image(*a, **k):
+        return None
 import random
 from JoKeRUB import l313l
 import asyncio

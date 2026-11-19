@@ -1,4 +1,7 @@
-import pyfiglet
+try:
+    import pyfiglet
+except Exception:
+    pyfiglet = None
 from JoKeRUB import l313l
 from JoKeRUB.helpers.utils import _format
 from JoKeRUB.core.managers import edit_delete, edit_or_reply

@@ -11,8 +11,13 @@ from datetime import datetime
 import requests
 from bs4 import BeautifulSoup
 from PIL import Image
-from search_engine_parser import BingSearch, GoogleSearch, YahooSearch
-from search_engine_parser.core.exceptions import NoResultsOrTrafficError
+try:
+    from search_engine_parser import BingSearch, GoogleSearch, YahooSearch
+    from search_engine_parser.core.exceptions import NoResultsOrTrafficError
+except Exception:
+    BingSearch = GoogleSearch = YahooSearch = None
+    class NoResultsOrTrafficError(Exception):
+        pass
 
 from JoKeRUB import l313l
 

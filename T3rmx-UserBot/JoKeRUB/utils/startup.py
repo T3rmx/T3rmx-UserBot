@@ -229,11 +229,16 @@ async def load_plugins(folder, extfolder=None):
                                 try:
                                     from ..helpers.utils import install_pip
                                     install_pip(e.name)
+                                    check += 1
+                                    continue
                                 except Exception:
                                     pass
                             check += 1
                             if shortname not in failure:
                                 failure.append(shortname)
+                            LOGS.warning(
+                                f"Could not load {shortname}: missing optional dependency module {getattr(e, 'name', None) or e} (path: {plugin_path})"
+                            )
                             if check > 1:
                                 break
                 else:

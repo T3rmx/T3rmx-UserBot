@@ -4,7 +4,10 @@ Available Options: image, file, text"""
 
 from time import time
 
-import speedtest
+try:
+    import speedtest
+except Exception:
+    speedtest = None
 
 from JoKeRUB import l313l
 

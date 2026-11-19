@@ -1,6 +1,9 @@
 import time
 
-from prettytable import PrettyTable
+try:
+    from prettytable import PrettyTable
+except Exception:
+    PrettyTable = None
 
 from JoKeRUB import l313l
 

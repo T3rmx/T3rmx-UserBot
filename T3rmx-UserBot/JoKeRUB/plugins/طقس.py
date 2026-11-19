@@ -4,9 +4,13 @@ from datetime import datetime
 
 import aiohttp
 import requests
-from pytz import country_names as c_n
-from pytz import country_timezones as c_tz
-from pytz import timezone as tz
+try:
+    from pytz import country_names as c_n
+    from pytz import country_timezones as c_tz
+    from pytz import timezone as tz
+except Exception:
+    c_n = c_tz = {}
+    tz = None
 
 from ..Config import Config
 from ..helpers.utils import _format

