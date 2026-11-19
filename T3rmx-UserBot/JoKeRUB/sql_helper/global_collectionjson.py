@@ -1,5 +1,21 @@
 from sqlalchemy import Column, UnicodeText
-from sqlalchemy_json import MutableJson, NestedMutableJson
+
+try:
+    from sqlalchemy_json import MutableJson, NestedMutableJson
+except Exception:  # fallback when sqlalchemy-json package is unavailable
+    try:
+        from sqlalchemy import JSON
+    except Exception:  # SQLAlchemy 1.x compatibility
+        from sqlalchemy.types import JSON  # type: ignore
+
+    try:
+        from sqlalchemy.ext.mutable import MutableDict
+
+        MutableJson = MutableDict.as_mutable(JSON)
+        NestedMutableJson = MutableDict.as_mutable(JSON)
+    except Exception:
+        MutableJson = JSON
+        NestedMutableJson = JSON
 
 from . import BASE, SESSION
 
