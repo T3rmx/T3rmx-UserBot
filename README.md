@@ -29,10 +29,10 @@ See [docs/audit/FEATURE_INVENTORY.md](docs/audit/FEATURE_INVENTORY.md) and [docs
 
 ## Deploy on Railway
 
-[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/t3rmx-sours)
+[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/t3rmx-sours-1)
 
-**Public template:** <https://railway.com/deploy/t3rmx-sours>  
-**Template page:** <https://railway.com/template/t3rmx-sours>
+**Public template:** <https://railway.com/deploy/t3rmx-sours-1>  
+**Template page:** <https://railway.com/template/t3rmx-sours-1>
 
 Deploy your own independent T3rmx UserBot instance on Railway. The template is configured to provision an application service and a separate PostgreSQL database for each deployment. You must provide **your own** Telegram credentials, session, bot token, and `T3RMX_OWNER_ID`; never reuse another deployment’s secrets, session, or database.
 

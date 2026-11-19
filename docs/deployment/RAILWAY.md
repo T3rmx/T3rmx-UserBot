@@ -4,14 +4,14 @@ This repository includes Railway deployment configuration (`railway.json`, `Dock
 
 ## Public Railway template
 
-[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/t3rmx-sours)
+[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/t3rmx-sours-1)
 
-- **Deploy URL:** <https://railway.com/deploy/t3rmx-sours>
-- **Template page:** <https://railway.com/template/t3rmx-sours>
+- **Deploy URL:** <https://railway.com/deploy/t3rmx-sours-1>
+- **Template page:** <https://railway.com/template/t3rmx-sours-1>
 
 The template page/deploy manifest is publicly accessible and describes deployment from this repository (`main`, Dockerfile, `python3 -m JoKeRUB`, healthcheck `/health`) with a separate PostgreSQL service for each deployment. Deployers must supply their own Telegram credentials/session/bot token and `T3RMX_OWNER_ID`; each instance must use its own independent database.
 
-> **Verification status (evidenced):** deploy page reachable (`200`) and template content/manifest available. Independent fresh deployment tests, Telethon/runtime validation, and DB persistence checks are not yet fully evidenced in this repository.
+> **Verification status (evidenced):** deploy page and template page reachable (`200`) with template content visible. The machine-readable manifest endpoint (`/manifest.json`) currently returns `503` and is not available. Independent fresh deployment tests, Telethon/runtime validation, and DB persistence checks are not yet fully evidenced in this repository.
 
 ## Deployment model (template-ready)
 
