@@ -76,7 +76,8 @@ class Config(object):
     TZ = os.environ.get("TZ", "Asia/Aden")
 
     # Telegram credentials (user-provided; never hardcode)
-    APP_ID = _get_int("APP_ID", 0)
+    # Accept APP_ID or API_ID for compatibility with common deploy env naming
+    APP_ID = _get_int("APP_ID", _get_int("API_ID", 0))
     API_HASH = os.environ.get("API_HASH") or None
     STRING_SESSION = os.environ.get("STRING_SESSION", None)
     TG_BOT_TOKEN = os.environ.get("TG_BOT_TOKEN") or os.environ.get("TG_BOT_TOKEN_BF_HER", None)
@@ -84,8 +85,8 @@ class Config(object):
     TG_BOT_USERNAME = _normalize_bot_username(os.environ.get("TG_BOT_USERNAME", None))
     ALIVE_NAME = os.environ.get("ALIVE_NAME", T3RMX_DISPLAY_NAME)
 
-    # Database / storage
-    DB_URI = os.environ.get("DATABASE_URL", os.environ.get("DB_URI", None))
+    # Database / storage (empty env values treated as unset)
+    DB_URI = os.environ.get("DATABASE_URL") or os.environ.get("DB_URI") or None
 
     # Logging/groups (configurable; no invented IDs)
     PRIVATE_GROUP_BOT_API_ID = _get_int("PRIVATE_GROUP_BOT_API_ID", T3RMX_LOG_GROUP_ID)

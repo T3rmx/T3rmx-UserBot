@@ -9,20 +9,42 @@ from ..core.logger import logging
 
 LOGS = logging.getLogger(__name__)
 
+def _resolve_db_uri():
+    uri = getattr(Config, "DB_URI", None)
+    if isinstance(uri, str):
+        uri = uri.strip()
+    if not uri:
+        # Safe local fallback when DATABASE_URL/DB_URI is not provided
+        return "sqlite:///t3rmx.db"
+    return uri
+
+
+BASE = declarative_base()
+# Keep a stable session object so `from . import SESSION` bindings remain valid
+SESSION = scoped_session(sessionmaker())
+
+
 def start() -> scoped_session:
-    engine = create_engine(Config.DB_URI)
+    uri = _resolve_db_uri()
+    try:
+        engine = create_engine(uri)
+    except Exception as e:
+        LOGS.error(
+            f"Database engine init failed for configured URI, falling back to local SQLite: {e}"
+        )
+        engine = create_engine("sqlite:///t3rmx.db")
     BASE.metadata.bind = engine
     BASE.metadata.create_all(engine)
-    return scoped_session(sessionmaker(bind=engine, autoflush=False))
+    SESSION.remove()
+    SESSION.configure(bind=engine, autoflush=False)
+    return SESSION
 
 
 try:
-    BASE = declarative_base()
-    SESSION = start()
-except AttributeError as e:
-    # this is a dirty way for the work-around required for #23
+    start()
+except Exception as e:
     LOGS.error(
-        "DB_URI is not configured. Features depending on the database might have issues."
+        "Database initialization failed. Features depending on the database may not work."
     )
-    LOGS.error(str(e))
+    LOGS.exception(e)
 
