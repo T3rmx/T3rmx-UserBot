@@ -1,4 +1,3 @@
-# WRITED BY - @VUUZZ - @vvsks
 
 import io
 import os
@@ -65,7 +64,6 @@ async def waifu(animu):
         ],
         "examples": "{tr}stcr hello",
     },
-) # WRITED BY - @VUUZZ - @vvsks
 async def sticklet(event):
     " ⌔︙النص الخاص بك كملصق"
     R = random.randint(0, 256)
@@ -114,7 +112,6 @@ async def sticklet(event):
     except BaseException:
         pass
 
-# WRITED BY - @VUUZZ - @vvsks
 @l313l.ar_cmd(
     pattern="هونك(?:\s|$)([\s\S]*)",
     command=("هونك", plugin_category),
@@ -175,7 +172,6 @@ async def twt(event):
         "usage": "{tr}doge <text/reply to msg>",
         "examples": "{tr}doge Gib money",
     },
-) # WRITED BY - @VUUZZ - @vvsks
 async def doge(event):
     " ⌔︙اصنع ستيكر كلب رائع."
     text = event.pattern_match.group(1)
@@ -191,7 +187,6 @@ async def doge(event):
     text = deEmojify(text)
     await event.delete()
     await hide_inlinebot(event.client, bot_name, text, event.chat_id, reply_to_id)
-# WRITED BY - @VUUZZ - @vvsks
 
 @l313l.ar_cmd(
     pattern="غلاكس(|ر)(?:\s|$)([\s\S]*)",
@@ -230,4 +225,3 @@ async def glax(event):
     await hide_inlinebot(
         event.client, bot_name, text, event.chat_id, reply_to_id, c_lick=c_lick
     )
-    # WRITED BY - @VUUZZ - @vvsks

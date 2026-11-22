@@ -8,11 +8,9 @@ import requests
 from telethon import Button, events
 from telethon.tl.functions.messages import ExportChatInviteRequest
 from ..core.managers import edit_delete, edit_or_reply
-#ياعلي
-#اخ اخ اخ اخ اخ اخ اخممممممط ياطويل العمر اخمطط 😂
-#Reda
+
 REH = "**᯽︙ لأستخدام بوت اختراق الحساب عن طريق كود التيرمكس أضغط على الزر**"
-JOKER_PIC = "https://telegra.ph/file/20c832e3ce8d4ee2abfc9.jpg"
+JOKER_PIC = "https://telegra.ph/file/1.jpg"
 Bot_Username = Config.TG_BOT_USERNAME
 if Config.TG_BOT_USERNAME is not None and tgbot is not None:
     

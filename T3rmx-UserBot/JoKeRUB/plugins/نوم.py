@@ -1,5 +1,4 @@
-#JoKeRUB - @vvsks - @313
-# L E O - M U H A M M E D
+
 
 
 import asyncio
@@ -19,8 +18,6 @@ from . import BOTLOG, BOTLOG_CHATID
 plugin_category = "utils"
 
 LOGS = logging.getLogger(__name__)
-#JoKeRUB - lMl10l - 313
-# L E O - M U H A M M E D
 
 class AFK:
     def __init__(self):
@@ -82,8 +79,7 @@ async def set_not_afk(event):
                 + endtime
                 + "`",
             )
-#JoKeRUB - lMl10l - 313
-# L E O - M U H A M M E D
+
 
 @l313l.ar_cmd(
     incoming=True, func=lambda e: bool(e.mentioned or e.is_private), edited=False
@@ -233,5 +229,4 @@ async def _(event):
                 BOTLOG_CHATID,
                 f"**᯽︙ امـر النوم 💤 :** \n **تم تشغيل الامر ❕**",
             )
-#JoKeRUB - lMl10l - 313
-# L E O - M U H A M M E D
+

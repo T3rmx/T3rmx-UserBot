@@ -1,6 +1,4 @@
-# By Reda for JoKeRUB
-# Tel: @rd0r0
-# شعندك داخل للملف تريد تخمطة ههههههههه اخمط ونسبة لنفسك ماوصيك :*
+
 from JoKeRUB import l313l
 import asyncio
 import time

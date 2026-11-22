@@ -43,7 +43,7 @@ plugin_category = "utils"
             "{tr}المشرفيـن +إسم المستخـدم/معرّف المستخـدم> ✪",
             "{tr}المشرفيـن + في المجموعـة التي تريدهـا> ✪",
         ],
-        "examples": "{tr}المشرفين @l313l",
+        "examples": "{tr}المشرفين @vvsks",
     },
 )
 async def _(event):
@@ -303,7 +303,6 @@ async def fetch_info(chat, event):  # sourcery no-metrics
     except Exception:
         dc_id = "Unknown"
 
-    # this is some spaghetti I need to change
     description = chat.full_chat.about
     members = (
         chat.full_chat.participants_count

@@ -78,7 +78,7 @@ async def _(event):
     command=("بايو اجنبي", plugin_category),)
 async def _(event):
     await event.edit("**يتم تجـهيز نبـذة اجنبـية لأجـلك انتـظر**")
-    await asyncio.sleep(3)
+    await asyncio.sleep(1)
     arj = random.choice(JEP)
     return await event.edit(f"{arj}")
     
@@ -88,7 +88,7 @@ async def _(event):
     command=("بايو عربي", plugin_category),)
 async def _(event):
     await event.edit("** يتم تجـهيز نبـذة عربيـة لأجـلك انتـظر**")
-    await asyncio.sleep(3)
+    await asyncio.sleep(1)
     arj = random.choice(JEPIRQ)
     return await event.edit(f"{arj}")
     
@@ -163,7 +163,6 @@ async def _(event):
                 "-𝐅𝐑𝐈𝐃𝐀𝐘.♡\n"
                 "-𝐒𝐀𝐓𝐔𝐑𝐃𝐀𝐘.♡"
             )
-# ˛ JoKeRUB ، ٰUٍsٓEِrBُoََt  # 
 
 @l313l.ar_cmd(
     pattern="اسماء عربية$",
@@ -198,9 +197,8 @@ async def _(event):
                 "- ﭑيَـﯡشہ𓆤.\n"
                 "- ࢪ࣪نَـشہ𓆤.\n"
                 "- سَݛﯠشہ𓆤.\n"
-                "- فَطـﯡشہ𓆤."
+                "- فَطـ<tool_call>شہ𓆤."
             )
-# ˛ JoKeRUB ، ٰUٍsٓEِrBُoََt  # 
 #by ~ @vvsks
 @l313l.ar_cmd(
     pattern="شباب1$",
@@ -244,8 +242,6 @@ async def _(event):
                 "「𝘋𝘮𝘢𝘳 𐃣.\n"
                 "「𝘑𝘮𝘳𝘢 𐃣."
             )
-# ˛ JoKeRUB ، ٰUٍsٓEِrBُoََt  # 
-#by ~ @vvsks
 @l313l.ar_cmd(
     pattern="شباب2$",
     command=("شباب2", plugin_category),
@@ -296,7 +292,6 @@ async def _(event):
                 "𓂐 𝙃𝙈𝙊 𖠛 .\n"
                 "𓂐 𝙅𝙊𝙅 𖠛 ."
             )
-# ˛ JoKeRUB ، ٰUٍsٓEِrBُoََt  # 
 #by ~ @vvsks
 @l313l.ar_cmd(
     pattern="بنات1$",
@@ -354,7 +349,7 @@ async def _(event):
                 "𓂐 𝙀𝙑𝘼 𖠛 .\n"
                 "𓂐 𝘼𝙈𝙔  𖠛 ."
             )
-# ˛ 𝖩𝗆𝗍𝖧ٰ𝗈𝗇 ، ٰUٍsٓEِrBُoََt  # 
+
 #by ~ @vvsks
 @l313l.ar_cmd(
     pattern="بنات2$",
@@ -398,7 +393,7 @@ async def _(event):
                 "𝄇 𝗞𝗢𝗞𝗔𝆹𝅥𝅮 𝄆💘"
             )
         
-# ˛ JoKeRUB ، ٰUٍsٓEِrBُoََt  # 
+
 #by ~ @vvsks
 @l313l.ar_cmd(
     pattern="قنوات$",
@@ -451,7 +446,7 @@ async def _(event):
                 ":   ˹𝙍𝙄𝙏𝘼˼ 𓆪 .\n"
                 ": ..................."
             )
-# ˛ JoKeRUB ، ٰUٍsٓEِrBُoََt  # 
+
 #by ~ @vvsks
 @l313l.ar_cmd(
     pattern="اختصارات1$",
@@ -547,7 +542,7 @@ async def _(event):
                 "يـ؏\n"
                 "أﯠﯠ؏\n"
             )
-# ˛ JoKeRUB ، ٰUٍsٓEِrBُoََt  # 
+
 #by ~ @vvsks
 @l313l.ar_cmd(
     pattern="اختصارات2$",
@@ -587,7 +582,7 @@ async def _(event):
                 "بـاردۿ`"
             )
         
-# ˛ JoKeRUB ، ٰUٍsٓEِrBُoََt  # 
+
 #by ~ @vvsks
 @l313l.ar_cmd(
     pattern="اختصارات3$",
@@ -638,7 +633,7 @@ async def _(event):
                 "• ؏ــيني"
             )
         
-# ˛ JoKeRUB ، ٰUٍsٓEِrBُoََt  # 
+
 #by ~ @vvsks
 @l313l.ar_cmd(
     pattern="اختصارات4$",
@@ -686,7 +681,7 @@ async def _(event):
                 "ٵჂ̤"
             )
         
-# ˛ JoKeRUB ، ٰUٍsٓEِrBُoََt  # 
+
 #by ~ @vvsks
 @l313l.ar_cmd(
     pattern="اختصارات5$",

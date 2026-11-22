@@ -7,7 +7,6 @@ from telethon.events import CallbackQuery, InlineQuery
 
 from JoKeRUB import CMD_HELP, l313l
 
-# 𝗧𝗲𝗹𝗲𝗚𝗿𝗮𝗠 : @t3rmx_official  ~ @vvsks
 from ..core.decorators import check_owner
 
 CALC = {}
@@ -111,7 +110,6 @@ async def inlinecalc(event):
         await event.answer([calc])
 
 
-# 𝗧𝗲𝗹𝗲𝗚𝗿𝗮𝗠 : @t3rmx_official  ~ @vvsks
 @l313l.tgbot.on(CallbackQuery(data=re.compile(b"calc(.*)")))
 @check_owner
 async def _(e):  # sourcery no-metrics
@@ -177,7 +175,6 @@ async def _(e):  # sourcery no-metrics
         await e.answer(str(x))
 
 
-# 𝗧𝗲𝗹𝗲𝗚𝗿𝗮𝗠 : @t3rmx_official  ~ @vvsks
 @l313l.tgbot.on(CallbackQuery(data=re.compile(b"recalc")))
 @check_owner
 async def _(e):

@@ -1,7 +1,4 @@
-#ياقائم آل محمد
-#ربي اشرح لي صدري
-#تمت كتابة الكود من قبل السيد حسين @vvsks
-# T3rmx UserBot - @t3rmx_official
+
 import asyncio
 from telethon import events
 from JoKeRUB import l313l

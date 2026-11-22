@@ -46,5 +46,3 @@ async def get_adzan(adzan):
     "
     await edit_or_reply(adzan, l313lresult, "html")
 
-# Copyright (C) 2021 JoKeRUB TEAM
-# FILES WRITTEN BY  @vvsks

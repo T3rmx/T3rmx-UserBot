@@ -1,4 +1,3 @@
-# JoKeRUB module for purging unneeded messages(usually spam or ot).
 import re
 from asyncio import sleep
 
@@ -120,7 +119,6 @@ async def Hussein(event):
     await smsg.delete()
 
 
-# TODO: only sticker messages.
 @l313l.ar_cmd(
     pattern="تنظيف(?:\s|$)([\s\S]*)",
     command=("تنظيف", plugin_category),

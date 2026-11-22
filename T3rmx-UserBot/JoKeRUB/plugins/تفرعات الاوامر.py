@@ -1,6 +1,4 @@
-# WRITE  BY @vvsks
-# PLUGIN FOR JoKeRUB
-# @t3rmx_official
+
 
 import random
 from telethon import events
@@ -15,7 +13,6 @@ from ..core.managers import edit_or_reply
 
 plugin_category = "extra"
 
-# اوامر الادمن لـ T3rmx UserBot
 
 @l313l.ar_cmd(
     pattern="اوامر الحظر$",

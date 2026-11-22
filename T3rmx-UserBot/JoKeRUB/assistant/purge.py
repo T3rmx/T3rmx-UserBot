@@ -1,6 +1,5 @@
-#(c) Copyright JoKeRUB 2020-21
-#جميع الحقوق محفودظة لT3rmx UserBot 
-#By ~  @RR9R7
+ 
+
 import asyncio
 
 from telethon import events

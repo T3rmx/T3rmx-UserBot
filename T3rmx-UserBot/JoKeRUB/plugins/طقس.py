@@ -21,7 +21,6 @@ from . import l313l, edit_or_reply, reply_id
 plugin_category = "utils"
 
 LOGS = logging.getLogger(__name__)
-# Get time zone of the given country. Credits: @aragon12 and @zakaryan2004.
 async def get_tz(con):
     for c_code in c_n:
         if con == c_n[c_code]:

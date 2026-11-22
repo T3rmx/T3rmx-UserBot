@@ -1,6 +1,3 @@
-# Copyright (C) 2021 JoKeRUB TEAM
-# FILES WRITTEN BY  @vvsks
-
 from telethon import events
 from telethon.utils import get_display_name
 

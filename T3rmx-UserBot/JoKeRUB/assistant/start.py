@@ -114,10 +114,7 @@ async def starkislub(event):
     
 
 
-"""  حقوقي شرفك تغير شي تلعب بشرفك """
 
-# بـسـم الله الـرحمن الـرحيم  🤍
-# استغـفر ربـك وانت تاخـذ الملفـات النفسـك 🖤، 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"rozzag"))) 
 async def settings(event):
     if event.sender_id == bot.uid:
@@ -141,7 +138,7 @@ async def settings(event):
 
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"rozname"))) 
-async def settings(event):  #    قـسـم  الزغرفـة جمـثـون
+async def settings(event):  
     if event.sender_id == bot.uid:
         await event.delete()
         await tgbot.send_message(event.chat_id,
@@ -159,7 +156,7 @@ async def settings(event):  #    قـسـم  الزغرفـة جمـثـون
 
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"razan")))  
-async def settings(event):  #    قـسـم  الزغرفـة لأسـماء الشـباب
+async def settings(event):  
     if event.sender_id == bot.uid:
         await event.delete()
         await tgbot.send_message(event.chat_id,
@@ -177,9 +174,9 @@ async def settings(event):  #    قـسـم  الزغرفـة لأسـماء ا�
 
 
 
-# Boys zag list1 - قائمه اسماء الشباب الاولى
+# Boys zag list1 - قائمه اسماء الشباب 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"rzan1")))
-async def settings(event): #    قـسـم  الزغرفـة لأسـماء الشـباب 1
+async def settings(event): #   
     if event.sender_id == bot.uid:
         await event.delete()
         await tgbot.send_message(event.chat_id,
@@ -375,7 +372,7 @@ async def settings(event):#    قـسم  السنـوات  :)
 
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"chanlan")))  
-async def settings(event):  # انتهـى  :)  اذا تخـمط تـذكر تعـب غـيرك  :)
+async def settings(event):  
     if event.sender_id == bot.uid:
         await event.delete()
         await tgbot.send_message(event.chat_id, 

@@ -1,7 +1,4 @@
 """
-JoKeRUB team ©
-By Reda
-sub Hussein
 """
 import os
 from datetime import datetime
@@ -28,7 +25,6 @@ except Exception:
 
 plugin_category = "utils"
 
-#لتخمط الملف اذا انته ابن گحبة انسخ وألصق لسورسك وصيح اني مطور الملف متعوب عليه وشغل ايد
 
 @l313l.ar_cmd(pattern="احجي(?:\s|$)([\s\S]*)",
                command=("احجي", plugin_category),

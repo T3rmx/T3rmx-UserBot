@@ -1,5 +1,4 @@
-# T3rmx UserBot - Safe update checker (GitHub code/commits)
-# No auto-install, no pip, no arbitrary downloads/execution.
+
 
 import asyncio
 import json

@@ -1,13 +1,14 @@
 {
   "summary": {
     "total": 104,
-    "exec_ok": 104,
-    "failed": 0,
-    "with_ar_cmd": 92,
+    "exec_ok": 102,
+    "failed": 2,
+    "with_ar_cmd": 90,
     "with_bot_cmd": 0,
-    "with_on": 32,
+    "with_on": 33,
     "by_classification": {
-      "load_ok": 104
+      "load_ok": 102,
+      "source_syntax_defect": 2
     },
     "missing_external_modules": {}
   },
@@ -2923,61 +2924,18 @@
     {
       "file": "تسلية8.py",
       "name": "تسلية8",
-      "exec_ok": true,
-      "handlers_ar_cmd": 6,
+      "exec_ok": false,
+      "handlers_ar_cmd": 0,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
-      "patterns": [
-        {
-          "pattern": "نص(?:\\s|$)([\\s\\S]*)",
-          "command": [
-            "نص",
-            "fun"
-          ]
-        },
-        {
-          "pattern": "ستيكر ?(?:(.*?) ?; )?([\\s\\S]*)",
-          "command": [
-            "ستيكر",
-            "fun"
-          ]
-        },
-        {
-          "pattern": "هونك(?:\\s|$)([\\s\\S]*)",
-          "command": [
-            "هونك",
-            "fun"
-          ]
-        },
-        {
-          "pattern": "تغريد(?:\\s|$)([\\s\\S]*)",
-          "command": [
-            "تغريد",
-            "fun"
-          ]
-        },
-        {
-          "pattern": "دوغي(?:\\s|$)([\\s\\S]*)",
-          "command": [
-            "دوغي",
-            "fun"
-          ]
-        },
-        {
-          "pattern": "غلاكس(|ر)(?:\\s|$)([\\s\\S]*)",
-          "command": [
-            "غلاكس",
-            "fun"
-          ]
-        }
-      ],
-      "error_type": null,
-      "error": null,
-      "traceback_tail": null,
+      "patterns": [],
+      "error_type": "SyntaxError",
+      "error": "invalid syntax (تسلية8.py, line 67)",
+      "traceback_tail": "Traceback (most recent call last):\n  File \"/home/riyadh/Projects/T3rmx-UserBot/scripts/plugin_harness_v4.py\", line 884, in try_load\n    spec.loader.exec_module(mod)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^\n  File \"<frozen importlib._bootstrap_external>\", line 747, in exec_module\n  File \"<frozen importlib._bootstrap_external>\", line 881, in get_code\n  File \"<frozen importlib._bootstrap_external>\", line 810, in source_to_code\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/تسلية8.py\", line 67\n    async def sticklet(event):\n    ^^^^^\nSyntaxError: invalid syntax\n",
       "missing_module": null,
-      "classification": "load_ok",
+      "classification": "source_syntax_defect",
       "stdout_tail": null,
-      "stderr_tail": null
+      "stderr_tail": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/تسلية8.py:31: SyntaxWarning: \"\\s\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\s\"? A raw string is also an option.\n  pattern=\"نص(?:\\s|$)([\\s\\S]*)\",\n/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/تسلية8.py:57: SyntaxWarning: \"\\s\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\s\"? A raw string is also an option.\n  pattern=\"ستيكر ?(?:(.*?) ?; )?([\\s\\S]*)\",\n"
     },
     {
       "file": "تشكيل.py",
@@ -3152,24 +3110,16 @@
     {
       "file": "تلكراف.py",
       "name": "تلكراف",
-      "exec_ok": true,
-      "handlers_ar_cmd": 1,
+      "exec_ok": false,
+      "handlers_ar_cmd": 0,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
-      "patterns": [
-        {
-          "pattern": "(ت(ل)?ك(راف)?) ?(m|t|ميديا|نص)(?:\\s|$)([\\s\\S]*)",
-          "command": [
-            "تلكراف",
-            "utils"
-          ]
-        }
-      ],
-      "error_type": null,
-      "error": null,
-      "traceback_tail": null,
+      "patterns": [],
+      "error_type": "IndentationError",
+      "error": "unexpected indent (تلكراف.py, line 1)",
+      "traceback_tail": "Traceback (most recent call last):\n  File \"/home/riyadh/Projects/T3rmx-UserBot/scripts/plugin_harness_v4.py\", line 884, in try_load\n    spec.loader.exec_module(mod)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^\n  File \"<frozen importlib._bootstrap_external>\", line 747, in exec_module\n  File \"<frozen importlib._bootstrap_external>\", line 881, in get_code\n  File \"<frozen importlib._bootstrap_external>\", line 810, in source_to_code\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/تلكراف.py\", line 1\n    - - - - - - - - - - -\nIndentationError: unexpected indent\n",
       "missing_module": null,
-      "classification": "load_ok",
+      "classification": "source_syntax_defect",
       "stdout_tail": null,
       "stderr_tail": null
     },
@@ -3255,7 +3205,7 @@
       "exec_ok": true,
       "handlers_ar_cmd": 0,
       "handlers_bot_cmd": 0,
-      "handlers_on": 0,
+      "handlers_on": 4,
       "patterns": [],
       "error_type": null,
       "error": null,

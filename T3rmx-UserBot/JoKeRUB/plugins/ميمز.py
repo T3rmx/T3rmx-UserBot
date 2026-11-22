@@ -1,6 +1,4 @@
-#all write Codes By Team Aljoker @t3rmx_official
-#By Hussein @vvsks
-import asyncio
+
 import base64
 import re
 import random
@@ -9,11 +7,9 @@ from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 from asyncio.exceptions import TimeoutError
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
-#ياقائم آل محمد
 from JoKeRUB import l313l
 from ..helpers.utils import reply_id
 
-# الي يخمط ويكول من كتابتي الا امه انيجه وقد اعذر من انذر
 aljoker_links = {}
 
 async def _send_meme_sound(event, msg_link):
@@ -126,7 +122,6 @@ async def _(event):
         await event.edit(
             f"الايميل الخاص هو `{response.message.message}`\n[ اضغط هنا لرؤية من رسائل الايميل الواردة]({l313lmail})"
         )
-#السلام على الحسين وعلى الارواح التي حلت بفنائك ولعن الله قاتليك
 @l313l.on(admin_cmd(outgoing=True, pattern="غنيلي$"))
 async def aljoker313(joker313):
   rl = random.randint(1,385)

@@ -94,7 +94,7 @@ R = [
     "  ⓱ **⪼**  [جيت واي 🚨](https://t.me/gamee?game=Getaway)   \n"
     "  ⓲ **⪼**  [الالـوان 🔮](https://t.me/gamee?game=ColorHit)   \n"
     "  ⓳ **⪼**  [مدفع الكرات🏮](https://t.me/gamee?game=NeonBlaster)   \n"
-    "**-** مطور السورس **⪼ [𐇮 𓂐 𓆩الــسيد𓆪 𖠛🇷🇺 ](t.me/vvsks)   \n"
+    "**-** مطور السورس **⪼ [𐇮 𓂐 T3rmx 𖠛🇷🇺 ](t.me/vvsks)   \n"
     "**-** القناة الرسمية **⪼ [T3rmx Official](https://t.me/t3rmx_official)**"
 ]
 
@@ -365,8 +365,7 @@ async def Hussein(event):
             await conv.send_message(f'{user_id}')
             response = await conv.get_response()
             await event.edit(response.text)
-#من تفكر تخمطهن اذكر المصدر وصير حباب لتبوگ تعب غيرك !
-# Legacy credit preserved in provenance records; maintained in T3rmx UserBot
+
 @l313l.ar_cmd(pattern=r"توليد(.*)")
 async def Hussein(event):
     await event.edit('**᯽︙ يتم الان توليد الفيزا انتظر 7 ثواني من فضلك 🫶🏻 **')

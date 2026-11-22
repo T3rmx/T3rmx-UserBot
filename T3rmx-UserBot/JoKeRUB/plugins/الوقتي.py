@@ -1,8 +1,4 @@
-# اذا تخمط اذكر الحقوق رجـاءا  - 
-# كتابة وتعديل وترتيب  ~ @vvsks
-# Legacy attribution preserved in audit/provenance records; maintained in T3rmx UserBot
-#تعديل Reda / رضا
-#من تعرف تخمط اذكر حقوق لتسوي نفسك مطور
+
 from ..sql_helper.group import auto_g, del_auto_g, get_auto_g
 try:
     import webcolors
@@ -43,7 +39,6 @@ except Exception:
     Color = None
 
 plugin_category = "tools"
-# لتخمط ابن الكحبة
 DEFAULTUSERBIO = DEFAULT_BIO or "﴿ لا تَحزَن إِنَّ اللَّهَ مَعَنا ﴾ "
 DEFAULTUSERGRO = DEFAULT_GROUP or ""
 DEFAULTUSER = AUTONAME or ""
@@ -165,10 +160,8 @@ async def digitalpicloop():
             return
         DIGITALPICSTART = gvarstatus("digitalpic") == "true"
 
-#Reda
-#اننننسخخخخخ هههههههههههههههههههههههههههههههههههههههههههههههههههههههههههههههههههههههه
 async def digitalgrouppicloop():
-    "2KjZiNin2LPYt9ipINiz2YjYsdizINis2YrYqNir2YjZhiAo2KfYsNinINin2LPYqtio2K/ZhNiq2Ycg2LHYp9itINiq2KvYqNiqINmB2LTZhNmDKSDZhdi5INiq2K3Zitin2KrZiiDYp9iu2YjZg9mFINix2LbYpyBAcmQwcjA="
+    "2KfZhNij2YPZiNin2K8g2KrZj9mG2LPYrtiMINmE2YPZhiDYp9mE2YHZg9ixINmI2KfZhNmH2YjZitipINmE2Kcg2KrZj9mG2LPYri4g2YPZhiDZhdi32YjYsdmL2Kcg2YrYtdmG2LnYjCDZhNinINmF2KzYsdivINi02K7YtSDZiti62YrZkdixINij2LPZhdin2KEuIOKAlCBUM3JteA=="
 
     dgp = gvarstatus("digitalgrouppic")
     colorco = gvarstatus("digitalgrouppiccolor") or Config.DIGITAL_PIC_COLOR or "white"
@@ -232,7 +225,7 @@ async def digitalgrouppicloop():
             LOGS.debug("digitalgrouppicloop stopped: %s", e)
             return
         DIGITALPICSTART = gvarstatus("digitalgrouppic") != None
-        base64m = 'QnkgQEplcHRob24gLyBSZWRhIEByZDByMCBkb24ndCByZW1vdmUgaXQ='
+        base64m = 'QnkgVDNybXggLyBSaXlhZGggUmFkd2FuIC0gQnVpbHQgd2l0aCBwYXNzaW9uLCBtYWludGFpbmVkIHdpdGggcHVycG9zZS4gUmVzcGVjdCB0aGUgY29kZSwgcmVzcGVjdCBpdHMgY3JlYXRvci4='
         try:
             message = base64.b64decode(base64m)
             messageo = message.decode()

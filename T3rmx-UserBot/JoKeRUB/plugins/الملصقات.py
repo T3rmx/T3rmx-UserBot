@@ -1,5 +1,4 @@
-#Fixes by Reda 
-#Made by hussein
+
 #-------------
 import asyncio
 import base64
@@ -45,7 +44,6 @@ from ..sql_helper.globals import gvarstatus
 
 plugin_category = "fun"
 
-# modified and developed by @mrconfused , @jisan7509
 
 
 combot_stickers_url = "https://combot.org/telegram/stickers?q="

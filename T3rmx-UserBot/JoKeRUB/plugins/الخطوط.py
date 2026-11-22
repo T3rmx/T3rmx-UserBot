@@ -1,6 +1,4 @@
-# Reda - Hussein
-# © JoKeRUB Team 2023
-# ها شعدك داخل ع الملف تريد تخمط ؟ ابو زربة لهل درجة فاشل  
+
 from telethon import events
 from JoKeRUB import l313l
 from ..sql_helper.globals import addgvar, delgvar, gvarstatus

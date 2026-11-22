@@ -216,4 +216,3 @@ async def _iundlt(event):  # sourcery no-metrics
                     file=msg.old.media,
                 )
 #admin plugin for  l313l
-# by  @vvsks

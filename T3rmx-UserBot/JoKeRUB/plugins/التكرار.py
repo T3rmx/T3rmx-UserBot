@@ -1,4 +1,3 @@
-# By JoKeRUB 2021-2023
 import asyncio
 import base64
 import re
@@ -271,7 +270,7 @@ async def stopspamrz(event):
         delgvar("spamwork")
         return await edit_delete(event, "**⌔∮ تم بنجاح ايقاف التكرار **")
     return await edit_delete(event, "**⌔∮ عذرا لم يتم تفعيل التكرار بالاصل**")
-# ملاحظة: تمت المحافظة على وظائف هذا الملف ضمن T3rmx UserBot مع الحفاظ على الإسناد القانوني المطلوب حيث يلزم.
+
 async def aljoker_nshr(l313l, sleeptimet, chat, message, seconds):
     global yaAli
     yaAli = True

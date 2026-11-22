@@ -18,7 +18,6 @@ from . import reply_id
 
 plugin_category = "utils"
 
-# JoKeRUB timezone
 
 
 FONT_FILE_TO_USE = "/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf"

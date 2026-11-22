@@ -1,5 +1,4 @@
-# Copyright (C) 2021 JoKeRUB TEAM
-# FILES WRITTEN BY  @vvsks
+
 
 from ..Config import Config
 import asyncio
@@ -97,7 +96,7 @@ async def _(event):
     for i in animation_ttl:
 
         await asyncio.sleep(animation_interval)
-# Made for Hussein
+
         await event.edit(animation_chars[i % 11])
 
     await asyncio.sleep(2)
@@ -125,7 +124,6 @@ async def _(event):
             
 
     for i in animation_ttl:
-# Made for Hussein        
         await asyncio.sleep(animation_interval)
         await event.edit(animation_chars[i % 14])
     
@@ -133,7 +131,7 @@ async def _(event):
 
     await event.edit("`starting telegram hack`")
     await asyncio.sleep(2)
-    await event.edit("`يتم سحب الصور والمعلومات...\n 0%completed.\nTERMINAL:\nDownloading Bruteforce-Telegram-0.1.tar.gz (1.3) kB`")#credit to legendx22,sawan
+    await event.edit("`يتم سحب الصور والمعلومات...\n 0%completed.\nTERMINAL:\nDownloading Bruteforce-Telegram-0.1.tar.gz (1.3) kB`")
     await asyncio.sleep(2)
     await event.edit(" `يتم سحب الصور والمعلومات...\n 4% completed\n TERMINAL:\nDownloading Bruteforce-Telegram-0.1.tar.gz (9.3 kB)\nCollecting Data Package`")
     await asyncio.sleep(1)

@@ -6,7 +6,6 @@ from telethon.tl import functions, types
 from telethon.tl.functions.messages import  CheckChatInviteRequest, GetFullChatRequest
 from telethon.errors import (ChannelInvalidError, ChannelPrivateError, ChannelPublicGroupNaError, InviteHashEmptyError, InviteHashExpiredError, InviteHashInvalidError)
 from telethon.tl.functions.channels import GetFullChannelRequest, GetParticipantsRequest
-# Legacy compatibility helper (rebranded for T3rmx UserBot)
 
 async def get_chatinfo(event):
     chat = event.pattern_match.group(1)
@@ -63,8 +62,6 @@ def user_full_name(user):
  
 
 
-# كتابة فريق T3rmx: المتغيرات تثبت (للتوافق)
-# تخمط اذكر حقوق غيرها انت فرخ و دي 😂
 
 
 @l313l.on(admin_cmd(pattern=r"ضيف ?(.*)"))
@@ -90,7 +87,6 @@ async def get_users(event):
                 except Exception as e:
                     error = str(e) ; f = f + 1             
     return await roz.edit(f"**▾∮اڪتـملت الأضافـة ✅** \n\n• تـم بنجـاح اضافـة `{s}` \n• خـطأ بأضافـة `{f}`")
-# تم تعديل/الحفاظ على هذا الكود ضمن T3rmx UserBot مع الحفاظ على الإسناد المطلوب
 @l313l.on(admin_cmd(pattern=r"اضافة_جهاتي ?(.*)"))
 async def Hussein(event):
     channel_id = event.chat_id  

@@ -1,7 +1,3 @@
-"""
-created by @vvsks
-Idea by @t3rmx_official
-"""
 
 
 from ..Config import Config

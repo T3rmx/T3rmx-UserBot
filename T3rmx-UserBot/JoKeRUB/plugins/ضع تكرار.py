@@ -81,5 +81,4 @@ async def _(event):
         await event.edit(f"تم تحديث عدد الـتكرار لـ {input_str} في الدردشه الحالية")
     except Exception as e:
         await event.edit(str(e))
-# For Catuserbot
-# Arabic Translate By  :  @vvsks
+

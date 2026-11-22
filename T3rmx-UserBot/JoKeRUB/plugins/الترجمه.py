@@ -51,7 +51,7 @@ async def gtrans(text, lan):
     command=("ترجمة", "tools"),
     info={
         "header": "To translate the text to required language.",
-        "note": "For langugage codes check [this link](https://bit.ly/2SRQ6WU)",
+        "note": "For language codes check [this link](https://bit.ly/2SRQ6WU)",
         "usage": [
             "{tr}tl <language code> ; <text>",
             "{tr}tl <language codes>",

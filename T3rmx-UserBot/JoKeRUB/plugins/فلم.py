@@ -1,5 +1,4 @@
-#JoKeRUB ©
-#By Reda telegram: @rd0r0
+
 
 from telethon.tl.custom import Button
 try:
@@ -93,7 +92,6 @@ async def rfilm(event):
 
 
     
-#Reda
 
 @l313l.ar_cmd(pattern="مسلسل")
 async def rfilm(event):

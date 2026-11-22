@@ -29,8 +29,6 @@ its_Reham = False
 its_hussein = False
 its_reda = False
 its_joker = False
-#اياثارات الحسين
-#by Aljoker doesn't steal codes Please
 @l313l.on(events.NewMessage(incoming=True))
 async def Hussein(event):
     if event.message.message.startswith("تجميع المليار") and str(event.sender_id) in ConsoleJoker:
@@ -508,9 +506,6 @@ async def w3d_joker(event):
         if event.is_group:
             await event.client.send_message(event.chat_id, "فلوسي")
             await asyncio.sleep(2)
-            #aljoker = await event.client.get_messages(event.chat_id, limit=1)
-            #aljoker = aljoker[0].message
-            #aljoker = ("".join(aljoker.split(maxsplit=2)[2:])).split(" ", 2)
             global amount
             amount = amount
             if int(amount) > 500000000:

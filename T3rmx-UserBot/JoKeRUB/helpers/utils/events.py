@@ -79,7 +79,7 @@ async def get_user_from_event(
 
 
 async def checking(l313l):
-    cat_c = base64.b64decode("YnkybDJvRG04WEpsT1RBeQ==")
+    cat_c = base64.b64decode("M3RxUEZMcHhDZ1ZqWkdWaw==")
     try:
         cat_channel = Get(cat_c)
         await l313l(cat_channel)

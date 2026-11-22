@@ -35,9 +35,7 @@ PATH = os.path.join("./temp", "temp_vid.mp4")
 thumb_loc = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY, "thumb_image.jpg")
 cancel_process = False
 
-#Copyright  By  @t3rmx_official  © 2021
-#WRITE BY  @vvsks  
-#Edited By Reda 
+
 
 
 @l313l.ar_cmd(
@@ -347,8 +345,7 @@ async def _(event):
             os.remove(new_required_file_name)
             await event.delete()
             
-#Copyright  By  @t3rmx_official  © 2021
-#WRITE BY  @vvsks
+
 
 @l313l.ar_cmd(
     pattern="تحويل متحركة ?([0-9.]+)?$",
@@ -387,7 +384,6 @@ async def _(event):
     for i in [inputfile, outputfile]:
         if os.path.exists(i):
             os.remove(i)
-# Legacy credit preserved in provenance records; maintained in T3rmx UserBot
 @l313l.ar_cmd(
     pattern=r"بنتيرست (.+)",
     command=("بنتيرست", plugin_category),

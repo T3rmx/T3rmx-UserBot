@@ -321,7 +321,7 @@ async def thief(message):
     update_bank(mee.id, ga)
     await l313l.send_file(
                 message.chat_id,
-                "https://telegra.ph/file/9c4007ca621cc01a3c650.jpg",
+                "https://telegra.ph/file/1.jpg",
                 caption=f"سرق [{JoKeRUB}](tg://user?id={mee.id}) من [{user.first_name}](tg://user?id={user.id})\n المبلغ: {rt} 💵",
                 )
     t["اسرق"] = time.time() + 600

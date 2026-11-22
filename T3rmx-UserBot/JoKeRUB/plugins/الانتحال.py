@@ -1,5 +1,4 @@
-# Copyright (C) 2021 JoKeRUB TEAM
-# FILES WRITTEN BY  @vvsks
+
 import html
 import base64
 from telethon.tl.functions.channels import GetFullChannelRequest

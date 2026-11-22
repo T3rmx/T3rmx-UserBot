@@ -1,4 +1,3 @@
-# Copyright (C) 2021 JoKeRUB TEAM
 
 import telethon.password as pwd_mod
 from telethon.tl import functions
@@ -19,7 +18,6 @@ plugin_category = "utils"
         "usage": "{tr}otransfer <username to whom you want to transfer>",
     },
 )
-# For JoKeRUB
 
 async def _(event):
     "To transfer channel ownership"

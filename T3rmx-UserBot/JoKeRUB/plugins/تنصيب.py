@@ -1,4 +1,3 @@
-# T3rmx UserBot - Installation / deployment help
 
 from telethon import Button, events
 

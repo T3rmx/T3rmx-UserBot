@@ -1,4 +1,3 @@
-#Fixed by Reda
 
 import os
 

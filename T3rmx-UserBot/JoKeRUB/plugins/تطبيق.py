@@ -1,8 +1,3 @@
-"""
-Fetch App Details from Playstore.
-.app <app_name> to fetch app details.
-  © [cHAuHaN](http://t.me/amnd33p)
-"""
 
 import bs4
 import requests

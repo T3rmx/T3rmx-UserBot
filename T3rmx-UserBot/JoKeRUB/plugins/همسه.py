@@ -3,8 +3,7 @@ import random, re
 from JoKeRUB.utils import admin_cmd
 import asyncio 
 
-# Wespr File by  @vvsks
-# Copyright (C) 2021 JoKeRUB TEAM
+#
 @borg.on(
     admin_cmd(pattern="همسة ?(.*)")
 )
@@ -41,7 +40,6 @@ async def _(event):
        pattern="اكس او$"
     )
 )
-# كتابة وتعديل فريق T3rmx  #@vvsks
 async def gamez(event):
     if event.fwd_from:
         return

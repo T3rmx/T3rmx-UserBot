@@ -1,11 +1,9 @@
-#edit  ~ @vvsks for l313l 
 
 from telethon import events
 from JoKeRUB.utils import admin_cmd
 from JoKeRUB import l313l
 from . import *
  
-# T3rmx UserBot (مع الحفاظ على الحقوق/الإسناد المطلوب)
 
 plugin_category = "extra"
 @l313l.ar_cmd(
@@ -22,8 +20,7 @@ async def tmgif(event):
         l313l += f"**الـمتحـرڪـة الأولـى **"
         await event.client.send_file(event.chat_id, sad, caption=l313l, reply_to=lMl10l)
 
-#edit  ~ @vvsks for l313l 
-# T3rmx UserBot (مع الحفاظ على الحقوق/الإسناد المطلوب)
+
 
 @l313l.ar_cmd(
     pattern="س2$",
@@ -39,8 +36,6 @@ async def tmgif(event):
         RAZAN += f"**الـمتحـرڪـة الـثـانيـة **"
         await event.client.send_file(event.chat_id, sad2, caption=RAZAN, reply_to=leo)
 
-#edit  ~ @vvsks for l313l 
-# T3rmx UserBot (مع الحفاظ على الحقوق/الإسناد المطلوب)
 
 @l313l.ar_cmd(
     pattern="س3$",
@@ -56,8 +51,7 @@ async def tmgif(event):
         RAZAN += f"**الـمتحـرڪـة الـثـالثـة**\n"
         await event.client.send_file(event.chat_id, sad3, caption=RAZAN, reply_to=sic_id)
 
-#edit  ~ @vvsks for l313l 
-# T3rmx UserBot (مع الحفاظ على الحقوق/الإسناد المطلوب)
+
 
 @l313l.ar_cmd(
     pattern="س4$",
@@ -75,8 +69,7 @@ async def tmgif(event):
             event.chat_id, sad4, caption=RAZAN, reply_to=reply_to_id
         )
 
-#edit  ~ @vvsks for l313l 
-# T3rmx UserBot (مع الحفاظ على الحقوق/الإسناد المطلوب)
+
 
 @l313l.ar_cmd(
     pattern="س5$",
@@ -95,8 +88,7 @@ async def tmgif(event):
             event.chat_id, sad5, caption=RAZAN, reply_to=reply_to_id
         )
 
-#edit  ~ @vvsks for l313l 
-# T3rmx UserBot (مع الحفاظ على الحقوق/الإسناد المطلوب)
+
 
 @l313l.ar_cmd(
     pattern="س6$",
@@ -166,5 +158,4 @@ async def tmgif(event):
         await event.client.send_file(
             event.chat_id, sad9, caption=RAZAN, reply_to=reply_to_id
         )
-#edit  ~ @vvsks for l313l 
-# T3rmx UserBot (مع الحفاظ على الحقوق/الإسناد المطلوب)
+

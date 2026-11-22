@@ -1,5 +1,5 @@
-# T3rmx UserBot - المطور / Developer controls
-# Preserves sec/developer-control mechanism restricted to the configured T3rmx owner.
+
+
 
 import asyncio
 import io

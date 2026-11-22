@@ -17,8 +17,7 @@ from . import BOTLOG, get_user_from_event
 
 plugin_category = "admin" 
 
-# Copyright (C) 2021 JoKeRUB TEAM
-# FILES WRITTEN BY  @vvsks
+
 
 @l313l.ar_cmd(
     pattern="قفل (.*)",
@@ -311,7 +310,7 @@ async def _(event):  # sourcery no-metrics
                     event, "᯽︙ ارسال الانلاين مسموح في هذه الدردشه ⌁"
                 )
             ainline = False
-            locktype = "الانلاين"  # BY  @vvsks  -  @UUNZZ
+            locktype = "الانلاين"  # BY  @vvsks  -  
         elif input_str == "التصويت":  
             if not gpoll:
                 return await edit_delete(
@@ -1139,4 +1138,3 @@ async def _(event):
                     users_added_by
                 )
             )
-#THIS FILE WRITTEN BY  @vvsks

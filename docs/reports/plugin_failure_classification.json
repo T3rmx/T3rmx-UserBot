@@ -3,10 +3,11 @@
   "scope": "all_plugins_load_exec_import_registration_analysis",
   "summary": {
     "total_plugins": 104,
-    "failed_plugins": 0,
-    "successful_plugins": 104,
+    "failed_plugins": 2,
+    "successful_plugins": 102,
     "by_classification": {
-      "load_ok": 104
+      "load_ok": 102,
+      "source_syntax_defect": 2
     },
     "analysis_notes": [
       "Classification distinguishes missing optional external dependencies and harness/interface/config issues from suspected source defects.",
@@ -3507,69 +3508,26 @@
       "file": "تسلية8.py",
       "path": "T3rmx-UserBot/JoKeRUB/plugins/تسلية8.py",
       "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/تسلية8.py",
-      "exec_ok": true,
-      "classification": "load_ok",
-      "error_type": null,
-      "error": null,
-      "traceback_tail": null,
+      "exec_ok": false,
+      "classification": "source_syntax_defect",
+      "error_type": "SyntaxError",
+      "error": "invalid syntax (تسلية8.py, line 67)",
+      "traceback_tail": "Traceback (most recent call last):\n  File \"/home/riyadh/Projects/T3rmx-UserBot/scripts/plugin_harness_v4.py\", line 884, in try_load\n    spec.loader.exec_module(mod)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^\n  File \"<frozen importlib._bootstrap_external>\", line 747, in exec_module\n  File \"<frozen importlib._bootstrap_external>\", line 881, in get_code\n  File \"<frozen importlib._bootstrap_external>\", line 810, in source_to_code\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/تسلية8.py\", line 67\n    async def sticklet(event):\n    ^^^^^\nSyntaxError: invalid syntax\n",
       "missing_module_or_attribute": null,
       "handlers": {
-        "ar_cmd": 6,
+        "ar_cmd": 0,
         "bot_cmd": 0,
         "on": 0
       },
-      "patterns_sample": [
-        {
-          "pattern": "نص(?:\\s|$)([\\s\\S]*)",
-          "command": [
-            "نص",
-            "fun"
-          ]
-        },
-        {
-          "pattern": "ستيكر ?(?:(.*?) ?; )?([\\s\\S]*)",
-          "command": [
-            "ستيكر",
-            "fun"
-          ]
-        },
-        {
-          "pattern": "هونك(?:\\s|$)([\\s\\S]*)",
-          "command": [
-            "هونك",
-            "fun"
-          ]
-        },
-        {
-          "pattern": "تغريد(?:\\s|$)([\\s\\S]*)",
-          "command": [
-            "تغريد",
-            "fun"
-          ]
-        },
-        {
-          "pattern": "دوغي(?:\\s|$)([\\s\\S]*)",
-          "command": [
-            "دوغي",
-            "fun"
-          ]
-        },
-        {
-          "pattern": "غلاكس(|ر)(?:\\s|$)([\\s\\S]*)",
-          "command": [
-            "غلاكس",
-            "fun"
-          ]
-        }
-      ],
+      "patterns_sample": [],
       "config_attributes_referenced": [],
       "config_attributes_missing_from_config": [],
       "required_external_services": [],
       "can_operate_without_optional_dependencies": "n/a",
       "stub_incompatibility_suspected": false,
       "package_export_compat_issue_suspected": false,
-      "actual_source_defect_suspected": false,
-      "recommended_action": "none (loaded in harness)",
+      "actual_source_defect_suspected": true,
+      "recommended_action": "fix actual source defect with minimal safe change",
       "notes": []
     },
     {
@@ -3745,26 +3703,18 @@
       "file": "تلكراف.py",
       "path": "T3rmx-UserBot/JoKeRUB/plugins/تلكراف.py",
       "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/تلكراف.py",
-      "exec_ok": true,
-      "classification": "load_ok",
-      "error_type": null,
-      "error": null,
-      "traceback_tail": null,
+      "exec_ok": false,
+      "classification": "source_syntax_defect",
+      "error_type": "IndentationError",
+      "error": "unexpected indent (تلكراف.py, line 1)",
+      "traceback_tail": "Traceback (most recent call last):\n  File \"/home/riyadh/Projects/T3rmx-UserBot/scripts/plugin_harness_v4.py\", line 884, in try_load\n    spec.loader.exec_module(mod)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^\n  File \"<frozen importlib._bootstrap_external>\", line 747, in exec_module\n  File \"<frozen importlib._bootstrap_external>\", line 881, in get_code\n  File \"<frozen importlib._bootstrap_external>\", line 810, in source_to_code\n  File \"<frozen importlib._bootstrap>\", line 491, in _call_with_frames_removed\n  File \"/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/تلكراف.py\", line 1\n    - - - - - - - - - - -\nIndentationError: unexpected indent\n",
       "missing_module_or_attribute": null,
       "handlers": {
-        "ar_cmd": 1,
+        "ar_cmd": 0,
         "bot_cmd": 0,
         "on": 0
       },
-      "patterns_sample": [
-        {
-          "pattern": "(ت(ل)?ك(راف)?) ?(m|t|ميديا|نص)(?:\\s|$)([\\s\\S]*)",
-          "command": [
-            "تلكراف",
-            "utils"
-          ]
-        }
-      ],
+      "patterns_sample": [],
       "config_attributes_referenced": [
         "TEMP_DIR"
       ],
@@ -3773,8 +3723,8 @@
       "can_operate_without_optional_dependencies": "n/a",
       "stub_incompatibility_suspected": false,
       "package_export_compat_issue_suspected": false,
-      "actual_source_defect_suspected": false,
-      "recommended_action": "none (loaded in harness)",
+      "actual_source_defect_suspected": true,
+      "recommended_action": "fix actual source defect with minimal safe change",
       "notes": []
     },
     {
@@ -3902,7 +3852,7 @@
       "handlers": {
         "ar_cmd": 0,
         "bot_cmd": 0,
-        "on": 0
+        "on": 4
       },
       "patterns_sample": [],
       "config_attributes_referenced": [],

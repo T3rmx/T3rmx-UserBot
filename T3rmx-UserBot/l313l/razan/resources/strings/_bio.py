@@ -1,6 +1,3 @@
-# to loaded bio 
-# by ~ @vvsks
-# For @t3rmx_official
 
 
 JEP = [

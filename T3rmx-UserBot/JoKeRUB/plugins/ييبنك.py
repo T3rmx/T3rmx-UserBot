@@ -20,7 +20,6 @@ from . import mention
 
 plugin_category = "utils"
 
-#كتـابة وتعـديل:  @vvsks
 
 @l313l.ar_cmd(pattern="بنك(?:\s|$)([\s\S]*)")
 

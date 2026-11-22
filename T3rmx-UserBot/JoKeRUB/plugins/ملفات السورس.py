@@ -14,7 +14,6 @@ import os
 from telethon import events 
 plugin_category = "tools"
 
-#Reda
 
 @l313l.ar_cmd(pattern="المكاتب")
 async def reda(event):

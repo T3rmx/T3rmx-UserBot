@@ -1,6 +1,3 @@
-# Copyright (C) 2021 JoKeRUB TEAM
-# FILES WRITTEN BY  @vvsks
-#يابقية الله في الارض
 import requests
 
 try:

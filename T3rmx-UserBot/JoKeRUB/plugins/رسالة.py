@@ -1,4 +1,3 @@
-#هسه يجي واحد يكلك الملف كتابتي ثق بالله محد مطور كله خمط من سورسات هندية ويعربون ويصيحون من كتابتي ههه
 
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 from telethon.utils import get_display_name

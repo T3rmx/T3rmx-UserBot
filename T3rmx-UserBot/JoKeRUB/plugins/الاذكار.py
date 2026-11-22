@@ -28,7 +28,6 @@ async def _(event):
            ror = random.choice(roz)
            return await event.edit(f"{ror}")
             
-#by ~ @RR 9R7
 @l313l.ar_cmd(
     pattern="احاديث$",
     command=("احاديث", plugin_category),)

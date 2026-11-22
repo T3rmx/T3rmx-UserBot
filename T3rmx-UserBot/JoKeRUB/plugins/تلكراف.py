@@ -1,8 +1,4 @@
-#JoKeRUB
-#- - - - - - - - - - - - -
-#Hussein : @vvsks
-#@t3rmx_official
-#- - - - - - - - - - - - -
+ - - - - - - - - - - -
 
 
 import os

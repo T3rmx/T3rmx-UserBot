@@ -1,5 +1,4 @@
-# Copyright (C) 2021 JoKeRUB TEAM
-# FILES WRITTEN BY  @vvsks
+
 try:
     from covid import Covid
 except Exception:

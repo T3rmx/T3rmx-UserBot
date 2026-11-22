@@ -252,7 +252,6 @@ async def _(event):
             )
     else:
         await edit_or_reply(event, f"᯽︙ الـدردشـة الـحالية : `{str(event.chat_id)}`")
-# Legacy credit preserved in audit/provenance records; maintained in T3rmx UserBot
 @l313l.ar_cmd(
     pattern=r"كشف_ايدي(?: (\d+))?$",
     command=("كشف_ايدي", "utils"),

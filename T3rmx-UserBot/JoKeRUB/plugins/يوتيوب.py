@@ -1,6 +1,3 @@
-#@vvsks   - @t3rmx_official
-# Copyright (C) 2021 JoKeRUB TEAM
-# FILES WRITTEN BY  @vvsks
 import asyncio
 import io
 import os
