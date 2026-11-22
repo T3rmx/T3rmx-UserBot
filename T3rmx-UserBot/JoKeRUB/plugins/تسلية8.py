@@ -64,6 +64,7 @@ async def waifu(animu):
         ],
         "examples": "{tr}stcr hello",
     },
+) # T3rmx UserBot
 async def sticklet(event):
     " ⌔︙النص الخاص بك كملصق"
     R = random.randint(0, 256)
@@ -172,6 +173,7 @@ async def twt(event):
         "usage": "{tr}doge <text/reply to msg>",
         "examples": "{tr}doge Gib money",
     },
+) # T3rmx UserBot
 async def doge(event):
     " ⌔︙اصنع ستيكر كلب رائع."
     text = event.pattern_match.group(1)

