@@ -109,6 +109,9 @@ class Config(object):
 
     # Feature/runtime toggles (safe defaults)
     T3RMX_ENABLE_AUTO_LOG_GROUPS = _get_bool("T3RMX_ENABLE_AUTO_LOG_GROUPS", False)
+    T3RMX_AUTO_LOG_CHANNEL = _get_bool("T3RMX_AUTO_LOG_CHANNEL", True)
+    T3RMX_LOG_FILE = os.environ.get("T3RMX_LOG_FILE", "logs/t3rmx.log")
+    T3RMX_MEME_MANIFEST_URL = os.environ.get("T3RMX_MEME_MANIFEST_URL", "")
     T3RMX_ALLOW_RUNTIME_PIP_INSTALL = _get_bool("T3RMX_ALLOW_RUNTIME_PIP_INSTALL", False)
     T3RMX_ALLOW_EXTERNAL_REPOS = _get_bool("T3RMX_ALLOW_EXTERNAL_REPOS", False)
 

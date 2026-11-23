@@ -1,13 +1,13 @@
 {
   "summary": {
-    "total": 104,
-    "exec_ok": 104,
+    "total": 105,
+    "exec_ok": 105,
     "failed": 0,
     "with_ar_cmd": 92,
     "with_bot_cmd": 0,
-    "with_on": 33,
+    "with_on": 34,
     "by_classification": {
-      "load_ok": 104
+      "load_ok": 105
     },
     "missing_external_modules": {}
   },
@@ -1365,6 +1365,22 @@
           ]
         }
       ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "السجلات.py",
+      "name": "السجلات",
+      "exec_ok": true,
+      "handlers_ar_cmd": 0,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 3,
+      "patterns": [],
       "error_type": null,
       "error": null,
       "traceback_tail": null,

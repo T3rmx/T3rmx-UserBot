@@ -2,11 +2,11 @@
   "generated_by": "scripts/plugin_harness_v4.py",
   "scope": "all_plugins_load_exec_import_registration_analysis",
   "summary": {
-    "total_plugins": 104,
+    "total_plugins": 105,
     "failed_plugins": 0,
-    "successful_plugins": 104,
+    "successful_plugins": 105,
     "by_classification": {
-      "load_ok": 104
+      "load_ok": 105
     },
     "analysis_notes": [
       "Classification distinguishes missing optional external dependencies and harness/interface/config issues from suspected source defects.",
@@ -1646,6 +1646,32 @@
           ]
         }
       ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
+      "file": "السجلات.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/السجلات.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/السجلات.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 0,
+        "bot_cmd": 0,
+        "on": 3
+      },
+      "patterns_sample": [],
       "config_attributes_referenced": [],
       "config_attributes_missing_from_config": [],
       "required_external_services": [],
@@ -5159,7 +5185,9 @@
       ],
       "config_attributes_referenced": [],
       "config_attributes_missing_from_config": [],
-      "required_external_services": [],
+      "required_external_services": [
+        "possible external API/service usage"
+      ],
       "can_operate_without_optional_dependencies": "n/a",
       "stub_incompatibility_suspected": false,
       "package_export_compat_issue_suspected": false,

@@ -130,44 +130,18 @@ class HuReClient(TelegramClient):
                         return
                 except BaseException as e:
                     LOGS.exception(e)
-                    if not disable_errors and getattr(Config, "PRIVATE_GROUP_BOT_API_ID", 0):
-                        date = (datetime.datetime.now()).strftime("%m/%d/%Y, %H:%M:%S")
-                        ftext = (
-                            "\nT3rmx UserBot traceback log\n"
-                            f"Date: {date}\n"
-                            f"Chat ID: {str(getattr(check, 'chat_id', ''))}\n"
-                            f"Sender ID: {str(getattr(check, 'sender_id', ''))}\n"
-                            f"Event text: {str(getattr(check, 'text', '') or '')}\n\n"
-                            f"Traceback:\n{str(traceback.format_exc())}\n\n"
-                            f"Error: {str(sys.exc_info()[1])}"
-                        )
-                        new = {
-                            "error": str(sys.exc_info()[1]),
-                            "date": datetime.datetime.now(),
-                        }
-                        command_log = 'git log --pretty=format:"%an: %s" -5'
+                    if not disable_errors:
                         try:
-                            output = (await runcmd(command_log))[:2]
-                            result = (output[0] or "") + (output[1] or "")
-                            if result.strip():
-                                ftext += "\n\nLast 5 commits:\n" + result
-                        except Exception:
-                            pass
-                        try:
-                            pastelink = await paste_message(
-                                ftext, pastetype="s", markdown=False
+                            from .utils.logchannel import send_log_alert
+                            error_name = e.__class__.__name__
+                            error_text = str(e)[:220]
+                            alert = (
+                                "⚠️ تنبيه خطأ في T3rmx\n"
+                                f"• نوع الخطأ: `{error_name}`\n"
+                                f"• الرسالة: `{error_text}`\n"
+                                "• التفاصيل الكاملة موجودة في ملف السجلات."
                             )
-                        except Exception:
-                            pastelink = None
-                        text = "**T3rmx UserBot Error Report**\n\n"
-                        if pastelink:
-                            text += f"**Error:** [{new['error']}]({pastelink})"
-                        else:
-                            text += f"**Error:** `{new['error']}`"
-                        try:
-                            await check.client.send_message(
-                                Config.PRIVATE_GROUP_BOT_API_ID, text, link_preview=False
-                            )
+                            await send_log_alert(check.client, alert)
                         except Exception:
                             pass
 
@@ -247,44 +221,18 @@ class HuReClient(TelegramClient):
                     LOGS.error("Message was deleted or cant be found")
                 except BaseException as e:
                     LOGS.exception(e)
-                    if not disable_errors and getattr(Config, "PRIVATE_GROUP_BOT_API_ID", 0):
-                        date = (datetime.datetime.now()).strftime("%m/%d/%Y, %H:%M:%S")
-                        ftext = (
-                            "\nT3rmx UserBot traceback log\n"
-                            f"Date: {date}\n"
-                            f"Chat ID: {str(getattr(check, 'chat_id', ''))}\n"
-                            f"Sender ID: {str(getattr(check, 'sender_id', ''))}\n"
-                            f"Event text: {str(getattr(check, 'text', '') or '')}\n\n"
-                            f"Traceback:\n{str(traceback.format_exc())}\n\n"
-                            f"Error: {str(sys.exc_info()[1])}"
-                        )
-                        new = {
-                            "error": str(sys.exc_info()[1]),
-                            "date": datetime.datetime.now(),
-                        }
-                        command_log = 'git log --pretty=format:"%an: %s" -5'
+                    if not disable_errors:
                         try:
-                            output = (await runcmd(command_log))[:2]
-                            result = (output[0] or "") + (output[1] or "")
-                            if result.strip():
-                                ftext += "\n\nLast 5 commits:\n" + result
-                        except Exception:
-                            pass
-                        try:
-                            pastelink = await paste_message(
-                                ftext, pastetype="s", markdown=False
+                            from .utils.logchannel import send_log_alert
+                            error_name = e.__class__.__name__
+                            error_text = str(e)[:220]
+                            alert = (
+                                "⚠️ تنبيه خطأ في T3rmx\n"
+                                f"• نوع الخطأ: `{error_name}`\n"
+                                f"• الرسالة: `{error_text}`\n"
+                                "• التفاصيل الكاملة موجودة في ملف السجلات."
                             )
-                        except Exception:
-                            pastelink = None
-                        text = "**T3rmx UserBot Error Report**\n\n"
-                        if pastelink:
-                            text += f"**Error:** [{new['error']}]({pastelink})"
-                        else:
-                            text += f"**Error:** `{new['error']}`"
-                        try:
-                            await check.client.send_message(
-                                Config.PRIVATE_GROUP_BOT_API_ID, text, link_preview=False
-                            )
+                            await send_log_alert(check.client, alert)
                         except Exception:
                             pass
 

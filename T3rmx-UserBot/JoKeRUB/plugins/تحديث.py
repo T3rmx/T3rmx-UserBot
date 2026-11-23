@@ -1,14 +1,17 @@
 
-
 import asyncio
+import io
 import json
 import os
 import re
+import shutil
 import subprocess
 import sys
+import tempfile
 import urllib.error
 import urllib.request
-from typing import Optional
+import zipfile
+from pathlib import Path
 
 from JoKeRUB import l313l
 from ..Config import Config
@@ -16,6 +19,23 @@ from ..core.auth import authorized_for_update
 from ..core.managers import edit_delete, edit_or_reply
 
 plugin_category = "tools"
+
+# Files that belong to this deployment and must never be replaced by an update.
+_PROTECTED_NAMES = {
+    "config.py",
+    ".env",
+    ".git",
+    "session.txt",
+    "aljoker_links.json",
+}
+_PROTECTED_SUFFIXES = (
+    ".session",
+    ".session-journal",
+    ".db",
+    ".sqlite",
+    ".sqlite3",
+    ".log",
+)
 
 
 def _current_version() -> str:
@@ -27,7 +47,7 @@ def _current_version() -> str:
                 return str(v)
         except Exception:
             pass
-    return "unknown"
+    return "غير معروف"
 
 
 def _parse_version_tuple(value: str):
@@ -51,8 +71,11 @@ def _branch() -> str:
     return (getattr(Config, "UPSTREAM_REPO_BRANCH", None) or "main").strip() or "main"
 
 
+def _repo_root() -> str:
+    return os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
+
+
 def _local_commit() -> str:
-    # Prefer deployment-provided commit SHA, then local git.
     for key in (
         "RAILWAY_GIT_COMMIT_SHA",
         "SOURCE_COMMIT",
@@ -64,10 +87,9 @@ def _local_commit() -> str:
         if val:
             return str(val).strip()[:12]
     try:
-        repo_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
         out = subprocess.check_output(
             ["git", "rev-parse", "--short", "HEAD"],
-            cwd=repo_root,
+            cwd=_repo_root(),
             stderr=subprocess.DEVNULL,
             text=True,
             timeout=5,
@@ -76,7 +98,7 @@ def _local_commit() -> str:
             return out[:12]
     except Exception:
         pass
-    return "unknown"
+    return "غير معروف"
 
 
 def _github_json(url: str, timeout: int = 12):
@@ -92,7 +114,7 @@ def _github_json(url: str, timeout: int = 12):
             data = resp.read().decode("utf-8", errors="ignore")
         return json.loads(data), None
     except urllib.error.HTTPError as e:
-        code = getattr(e, "code", "error")
+        code = getattr(e, "code", "خطأ")
         try:
             body = e.read().decode("utf-8", errors="ignore")
         except Exception:
@@ -106,24 +128,22 @@ def _github_json(url: str, timeout: int = 12):
 
 
 def _fetch_latest_code(repo: str, branch: str):
-    # Updates come from repository code (commits), not GitHub releases.
     commit, err = _github_json(
         f"https://api.github.com/repos/{repo}/commits/{branch}"
     )
     if commit is None:
-        return {"__error__": err or "Could not fetch latest commit"}
+        return {"__error__": err or "تعذر جلب آخر تحديث"}
 
     info = {
         "sha": (commit.get("sha") or "")[:12],
         "message": ((commit.get("commit") or {}).get("message") or "").split("\n", 1)[0],
         "date": ((commit.get("commit") or {}).get("author") or {}).get("date")
         or ((commit.get("commit") or {}).get("committer") or {}).get("date")
-        or "unknown",
+        or "غير معروف",
         "url": commit.get("html_url") or f"https://github.com/{repo}/commits/{branch}",
         "branch": branch,
     }
 
-    # Optional: read T3RMX_VERSION from repo code to show code version.
     raw_url = f"https://raw.githubusercontent.com/{repo}/{branch}/T3rmx-UserBot/JoKeRUB/t3rmx_config.py"
     req = urllib.request.Request(raw_url, headers={"User-Agent": "T3rmx-UserBot-Updater"})
     try:
@@ -137,7 +157,6 @@ def _fetch_latest_code(repo: str, branch: str):
     except Exception:
         pass
 
-    # Also check releases presence for informational context (not source of truth).
     rel, _ = _github_json(f"https://api.github.com/repos/{repo}/releases/latest")
     if isinstance(rel, dict) and rel.get("tag_name"):
         info["latest_release_tag"] = rel.get("tag_name")
@@ -147,34 +166,117 @@ def _fetch_latest_code(repo: str, branch: str):
 
 
 def _is_apply_request(arg: str) -> bool:
-    return arg in {
-        "تنفيذ",
-        "الان",
-        "الآن",
-        "نفذ",
-        "apply",
+    return arg in {"تنفيذ", "الان", "الآن", "نفذ", "ثبت", "طبق"}
+
+
+def _safe_extract(zip_file: zipfile.ZipFile, destination: str) -> None:
+    base = os.path.realpath(destination)
+    for member in zip_file.infolist():
+        target = os.path.realpath(os.path.join(destination, member.filename))
+        if target != base and not target.startswith(base + os.sep):
+            raise RuntimeError("تم رفض ملف غير آمن داخل أرشيف التحديث")
+        if member.is_dir():
+            os.makedirs(target, exist_ok=True)
+        else:
+            os.makedirs(os.path.dirname(target), exist_ok=True)
+            with zip_file.open(member) as src, open(target, "wb") as dst:
+                shutil.copyfileobj(src, dst)
+
+
+def _download_source(repo: str, branch: str):
+    url = f"https://api.github.com/repos/{repo}/zipball/{branch}"
+    req = urllib.request.Request(
+        url,
+        headers={
+            "Accept": "application/vnd.github+json",
+            "User-Agent": "T3rmx-UserBot-Updater",
+        },
+    )
+    with urllib.request.urlopen(req, timeout=120) as resp:
+        payload = resp.read()
+
+    tmp = tempfile.mkdtemp(prefix="t3rmx-update-")
+    with zipfile.ZipFile(io.BytesIO(payload)) as archive:
+        _safe_extract(archive, tmp)
+
+    roots = [p for p in Path(tmp).iterdir() if p.is_dir()]
+    if len(roots) == 1:
+        return str(roots[0]), tmp
+    return tmp, tmp
+
+
+def _is_protected(relative_path: str) -> bool:
+    parts = Path(relative_path).parts
+    for part in parts:
+        if part in _PROTECTED_NAMES or part.startswith(".git"):
+            return True
+    return relative_path.lower().endswith(_PROTECTED_SUFFIXES)
+
+
+def _copy_tree(source: str, destination: str) -> int:
+    copied = 0
+    for root, dirs, files in os.walk(source):
+        dirs[:] = [d for d in dirs if not _is_protected(os.path.relpath(os.path.join(root, d), source))]
+        for name in files:
+            src = os.path.join(root, name)
+            rel = os.path.relpath(src, source)
+            if _is_protected(rel) or os.path.islink(src):
+                continue
+            dst = os.path.join(destination, rel)
+            os.makedirs(os.path.dirname(dst), exist_ok=True)
+            shutil.copy2(src, dst)
+            copied += 1
+    return copied
+
+
+def _install_requirements(root: str):
+    candidate = os.path.join(root, "requirements.txt")
+    if not os.path.isfile(candidate):
+        candidate = os.path.join(root, "T3rmx-UserBot", "requirements.txt")
+    if not os.path.isfile(candidate):
+        return True, "لم يتم العثور على ملف المتطلبات"
+    command = [
+        sys.executable,
+        "-m",
+        "pip",
         "install",
-        "now",
-        "update",
-        "upgrade",
-    }
+        "-r",
+        candidate,
+        "--disable-pip-version-check",
+    ]
+    try:
+        result = subprocess.run(
+            command,
+            capture_output=True,
+            text=True,
+            timeout=600,
+        )
+        detail = ((result.stdout or "") + "\n" + (result.stderr or "")).strip()
+        return result.returncode == 0, detail[-1200:]
+    except Exception as e:
+        return False, str(e)
+
+
+def _restart():
+    os.execv(sys.executable, [sys.executable, "-m", "JoKeRUB"])
 
 
 @l313l.ar_cmd(
     pattern=r"تحديث(?:\s+(.*))?$",
     command=("تحديث", plugin_category),
     info={
-        "header": "Check for T3rmx UserBot updates from repository code (GitHub commits, safe).",
-        "description": "Shows current vs latest code on the configured branch. Updates are tracked in code, not releases.",
+        "header": "فحص تحديثات السورس وتثبيت تحديث كامل من مستودع GitHub.",
+        "description": "يعرض الفرق بين النسخة الحالية وأحدث كود على الفرع المحدد. التحديث من الكود وليس من الإصدارات.",
         "options": {
-            "تنفيذ/الان": "Owner-only: apply code update when a git checkout is available, otherwise show safe redeploy instructions."
+            "تنفيذ/الان": "خاص بالمالك فقط: تنزيل أحدث الملفات وتثبيتها وتحديث المتطلبات ثم إعادة التشغيل."
         },
         "usage": ["{tr}تحديث", "{tr}تحديث الان", "{tr}تحديث تنفيذ"],
     },
 )
 async def check_updates(event):
     arg = (event.pattern_match.group(1) or "").strip().lower()
-    msg = await edit_or_reply(event, "**Checking T3rmx UserBot code updates...**")
+    apply = _is_apply_request(arg)
+    msg = await edit_or_reply(event, "**جاري فحص التحديثات...**")
 
     repo = _repo()
     branch = _branch()
@@ -183,110 +285,90 @@ async def check_updates(event):
 
     latest = await asyncio.to_thread(_fetch_latest_code, repo, branch)
     if not latest:
-        return await edit_delete(msg, "**Could not check updates (no response).**", 20)
+        return await edit_delete(msg, "**تعذر فحص التحديثات (لا يوجد رد).**", 20)
 
     if latest.get("__error__"):
         return await edit_delete(
             msg,
-            f"**Update check failed:** `{latest.get('__error__')}`\n"
-            f"Repository: `{repo}` (branch `{branch}`)",
+            f"**فشل فحص التحديثات:** `{latest.get('__error__')}`\n"
+            f"المستودع: `{repo}` (الفرع `{branch}`)",
             25,
         )
 
-    remote_commit = latest.get("sha") or "unknown"
+    remote_commit = latest.get("sha") or "غير معروف"
     remote_version = latest.get("remote_version")
     commit_url = latest.get("url") or f"https://github.com/{repo}/commits/{branch}"
 
-    if local_commit != "unknown" and remote_commit != "unknown":
+    if local_commit != "غير معروف" and remote_commit != "غير معروف":
         if local_commit.lower().startswith(remote_commit.lower()) or remote_commit.lower().startswith(local_commit.lower()):
-            status = "Up to date (code)"
+            status = "السورس محدث"
         else:
-            status = "Update available in code"
+            status = "يوجد تحديث جديد"
     elif remote_version and _parse_version_tuple(remote_version) > _parse_version_tuple(current_version):
-        status = "Update available in code"
+        status = "يوجد تحديث جديد"
     elif remote_version and _parse_version_tuple(remote_version) == _parse_version_tuple(current_version):
-        status = "Likely up to date (version match)"
+        status = "على الأرجح محدث (النسخة متطابقة)"
     else:
-        status = "Code update status checked"
+        status = "تم فحص حالة التحديث"
 
     lines = [
-        f"**{getattr(Config, 'T3RMX_DISPLAY_NAME', 'T3rmx UserBot')} Update Check**",
+        f"**{getattr(Config, 'T3RMX_DISPLAY_NAME', 'T3rmx UserBot')} - فحص التحديث**",
         "",
-        f"• Repository: `{repo}`",
-        f"• Branch: `{branch}`",
-        f"• Current version: `{current_version}`",
-        f"• Current commit: `{local_commit}`",
-        f"• Latest code commit: `{remote_commit}`",
-        f"• Commit date: `{latest.get('date', 'unknown')}`",
-        f"• Status: **{status}**",
-        f"• Latest commit: {commit_url}",
+        f"• المستودع: `{repo}`",
+        f"• الفرع: `{branch}`",
+        f"• النسخة الحالية: `{current_version}`",
+        f"• الكوميت الحالي: `{local_commit}`",
+        f"• أحدث كوميت: `{remote_commit}`",
+        f"• تاريخ الكوميت: `{latest.get('date', 'غير معروف')}`",
+        f"• الحالة: **{status}**",
+        f"• رابط التحديث: {commit_url}",
     ]
     if remote_version:
-        lines.append(f"• Latest code version: `{remote_version}`")
+        lines.append(f"• نسخة السورس: `{remote_version}`")
     if latest.get("message"):
-        lines.append(f"• Latest change: `{latest.get('message')}`")
+        lines.append(f"• آخر تغيير: `{latest.get('message')}`")
     if latest.get("latest_release_tag"):
         lines.append(
-            f"• Latest release (info only): `{latest.get('latest_release_tag')}` {latest.get('latest_release_url', '')}".rstrip()
+            f"• آخر إصدار (للعلم فقط): `{latest.get('latest_release_tag')}` {latest.get('latest_release_url', '')}".rstrip()
         )
-    else:
-        lines.append("• Releases: _not used as update source; updates come from code commits_")
 
     lines.extend(
         [
             "",
-            "_Security note: checks read repository metadata only. No pip install or arbitrary code execution is performed._",
+            "_ملاحظة: التحديث يتم من كود المستودع وليس من الإصدارات._",
         ]
     )
 
-    if _is_apply_request(arg):
+    if apply:
         if not authorized_for_update(event.sender_id):
-            lines.append("\n**Execution request denied:** only the configured owner can request update actions.")
+            lines.append("\n**تم رفض طلب التنفيذ:** المالك فقط هو من يستطيع تثبيت التحديثات.")
         else:
-            lines.append("\n**Owner action (apply update):**")
-            applied = False
-            repo_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
-            git_dir = os.path.join(repo_root, ".git")
-            if os.path.isdir(git_dir):
-                try:
-                    # Safe, reviewed-source code update for git-based deployments only.
-                    pull = await asyncio.to_thread(
-                        subprocess.run,
-                        ["git", "pull", "--ff-only", "origin", branch],
-                        cwd=repo_root,
-                        capture_output=True,
-                        text=True,
-                        timeout=120,
-                    )
-                    out = (pull.stdout or "").strip()
-                    err = (pull.stderr or "").strip()
-                    detail = (out + ("\n" + err if err else "")).strip() or "git pull completed"
-                    if pull.returncode == 0:
-                        lines.append(f"• Git code update: success (`{branch}`)\n```\n{detail[:1200]}\n```")
-                        lines.append("• Restarting to apply updated code...")
-                        await msg.edit("\n".join(lines), link_preview=False)
-                        await asyncio.sleep(2)
-                        executable = sys.executable.replace(" ", "\\ ")
-                        args = [executable, "-m", "JoKeRUB"]
-                        os.execle(executable, *args, os.environ)
-                        return
-                    else:
-                        lines.append(f"• Git code update failed (no automatic changes applied):\n```\n{detail[:1200]}\n```")
-                        applied = True  # attempted; provide guidance below
-                except Exception as e:
-                    lines.append(f"• Git code update attempt failed safely: `{e}`")
-                    applied = True
+            lines.append("\n**تنفيذ التحديث (خاص بالمالك):**")
+            tmp_dir = None
+            try:
+                await msg.edit("**جاري تنزيل أحدث ملفات السورس...**", link_preview=False)
+                source_dir, tmp_dir = await asyncio.to_thread(_download_source, repo, branch)
 
-            if not applied:
-                # Railway/container deployments usually have no .git checkout; redeploy from latest code.
-                lines.extend(
-                    [
-                        "• This deployment does not expose a writable git checkout; apply update by redeploying from latest repository code:",
-                        "  - Railway: redeploy/rebuild the app service from the latest `main` commit of the configured repository.",
-                        "  - Docker/VPS (git): `git pull --ff-only origin " + branch + "` in the reviewed source, then restart the service.",
-                        "  - Docker image: rebuild from latest source/tag and recreate the container.",
-                        "• Ensure dependencies come from pinned manifests in the repository, then restart/redeploy.",
-                    ]
-                )
+                await msg.edit("**جاري استبدال ملفات السورس...**", link_preview=False)
+                count = await asyncio.to_thread(_copy_tree, source_dir, _repo_root())
+                lines.append(f"• تم تحديث `{count}` ملفاً.")
+
+                await msg.edit("**جاري تثبيت المتطلبات...**", link_preview=False)
+                ok, detail = await asyncio.to_thread(_install_requirements, source_dir)
+                if ok:
+                    lines.append("• تم تثبيت المتطلبات بنجاح.")
+                else:
+                    lines.append(f"• فشل تثبيت المتطلبات:\n```\n{detail[:800]}\n```")
+
+                lines.append("• سيتم إعادة تشغيل البوت لتفعيل التحديث...")
+                await msg.edit("\n".join(lines), link_preview=False)
+                await asyncio.sleep(2)
+                _restart()
+                return
+            except Exception as e:
+                lines.append(f"• فشل التحديث ولم يتم إكماله: `{e}`")
+            finally:
+                if tmp_dir:
+                    shutil.rmtree(tmp_dir, ignore_errors=True)
 
     await msg.edit("\n".join(lines), link_preview=False)

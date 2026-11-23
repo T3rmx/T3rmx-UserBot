@@ -1,21 +1,108 @@
 
+import asyncio
 import base64
 import re
 import random
 import json
+import time
+import urllib.request
+from pathlib import Path
+
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 from asyncio.exceptions import TimeoutError
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from JoKeRUB import l313l
+from ..Config import Config
 from ..helpers.utils import reply_id
 
 aljoker_links = {}
 
-async def _send_meme_sound(event, msg_link):
-    reply_to = await reply_id(event)
+_DEFAULT_MEME_MANIFEST = (
+    "https://raw.githubusercontent.com/T3rmx/T3rmx-UserBot/main/"
+    "T3rmx-UserBot/JoKeRUB/resources/arabic_memes.json"
+)
+_FALLBACK_MANIFEST = Path("T3rmx-UserBot/JoKeRUB/resources/arabic_memes.json")
+_MEME_CACHE = {"data": None, "time": 0.0}
+
+
+def _meme_manifest_url() -> str:
+    return str(
+        getattr(Config, "T3RMX_MEME_MANIFEST_URL", None) or _DEFAULT_MEME_MANIFEST
+    ).strip()
+
+
+def _load_local_manifest():
     try:
-        # Prefer resolving the t.me message directly to avoid webpage-fetch failures.
+        if _FALLBACK_MANIFEST.is_file():
+            return json.loads(_FALLBACK_MANIFEST.read_text(encoding="utf-8"))
+    except Exception:
+        pass
+    return {}
+
+
+def _fetch_meme_manifest():
+    url = _meme_manifest_url()
+    req = urllib.request.Request(url, headers={"User-Agent": "T3rmx-MemeSource"})
+    with urllib.request.urlopen(req, timeout=10) as response:
+        data = json.loads(response.read().decode("utf-8", errors="replace"))
+    if not isinstance(data, dict):
+        raise ValueError("صيغة ملف الميمز غير صحيحة")
+    return data
+
+
+async def _get_meme_manifest():
+    now = time.monotonic()
+    if _MEME_CACHE["data"] is not None and now - _MEME_CACHE["time"] < 3600:
+        return _MEME_CACHE["data"]
+    data = _load_local_manifest()
+    try:
+        data = await asyncio.to_thread(_fetch_meme_manifest) or data
+    except Exception:
+        pass
+    _MEME_CACHE["data"] = data
+    _MEME_CACHE["time"] = now
+    return data
+
+
+def _meme_key(msg_link):
+    match = re.search(r"/(\d+)\s*$", str(msg_link or ""))
+    return match.group(1) if match else None
+
+
+async def _send_meme_sound(event, msg_link):
+    """Send an Arabic meme from the internet manifest, with the old channel as fallback."""
+    reply_to = await reply_id(event)
+    key = _meme_key(msg_link)
+
+    manifest = await _get_meme_manifest()
+    entry = manifest.get(key) if key and isinstance(manifest, dict) else None
+    if isinstance(entry, str):
+        entry = {"text": entry}
+    if isinstance(entry, dict):
+        direct_url = str(entry.get("url") or "").strip()
+        text = str(entry.get("text") or "").strip()
+        if direct_url:
+            try:
+                await event.client.send_file(
+                    event.chat_id, direct_url, caption=text, reply_to=reply_to
+                )
+                await event.delete()
+                return
+            except Exception:
+                pass
+        if text:
+            try:
+                await event.client.send_message(
+                    event.chat_id, text, reply_to=reply_to
+                )
+                await event.delete()
+                return
+            except Exception:
+                pass
+
+    # Fallback to the original Telegram channel if the manifest entry is unavailable.
+    try:
         m = re.match(r"https?://t\.me/([^/]+)/(\d+)", str(msg_link or ""))
         if m:
             chat_ref, msg_id = m.group(1), int(m.group(2))
@@ -32,21 +119,15 @@ async def _send_meme_sound(event, msg_link):
                 )
                 await event.delete()
                 return
-        # Fallback: let Telegram handle the link/media.
         await event.client.send_file(event.chat_id, msg_link, caption="", reply_to=reply_to)
         await event.delete()
         return
     except Exception:
         pass
-    # Last resort: keep command responsive without unhandled exceptions.
     try:
-        await event.edit(f"**تعذر إرسال الميم حالياً.**\n{msg_link}")
+        await event.edit("**تعذر إرسال الميم حالياً.**")
     except Exception:
-        try:
-            await event.client.send_message(event.chat_id, f"تعذر إرسال الميم حالياً.\n{msg_link}", reply_to=reply_to)
-            await event.delete()
-        except Exception:
-            pass
+        pass
 
 @l313l.on(admin_cmd(pattern="حالتي ?(.*)"))
 async def _(event):

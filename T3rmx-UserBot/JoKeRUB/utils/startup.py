@@ -354,6 +354,19 @@ async def verifyLoggerGroup():
     Automatic creation of supergroups is opt-in via T3RMX_ENABLE_AUTO_LOG_GROUPS.
     """
     flag = False
+
+    # Create a private log channel once. Only short text alerts go there;
+    # the full log file is sent only when the owner uses /log.
+    if getattr(Config, "T3RMX_AUTO_LOG_CHANNEL", True):
+        try:
+            from ..utils.logchannel import ensure_log_channel
+            log_channel_id = await ensure_log_channel(l313l)
+            if log_channel_id and not getattr(Config, "BOTLOG", False):
+                addgvar("PRIVATE_GROUP_BOT_API_ID", str(log_channel_id))
+                flag = True
+        except Exception as e:
+            LOGS.debug(f"Auto log channel creation skipped: {e}")
+
     if BOTLOG:
         try:
             entity = await l313l.get_entity(BOTLOG_CHATID)
