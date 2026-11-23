@@ -566,7 +566,7 @@ async def inline_handler(event):  # sourcery no-metrics
                 Button.url("Updates", getattr(Config, "T3RMX_UPDATES_CHANNEL", "https://t.me/t3rmx_official")),
                 Button.url(
                     "كـروب المـساعدة 📬",
-                    getattr(Config, "T3RMX_SUPPORT_GROUP", "https://t.me/+ByL7rwqxpEEwOTE8"),
+                    getattr(Config, "T3RMX_SUPPORT_GROUP", "https://t.me/T3rmx_Support_group"),
                 ),
             )
         ]
@@ -580,7 +580,7 @@ async def inline_handler(event):  # sourcery no-metrics
             \n❤ T3rmx UserBot هـو بـوت بسـيط يدخـل الـى حسـابك لجعـلك تتحـكم به معـ اوامـر معينـة.\
             \n\
             \n**اذا كـنت تـرغب بتـنصيـب السـورس عـلى حسـابك ,\
-            \n🐾 تعال الـى [كروب المسـاعدة](https://t.me/+ByL7rwqxpEEwOTE8)!**",
+            \n🐾 تعال الـى [كروب المسـاعدة](https://t.me/T3rmx_Support_group)!**",
             "md",
         )
         result = types.InputBotInlineResult(
@@ -588,7 +588,7 @@ async def inline_handler(event):  # sourcery no-metrics
             type="photo",
             title="l313l 🧸♥",
             description="ادخـل كـروب المسـاعدة",
-            url=getattr(Config, "T3RMX_SUPPORT_GROUP", "https://t.me/+ByL7rwqxpEEwOTE8"),
+            url=getattr(Config, "T3RMX_SUPPORT_GROUP", "https://t.me/T3rmx_Support_group"),
             thumb=photo,
             content=photo,
             send_message=types.InputBotInlineMessageMediaAuto(

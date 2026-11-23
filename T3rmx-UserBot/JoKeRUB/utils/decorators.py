@@ -165,7 +165,7 @@ def errors_handler(func):
             ftext += result
             pastelink = await paste_message(ftext)
             text = "**T3rmx UserBot error report**\n\n"
-            link = "[support](https://t.me/+ByL7rwqxpEEwOTE8)"
+            link = "[support](https://t.me/T3rmx_Support_group)"
             text += "If you want, you can report this issue "
             text += f"by forwarding this message to {link}.\n"
             text += "Only the error details, date, and time are logged.\n\n"

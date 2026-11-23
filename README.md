@@ -5,7 +5,7 @@
 > **Repository:** <https://github.com/T3rmx/T3rmx-UserBot>  
 > **Assistant bot:** [@t3rmx_official_bot](https://t.me/t3rmx_official_bot)  
 > **Updates:** <https://t.me/t3rmx_official>  
-> **Support:** <https://t.me/+3tqPFLpxCgVjZGVk> · <https://t.me/+ByL7rwqxpEEwOTE8>
+> **Support:** <https://t.me/T3rmx_Support_channel> · <https://t.me/T3rmx_Support_group>
 
 <p align="center"><img src="assets/branding/t3rmx-logo.jpg" alt="T3rmx UserBot" width="420"></p>
 
@@ -153,7 +153,7 @@ Distributed under the **GNU Affero General Public License v3.0**. See [LICENSE](
 ### Support
 
 - Updates: <https://t.me/t3rmx_official>
-- Support: <https://t.me/+3tqPFLpxCgVjZGVk> · <https://t.me/+ByL7rwqxpEEwOTE8>
+- Support: <https://t.me/T3rmx_Support_channel> · <https://t.me/T3rmx_Support_group>
 - Issues: use GitHub issues for non-sensitive bug reports only (never post credentials, sessions, or tokens)
 
 ## Local / other deployment options

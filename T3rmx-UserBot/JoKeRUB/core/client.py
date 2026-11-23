@@ -132,7 +132,7 @@ class HuReClient(TelegramClient):
                     LOGS.exception(e)
                     if not disable_errors:
                         try:
-                            from .utils.logchannel import send_log_alert
+                            from ..utils.logchannel import send_log_alert
                             error_name = e.__class__.__name__
                             error_text = str(e)[:220]
                             alert = (
@@ -223,7 +223,7 @@ class HuReClient(TelegramClient):
                     LOGS.exception(e)
                     if not disable_errors:
                         try:
-                            from .utils.logchannel import send_log_alert
+                            from ..utils.logchannel import send_log_alert
                             error_name = e.__class__.__name__
                             error_text = str(e)[:220]
                             alert = (

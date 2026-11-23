@@ -229,32 +229,87 @@ def _copy_tree(source: str, destination: str) -> int:
     return copied
 
 
+# Import name -> PyPI package name. Used to prove every required library is
+# importable after pip finishes; a missing file or a failed install aborts the
+# update instead of being silently skipped.
+_REQUIRED_MODULES = {
+    "telethon": "Telethon",
+    "aiohttp": "aiohttp",
+    "requests": "requests",
+    "sqlalchemy": "SQLAlchemy",
+    "psycopg2": "psycopg2-binary",
+    "PIL": "Pillow",
+    "yt_dlp": "yt-dlp",
+    "dotenv": "python-dotenv",
+    "bs4": "beautifulsoup4",
+    "markdown": "Markdown",
+    "emoji": "emoji",
+    "fontTools": "fonttools",
+    "lyricsgenius": "lyricsgenius",
+    "user_agent": "user-agent",
+}
+
+
+def _find_requirements(root: str):
+    for relative in ("requirements.txt", "T3rmx-UserBot/requirements.txt"):
+        candidate = os.path.join(root, relative)
+        if os.path.isfile(candidate):
+            return candidate
+    return None
+
+
 def _install_requirements(root: str):
-    candidate = os.path.join(root, "requirements.txt")
-    if not os.path.isfile(candidate):
-        candidate = os.path.join(root, "T3rmx-UserBot", "requirements.txt")
-    if not os.path.isfile(candidate):
-        return True, "لم يتم العثور على ملف المتطلبات"
+    """Install every pinned dependency. Never skip and never report false success."""
+    requirements = _find_requirements(root)
+    if not requirements:
+        return False, "لم يتم العثور على requirements.txt في أحدث كود"
+
     command = [
         sys.executable,
         "-m",
         "pip",
         "install",
         "-r",
-        candidate,
+        requirements,
         "--disable-pip-version-check",
+        "--no-input",
+        "--no-cache-dir",
+        "--upgrade-strategy",
+        "only-if-needed",
     ]
     try:
         result = subprocess.run(
             command,
             capture_output=True,
             text=True,
-            timeout=600,
+            timeout=900,
         )
         detail = ((result.stdout or "") + "\n" + (result.stderr or "")).strip()
-        return result.returncode == 0, detail[-1200:]
+        if result.returncode != 0:
+            return False, detail[-1500:]
+        return True, detail[-600:]
     except Exception as e:
         return False, str(e)
+
+
+def _verify_dependencies():
+    """Check required imports in a fresh interpreter and name any missing library."""
+    missing = []
+    for module, package in _REQUIRED_MODULES.items():
+        try:
+            result = subprocess.run(
+                [sys.executable, "-c", f"import {module}"],
+                capture_output=True,
+                text=True,
+                timeout=60,
+            )
+            if result.returncode != 0:
+                missing.append(f"{module} ← {package}")
+        except Exception as e:
+            missing.append(f"{module} ← {package} ({e})")
+    if missing:
+        return False, ", ".join(missing)
+    return True, ""
 
 
 def _restart():
@@ -349,16 +404,25 @@ async def check_updates(event):
                 await msg.edit("**جاري تنزيل أحدث ملفات السورس...**", link_preview=False)
                 source_dir, tmp_dir = await asyncio.to_thread(_download_source, repo, branch)
 
+                await msg.edit("**جاري تثبيت جميع المكتبات المطلوبة...**", link_preview=False)
+                ok, detail = await asyncio.to_thread(_install_requirements, source_dir)
+                if not ok:
+                    lines.append(f"• فشل تثبيت المتطلبات، لم يتم تغيير أي ملف ولن يتم إعادة التشغيل:\n```\n{detail[:1200]}\n```")
+                    await msg.edit("\n".join(lines), link_preview=False)
+                    return
+
+                await msg.edit("**جاري التحقق من جميع المكتبات...**", link_preview=False)
+                ok, missing = await asyncio.to_thread(_verify_dependencies)
+                if not ok:
+                    lines.append(f"• مكتبات مفقودة بعد التثبيت: `{missing}`. لم يتم تغيير أي ملف ولن يتم إعادة التشغيل.")
+                    await msg.edit("\n".join(lines), link_preview=False)
+                    return
+
+                lines.append(f"• تم تثبيت والتحقق من {len(_REQUIRED_MODULES)} مكتبة مطلوبة بنجاح.")
+
                 await msg.edit("**جاري استبدال ملفات السورس...**", link_preview=False)
                 count = await asyncio.to_thread(_copy_tree, source_dir, _repo_root())
                 lines.append(f"• تم تحديث `{count}` ملفاً.")
-
-                await msg.edit("**جاري تثبيت المتطلبات...**", link_preview=False)
-                ok, detail = await asyncio.to_thread(_install_requirements, source_dir)
-                if ok:
-                    lines.append("• تم تثبيت المتطلبات بنجاح.")
-                else:
-                    lines.append(f"• فشل تثبيت المتطلبات:\n```\n{detail[:800]}\n```")
 
                 lines.append("• سيتم إعادة تشغيل البوت لتفعيل التحديث...")
                 await msg.edit("\n".join(lines), link_preview=False)

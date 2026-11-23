@@ -63,8 +63,13 @@ class Config(object):
     T3RMX_OWNER_USERNAME = os.environ.get("T3RMX_OWNER_USERNAME", "vvsks")
     T3RMX_OWNER_ID = _get_int("T3RMX_OWNER_ID", 6023224495)
     T3RMX_BOT_USERNAME = _normalize_bot_username(os.environ.get("T3RMX_BOT_USERNAME", "t3rmx_official_bot"))
-    T3RMX_SUPPORT_CHANNEL = os.environ.get("T3RMX_SUPPORT_CHANNEL", "https://t.me/+3tqPFLpxCgVjZGVk")
-    T3RMX_SUPPORT_GROUP = os.environ.get("T3RMX_SUPPORT_GROUP", "https://t.me/+ByL7rwqxpEEwOTE8")
+    T3RMX_SUPPORT_CHANNEL = os.environ.get("T3RMX_SUPPORT_CHANNEL", "https://t.me/T3rmx_Support_channel")
+    T3RMX_SUPPORT_GROUP = os.environ.get("T3RMX_SUPPORT_GROUP", "https://t.me/T3rmx_Support_group")
+    # Official photo: served by Telegram from the support channel profile photo.
+    T3RMX_OFFICIAL_PHOTO_URL = os.environ.get(
+        "T3RMX_OFFICIAL_PHOTO_URL",
+        "https://t.me/i/userpic/320/T3rmx_Support_channel.jpg",
+    )
     T3RMX_UPDATES_CHANNEL = os.environ.get("T3RMX_UPDATES_CHANNEL", "https://t.me/t3rmx_official")
     T3RMX_LOG_GROUP_ID = _get_int("T3RMX_LOG_GROUP_ID", 0)
     T3RMX_LOGO = os.environ.get("T3RMX_LOGO", os.environ.get("T3RMX_LOGO_PATH", "assets/branding/t3rmx-logo.jpg"))

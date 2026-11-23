@@ -7,7 +7,7 @@ from telethon import events
 from JoKeRUB import l313l
 from ..core.auth import is_owner
 from ..core.logger import logging
-from ..utils.logchannel import get_log_channel_id, send_log_alert, send_log_file
+from ..utils.logchannel import send_log_alert, send_log_file
 
 LOGS = logging.getLogger("t3rmx.logs")
 
@@ -21,9 +21,10 @@ async def _send_logs_command(event):
     if not is_owner(event.sender_id):
         return
 
-    target_arg = (event.pattern_match.group(2) or "").strip()
+    target_arg = (event.pattern_match.group(1) or "").strip()
     try:
-        target = int(target_arg) if target_arg else await get_log_channel_id()
+        # The log channel receives short alerts only; the full file goes to the owner.
+        target = int(target_arg) if target_arg else event.sender_id
     except Exception:
         target = target_arg
 

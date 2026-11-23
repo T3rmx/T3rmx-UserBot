@@ -359,7 +359,7 @@ async def verifyLoggerGroup():
     # the full log file is sent only when the owner uses /log.
     if getattr(Config, "T3RMX_AUTO_LOG_CHANNEL", True):
         try:
-            from ..utils.logchannel import ensure_log_channel
+            from .logchannel import ensure_log_channel
             log_channel_id = await ensure_log_channel(l313l)
             if log_channel_id and not getattr(Config, "BOTLOG", False):
                 addgvar("PRIVATE_GROUP_BOT_API_ID", str(log_channel_id))

@@ -2,11 +2,11 @@
   "generated_by": "scripts/plugin_harness_v4.py",
   "scope": "all_plugins_load_exec_import_registration_analysis",
   "summary": {
-    "total_plugins": 105,
+    "total_plugins": 106,
     "failed_plugins": 0,
-    "successful_plugins": 105,
+    "successful_plugins": 106,
     "by_classification": {
-      "load_ok": 105
+      "load_ok": 106
     },
     "analysis_notes": [
       "Classification distinguishes missing optional external dependencies and harness/interface/config issues from suspected source defects.",
@@ -1824,6 +1824,73 @@
       "notes": []
     },
     {
+      "file": "الصيد.py",
+      "path": "T3rmx-UserBot/JoKeRUB/plugins/الصيد.py",
+      "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/الصيد.py",
+      "exec_ok": true,
+      "classification": "load_ok",
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module_or_attribute": null,
+      "handlers": {
+        "ar_cmd": 19,
+        "bot_cmd": 0,
+        "on": 0
+      },
+      "patterns_sample": [
+        {
+          "pattern": "(الصيد|التثبيت)",
+          "command": null
+        },
+        {
+          "pattern": "(اوامر المخصص|المخصص)",
+          "command": null
+        },
+        {
+          "pattern": "اوامر الصيد",
+          "command": null
+        },
+        {
+          "pattern": "اوامر التثبيت",
+          "command": null
+        },
+        {
+          "pattern": "(النوع|الانواع)",
+          "command": null
+        },
+        {
+          "pattern": "مخصص (.*)",
+          "command": null
+        },
+        {
+          "pattern": "صيد (.*)",
+          "command": null
+        },
+        {
+          "pattern": "تثبيت (.*)",
+          "command": null
+        },
+        {
+          "pattern": "تثبيت_قناة (.*)",
+          "command": null
+        },
+        {
+          "pattern": "تثبيت_حساب (.*)",
+          "command": null
+        }
+      ],
+      "config_attributes_referenced": [],
+      "config_attributes_missing_from_config": [],
+      "required_external_services": [],
+      "can_operate_without_optional_dependencies": "n/a",
+      "stub_incompatibility_suspected": false,
+      "package_export_compat_issue_suspected": false,
+      "actual_source_defect_suspected": false,
+      "recommended_action": "none (loaded in harness)",
+      "notes": []
+    },
+    {
       "file": "الصيغ.py",
       "path": "T3rmx-UserBot/JoKeRUB/plugins/الصيغ.py",
       "absolute_path": "/home/riyadh/Projects/T3rmx-UserBot/T3rmx-UserBot/JoKeRUB/plugins/الصيغ.py",
@@ -2702,7 +2769,8 @@
       "config_attributes_referenced": [],
       "config_attributes_missing_from_config": [],
       "required_external_services": [
-        "possible external API/service usage"
+        "possible external API/service usage",
+        "database-dependent behavior possible"
       ],
       "can_operate_without_optional_dependencies": "n/a",
       "stub_incompatibility_suspected": false,

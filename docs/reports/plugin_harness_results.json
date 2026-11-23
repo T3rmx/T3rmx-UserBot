@@ -1,13 +1,13 @@
 {
   "summary": {
-    "total": 105,
-    "exec_ok": 105,
+    "total": 106,
+    "exec_ok": 106,
     "failed": 0,
-    "with_ar_cmd": 92,
+    "with_ar_cmd": 93,
     "with_bot_cmd": 0,
     "with_on": 34,
     "by_classification": {
-      "load_ok": 105
+      "load_ok": 106
     },
     "missing_external_modules": {}
   },
@@ -1490,6 +1490,83 @@
             "صورة",
             "extra"
           ]
+        }
+      ],
+      "error_type": null,
+      "error": null,
+      "traceback_tail": null,
+      "missing_module": null,
+      "classification": "load_ok",
+      "stdout_tail": null,
+      "stderr_tail": null
+    },
+    {
+      "file": "الصيد.py",
+      "name": "الصيد",
+      "exec_ok": true,
+      "handlers_ar_cmd": 19,
+      "handlers_bot_cmd": 0,
+      "handlers_on": 0,
+      "patterns": [
+        {
+          "pattern": "(الصيد|التثبيت)",
+          "command": null
+        },
+        {
+          "pattern": "(اوامر المخصص|المخصص)",
+          "command": null
+        },
+        {
+          "pattern": "اوامر الصيد",
+          "command": null
+        },
+        {
+          "pattern": "اوامر التثبيت",
+          "command": null
+        },
+        {
+          "pattern": "(النوع|الانواع)",
+          "command": null
+        },
+        {
+          "pattern": "مخصص (.*)",
+          "command": null
+        },
+        {
+          "pattern": "صيد (.*)",
+          "command": null
+        },
+        {
+          "pattern": "تثبيت (.*)",
+          "command": null
+        },
+        {
+          "pattern": "تثبيت_قناة (.*)",
+          "command": null
+        },
+        {
+          "pattern": "تثبيت_حساب (.*)",
+          "command": null
+        },
+        {
+          "pattern": "تثبيت_بوت (.*)",
+          "command": null
+        },
+        {
+          "pattern": "حالة مخصص",
+          "command": null
+        },
+        {
+          "pattern": "حالة الصيد",
+          "command": null
+        },
+        {
+          "pattern": "حالة تثبيت_القناة",
+          "command": null
+        },
+        {
+          "pattern": "حالة تثبيت_الحساب",
+          "command": null
         }
       ],
       "error_type": null,

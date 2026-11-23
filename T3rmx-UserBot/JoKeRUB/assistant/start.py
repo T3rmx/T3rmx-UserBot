@@ -53,7 +53,7 @@ async def start(event):
             link_preview=False,
             buttons=[
                 [custom.Button.inline("تنصيب T3rmx UserBot", data="deploy")],
-                [Button.url("Support", getattr(Config, "T3RMX_SUPPORT_CHANNEL", "https://t.me/+3tqPFLpxCgVjZGVk"))],
+                [Button.url("Support", getattr(Config, "T3RMX_SUPPORT_CHANNEL", "https://t.me/T3rmx_Support_channel"))],
             ],
         )
 
@@ -68,7 +68,7 @@ async def help(event):
             message="**لنشر نسخة T3rmx UserBot الخاصة بك، استخدم المستودع الرسمي وأدلة التنصيب المضمّنة. للمساعدة استخدم قنوات الدعم الرسمية.**",
             buttons=[
                 [Button.url("Repository", getattr(Config, "T3RMX_REPOSITORY", "https://github.com/T3rmx/T3rmx-UserBot"))],
-                [Button.url("Support", getattr(Config, "T3RMX_SUPPORT_GROUP", "https://t.me/+ByL7rwqxpEEwOTE8"))],
+                [Button.url("Support", getattr(Config, "T3RMX_SUPPORT_GROUP", "https://t.me/T3rmx_Support_group"))],
             ],
         )
 

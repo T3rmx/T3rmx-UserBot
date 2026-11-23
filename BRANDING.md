@@ -13,13 +13,16 @@ This document is the authoritative reference for T3rmx project identity, ownersh
 - **Owner username:** @vvsks
 - **Owner numeric ID:** `6023224495`
 - **Official bot:** @t3rmx_official_bot
-- **Support channel:** https://t.me/+3tqPFLpxCgVjZGVk
-- **Support group:** https://t.me/+ByL7rwqxpEEwOTE8
+- **Support channel:** https://t.me/T3rmx_Support_channel
+- **Support group:** https://t.me/T3rmx_Support_group
 - **Updates channel:** https://t.me/t3rmx_official
 - **Logging group:** Not configured (must remain configurable; do not invent an ID)
 
 ## Branding assets
 - **Primary logo:** `assets/branding/t3rmx-logo.jpg` (owner-provided)
+- **Official photo URL (Telegram):** `https://t.me/i/userpic/320/T3rmx_Support_channel.jpg`
+  - Used by inline/banner images that need a remote URL; resolves to the support channel profile photo.
+  - Configurable via `T3RMX_OFFICIAL_PHOTO_URL`.
 - Do not use images, media, or branding assets from previous maintainers/projects.
 
 ## Configuration principles

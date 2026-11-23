@@ -77,8 +77,12 @@ T3RMX_WEBSITE = get_str("T3RMX_WEBSITE", "")  # Not available
 T3RMX_OWNER_USERNAME = get_str("T3RMX_OWNER_USERNAME", "vvsks")
 T3RMX_OWNER_ID = get_int("T3RMX_OWNER_ID", 6023224495)
 T3RMX_BOT_USERNAME = normalize_bot_username(get_str("T3RMX_BOT_USERNAME", "t3rmx_official_bot"))
-T3RMX_SUPPORT_CHANNEL = get_str("T3RMX_SUPPORT_CHANNEL", "https://t.me/+3tqPFLpxCgVjZGVk")
-T3RMX_SUPPORT_GROUP = get_str("T3RMX_SUPPORT_GROUP", "https://t.me/+ByL7rwqxpEEwOTE8")
+T3RMX_SUPPORT_CHANNEL = get_str("T3RMX_SUPPORT_CHANNEL", "https://t.me/T3rmx_Support_channel")
+T3RMX_SUPPORT_GROUP = get_str("T3RMX_SUPPORT_GROUP", "https://t.me/T3rmx_Support_group")
+T3RMX_OFFICIAL_PHOTO_URL = get_str(
+    "T3RMX_OFFICIAL_PHOTO_URL",
+    "https://t.me/i/userpic/320/T3rmx_Support_channel.jpg",
+)
 T3RMX_UPDATES_CHANNEL = get_str("T3RMX_UPDATES_CHANNEL", "https://t.me/t3rmx_official")
 T3RMX_LOG_GROUP_ID = get_int("T3RMX_LOG_GROUP_ID", 0)  # Not configured by default
 T3RMX_LOGO_PATH = get_str("T3RMX_LOGO_PATH", "assets/branding/t3rmx-logo.jpg")

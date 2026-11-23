@@ -1,7 +1,7 @@
 """Arabic log-channel helper.
 
 Creates a private Telegram log channel once, stores its id in globals, and sends
-only short text alerts there. The full log file is sent only on the /log command.
+only short text alerts there. The full log file is sent only on the owner's /log command.
 """
 
 import os

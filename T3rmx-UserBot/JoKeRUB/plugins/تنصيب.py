@@ -10,7 +10,7 @@ plugin_category = "tools"
 def _buttons():
     repo = getattr(Config, "T3RMX_REPOSITORY", "https://github.com/T3rmx/T3rmx-UserBot")
     updates = getattr(Config, "T3RMX_UPDATES_CHANNEL", "https://t.me/t3rmx_official")
-    support = getattr(Config, "T3RMX_SUPPORT_GROUP", "https://t.me/+ByL7rwqxpEEwOTE8") or getattr(Config, "T3RMX_SUPPORT_CHANNEL", "https://t.me/+3tqPFLpxCgVjZGVk")
+    support = getattr(Config, "T3RMX_SUPPORT_GROUP", "https://t.me/T3rmx_Support_group") or getattr(Config, "T3RMX_SUPPORT_CHANNEL", "https://t.me/T3rmx_Support_channel")
     rows = [
         [Button.url("Repository", repo)],
         [Button.url("Deploy to Heroku", f"{repo}#deploy-to-heroku"), Button.url("Railway Guide", f"{repo}#deploy-to-railway")],
