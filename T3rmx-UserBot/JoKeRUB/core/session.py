@@ -36,11 +36,42 @@ except Exception as e:
     LOGS.error(f"[STRING SESSION] - {str(e)}")
     l313l = None
 
+class NullAssistantBot:
+    """Safe stand-in when the assistant bot cannot start.
+
+    Plugins register buttons/inline handlers at import time. With a real client
+    missing, a no-op client keeps every plugin loadable instead of crashing on
+    `None.on(...)`. Assistant-only actions simply do nothing.
+    """
+
+    available = False
+    me = None
+
+    def on(self, *args, **kwargs):
+        def decorator(func):
+            return func
+
+        return decorator
+
+    def add_event_handler(self, *args, **kwargs):
+        return None
+
+    def __getattr__(self, name):
+        async def noop(*args, **kwargs):
+            return None
+
+        return noop
+
+
 # Assistant bot (optional, requires valid token)
-tgbot = None
+ASSISTANT_AVAILABLE = False
+tgbot = NullAssistantBot()
+if l313l is not None:
+    l313l.tgbot = tgbot
+
 try:
     if l313l and getattr(Config, "TG_BOT_TOKEN", None):
-        l313l.tgbot = tgbot = HuReClient(
+        real_bot = HuReClient(
             session="t3rmx-assistant",
             api_id=Config.APP_ID,
             api_hash=Config.API_HASH,
@@ -50,17 +81,11 @@ try:
             auto_reconnect=True,
             connection_retries=None,
         ).start(bot_token=Config.TG_BOT_TOKEN)
-    elif l313l:
-        l313l.tgbot = None
+        l313l.tgbot = tgbot = real_bot
+        ASSISTANT_AVAILABLE = True
 except AccessTokenExpiredError:
-    LOGS.error("Bot token expired. Set a valid TG_BOT_TOKEN to enable assistant features.")
-    if l313l:
-        l313l.tgbot = None
+    LOGS.warning("Bot token expired; assistant features are disabled.")
 except AccessTokenInvalidError:
-    LOGS.error("Invalid bot token. Set a valid TG_BOT_TOKEN to enable assistant features.")
-    if l313l:
-        l313l.tgbot = None
+    LOGS.warning("Invalid bot token; assistant features are disabled.")
 except Exception as e:
-    LOGS.warning(f"Assistant bot setup skipped: {e}")
-    if l313l:
-        l313l.tgbot = None
+    LOGS.warning("Assistant bot unavailable (%s); assistant features are disabled.", type(e).__name__)

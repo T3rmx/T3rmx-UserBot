@@ -24,8 +24,8 @@ for file in glob("ALJoker/strings/*yml"):
             )
         
         except Exception as er:
-            LOGS.info(f"Error in {file[:-4]} language file")
-            LOGS.exception(er)
+            # Keep the log compact: one short line instead of a full traceback.
+            LOGS.warning("Invalid language file %s: %s", file, type(er).__name__)
 
 
 def get_string(key: str, _res: bool = True) -> Any:
@@ -35,7 +35,7 @@ def get_string(key: str, _res: bool = True) -> Any:
     except KeyError:
         try:
             ar_ = languages["ar"][key]
-            tr = translate(ar_, lang_tgt=lang).replace("\ N", "\n")
+            tr = translate(ar_, lang_tgt=lang).replace(r"\ N", "\n")
             if en_.count("{}") != tr.count("{}"):
                 tr = ar_
             if languages.get(lang):

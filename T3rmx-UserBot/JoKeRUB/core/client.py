@@ -27,6 +27,30 @@ from .pluginManager import get_message_link, restart_script
 LOGS = logging.getLogger(__name__)
 
 
+async def _report_command_error(check, error, disable_errors: bool = False) -> None:
+    """Log one short line and send a short Arabic alert.
+
+    Full tracebacks are intentionally not written to the console/log file:
+    they made the log channel unreadable and hid the actual failure.
+    """
+    if disable_errors:
+        return
+    name = error.__class__.__name__
+    message = str(error)[:180]
+    LOGS.warning("Command error %s: %s", name, message)
+    try:
+        from ..utils.logchannel import send_log_alert
+
+        await send_log_alert(
+            check.client,
+            "⚠️ تنبيه خطأ في T3rmx\n"
+            f"• نوع الخطأ: `{name}`\n"
+            f"• الرسالة: `{message}`\n",
+        )
+    except Exception:
+        pass
+
+
 class REGEX:
     def __init__(self):
         self.regex = ""
@@ -124,26 +148,13 @@ class HuReClient(TelegramClient):
                 except MessageIdInvalidError:
                     LOGS.error("Message was deleted or cant be found")
                 except Exception as e:
-                    # FloodWait during rapid testing is transient; don't escalate to traceback report spam
-                    if e.__class__.__name__ == "FloodWaitError" or "FloodWaitError" in str(type(e)):
-                        LOGS.error("FloodWait during command execution (rate-limited): %s", e)
+                    # FloodWait is transient; never turn it into a traceback.
+                    if e.__class__.__name__ == "FloodWaitError":
+                        LOGS.warning("Command rate-limited (FloodWait).")
                         return
+                    await _report_command_error(check, e, disable_errors)
                 except BaseException as e:
-                    LOGS.exception(e)
-                    if not disable_errors:
-                        try:
-                            from ..utils.logchannel import send_log_alert
-                            error_name = e.__class__.__name__
-                            error_text = str(e)[:220]
-                            alert = (
-                                "⚠️ تنبيه خطأ في T3rmx\n"
-                                f"• نوع الخطأ: `{error_name}`\n"
-                                f"• الرسالة: `{error_text}`\n"
-                                "• التفاصيل الكاملة موجودة في ملف السجلات."
-                            )
-                            await send_log_alert(check.client, alert)
-                        except Exception:
-                            pass
+                    await _report_command_error(check, e, disable_errors)
 
             from .session import l313l
 
@@ -220,21 +231,7 @@ class HuReClient(TelegramClient):
                 except MessageIdInvalidError:
                     LOGS.error("Message was deleted or cant be found")
                 except BaseException as e:
-                    LOGS.exception(e)
-                    if not disable_errors:
-                        try:
-                            from ..utils.logchannel import send_log_alert
-                            error_name = e.__class__.__name__
-                            error_text = str(e)[:220]
-                            alert = (
-                                "⚠️ تنبيه خطأ في T3rmx\n"
-                                f"• نوع الخطأ: `{error_name}`\n"
-                                f"• الرسالة: `{error_text}`\n"
-                                "• التفاصيل الكاملة موجودة في ملف السجلات."
-                            )
-                            await send_log_alert(check.client, alert)
-                        except Exception:
-                            pass
+                    await _report_command_error(check, e, disable_errors)
 
             from .session import l313l
 

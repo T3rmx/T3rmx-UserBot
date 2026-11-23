@@ -36,7 +36,7 @@ def aljokerPyro(session, logger=LOGS, _exit=True):
         # Telethon Session
         if session.startswith(CURRENT_VERSION):
             if len(session.strip()) != 353:
-                logger.exception("كود STRING_SESSION غير صالح، يرجى التحقق منه.")
+                logger.warning("كود STRING_SESSION غير صالح، يرجى التحقق منه.")
                 sys.exit()
             return StringSession(session)
 
@@ -64,9 +64,9 @@ def aljokerPyro(session, logger=LOGS, _exit=True):
                 ).decode("ascii")
             )
         else:
-            logger.exception("كود STRING_SESSION غير صالح، يرجى التحقق منه.")
+            logger.warning("كود STRING_SESSION غير صالح، يرجى التحقق منه.")
             if _exit:
                 sys.exit()
-    logger.exception("لم يتم العثور على STRING_SESSION.")
+    logger.warning("لم يتم العثور على STRING_SESSION.")
     if _exit:
         sys.exit()

@@ -88,5 +88,5 @@ except Exception as e:
     LOGS.error(
         "Database initialization failed. Features depending on the database may not work."
     )
-    LOGS.exception(e)
+    LOGS.warning("Database init error: %s", type(e).__name__)
 

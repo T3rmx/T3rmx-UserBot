@@ -8,7 +8,7 @@ from ..Config import Config
 from ..core import LOADED_CMDS, PLG_INFO
 from ..core.logger import logging
 from ..core.managers import edit_delete, edit_or_reply
-from ..core.session import l313l
+from ..core.session import l313l, tgbot
 from ..helpers.tools import media_type
 from ..helpers.utils import _cattools, _catutils, _format, reply_id
 from .decorators import admin_cmd, sudo_cmd
@@ -41,7 +41,9 @@ def load_module(shortname, plugin_path=None):
         mod.LOGS = LOGS
         mod.Config = Config
         mod._format = _format
-        mod.tgbot = getattr(l313l, "tgbot", None)
+        # Use the safe no-op client when the assistant bot is unavailable so
+        # button/inline handlers never crash plugin imports.
+        mod.tgbot = getattr(l313l, "tgbot", None) or tgbot
         mod.sudo_cmd = sudo_cmd
         mod.CMD_HELP = CMD_HELP
         mod.reply_id = reply_id

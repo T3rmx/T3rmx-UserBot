@@ -4,7 +4,7 @@ import JoKeRUB
 from JoKeRUB import BOTLOG_CHATID, PM_LOGGER_GROUP_ID
 from .Config import Config
 from .core.logger import logging
-from .core.session import l313l
+from .core.session import ASSISTANT_AVAILABLE, l313l
 from .utils import (
     add_bot_to_logger_group,
     load_plugins,
@@ -52,9 +52,9 @@ async def startup_process():
     # Log groups and optional features are controlled by configuration (safe defaults).
     await verifyLoggerGroup()
     await load_plugins("plugins")
-    # Assistant plugins register handlers on the assistant client; load them only
-    # when that client exists (the bot token may be absent or Telegram may fail).
-    if getattr(l313l, "tgbot", None) is not None:
+    # Assistant plugins register real handlers; load them only when a real
+    # assistant client exists. The no-op client keeps normal plugins loadable.
+    if ASSISTANT_AVAILABLE:
         await load_plugins("assistant")
     else:
         LOGS.info("Assistant plugins skipped: assistant bot is unavailable.")

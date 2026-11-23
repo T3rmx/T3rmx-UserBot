@@ -349,7 +349,7 @@ def _mp3Dl(url: str, starttime, uid: str):
         with yt_dlp.YoutubeDL(_opts) as ytdl:
             dloader = ytdl.download([url])
     except Exception as y_e:
-        LOGS.exception(y_e)
+        LOGS.warning("YouTube download failed: %s", type(y_e).__name__)
         return y_e
     else:
         return dloader

@@ -269,7 +269,7 @@ async def add_to_pack(
 
 
 @l313l.ar_cmd(
-    pattern="ملصق(?:\s|$)([\s\S]*)",
+    pattern=r"ملصق(?:\s|$)([\s\S]*)",
     command=("ملصق", plugin_category),
     info={
         "header": "To kang a sticker.",
@@ -491,7 +491,7 @@ async def HuRepkg(_):
             )
         )
     except BaseException as er:
-        LOGS.exception(er)
+        LOGS.warning("Sticker pack error: %s", type(er).__name__)
         return await edit_or_reply(_, str(er))
     await edit_or_reply(
         _, f"**- تم اخذ الحزمة بنجاح ✓ \nالحزمة  → [اضغط هنا](https://t.me/addstickers/{HuRe_Jep.set.short_name})**")
@@ -550,7 +550,7 @@ async def HuRepkg(_):
             )
         )
     except Exception as er:
-        LOGS.exception(er)
+        LOGS.warning("Sticker pack error: %s", type(er).__name__)
         return await edit_or_reply(_, str(er))
     await edit_or_reply(
         _,
@@ -613,7 +613,7 @@ hash=0
 
 
 @l313l.ar_cmd(
-    pattern="الملصقات ?([\s\S]*)",
+    pattern=r"الملصقات ?([\s\S]*)",
     command=("الملصقات", plugin_category),
     info={
         "header": "To get list of sticker packs with given name.",
