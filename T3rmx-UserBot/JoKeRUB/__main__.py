@@ -52,7 +52,12 @@ async def startup_process():
     # Log groups and optional features are controlled by configuration (safe defaults).
     await verifyLoggerGroup()
     await load_plugins("plugins")
-    await load_plugins("assistant")
+    # Assistant plugins register handlers on the assistant client; load them only
+    # when that client exists (the bot token may be absent or Telegram may fail).
+    if getattr(l313l, "tgbot", None) is not None:
+        await load_plugins("assistant")
+    else:
+        LOGS.info("Assistant plugins skipped: assistant bot is unavailable.")
 
     # Optional, explicitly controlled startup actions
     try:

@@ -37,6 +37,7 @@ except Exception as e:
     l313l = None
 
 # Assistant bot (optional, requires valid token)
+tgbot = None
 try:
     if l313l and getattr(Config, "TG_BOT_TOKEN", None):
         l313l.tgbot = tgbot = HuReClient(

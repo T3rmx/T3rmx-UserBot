@@ -15,8 +15,12 @@ __license__ = "GNU Affero General Public License v3.0 (see LICENSE)"
 __author__ = "T3rmx Project"
 __copyright__ = "T3rmx UserBot"
 
-l313l.version = __version__
-l313l.tgbot.version = __version__
+# The user client and the assistant bot are both optional at import time: a
+# bad/absent session or a temporary Telegram failure must not crash startup.
+if l313l is not None:
+    l313l.version = __version__
+    if getattr(l313l, "tgbot", None) is not None:
+        l313l.tgbot.version = __version__
 LOGS = logging.getLogger("t3rmx")
 bot = l313l
 
