@@ -220,6 +220,18 @@ class HuReClient(TelegramClient):
 
         def decorator(func):
             async def wrapper(check):
+                sender = getattr(check, "sender_id", None)
+                owner_ids = {Config.OWNER_ID, *list(getattr(Config, "SUDO_USERS", []) or [])}
+                if kwargs.get("pattern") and sender not in owner_ids:
+                    try:
+                        await check.reply(
+                            "⌯︙هذا البوت مخصص للاتصال بالمالك فقط، "
+                            "ويُستخدم كوسيط لتمرير رسائلك إليه.\n"
+                            "⌯︙لا يمكنك تنفيذ الأوامر من هذا البوت."
+                        )
+                    except Exception:
+                        pass
+                    return
                 try:
                     await func(check)
                 except events.StopPropagation:
@@ -236,9 +248,9 @@ class HuReClient(TelegramClient):
             from .session import l313l
 
             if edited is True:
-                l313l.tgbot.add_event_handler(func, events.MessageEdited(**kwargs))
+                l313l.tgbot.add_event_handler(wrapper, events.MessageEdited(**kwargs))
             else:
-                l313l.tgbot.add_event_handler(func, events.NewMessage(**kwargs))
+                l313l.tgbot.add_event_handler(wrapper, events.NewMessage(**kwargs))
 
             return wrapper
 

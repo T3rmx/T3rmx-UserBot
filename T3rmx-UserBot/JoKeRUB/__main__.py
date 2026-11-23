@@ -4,7 +4,7 @@ import JoKeRUB
 from JoKeRUB import BOTLOG_CHATID, PM_LOGGER_GROUP_ID
 from .Config import Config
 from .core.logger import logging
-from .core.session import ASSISTANT_AVAILABLE, l313l
+from .core.session import l313l, start_assistant
 from .utils import (
     add_bot_to_logger_group,
     load_plugins,
@@ -34,8 +34,9 @@ except Exception as e:
 
 try:
     LOGS.info("Initializing assistant bot session...")
+    l313l.loop.run_until_complete(start_assistant())
     l313l.loop.run_until_complete(mybot())
-    LOGS.info("Assistant bot initialized.")
+    LOGS.info("Assistant bot initialization completed.")
 except Exception as e:
     LOGS.warning(f"Assistant bot initialization warning: {e}")
 
@@ -52,12 +53,9 @@ async def startup_process():
     # Log groups and optional features are controlled by configuration (safe defaults).
     await verifyLoggerGroup()
     await load_plugins("plugins")
-    # Assistant plugins register real handlers; load them only when a real
-    # assistant client exists. The no-op client keeps normal plugins loadable.
-    if ASSISTANT_AVAILABLE:
-        await load_plugins("assistant")
-    else:
-        LOGS.info("Assistant plugins skipped: assistant bot is unavailable.")
+    # Every assistant command must be registered. Login status never skips a
+    # plugin; Arabic failure messages are only sent when a command is used.
+    await load_plugins("assistant")
 
     # Optional, explicitly controlled startup actions
     try:

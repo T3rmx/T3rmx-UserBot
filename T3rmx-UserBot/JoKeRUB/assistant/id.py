@@ -1,8 +1,14 @@
 from telethon import events
 from telethon.utils import pack_bot_file_id
 
+from JoKeRUB import bot
 
-@tgbot.on(events.NewMessage(pattern="^الايدي"))
+
+@tgbot.on(
+    events.NewMessage(
+        pattern="^الايدي", func=lambda e: e.sender_id == bot.uid
+    )
+)
 async def _(event):
     if event.reply_to_msg_id:
         await event.get_input_chat()

@@ -30,7 +30,14 @@ async def start(event):
     replied_user = await event.client(GetFullUserRequest(event.sender_id))
     firstname = replied_user.users[0].first_name
     vent = event.chat_id
-    starttext = f"**مـرحبا {firstname} ! انـا هـو {bot_id}, بـوت مساعـد بسيـط 🧸🤍 \n\n- [مـالك البـوت](tg://user?id={bot.uid}) \nيمكـنك مراسلـة المـالك عبـر هذا البـوت . \n\nاذا كـنت تـريد تنـصيب بـوت خـاص بـك تـاكد من الازرار بالأسفل**"
+    starttext = (
+        f"**مـرحبا {firstname} ! انـا هـو {bot_id}, بـوت مساعـد بسيـط 🧸🤍 \n\n"
+        f"- [مـالك البـوت](tg://user?id={bot.uid}) \n"
+        "⌯︙هذا البوت مخصص للاتصال بالمالك فقط، ويُستخدم كوسيط "
+        "(بروكسي) لتمرير رسائلك إليه.\n"
+        "⌯︙لا يمكنك تنفيذ أي أمر من أوامر البوت، فقط أرسل رسالتك وستصل للمالك.\n\n"
+        "اذا كـنت تـريد تنـصيب بـوت خـاص بـك تـاكد من الازرار بالأسفل**"
+    )
     if event.sender_id == bot.uid:
         await tgbot.send_message(
             vent,
@@ -91,14 +98,34 @@ async def users(event):
                 allow_cache=False,
             )
     else:
-        pass
+        await event.answer("⌯︙هذا البوت للاتصال بالمالك فقط.", alert=True)
 
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"gibcmd")))
 async def users(event):
+    if event.query.user_id != bot.uid:
+        await event.answer(
+            "⌯︙هذا البوت للاتصال بالمالك فقط، لا يمكنك عرض أوامره.",
+            alert=True,
+        )
+        return
     await event.delete()
     rorza = "**قائمة أوامر البوت المساعد (T3rmx UserBot)**:\n- **جميع هذه الاوامر تستخدم بعد اضافة البوت في مجموعة ورفعه مشـرف مع بعض الصلاحيـات**\n• /start \n ( للـتأكد من حالـة البـوت) \n• /ping \n ( امـر بنـك )  \n• /broadcast \n ( لعمـل اذاعـة لجميـع المستخدمين في البـوت )  \n• /id \n  ( لعـرض ايدي المسـتخدم ) \n• /alive \n- ( لـرؤية معلومات البـوت ) \n• /bun \n-  ( تعمل في المجموعات لحظر شخص )\n• /unbun  \n-  ( تعمل في المجموعات لالغاء حظر مستخدم )  \n• /prumote  \n-  ( لرفـع شخص مشـرف )\n• /demute  \n-  ( لتنزيل الشخص من رتبة الاشراف ) \n• /pin  \n-  ( لتثبيـت رسالة في المجموعـة )  \n• /stats  \n-  ( لعرض مستخدمين البوت )  \n• /purge  \n-  ( بالرد على رسالة ليقوم بحذف ما تحتها من رسائل ) \n• /del  \n-  ( بالـرد على الرسالـة لحـذفها )"
     await tgbot.send_message(event.chat_id, rorza)
+
+
+@tgbot.on(
+    events.NewMessage(
+        pattern=r"^(?:/purge|/del$|/hack|الايدي)",
+        func=lambda e: e.sender_id != bot.uid,
+    )
+)
+async def assistant_non_owner_notice(event):
+    """Tell non-owners this bot is a proxy to the owner; never run commands."""
+    await event.reply(
+        "⌯︙هذا البوت مخصص للاتصال بالمالك فقط، ويُستخدم كوسيط لتمرير رسائلك إليه.\n"
+        "⌯︙لا يمكنك تنفيذ الأوامر من هذا البوت."
+    )
 
 
 @tgbot.on(events.NewMessage(pattern="^/help", func=lambda e: e.sender_id == bot.uid))
@@ -132,7 +159,7 @@ async def settings(event):
                                      "اسماء القنوات َِ🛹", data="chanlan")]
                                  ])
     else:
-        await event.answer("هذا البوت خاص. يمكنك نشر نسختك من مستودع T3rmx UserBot.", alert=True)
+        await event.answer("⌯︙هذا البوت للاتصال بالمالك فقط، لا يمكنك استخدام أوامره.", alert=True)
 
 
 
@@ -152,7 +179,7 @@ async def settings(event):
                                          "║ رجوع ║ ⁦⁩", data="rozzag")]
                                  ])
     else:
-        await event.answer("هذا البوت خاص. يمكنك نشر نسختك من مستودع T3rmx UserBot.", alert=True)
+        await event.answer("⌯︙هذا البوت للاتصال بالمالك فقط، لا يمكنك استخدام أوامره.", alert=True)
 
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"razan")))  
@@ -170,7 +197,7 @@ async def settings(event):
                                          "║ رجوع ║", data="rozname")]
                                  ])
     else:
-        await event.answer("هذا البوت خاص. يمكنك نشر نسختك من مستودع T3rmx UserBot.", alert=True)
+        await event.answer("⌯︙هذا البوت للاتصال بالمالك فقط، لا يمكنك استخدام أوامره.", alert=True)
 
 
 
@@ -184,7 +211,7 @@ async def settings(event): #
                                  buttons=[[Button.inline("║ رجوع ║", data="razan")]
                                  ])
     else:
-        await event.answer("هذا البوت خاص. يمكنك نشر نسختك من مستودع T3rmx UserBot.", alert=True)
+        await event.answer("⌯︙هذا البوت للاتصال بالمالك فقط، لا يمكنك استخدام أوامره.", alert=True)
 
 
 # Boys zag list2 - قائمه اسماء الشباب الثانيه
@@ -197,7 +224,7 @@ async def settings(event):  #    قـسـم  الزغرفـة لأسـماء ا�
                                  buttons=[[Button.inline("║ رجوع ║", data="razan")]
                                  ])
     else:
-        await event.answer("هذا البوت خاص. يمكنك نشر نسختك من مستودع T3rmx UserBot.", alert=True)
+        await event.answer("⌯︙هذا البوت للاتصال بالمالك فقط، لا يمكنك استخدام أوامره.", alert=True)
 
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"RR7PP")))
@@ -215,7 +242,7 @@ async def settings(event): #    قـسـم  الزغرفـة لأسـماء ال
                                          "║ رجوع ║", data="rozname")]
                                  ])
     else:
-        await event.answer("هذا البوت خاص. يمكنك نشر نسختك من مستودع T3rmx UserBot.", alert=True)
+        await event.answer("⌯︙هذا البوت للاتصال بالمالك فقط، لا يمكنك استخدام أوامره.", alert=True)
 
 # شنو تـدور  :)
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"RR7PP1")))
@@ -227,7 +254,7 @@ async def settings(event): #    قـسـم  الزغرفـة لأسـماء ال
                                  buttons=[[Button.inline("║ رجوع ║", data="RR7PP")]
                                  ])
     else:
-        await event.answer("هذا البوت خاص. يمكنك نشر نسختك من مستودع T3rmx UserBot.", alert=True)
+        await event.answer("⌯︙هذا البوت للاتصال بالمالك فقط، لا يمكنك استخدام أوامره.", alert=True)
 
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"RR7PP2")))
@@ -239,7 +266,7 @@ async def settings(event):  #    قـسـم  الزغرفـة لأسـماء ا�
                                  buttons=[[Button.inline("║ رجوع ║", data="RR7PP")]
                                  ])
     else:
-        await event.answer("هذا البوت خاص. يمكنك نشر نسختك من مستودع T3rmx UserBot.", alert=True)
+        await event.answer("⌯︙هذا البوت للاتصال بالمالك فقط، لا يمكنك استخدام أوامره.", alert=True)
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"rozpio1"))) 
 async def settings(event):  #    قـسـم  البـايو 1
@@ -256,7 +283,7 @@ async def settings(event):  #    قـسـم  البـايو 1
                                          "⫷ التالي ", data="rozpio2")]
                                  ])
     else:
-        await event.answer("هذا البوت خاص. يمكنك نشر نسختك من مستودع T3rmx UserBot.", alert=True)
+        await event.answer("⌯︙هذا البوت للاتصال بالمالك فقط، لا يمكنك استخدام أوامره.", alert=True)
 
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"rozpio2"))) 
@@ -274,7 +301,7 @@ async def settings(event): #    قـسـم  البـايو 2
                                          "⫷ التالي", data="rozpio3")]
                                  ])
     else:
-        await event.answer("هذا البوت خاص. يمكنك نشر نسختك من مستودع T3rmx UserBot.", alert=True)
+        await event.answer("⌯︙هذا البوت للاتصال بالمالك فقط، لا يمكنك استخدام أوامره.", alert=True)
 
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"rozpio3"))) 
@@ -292,7 +319,7 @@ async def settings(event): #    قـسـم  البـايو 3
                                          "⫷ التالي", data="rozpio4")]
                                  ])
     else:
-        await event.answer("هذا البوت خاص. يمكنك نشر نسختك من مستودع T3rmx UserBot.", alert=True)
+        await event.answer("⌯︙هذا البوت للاتصال بالمالك فقط، لا يمكنك استخدام أوامره.", alert=True)
 
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"rozpio4"))) 
@@ -310,7 +337,7 @@ async def settings(event): #    قـسـم  البـايو 4
                                          "⫷ التالي", data="rozpio5")]
                                  ])
     else:
-        await event.answer("هذا البوت خاص. يمكنك نشر نسختك من مستودع T3rmx UserBot.", alert=True)
+        await event.answer("⌯︙هذا البوت للاتصال بالمالك فقط، لا يمكنك استخدام أوامره.", alert=True)
 
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"rozpio5"))) 
@@ -328,7 +355,7 @@ async def settings(event):#    قـسـم  البـايو 5
                                          "⫷ التالي", data="rozpio1")]
                                  ])
     else:
-        await event.answer("هذا البوت خاص. يمكنك نشر نسختك من مستودع T3rmx UserBot.", alert=True)
+        await event.answer("⌯︙هذا البوت للاتصال بالمالك فقط، لا يمكنك استخدام أوامره.", alert=True)
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"rozmonth")))  
 async def settings(event): #    قـسم الـمواليـد و الأشـهر
@@ -345,7 +372,7 @@ async def settings(event): #    قـسم الـمواليـد و الأشـهر
                                          "║ رجوع ║", data="rozzag")]
                                  ])
     else:
-        await event.answer("هذا البوت خاص. يمكنك نشر نسختك من مستودع T3rmx UserBot.", alert=True)
+        await event.answer("⌯︙هذا البوت للاتصال بالمالك فقط، لا يمكنك استخدام أوامره.", alert=True)
 
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"months")))  
@@ -357,7 +384,7 @@ async def settings(event):#    قـسم  الأشـهر
                                  buttons=[[Button.inline("║ رجوع ║", data="rozzag")]
                                  ])
     else:
-        await event.answer("هذا البوت خاص. يمكنك نشر نسختك من مستودع T3rmx UserBot.", alert=True)
+        await event.answer("⌯︙هذا البوت للاتصال بالمالك فقط، لا يمكنك استخدام أوامره.", alert=True)
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"rozyear")))  
 async def settings(event):#    قـسم  السنـوات  :)
@@ -368,7 +395,7 @@ async def settings(event):#    قـسم  السنـوات  :)
                                  buttons=[[Button.inline("║ رجوع ║", data="rozmonth")]
                                  ])
     else:
-        await event.answer("هذا البوت خاص. يمكنك نشر نسختك من مستودع T3rmx UserBot.", alert=True)
+        await event.answer("⌯︙هذا البوت للاتصال بالمالك فقط، لا يمكنك استخدام أوامره.", alert=True)
 
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"chanlan")))  
@@ -380,4 +407,4 @@ async def settings(event):
                                  buttons=[[Button.inline("║ رجوع ║", data="rozzag")]
                                  ])
     else:
-        await event.answer("هذا البوت خاص. يمكنك نشر نسختك من مستودع T3rmx UserBot.", alert=True)
+        await event.answer("⌯︙هذا البوت للاتصال بالمالك فقط، لا يمكنك استخدام أوامره.", alert=True)

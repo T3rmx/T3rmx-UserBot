@@ -41,8 +41,8 @@ def load_module(shortname, plugin_path=None):
         mod.LOGS = LOGS
         mod.Config = Config
         mod._format = _format
-        # Use the safe no-op client when the assistant bot is unavailable so
-        # button/inline handlers never crash plugin imports.
+        # Always the real assistant client so every button/inline handler is
+        # registered by its plugin, even if bot login is still pending.
         mod.tgbot = getattr(l313l, "tgbot", None) or tgbot
         mod.sudo_cmd = sudo_cmd
         mod.CMD_HELP = CMD_HELP
