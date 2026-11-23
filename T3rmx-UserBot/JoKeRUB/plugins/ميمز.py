@@ -12,7 +12,7 @@ from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 from asyncio.exceptions import TimeoutError
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
-from JoKeRUB import l313l
+from JoKeRUB import CMD_LIST, l313l
 from ..Config import Config
 from ..helpers.utils import reply_id
 
@@ -507,6 +507,40 @@ async def delete_aljoker(event):
         await event.client(joker)
     except BaseException:
         pass
+def _meme_command_names():
+    """Return every simple meme command registered by this plugin."""
+    names = []
+    for cmd in CMD_LIST.get("ميمز", []):
+        text = str(cmd or "").strip()
+        if not text.startswith("."):
+            continue
+        if any(ch in text for ch in "()[]{}*+?|\\^$"):
+            continue
+        name = text[1:].strip()
+        if name and name not in names:
+            names.append(name)
+    return sorted(names)
+
+
+@l313l.ar_cmd(pattern=r"اوامر الميمز$")
+async def list_meme_commands(event):
+    names = _meme_command_names()
+    lines = ["**᯽︙ أوامر الميمز:**", ""]
+    if names:
+        for name in names:
+            lines.append(f"- `.{name}`")
+    else:
+        lines.append("- لا توجد أوامر ميمز متاحة حالياً.")
+    lines.extend(
+        [
+            "",
+            f"• عدد الأوامر: `{len(names)}`",
+            "• لعرض بصماتك المخزنة استخدم `.قائمة الميمز`",
+        ]
+    )
+    await event.edit("\n".join(lines))
+
+
 @l313l.on(admin_cmd(outgoing=True, pattern="قائمة الميمز"))
 async def list_aljoker(event):
     if aljoker_links:

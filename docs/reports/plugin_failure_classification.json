@@ -5241,13 +5241,17 @@
       "traceback_tail": null,
       "missing_module_or_attribute": null,
       "handlers": {
-        "ar_cmd": 1,
+        "ar_cmd": 2,
         "bot_cmd": 0,
         "on": 84
       },
       "patterns_sample": [
         {
           "pattern": "ازالة(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "اوامر الميمز$",
           "command": null
         }
       ],

@@ -4311,12 +4311,16 @@
       "file": "ميمز.py",
       "name": "ميمز",
       "exec_ok": true,
-      "handlers_ar_cmd": 1,
+      "handlers_ar_cmd": 2,
       "handlers_bot_cmd": 0,
       "handlers_on": 84,
       "patterns": [
         {
           "pattern": "ازالة(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "اوامر الميمز$",
           "command": null
         }
       ],

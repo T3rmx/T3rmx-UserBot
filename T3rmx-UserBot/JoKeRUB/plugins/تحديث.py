@@ -27,6 +27,7 @@ _PROTECTED_NAMES = {
     ".git",
     "session.txt",
     "aljoker_links.json",
+    "t3rmx_commit_id.txt",
 }
 _PROTECTED_SUFFIXES = (
     ".session",
@@ -75,7 +76,33 @@ def _repo_root() -> str:
     return os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
 
 
+def _commit_state_path() -> str:
+    return os.path.join(_repo_root(), "t3rmx_commit_id.txt")
+
+
+def _saved_commit() -> str:
+    try:
+        with open(_commit_state_path(), "r", encoding="utf-8") as fh:
+            value = fh.read().strip()
+        if value:
+            return value[:12]
+    except Exception:
+        pass
+    return ""
+
+
+def _save_commit(sha: str) -> None:
+    try:
+        with open(_commit_state_path(), "w", encoding="utf-8") as fh:
+            fh.write(str(sha or "").strip()[:40])
+    except Exception:
+        pass
+
+
 def _local_commit() -> str:
+    saved = _saved_commit()
+    if saved:
+        return saved
     for key in (
         "RAILWAY_GIT_COMMIT_SHA",
         "SOURCE_COMMIT",
@@ -321,7 +348,7 @@ def _restart():
     command=("تحديث", plugin_category),
     info={
         "header": "فحص تحديثات السورس وتثبيت تحديث كامل من مستودع GitHub.",
-        "description": "يعرض الفرق بين النسخة الحالية وأحدث كود على الفرع المحدد. التحديث من الكود وليس من الإصدارات.",
+        "description": "يقارن الكوميت المحفوظ بالكوميت الحالي في المستودع: إذا كانا متطابقين لا يحدث شيء، وإلا يتم التحديث الكامل. التحديث من الكود وليس من الإصدارات.",
         "options": {
             "تنفيذ/الان": "خاص بالمالك فقط: تنزيل أحدث الملفات وتثبيتها وتحديث المتطلبات ثم إعادة التشغيل."
         },
@@ -355,8 +382,8 @@ async def check_updates(event):
     commit_url = latest.get("url") or f"https://github.com/{repo}/commits/{branch}"
 
     if local_commit != "غير معروف" and remote_commit != "غير معروف":
-        if local_commit.lower().startswith(remote_commit.lower()) or remote_commit.lower().startswith(local_commit.lower()):
-            status = "السورس محدث"
+        if local_commit.lower() == remote_commit.lower():
+            status = "السورس محدث (نفس الكوميت)"
         else:
             status = "يوجد تحديث جديد"
     elif remote_version and _parse_version_tuple(remote_version) > _parse_version_tuple(current_version):
@@ -398,6 +425,17 @@ async def check_updates(event):
         if not authorized_for_update(event.sender_id):
             lines.append("\n**تم رفض طلب التنفيذ:** المالك فقط هو من يستطيع تثبيت التحديثات.")
         else:
+            if (
+                local_commit != "غير معروف"
+                and remote_commit != "غير معروف"
+                and local_commit.lower() == remote_commit.lower()
+            ):
+                lines.append(
+                    "\n**لا يوجد تحديث جديد:** الكوميت المحفوظ مطابق لكوميت المستودع، "
+                    "لم يتم تنزيل أو تغيير أو إعادة تشغيل أي شيء."
+                )
+                await msg.edit("\n".join(lines), link_preview=False)
+                return
             lines.append("\n**تنفيذ التحديث (خاص بالمالك):**")
             tmp_dir = None
             try:
@@ -423,6 +461,9 @@ async def check_updates(event):
                 await msg.edit("**جاري استبدال ملفات السورس...**", link_preview=False)
                 count = await asyncio.to_thread(_copy_tree, source_dir, _repo_root())
                 lines.append(f"• تم تحديث `{count}` ملفاً.")
+
+                _save_commit(remote_commit)
+                lines.append(f"• تم حفظ الكوميت المثبّت: `{remote_commit}`")
 
                 lines.append("• سيتم إعادة تشغيل البوت لتفعيل التحديث...")
                 await msg.edit("\n".join(lines), link_preview=False)
