@@ -748,16 +748,19 @@ async def check_updates(event):
         f"• رابط التحديث: {commit_url}",
     ]
     if local_commit == "غير معروف":
+        source_root = _repo_root()
         matched, mismatched = await asyncio.to_thread(
-            _fingerprint_stats, latest.get("tree") or [], _repo_root()
+            _fingerprint_stats, latest.get("tree") or [], source_root
         )
         if mismatched:
             lines.append(
-                f"• تشخيص المصدر: تطابق {matched}، اختلاف {len(mismatched)} "
-                f"(أول ملف: `{mismatched[0]}`)"
+                f"• تشخيص المصدر: `{source_root}`، تطابق {matched}، "
+                f"اختلاف {len(mismatched)} (أول ملف: `{mismatched[0]}`)"
             )
         else:
-            lines.append(f"• تشخيص المصدر: تطابق {matched}، لا اختلافات")
+            lines.append(
+                f"• تشخيص المصدر: `{source_root}`، تطابق {matched}، لا اختلافات"
+            )
     if remote_version:
         lines.append(f"• نسخة السورس: `{remote_version}`")
     if latest.get("message"):
