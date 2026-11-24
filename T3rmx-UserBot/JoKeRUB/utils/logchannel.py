@@ -190,7 +190,31 @@ async def ensure_storage_group(client):
             addgvar(STORAGE_GROUP_GVAR, str(cid))
             return cid, False
 
-    title = "تخزين T3rmx"
+    # A fresh database still must not create a duplicate: look for a storage
+    # group that already exists in the account's dialogs and reuse it.
+    titles = ("تخزين T3rmx", "مجموعة التخزين6023224495")
+    try:
+        found = {}
+        for dialog in await client.get_dialogs():
+            entity = dialog.entity
+            name = getattr(entity, "title", None)
+            if not name or not getattr(entity, "megagroup", False):
+                continue
+            for index, wanted in enumerate(titles):
+                if name == wanted:
+                    found.setdefault(index, entity)
+        for index in sorted(found):
+            cid = _normalize_chat_id(found[index].id)
+            if cid:
+                addgvar(STORAGE_GROUP_GVAR, str(cid))
+                addgvar("PM_LOGGER_GROUP_ID", str(cid))
+                Config.PM_LOGGER_GROUP_ID = cid
+                LOGS.info("تم العثور على كروب التخزين الحالي وإعادة استخدامه")
+                return cid, False
+    except Exception as e:
+        LOGS.debug("تعذر البحث عن كروب التخزين الحالي: %s", e)
+
+    title = titles[0]
     about = "مجموعة خاصة لحفظ الرسائل والملفات. لا تُرسل هنا السجلات تلقائياً."
     result = await client(
         CreateChannelRequest(title=title, about=about, megagroup=True)
@@ -202,8 +226,6 @@ async def ensure_storage_group(client):
     addgvar(STORAGE_GROUP_GVAR, str(cid))
     addgvar("PM_LOGGER_GROUP_ID", str(cid))
     Config.PM_LOGGER_GROUP_ID = cid
-    Config.BOTLOG_CHATID = cid
-    Config.BOTLOG = True
     LOGS.info("تم إنشاء كروب التخزين بنجاح")
     return cid, True
 
