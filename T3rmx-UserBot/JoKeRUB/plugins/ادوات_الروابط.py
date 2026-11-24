@@ -116,4 +116,8 @@ async def _(event):
         check = url(catstr)
     if not check:
         return await edit_delete(event, "᯽︙  هذا الرابط غير مدعوم", 5)
-    await edit_or_reply(event, "[ㅤㅤㅤㅤㅤㅤㅤ](" + input_str + ")")
+    hidden_link = "[▫](" + input_str + ")"
+    try:
+        await event.edit(hidden_link, parse_mode="md", link_preview=False)
+    except Exception:
+        await event.reply(hidden_link, parse_mode="md", link_preview=False)

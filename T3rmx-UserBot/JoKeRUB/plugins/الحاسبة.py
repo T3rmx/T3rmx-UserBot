@@ -84,15 +84,29 @@ def _safe_calc_eval(expr: str):
     return _eval(tree)
 
 
+def _format_calc_result(expr: str, value) -> str:
+    if isinstance(value, float) and value.is_integer():
+        value = int(value)
+    return f"`{expr} = {value}`"
+
+
 @l313l.on(admin_cmd(pattern=r"(?:حاسبة|حساب)(?:\s|$)([\s\S]*)"))
 async def icalc(e):
-    if getattr(e.client, "_bot", False):
+    expr = "".join((e.pattern_match.group(1) or "").split())
+    expr = expr.replace("x", "*").replace("÷", "/")
+    if not expr:
         return await e.reply(
             "**الحاسبة العلمية لـ T3rmx UserBot\n@t3rmx_official**", buttons=lst
         )
-    results = await e.client.inline_query(Config.TG_BOT_USERNAME, "calc")
-    await results[0].click(e.chat_id, silent=True, hide_via=True)
-    await e.delete()
+    try:
+        value = _safe_calc_eval(expr)
+        text = _format_calc_result(expr, value)
+    except Exception as exc:
+        text = f"**تعذر حساب التعبير:** `{exc}`"
+    try:
+        await e.edit(text)
+    except Exception:
+        await e.reply(text)
 
 
 @l313l.tgbot.on(InlineQuery)

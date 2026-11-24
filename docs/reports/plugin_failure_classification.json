@@ -1496,8 +1496,7 @@
       "patterns_sample": [],
       "config_attributes_referenced": [
         "OWNER_ID",
-        "SUDO_USERS",
-        "TG_BOT_USERNAME"
+        "SUDO_USERS"
       ],
       "config_attributes_missing_from_config": [],
       "required_external_services": [],
