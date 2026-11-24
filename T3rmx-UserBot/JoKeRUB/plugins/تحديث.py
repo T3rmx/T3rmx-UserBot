@@ -760,15 +760,15 @@ async def check_updates(event):
         matched, mismatched = await asyncio.to_thread(
             _fingerprint_stats, latest.get("tree") or [], source_root
         )
+        diagnostic = (
+            f"• تشخيص المصدر: `{source_root}` ({os.path.realpath(__file__)})، "
+            f"تطابق {matched}"
+        )
         if mismatched:
-            lines.append(
-                f"• تشخيص المصدر: `{source_root}`، تطابق {matched}، "
-                f"اختلاف {len(mismatched)} (أول ملف: `{mismatched[0]}`)"
-            )
+            diagnostic += f"، اختلاف {len(mismatched)} (أول ملف: `{mismatched[0]}`)"
         else:
-            lines.append(
-                f"• تشخيص المصدر: `{source_root}`، تطابق {matched}، لا اختلافات"
-            )
+            diagnostic += "، لا اختلافات"
+        lines.append(diagnostic)
     if remote_version:
         lines.append(f"• نسخة السورس: `{remote_version}`")
     if latest.get("message"):
