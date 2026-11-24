@@ -195,6 +195,29 @@ def main():
             "flattened deployment path alias was not resolved",
         )
 
+    with tempfile.TemporaryDirectory() as tmp:
+        root = Path(tmp)
+        (root / "requirements.txt").write_text("", encoding="utf-8")
+        (root / "Dockerfile").write_text("", encoding="utf-8")
+        (root / "JoKeRUB" / "plugins").mkdir(parents=True)
+        (root / "T3rmx-UserBot" / "JoKeRUB" / "plugins").mkdir(parents=True)
+        original_file = module.__file__
+        try:
+            module.__file__ = str(root / "JoKeRUB" / "plugins" / "تحديث.py")
+            check(
+                os.path.abspath(module._repo_root()) == str(root),
+                "deployed /app-style source root was not detected",
+            )
+            module.__file__ = str(
+                root / "T3rmx-UserBot" / "JoKeRUB" / "plugins" / "تحديث.py"
+            )
+            check(
+                os.path.abspath(module._repo_root()) == str(root),
+                "nested local source root was not detected",
+            )
+        finally:
+            module.__file__ = original_file
+
     tree = make_tree()
     target, error = module._resolve_selective_target(
         "بلجن", "السجلات", tree

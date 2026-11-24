@@ -76,12 +76,25 @@ def _branch() -> str:
 
 
 def _repo_root() -> str:
-    # The container uses a top-level JoKeRUB symlink (COPY . /app), so __file__
-    #can point through that link. Resolve it first; otherwise updates would be
-    #written to the filesystem root while Python keeps importing the old code.
-    return os.path.abspath(
-        os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "..", "..")
-    )
+    """Find the source root in both local and deployed layouts.
+
+    Local development has ``T3rmx-UserBot/T3rmx-UserBot/JoKeRUB`` while the
+    deployed image has ``/app/JoKeRUB``. Counting directory levels is
+    therefore unreliable; walk upward until the deployment markers are found.
+    """
+    module_dir = os.path.dirname(os.path.realpath(__file__))
+    candidate = module_dir
+    for _ in range(6):
+        if (
+            os.path.isfile(os.path.join(candidate, "requirements.txt"))
+            and os.path.isdir(os.path.join(candidate, "JoKeRUB"))
+        ):
+            return os.path.abspath(candidate)
+        parent = os.path.dirname(candidate)
+        if parent == candidate:
+            break
+        candidate = parent
+    return os.path.abspath(os.path.join(module_dir, "..", "..", ".."))
 
 
 def _commit_state_path() -> str:
