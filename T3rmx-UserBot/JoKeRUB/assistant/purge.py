@@ -13,18 +13,26 @@ OWNER_ID = bot.uid
 # للتاكد من صلاحيات المشرف
 
 async def is_administrator(user_id: int, message):
-    admin = False
+    if user_id == OWNER_ID:
+        return True
     async for user in tgbot.iter_participants(
         message.chat_id, filter=ChannelParticipantsAdmins
     ):
-        if user_id == user.id or OWNER_ID or SUDO_USERS:
-            admin = True
-            break
-    return admin
+        if user_id == user.id:
+            return True
+    return False
 
 
-@tgbot.on(events.NewMessage(pattern="^/purge", func=lambda e: e.sender_id == OWNER_ID))
+@tgbot.on(
+    events.NewMessage(
+        pattern=r"^/purge(?:@[\w_]+)?(?:\s|$)",
+        func=lambda e: e.sender_id == OWNER_ID,
+    )
+)
 async def purge(event):
+    if not event.is_group:
+        await event.reply("هذا الأمر يعمل في المجموعات فقط.")
+        return
     chat = event.chat_id
     msgs = []
 
@@ -66,8 +74,16 @@ async def purge(event):
         await del_res.delete()
 
 
-@tgbot.on(events.NewMessage(pattern="^/del$", func=lambda e: e.sender_id == OWNER_ID))
+@tgbot.on(
+    events.NewMessage(
+        pattern=r"^/del(?:@[\w_]+)?$",
+        func=lambda e: e.sender_id == OWNER_ID,
+    )
+)
 async def delete_msg(event):
+    if not event.is_group:
+        await event.reply("هذا الأمر يعمل في المجموعات فقط.")
+        return
 
     if not await is_administrator(user_id=event.sender_id, message=event):
         await event.reply("انـت لـست ادمـن!")
@@ -76,7 +92,7 @@ async def delete_msg(event):
     chat = event.chat_id
     msg = await event.get_reply_message()
     if not msg:
-        await event.reply("قـم بالـرد على الـرسالة التـي تريـد حذف الـرسائل التـي تحـتها")
+        await event.reply("قـم بالـرد على الـرسالة التـي تريـد حذفها.")
         return
     to_delete = event.message
     chat = await event.get_input_chat()

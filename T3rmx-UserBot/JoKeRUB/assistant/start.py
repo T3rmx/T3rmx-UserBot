@@ -4,9 +4,12 @@
 import asyncio
 import io
 import re
+import time
 
 from telethon import Button, custom, events
+from telethon.errors import BadRequestError, FloodWaitError, ForbiddenError
 from telethon.tl.functions.users import GetFullUserRequest
+from telethon.utils import get_display_name
 from JoKeRUB import bot
 from ..Config import Config
 from JoKeRUB.sql_helper.blacklist_assistant import (
@@ -15,6 +18,7 @@ from JoKeRUB.sql_helper.blacklist_assistant import (
     removenibba,
 )
 from JoKeRUB.sql_helper.botusers_sql import add_me_in_db, his_userid
+from JoKeRUB.sql_helper.bot_starters import get_all_starters
 from JoKeRUB.sql_helper.idadder_sql import (
     add_usersid_in_db,
     already_added,
@@ -103,13 +107,16 @@ async def users(event):
         )
         return
     await event.delete()
-    rorza = "**قائمة أوامر البوت المساعد (T3rmx UserBot)**:\n- **جميع هذه الاوامر تستخدم بعد اضافة البوت في مجموعة ورفعه مشـرف مع بعض الصلاحيـات**\n• /start \n ( للـتأكد من حالـة البـوت) \n• /ping \n ( امـر بنـك )  \n• /broadcast \n ( لعمـل اذاعـة لجميـع المستخدمين في البـوت )  \n• /id \n  ( لعـرض ايدي المسـتخدم ) \n• /alive \n- ( لـرؤية معلومات البـوت ) \n• /bun \n-  ( تعمل في المجموعات لحظر شخص )\n• /unbun  \n-  ( تعمل في المجموعات لالغاء حظر مستخدم )  \n• /prumote  \n-  ( لرفـع شخص مشـرف )\n• /demute  \n-  ( لتنزيل الشخص من رتبة الاشراف ) \n• /pin  \n-  ( لتثبيـت رسالة في المجموعـة )  \n• /stats  \n-  ( لعرض مستخدمين البوت )  \n• /purge  \n-  ( بالرد على رسالة ليقوم بحذف ما تحتها من رسائل ) \n• /del  \n-  ( بالـرد على الرسالـة لحـذفها )"
+    rorza = "**قائمة أوامر البوت المساعد (T3rmx UserBot)**:\n- **جميع هذه الاوامر تستخدم بعد اضافة البوت في مجموعة ورفعه مشـرف مع بعض الصلاحيـات**\n• /start \n ( للـتأكد من حالـة البـوت) \n• /ping \n ( امـر بنـك )  \n• /broadcast \n ( لعمـل اذاعـة لجميـع المستخدمين في البـوت )  \n• /id \n  ( لعـرض ايدي المسـتخدم ) \n• /alive \n- ( لـرؤية معلومات البـوت ) \n• /bun \n-  ( تعمل في المجموعات لحظر شخص )\n• /unbun  \n-  ( تعمل في المجموعات لالغاء حظر مستخدم )  \n• /prumote  \n-  ( لرفـع شخص مشـرف )\n• /demute  \n-  ( لتنزيل الشخص من رتبة الاشراف ) \n• /pin  \n-  ( لتثبيـت رسالة في المجموعـة )  \n• /stats  \n-  ( لعرض مستخدمين البوت )  \n• /purge  \n-  ( بالرد على رسالة ليقوم بحذف ما تحتها من رسائل ) \n• /del  \n-  ( بالـرد على الرسالـة لحـذفها ) \n• /ack \n- ( للـتأكد من استلام الامر )"
     await tgbot.send_message(event.chat_id, rorza)
 
 
 @tgbot.on(
     events.NewMessage(
-        pattern=r"^(?:/purge|/del$|/hack|الايدي)",
+        pattern=(
+            r"^(?:/(?:ping|broadcast|id|alive|bun|unbun|prumote|demute|pin|stats|"
+            r"purge|del|ack|help|hack)(?:@[\w_]+)?(?:\s|$)|الايدي)"
+        ),
         func=lambda e: e.sender_id != bot.uid,
     )
 )
@@ -122,15 +129,262 @@ async def assistant_non_owner_notice(event):
 
 @tgbot.on(events.NewMessage(pattern="^/help", func=lambda e: e.sender_id == bot.uid))
 async def starkislub(event):
-    rorza = "**قائمة أوامر البوت المساعد (T3rmx UserBot)**:\n- **جميع هذه الاوامر تستخدم بعد اضافة البوت في مجموعة ورفعه مشـرف مع بعض الصلاحيـات**\n• /start \n ( للـتأكد من حالـة البـوت) \n• /ping \n ( امـر بنـك )  \n• /broadcast \n ( لعمـل اذاعـة لجميـع المستخدمين في البـوت )  \n• /id \n  ( لعـرض ايدي المسـتخدم ) \n• /alive \n- ( لـرؤية معلومات البـوت ) \n• /bun \n-  ( تعمل في المجموعات لحظر شخص )\n• /unbun  \n-  ( تعمل في المجموعات لالغاء حظر مستخدم )  \n• /prumote  \n-  ( لرفـع شخص مشـرف )\n• /demute  \n-  ( لتنزيل الشخص من رتبة الاشراف ) \n• /pin  \n-  ( لتثبيـت رسالة في المجموعـة )  \n• /stats  \n-  ( لعرض مستخدمين البوت )  \n• /purge  \n-  ( بالرد على رسالة ليقوم بحذف ما تحتها من رسائل ) \n• /del  \n-  ( بالـرد على الرسالـة لحـذفها )"
+    rorza = "**قائمة أوامر البوت المساعد (T3rmx UserBot)**:\n- **جميع هذه الاوامر تستخدم بعد اضافة البوت في مجموعة ورفعه مشـرف مع بعض الصلاحيـات**\n• /start \n ( للـتأكد من حالـة البـوت) \n• /ping \n ( امـر بنـك )  \n• /broadcast \n ( لعمـل اذاعـة لجميـع المستخدمين في البـوت )  \n• /id \n  ( لعـرض ايدي المسـتخدم ) \n• /alive \n- ( لـرؤية معلومات البـوت ) \n• /bun \n-  ( تعمل في المجموعات لحظر شخص )\n• /unbun  \n-  ( تعمل في المجموعات لالغاء حظر مستخدم )  \n• /prumote  \n-  ( لرفـع شخص مشـرف )\n• /demute  \n-  ( لتنزيل الشخص من رتبة الاشراف ) \n• /pin  \n-  ( لتثبيـت رسالة في المجموعـة )  \n• /stats  \n-  ( لعرض مستخدمين البوت )  \n• /purge  \n-  ( بالرد على رسالة ليقوم بحذف ما تحتها من رسائل ) \n• /del  \n-  ( بالـرد على الرسالـة لحـذفها ) \n• /ack \n- ( للـتأكد من استلام الامر )"
     await event.reply(rorza)
 
-@tgbot.on(events.NewMessage(pattern="^/alive", func=lambda e: e.sender_id == bot.uid))
-async def starkislub(event):
-    razan = "**T3rmx UserBot**\n•━═━═━═━═━━═━═━═━═━•‌‌\n**- حالة البوت **  يعمـل بنجـاح\n**- اصدار التليثون  **: 1.23.0\n**- اصدار البايثون **: 3.9.6\n**- يوزرك ** {mention}\n**- Repo:** " + str(getattr(Config, "T3RMX_REPOSITORY", "https://github.com/T3rmx/T3rmx-UserBot")) + "\n•━═━═━═━═━━═━═━═━═━•‌‌\n"
+@tgbot.on(
+    events.NewMessage(
+        pattern=r"^/alive(?:@[\w_]+)?(?:\s|$)",
+        func=lambda e: e.sender_id == bot.uid,
+    )
+)
+async def assistant_alive(event):
+    razan = (
+        "**T3rmx UserBot**\n"
+        "•━═━═━═━═━━═━═━═━═━•‌‌\n"
+        "**- حالة البوت ** يعمـل بنجـاح\n"
+        "**- اصدار التليثون **: 1.23.0\n"
+        "**- اصدار البايثون **: 3.9.6\n"
+        f"**- يوزرك ** [المالك](tg://user?id={bot.uid})\n"
+        f"**- Repo:** {getattr(Config, 'T3RMX_REPOSITORY', 'https://github.com/T3rmx/T3rmx-UserBot')}\n"
+        "•━═━═━═━═━━═━═━═━═━•‌‌\n"
+    )
     await event.reply(razan)
-    
-    
+
+
+@tgbot.on(
+    events.NewMessage(
+        pattern=r"^/ping(?:@[\w_]+)?(?:\s|$)",
+        func=lambda e: e.sender_id == bot.uid,
+    )
+)
+async def assistant_ping(event):
+    started = time.monotonic()
+    msg = await event.reply("🏓 **پنك ...**")
+    latency = int((time.monotonic() - started) * 1000)
+    await msg.edit(f"🏓 **پنك** `{latency} ms`")
+
+
+@tgbot.on(
+    events.NewMessage(
+        pattern=r"^/ack(?:@[\w_]+)?(?:\s|$)",
+        func=lambda e: e.sender_id == bot.uid,
+    )
+)
+async def assistant_ack(event):
+    await event.reply("✅ **تم الاستلام**")
+
+
+@tgbot.on(
+    events.NewMessage(
+        pattern=r"^/stats(?:@[\w_]+)?(?:\s|$)",
+        func=lambda e: e.sender_id == bot.uid,
+    )
+)
+async def assistant_stats(event):
+    try:
+        starters = get_all_starters() or []
+    except Exception as exc:
+        return await event.reply(f"**تعذر جلب الاحصائيات:** `{type(exc).__name__}`")
+    text = f"**احصائيات البوت المساعد**\n• عدد المستخدمين: `{len(starters)}`"
+    if starters:
+        ids = "\n".join(f"• `{int(user.user_id)}`" for user in starters[:20])
+        text += f"\n• أول 20 معرّف:\n{ids}"
+    await event.reply(text)
+
+
+@tgbot.on(
+    events.NewMessage(
+        pattern=r"^/broadcast(?:@[\w_]+)?(?:\s|$)",
+        func=lambda e: e.sender_id == bot.uid,
+    )
+)
+async def assistant_broadcast(event):
+    replied = await event.get_reply_message()
+    if not replied:
+        return await event.reply("**يجب الرد على رسالة أولا لعمل اذاعة.**")
+    users = get_all_starters() or []
+    if not users:
+        return await event.reply("**عدد مستخدمين البوت: 0، لم يتم الاذاعة.**")
+    status = await event.reply("**جار الاذاعة ... أنتظر قليلا**")
+    sent = 0
+    skipped = 0
+    for user in users:
+        try:
+            await tgbot.send_message(int(user.user_id), replied)
+            sent += 1
+            await asyncio.sleep(0.8)
+        except FloodWaitError as exc:
+            await asyncio.sleep(exc.seconds)
+        except (BadRequestError, ValueError, ForbiddenError):
+            skipped += 1
+        except Exception:
+            skipped += 1
+    await status.edit(
+        f"**تمت الاذاعة بنجاح إلى {sent} مستخدم.**\n**تم تخطي {skipped} مستخدم.**"
+    )
+
+
+async def _assistant_target(event):
+    replied = await event.get_reply_message()
+    if replied and replied.sender_id:
+        return int(replied.sender_id), None
+    raw = (event.pattern_match.group(1) or "").strip()
+    if not raw:
+        return None, "يجب الرد على الرسالة أو كتابة معرّف المستخدم."
+    if raw.isdigit():
+        return int(raw), None
+    if raw.startswith("@"):
+        return raw, None
+    return None, "تعذر فهم المستخدم. استخدم الرد أو المعرّف أو المعرف."
+
+
+async def _resolve_assistant_user(identifier, event):
+    try:
+        return await tgbot.get_entity(identifier)
+    except Exception as exc:
+        await event.reply(f"**تعذر العثور على المستخدم:** `{type(exc).__name__}`")
+        return None
+
+
+async def _assistant_group(event):
+    if event.is_group:
+        return True
+    await event.reply("هذا الأمر يعمل في المجموعات فقط.")
+    return False
+
+
+@tgbot.on(
+    events.NewMessage(
+        pattern=r"^/bun(?:@[\w_]+)?(?:\s+([\s\S]*))?$",
+        func=lambda e: e.sender_id == bot.uid,
+    )
+)
+async def assistant_ban_user(event):
+    if not await _assistant_group(event):
+        return
+    identifier, error = await _assistant_target(event)
+    if error:
+        return await event.reply(f"**{error}**")
+    user = await _resolve_assistant_user(identifier, event)
+    if not user:
+        return
+    if user.id == bot.uid:
+        return await event.reply("لا يمكنني حظر مالك البوت.")
+    try:
+        await tgbot.edit_permissions(event.chat_id, user, view_messages=False)
+        await event.reply(f"**تم حظر {get_display_name(user)} من المجموعة.**")
+    except Exception as exc:
+        await event.reply(f"**تعذر الحظر:** `{type(exc).__name__}`")
+
+
+@tgbot.on(
+    events.NewMessage(
+        pattern=r"^/unbun(?:@[\w_]+)?(?:\s+([\s\S]*))?$",
+        func=lambda e: e.sender_id == bot.uid,
+    )
+)
+async def assistant_unban_user(event):
+    if not await _assistant_group(event):
+        return
+    identifier, error = await _assistant_target(event)
+    if error:
+        return await event.reply(f"**{error}**")
+    user = await _resolve_assistant_user(identifier, event)
+    if not user:
+        return
+    try:
+        await tgbot.edit_permissions(event.chat_id, user, view_messages=True)
+        await event.reply(f"**تم الغاء حظر {get_display_name(user)} في المجموعة.**")
+    except Exception as exc:
+        await event.reply(f"**تعذر الغاء الحظر:** `{type(exc).__name__}`")
+
+
+@tgbot.on(
+    events.NewMessage(
+        pattern=r"^/prumote(?:@[\w_]+)?(?:\s+([\s\S]*))?$",
+        func=lambda e: e.sender_id == bot.uid,
+    )
+)
+async def assistant_promote_user(event):
+    if not await _assistant_group(event):
+        return
+    identifier, error = await _assistant_target(event)
+    if error:
+        return await event.reply(f"**{error}**")
+    user = await _resolve_assistant_user(identifier, event)
+    if not user:
+        return
+    try:
+        await tgbot.edit_permissions(
+            event.chat_id,
+            user,
+            change_info=True,
+            delete_messages=True,
+            ban_users=True,
+            invite_users=True,
+            pin_messages=True,
+            add_admins=False,
+            manage_call=True,
+            manage_messages=True,
+        )
+        await event.reply(f"**تم رفع {get_display_name(user)} إلى الاشراف.**")
+    except Exception as exc:
+        await event.reply(f"**تعذر رفع المستخدم:** `{type(exc).__name__}`")
+
+
+@tgbot.on(
+    events.NewMessage(
+        pattern=r"^/demute(?:@[\w_]+)?(?:\s+([\s\S]*))?$",
+        func=lambda e: e.sender_id == bot.uid,
+    )
+)
+async def assistant_demote_user(event):
+    if not await _assistant_group(event):
+        return
+    identifier, error = await _assistant_target(event)
+    if error:
+        return await event.reply(f"**{error}**")
+    user = await _resolve_assistant_user(identifier, event)
+    if not user:
+        return
+    try:
+        await tgbot.edit_permissions(
+            event.chat_id,
+            user,
+            change_info=False,
+            delete_messages=False,
+            ban_users=False,
+            invite_users=False,
+            pin_messages=False,
+            add_admins=False,
+            manage_call=False,
+            manage_messages=False,
+        )
+        await event.reply(f"**تم تنزيل {get_display_name(user)} من الاشراف.**")
+    except Exception as exc:
+        await event.reply(f"**تعذر تنزيل المستخدم:** `{type(exc).__name__}`")
+
+
+@tgbot.on(
+    events.NewMessage(
+        pattern=r"^/pin(?:@[\w_]+)?$",
+        func=lambda e: e.sender_id == bot.uid,
+    )
+)
+async def assistant_pin(event):
+    if not await _assistant_group(event):
+        return
+    msg = await event.get_reply_message()
+    if not msg:
+        return await event.reply("**يجب الرد على الرسالة التي تريد تثبيتها.**")
+    try:
+        await tgbot.pin_message(event.chat_id, msg.id, notify=False)
+        await event.reply("**تم تثبيت الرسالة.**")
+    except Exception as exc:
+        await event.reply(f"**تعذر تثبيت الرسالة:** `{type(exc).__name__}`")
+
+
 
 
 
