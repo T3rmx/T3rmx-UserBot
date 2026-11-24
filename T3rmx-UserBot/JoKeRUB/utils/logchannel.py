@@ -342,29 +342,40 @@ async def ensure_t3rmx_folder(client):
         for item in filters
         if getattr(item, "id", None) is not None and int(item.id) > 0
     }
+    free_ids = [index for index in range(1, 11) if index not in used_ids]
+    candidates = []
     if existing is not None:
-        folder_id = int(existing.id)
-    else:
-        folder_id = next(
-            (index for index in range(1, 11) if index not in used_ids),
-            max(used_ids or [0]) + 1,
-        )
+        candidates.append(int(existing.id))
+    candidates.extend(index for index in free_ids if index not in candidates)
+    if not candidates:
+        raise RuntimeError("لا توجد مساحة لإنشاء مجلد تليجرام جديد.")
 
-    dialog_filter = types.DialogFilter(
-        id=folder_id,
-        title=FOLDER_TITLE,
-        pinned_peers=[],
-        include_peers=peers,
-        exclude_peers=[],
-        emoticon=FOLDER_EMOJI,
-        exclude_archived=False,
-    )
-    await client(
-        functions.messages.UpdateDialogFilterRequest(
-            id=folder_id,
-            filter=dialog_filter,
-        )
-    )
+    folder_id = None
+    last_error = None
+    for candidate in candidates:
+        try:
+            dialog_filter = types.DialogFilter(
+                id=candidate,
+                title=FOLDER_TITLE,
+                pinned_peers=[],
+                include_peers=peers,
+                exclude_peers=[],
+                emoticon=FOLDER_EMOJI,
+                exclude_archived=False,
+            )
+            await client(
+                functions.messages.UpdateDialogFilterRequest(
+                    id=candidate,
+                    filter=dialog_filter,
+                )
+            )
+            folder_id = candidate
+            break
+        except Exception as exc:
+            last_error = exc
+            LOGS.debug("تعذر استخدام معرف المجلد %s: %s", candidate, exc)
+    if folder_id is None:
+        raise last_error or RuntimeError("No free Telegram folder slot")
 
     archived = 0
     for entity in entities:

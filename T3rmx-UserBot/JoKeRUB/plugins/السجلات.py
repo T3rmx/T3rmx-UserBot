@@ -105,7 +105,7 @@ async def _t3rmx_folder_command(event):
         _, included, archived = await ensure_t3rmx_folder(event.client)
     except Exception as exc:
         LOGS.exception("تعذر تجهيز مجلد T3rmx")
-        await event.edit(f"**تعذر تجهيز المجلد:** `{type(exc).__name__}`")
+        await event.edit(f"**تعذر تجهيز المجلد:** `{type(exc).__name__}: {exc}`")
         return
     await event.edit(
         f"**تم تجهيز مجلد T3rmx وضم {included} مجموعة/قناة إليه، "
