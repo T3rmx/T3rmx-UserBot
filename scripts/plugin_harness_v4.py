@@ -131,6 +131,7 @@ class DummyClient:
         self._ar_handlers = []
         self._bot_handlers = []
         self._on_handlers = []
+        self._on_specs = []
         self.tgbot = self
         self.me = types.SimpleNamespace(id=6023224495, bot=False, username='t3rmx_official_bot', first_name='T3rmx')
         self.session = types.SimpleNamespace(save=lambda: 'dummy')
@@ -154,6 +155,8 @@ class DummyClient:
     def on(self, *args, **kwargs):
         def dec(func):
             self._on_handlers.append((args, kwargs, func))
+            if args and isinstance(args[0], EventSpec):
+                self._on_specs.append(args[0])
             return func
         return dec
     def add_event_handler(self, *a, **k): return None
@@ -252,6 +255,14 @@ def _dummy_decorator(*a, **k):
     def dec(f):
         return f
     return dec
+
+class EventSpec:
+    def __init__(self, pattern=None, **kwargs):
+        self.pattern = pattern
+        self.kwargs = kwargs
+
+def _admin_cmd(pattern=None, command=None, **kwargs):
+    return EventSpec(pattern=pattern, command=command, **kwargs)
 
 class SQLStubModule(types.ModuleType):
     def __getattr__(self, n):
@@ -610,8 +621,8 @@ def setup_base_packages(client):
     # utils package
     utils_pkg = ensure_pkg('JoKeRUB.utils', PKG / 'JoKeRUB' / 'utils')
     # try to expose common names
-    utils_pkg.admin_cmd = _dummy_decorator
-    utils_pkg.sudo_cmd = _dummy_decorator
+    utils_pkg.admin_cmd = _admin_cmd
+    utils_pkg.sudo_cmd = _admin_cmd
     utils_pkg.register = _dummy_decorator
     utils_pkg.command = _dummy_decorator
     utils_pkg.errors_handler = _dummy_decorator
@@ -624,8 +635,8 @@ def setup_base_packages(client):
             import JoKeRUB.utils.decorators as _ud  # noqa
         except Exception:
             ud = types.ModuleType('JoKeRUB.utils.decorators')
-            ud.admin_cmd = _dummy_decorator
-            ud.sudo_cmd = _dummy_decorator
+            ud.admin_cmd = _admin_cmd
+            ud.sudo_cmd = _admin_cmd
             ud.register = _dummy_decorator
             ud.command = _dummy_decorator
             ud.errors_handler = _dummy_decorator
@@ -663,8 +674,8 @@ def setup_base_packages(client):
         'mention': 'T3rmx',
         'hmention': 'T3rmx',
         'spamwatch': None,
-        'admin_cmd': _dummy_decorator,
-        'sudo_cmd': _dummy_decorator,
+        'admin_cmd': _admin_cmd,
+        'sudo_cmd': _admin_cmd,
         'edit_or_reply': managers.edit_or_reply,
         'edit_delete': managers.edit_delete,
         'reply_id': reply_id,
@@ -873,8 +884,8 @@ def try_load(plugin_path, RealConfig):
     mod.Config = RealConfig
     mod.CMD_HELP = {}
     mod.CMD_LIST = {}
-    mod.admin_cmd = _dummy_decorator
-    mod.sudo_cmd = _dummy_decorator
+    mod.admin_cmd = _admin_cmd
+    mod.sudo_cmd = _admin_cmd
     mod.register = _dummy_decorator
     mod.command = _dummy_decorator
     sys.modules[name] = mod
@@ -890,9 +901,14 @@ def try_load(plugin_path, RealConfig):
             'handlers_ar_cmd': len(client._ar_handlers),
             'handlers_bot_cmd': len(client._bot_handlers),
             'handlers_on': len(client._on_handlers),
+            'on_patterns': [
+                {'pattern': s.pattern, 'command': s.kwargs.get('command')}
+                for s in client._on_specs
+                if s.pattern is not None
+            ],
             'patterns': [
                 {'pattern': p, 'command': (k.get('command') if isinstance(k, dict) else None)}
-                for p, f, k in client._ar_handlers[:15]
+                for p, f, k in client._ar_handlers
             ],
             'error_type': None,
             'error': None,
@@ -917,9 +933,14 @@ def try_load(plugin_path, RealConfig):
             'handlers_ar_cmd': len(client._ar_handlers),
             'handlers_bot_cmd': len(client._bot_handlers),
             'handlers_on': len(client._on_handlers),
+            'on_patterns': [
+                {'pattern': s.pattern, 'command': s.kwargs.get('command')}
+                for s in client._on_specs
+                if s.pattern is not None
+            ],
             'patterns': [
                 {'pattern': p, 'command': (k.get('command') if isinstance(k, dict) else None)}
-                for p, f, k in client._ar_handlers[:15]
+                for p, f, k in client._ar_handlers
             ],
             'error_type': type(e).__name__,
             'error': str(e),

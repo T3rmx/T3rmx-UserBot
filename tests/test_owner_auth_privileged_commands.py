@@ -242,7 +242,7 @@ class TestOwnerPrivilegedCommands(unittest.TestCase):
             asyncio.create_subprocess_shell = orig
 
     def test_restriction_toggle_owner_only(self):
-        f = self._find_ar("تقييد", "alm")
+        f = self._find_ar("تقييد البوت", "alm")
         e = Event(27356743, ("on",)); e.client = self.client
         asyncio.run(f(e))
         self.assertTrue(any("restricted" in str(x[1]).lower() or "مالك" in str(x[1]) for x in e.actions))
@@ -254,7 +254,7 @@ class TestOwnerPrivilegedCommands(unittest.TestCase):
         self.assertIsNone(self.store.get("blockedfrom"))
 
     def test_restart_and_shutdown_ops_owner_only(self):
-        restart = self._find_ar("اعادة تشغيل$", "ops")
+        restart = self._find_ar("اعادة تشغيل كاملة$", "ops")
         shutdown = self._find_ar("اطفاء$", "ops")
         orig_exec = os.execle
         orig_exit = sys.exit
@@ -338,10 +338,10 @@ class TestOwnerPrivilegedCommands(unittest.TestCase):
         try:
             e = Event(27356743, ("تنفيذ",)); e.client = self.client
             asyncio.run(upd(e))
-            self.assertTrue(any("Execution request denied" in str(x[1]) for x in e.actions))
+            self.assertTrue(any("تم رفض طلب التنفيذ" in str(x[1]) for x in e.actions))
             e2 = Event(6023224495, ("تنفيذ",)); e2.client = self.client
             asyncio.run(upd(e2))
-            self.assertTrue(any("Owner action" in str(x[1]) or "manual/safe" in str(x[1]).lower() for x in e2.actions))
+            self.assertTrue(any("تنفيذ التحديث" in str(x[1]) for x in e2.actions))
         finally:
             urllib.request.urlopen = orig
 

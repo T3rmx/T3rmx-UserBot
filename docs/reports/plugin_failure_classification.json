@@ -181,9 +181,9 @@
           ]
         },
         {
-          "pattern": "اخفاء(?:\\s|$)([\\s\\S]*)",
+          "pattern": "(?:اخفاء|رابط_مخفي)(?:\\s|$)([\\s\\S]*)",
           "command": [
-            "اخفاء",
+            "اخفاء / رابط_مخفي",
             "utils"
           ]
         }
@@ -674,7 +674,7 @@
           ]
         },
         {
-          "pattern": "وضع اسم (.*)",
+          "pattern": "وضع اسم (?!البوت$)(.*)",
           "command": [
             "وضع اسم",
             "utils"
@@ -1005,15 +1005,15 @@
       },
       "patterns_sample": [
         {
-          "pattern": "جلب (.*)",
+          "pattern": "جلب (PRIVATE_GROUP_BOT_API_ID|PM_LOGGER_GROUP_ID|لون\\ الصوره\\ الوقتيه|MAX_FLOOD_IN_PMS|aljoker_message|digitalpiccolor|ALIVE_TEMPLATE|لون\\ صوره\\ وقتيه|اشتراك\\ الكروب|زخرفة\\ الارقام|زخرفه\\ الارقام|عدد\\ التحذيرات|كليشة\\ الحماية|كليشة\\ الحمايه|كليشه\\ الحماية|كليشه\\ الحمايه|pmpermit_pic|pmpermit_txt|اشتراك\\ الخاص|ايموجي\\ الفحص|صورة\\ الحماية|صورة\\ الحمايه|صوره\\ الحماية|صوره\\ الحمايه|ALIVE_EMOJI|DEFAULT_BIO|اشتراك\\ كروب|علامة\\ الاسم|كليشة\\ البوت|كليشة\\ الحظر|كليشة\\ الخاص|كليشة\\ الفحص|كليشه\\ البوت|كليشه\\ الحظر|كليشه\\ الخاص|كليشه\\ الفحص|ALIVE_TEXT|START_TEXT|اشتراك\\ خاص|صورة\\ البنك|صورة\\ الفحص|صوره\\ البنك|صوره\\ الفحص|لون\\ الوقتي|ALIVE_PIC|الاشعارات|امر\\ النشر|رمز\\ الاسم|كليشة\\ فحص|كليشه\\ فحص|MUKRR_ET|PING_PIC|PM_BLOCK|TIME_JEP|لون\\ وقتي|نص\\ الفحص|PM_TEXT|pmblock|اشعارات|التخزين|امر\\ نشر|PM_PIC|البايو|JP_FN|gchan|pchan|تخزين|بايو|لون)$",
           "command": null
         },
         {
-          "pattern": "اضف (.*)",
+          "pattern": "اضف (PRIVATE_GROUP_BOT_API_ID|PM_LOGGER_GROUP_ID|لون\\ الصوره\\ الوقتيه|MAX_FLOOD_IN_PMS|aljoker_message|digitalpiccolor|ALIVE_TEMPLATE|لون\\ صوره\\ وقتيه|اشتراك\\ الكروب|زخرفة\\ الارقام|زخرفه\\ الارقام|عدد\\ التحذيرات|كليشة\\ الحماية|كليشة\\ الحمايه|كليشه\\ الحماية|كليشه\\ الحمايه|pmpermit_pic|pmpermit_txt|اشتراك\\ الخاص|ايموجي\\ الفحص|صورة\\ الحماية|صورة\\ الحمايه|صوره\\ الحماية|صوره\\ الحمايه|ALIVE_EMOJI|DEFAULT_BIO|اشتراك\\ كروب|علامة\\ الاسم|كليشة\\ البوت|كليشة\\ الحظر|كليشة\\ الخاص|كليشة\\ الفحص|كليشه\\ البوت|كليشه\\ الحظر|كليشه\\ الخاص|كليشه\\ الفحص|ALIVE_TEXT|START_TEXT|اشتراك\\ خاص|صورة\\ البنك|صورة\\ الفحص|صوره\\ البنك|صوره\\ الفحص|لون\\ الوقتي|ALIVE_PIC|الاشعارات|امر\\ النشر|رمز\\ الاسم|كليشة\\ فحص|كليشه\\ فحص|MUKRR_ET|PING_PIC|PM_BLOCK|TIME_JEP|لون\\ وقتي|نص\\ الفحص|PM_TEXT|pmblock|اشعارات|التخزين|امر\\ نشر|PM_PIC|البايو|JP_FN|gchan|pchan|تخزين|بايو|لون)$",
           "command": null
         },
         {
-          "pattern": "حذف (.*)",
+          "pattern": "حذف (PRIVATE_GROUP_BOT_API_ID|PM_LOGGER_GROUP_ID|لون\\ الصوره\\ الوقتيه|MAX_FLOOD_IN_PMS|aljoker_message|digitalpiccolor|ALIVE_TEMPLATE|لون\\ صوره\\ وقتيه|اشتراك\\ الكروب|زخرفة\\ الارقام|زخرفه\\ الارقام|عدد\\ التحذيرات|كليشة\\ الحماية|كليشة\\ الحمايه|كليشه\\ الحماية|كليشه\\ الحمايه|pmpermit_pic|pmpermit_txt|اشتراك\\ الخاص|ايموجي\\ الفحص|صورة\\ الحماية|صورة\\ الحمايه|صوره\\ الحماية|صوره\\ الحمايه|ALIVE_EMOJI|DEFAULT_BIO|اشتراك\\ كروب|علامة\\ الاسم|كليشة\\ البوت|كليشة\\ الحظر|كليشة\\ الخاص|كليشة\\ الفحص|كليشه\\ البوت|كليشه\\ الحظر|كليشه\\ الخاص|كليشه\\ الفحص|ALIVE_TEXT|START_TEXT|اشتراك\\ خاص|صورة\\ البنك|صورة\\ الفحص|صوره\\ البنك|صوره\\ الفحص|لون\\ الوقتي|ALIVE_PIC|الاشعارات|امر\\ النشر|رمز\\ الاسم|كليشة\\ فحص|كليشه\\ فحص|MUKRR_ET|PING_PIC|PM_BLOCK|TIME_JEP|لون\\ وقتي|نص\\ الفحص|PM_TEXT|pmblock|اشعارات|التخزين|امر\\ نشر|PM_PIC|البايو|JP_FN|gchan|pchan|تخزين|بايو|لون)$",
           "command": null
         },
         {
@@ -1408,11 +1408,18 @@
       "traceback_tail": null,
       "missing_module_or_attribute": null,
       "handlers": {
-        "ar_cmd": 3,
+        "ar_cmd": 4,
         "bot_cmd": 0,
         "on": 0
       },
       "patterns_sample": [
+        {
+          "pattern": "حذف رسائلي$",
+          "command": [
+            "حذف رسائلي",
+            "utils"
+          ]
+        },
         {
           "pattern": "مسح(\\s*| \\d+)$",
           "command": [
@@ -1512,7 +1519,7 @@
       "traceback_tail": null,
       "missing_module_or_attribute": null,
       "handlers": {
-        "ar_cmd": 10,
+        "ar_cmd": 9,
         "bot_cmd": 0,
         "on": 5
       },
@@ -1523,10 +1530,6 @@
         },
         {
           "pattern": null,
-          "command": null
-        },
-        {
-          "pattern": "الحماية (تشغيل|تعطيل)$",
           "command": null
         },
         {
@@ -2010,7 +2013,7 @@
       },
       "patterns_sample": [
         {
-          "pattern": "وضع (.*)",
+          "pattern": "وضع (توقيت|لون وقتي|اللون الوقتي|رمز الاسم|تحكم|التحكم|البايو|النبذة|بايو|امر نشر|امر النشر|مكرر|القروب|الكروب|كروب|صورة القروب|صورة الكروب|الصورة|الصوره|صورة|اللون|لون|زخرفة الارقام|زخرفه الارقام|زخرفة الصورة|اسم البوت|كروب التخزين|كروب الحفظ)$",
           "command": null
         },
         {
@@ -2070,7 +2073,7 @@
       },
       "patterns_sample": [
         {
-          "pattern": "كتم(?:\\s|$)([\\s\\S]*)",
+          "pattern": "كتم(?:_مؤقت)?(?:\\s|$)([\\s\\S]*)",
           "command": null
         },
         {
@@ -2127,9 +2130,9 @@
           ]
         },
         {
-          "pattern": "تقييد(?:\\s|$)([\\s\\S]*)",
+          "pattern": "تقييد البوت(?:\\s|$)([\\s\\S]*)",
           "command": [
-            "تقييد",
+            "تقييد البوت",
             "tools"
           ]
         },
@@ -2428,7 +2431,7 @@
           ]
         },
         {
-          "pattern": "تقييد(?:\\s|$)([\\s\\S]*)",
+          "pattern": "تقييد(?!\\s*البوت)(?:\\s|$)([\\s\\S]*)",
           "command": [
             "تقييد",
             "admin"
@@ -2469,9 +2472,9 @@
       },
       "patterns_sample": [
         {
-          "pattern": "اعادة تشغيل$",
+          "pattern": "اعادة تشغيل كاملة$",
           "command": [
-            "اعادة تشغيل",
+            "اعادة تشغيل كاملة",
             "tools"
           ]
         },
@@ -2783,8 +2786,12 @@
           ]
         }
       ],
-      "config_attributes_referenced": [],
-      "config_attributes_missing_from_config": [],
+      "config_attributes_referenced": [
+        "py"
+      ],
+      "config_attributes_missing_from_config": [
+        "py"
+      ],
       "required_external_services": [
         "possible external API/service usage",
         "database-dependent behavior possible"
@@ -2794,7 +2801,9 @@
       "package_export_compat_issue_suspected": false,
       "actual_source_defect_suspected": false,
       "recommended_action": "none (loaded in harness)",
-      "notes": []
+      "notes": [
+        "Config attribute(s) missing from resolved Config may break import-time access; add compatible defaults if intentional legacy vars."
+      ]
     },
     {
       "file": "تحذير.py",
@@ -2947,7 +2956,7 @@
       "handlers": {
         "ar_cmd": 2,
         "bot_cmd": 0,
-        "on": 28
+        "on": 29
       },
       "patterns_sample": [
         {
@@ -3445,9 +3454,9 @@
           ]
         },
         {
-          "pattern": "قلب$",
+          "pattern": "قلب سريع$",
           "command": [
-            "قلب",
+            "قلب سريع",
             "fun"
           ]
         },
@@ -3784,9 +3793,9 @@
           ]
         },
         {
-          "pattern": "اوامر التثبيت$",
+          "pattern": "اوامر تثبيت الرسائل$",
           "command": [
-            "اوامر التثبيت ",
+            "اوامر تثبيت الرسائل",
             "extra"
           ]
         },
@@ -3986,7 +3995,7 @@
       },
       "patterns_sample": [
         {
-          "pattern": "تك",
+          "pattern": "تك(?:\\s+|$)([\\s\\S]*)",
           "command": null
         }
       ],
@@ -4253,9 +4262,9 @@
           ]
         },
         {
-          "pattern": "تنصيب$",
+          "pattern": "تنصيب بلجن$",
           "command": [
-            "تنصيب",
+            "تنصيب بلجن",
             "tools"
           ]
         },
@@ -5260,7 +5269,7 @@
       "handlers": {
         "ar_cmd": 2,
         "bot_cmd": 0,
-        "on": 84
+        "on": 80
       },
       "patterns_sample": [
         {
@@ -5428,11 +5437,11 @@
       },
       "patterns_sample": [
         {
-          "pattern": "اشتراك",
+          "pattern": "اشتراك (كروب|خاص)$",
           "command": null
         },
         {
-          "pattern": "تعطيل",
+          "pattern": "تعطيل (كروب|خاص)$",
           "command": null
         },
         {

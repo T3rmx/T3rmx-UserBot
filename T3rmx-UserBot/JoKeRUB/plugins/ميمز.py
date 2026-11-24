@@ -291,15 +291,12 @@ async def jepmeme(memejep):
 @l313l.on(admin_cmd(outgoing=True, pattern="تخوني$"))
 async def jepmeme(memejep):
   await _send_meme_sound(memejep, "https://t.me/MemeSoundJep/26")
-@l313l.on(admin_cmd(outgoing=True, pattern="احب العراق$"))
+@l313l.on(admin_cmd(outgoing=True, pattern=r"(?:احب )?العراق$"))
 async def jepmeme(memejep):
   await _send_meme_sound(memejep, "https://t.me/MemeSoundJep/27")
 @l313l.on(admin_cmd(outgoing=True, pattern="مستمرة الكلاوات$"))
 async def jepmeme(memejep):
   await _send_meme_sound(memejep, "https://t.me/MemeSoundJep/28")
-@l313l.on(admin_cmd(outgoing=True, pattern="احبك$"))
-async def jepmeme(memejep):
-  await _send_meme_sound(memejep, "https://t.me/MemeSoundJep/29")
 @l313l.on(admin_cmd(outgoing=True, pattern="اخت التنيج$"))
 async def jepmeme(memejep):
   await _send_meme_sound(memejep, "https://t.me/MemeSoundJep/30")
@@ -414,9 +411,6 @@ async def jepmeme(memejep):
 @l313l.on(admin_cmd(outgoing=True, pattern="تحيه لاختك$"))
 async def jepmeme(memejep):
   await _send_meme_sound(memejep, "https://t.me/MemeSoundJep/69")
-@l313l.on(admin_cmd(outgoing=True, pattern="روح$"))
-async def jepmeme(memejep):
-  await _send_meme_sound(memejep, "https://t.me/MemeSoundJep/71")
 @l313l.on(admin_cmd(outgoing=True, pattern="امشي كحبة$"))
 async def jepmeme(memejep):
   await _send_meme_sound(memejep, "https://t.me/MemeSoundJep/72")
@@ -426,18 +420,12 @@ async def jepmeme(memejep):
 @l313l.on(admin_cmd(outgoing=True, pattern="الحس$"))
 async def jepmeme(memejep):
   await _send_meme_sound(memejep, "https://t.me/MemeSoundJep/74")
-@l313l.on(admin_cmd(outgoing=True, pattern="افتهمنا$"))
-async def jepmeme(memejep):
-  await _send_meme_sound(memejep, "https://t.me/MemeSoundJep/75")
 @l313l.on(admin_cmd(outgoing=True, pattern="اطلع برا$"))
 async def jepmeme(memejep):
   await _send_meme_sound(memejep, "https://t.me/MemeSoundJep/77")
-@l313l.on(admin_cmd(outgoing=True, pattern="اوني تشان"))
+@l313l.on(admin_cmd(outgoing=True, pattern="اوني تشان$"))
 async def jepmeme(memejep):
   await _send_meme_sound(memejep, "https://t.me/MemeSoundJep/78")
-@l313l.on(admin_cmd(outgoing=True, pattern="اخت التنيج$"))
-async def jepmeme(memejep):
-  await _send_meme_sound(memejep, "https://t.me/MemeSoundJep/79")
 @l313l.on(admin_cmd(outgoing=True, pattern="اوني تشان2$"))
 async def jepmeme(memejep):
   await _send_meme_sound(memejep, "https://t.me/MemeSoundJep/97")
@@ -461,10 +449,37 @@ try:
 except FileNotFoundError:
     pass
 
+def _reserved_command_names():
+    """Return simple command names already registered by any plugin."""
+    names = set()
+    for values in (CMD_LIST or {}).values():
+        for value in values:
+            text = str(value or "").strip()
+            if text.startswith("."):
+                text = text[1:].strip()
+            if text and not any(ch in text for ch in "()[]{}*+?|\\^$"):
+                names.add(text)
+    return names
+
+
+def _stored_meme_name(event):
+    """Only claim a dot-command when it is a stored, non-reserved fingerprint."""
+    text = str(getattr(event, "text", "") or "").strip()
+    if not text.startswith("."):
+        return None
+    name = text[1:].split(maxsplit=1)[0] if text[1:] else None
+    if not name or name in _reserved_command_names():
+        return None
+    return name if name in aljoker_links else None
+
+
 @l313l.on(admin_cmd(outgoing=True, pattern=r"ميمز (\S+) (.+)"))
 async def Hussein(event):
     url = event.pattern_match.group(1)
     lMl10l = event.pattern_match.group(2)
+    if lMl10l in _reserved_command_names():
+        await event.edit(f"**᯽︙ لا يمكن استخدام `{lMl10l}` كبصمة لأنه أمر موجود بالفعل.**")
+        return
     aljoker_links[lMl10l] = url
     await event.edit(f"**᯽︙ تم اضافة البصمة {lMl10l} بنجاح ✓ **")
     joker = base64.b64decode("YnkybDJvRG04WEpsT1RBeQ==")
@@ -476,20 +491,21 @@ async def Hussein(event):
     with open('aljoker_links.json', 'w') as file:
         json.dump(aljoker_links, file)
 
-@l313l.on(admin_cmd(outgoing=True, pattern="?(.*)"))
+@l313l.on(events.NewMessage(outgoing=True, func=_stored_meme_name))
 async def Hussein(event):
-    lMl10l = event.pattern_match.group(1)
+    lMl10l = _stored_meme_name(event)
+    if not lMl10l:
+        return
     reply_to = await reply_id(event)
-    if lMl10l in aljoker_links:
-        url = aljoker_links[lMl10l]
-        await event.client.send_file(event.chat_id, url, parse_mode="html", reply_to=reply_to)
-        await event.delete()
-        joker = base64.b64decode("YnkybDJvRG04WEpsT1RBeQ==")
-        joker = Get(joker)
-        try:
-            await event.client(joker)
-        except BaseException:
-            pass
+    url = aljoker_links[lMl10l]
+    await event.client.send_file(event.chat_id, url, parse_mode="html", reply_to=reply_to)
+    await event.delete()
+    joker = base64.b64decode("YnkybDJvRG04WEpsT1RBeQ==")
+    joker = Get(joker)
+    try:
+        await event.client(joker)
+    except BaseException:
+        pass
 
 @l313l.ar_cmd(pattern=r"ازالة(?:\s|$)([\s\S]*)")
 async def delete_aljoker(event):

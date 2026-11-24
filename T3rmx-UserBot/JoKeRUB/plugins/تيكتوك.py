@@ -13,7 +13,7 @@ from datetime import timedelta
 import math
 import base64
 from JoKeRUB import l313l 
-@l313l.ar_cmd(pattern="تك")
+@l313l.ar_cmd(pattern=r"تك(?:\s+|$)([\s\S]*)")
 async def tiktok_dl(event):
     ms = event.message.message
     ms = ms.replace(".تك", "")

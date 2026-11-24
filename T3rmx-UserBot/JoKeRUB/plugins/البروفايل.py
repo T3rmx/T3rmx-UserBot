@@ -48,11 +48,12 @@ async def _(event):
 
 
 @l313l.ar_cmd(
-    pattern="وضع اسم (.*)",
+    # `وضع اسم البوت` belongs to the ALIVE_NAME variable in الفارات.py.
+    pattern=r"وضع اسم (?!البوت$)(.*)",
     command=("وضع اسم", plugin_category),
     info={
         "header": "To set/change name for this account.",
-        "usage": ["{tr}pname firstname ; last name", "{tr}pname firstname"],
+        "usage": ["{tr}وضع اسم الاسم الاول ; الاسم الاخير", "{tr}وضع اسم الاسم الاول"],
     },
 )
 async def _(event):

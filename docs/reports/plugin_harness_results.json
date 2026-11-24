@@ -19,6 +19,7 @@
       "handlers_ar_cmd": 0,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [],
       "error_type": null,
       "error": null,
@@ -35,6 +36,7 @@
       "handlers_ar_cmd": 4,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": null,
@@ -74,6 +76,7 @@
       "handlers_ar_cmd": 2,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "احجي(?:\\s|$)([\\s\\S]*)",
@@ -105,6 +108,7 @@
       "handlers_ar_cmd": 3,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "دنس(?:\\s|$)([\\s\\S]*)",
@@ -121,9 +125,9 @@
           ]
         },
         {
-          "pattern": "اخفاء(?:\\s|$)([\\s\\S]*)",
+          "pattern": "(?:اخفاء|رابط_مخفي)(?:\\s|$)([\\s\\S]*)",
           "command": [
-            "اخفاء",
+            "اخفاء / رابط_مخفي",
             "utils"
           ]
         }
@@ -143,6 +147,16 @@
       "handlers_ar_cmd": 0,
       "handlers_bot_cmd": 0,
       "handlers_on": 2,
+      "on_patterns": [
+        {
+          "pattern": "ارفع(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "نزل(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        }
+      ],
       "patterns": [],
       "error_type": null,
       "error": null,
@@ -159,6 +173,16 @@
       "handlers_ar_cmd": 0,
       "handlers_bot_cmd": 0,
       "handlers_on": 2,
+      "on_patterns": [
+        {
+          "pattern": "ضيف ?(.*)",
+          "command": null
+        },
+        {
+          "pattern": "اضافة_جهاتي ?(.*)",
+          "command": null
+        }
+      ],
       "patterns": [],
       "error_type": null,
       "error": null,
@@ -175,6 +199,7 @@
       "handlers_ar_cmd": 4,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "بحث(320)?(?:\\s|$)([\\s\\S]*)",
@@ -217,6 +242,7 @@
       "handlers_ar_cmd": 7,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "الصورة( -وضع| -حذف)$",
@@ -280,6 +306,7 @@
       "handlers_ar_cmd": 3,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "وجه ?(.*)$",
@@ -318,6 +345,7 @@
       "handlers_ar_cmd": 7,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "اذكار الصباح",
@@ -384,6 +412,7 @@
       "handlers_ar_cmd": 4,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "انتحال(?:\\s|$)([\\s\\S]*)",
@@ -420,6 +449,7 @@
       "handlers_ar_cmd": 23,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "الاوامر(?:\\s|$)([\\s\\S]*)",
@@ -522,6 +552,62 @@
             "م14",
             "extra"
           ]
+        },
+        {
+          "pattern": "م15$",
+          "command": [
+            "م15",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "م16$",
+          "command": [
+            "م16",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "م18$",
+          "command": [
+            "م18",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "م19",
+          "command": [
+            "م19",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "م20$",
+          "command": [
+            "م20",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "م21$",
+          "command": [
+            "م21",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "م22$",
+          "command": [
+            "م22",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "م23$",
+          "command": [
+            "م23",
+            "extra"
+          ]
         }
       ],
       "error_type": null,
@@ -539,6 +625,7 @@
       "handlers_ar_cmd": 7,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "وضع بايو (.*)",
@@ -548,7 +635,7 @@
           ]
         },
         {
-          "pattern": "وضع اسم (.*)",
+          "pattern": "وضع اسم (?!البوت$)(.*)",
           "command": [
             "وضع اسم",
             "utils"
@@ -605,6 +692,7 @@
       "handlers_ar_cmd": 3,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "تثبيت( بالاشعار|$)",
@@ -643,6 +731,36 @@
       "handlers_ar_cmd": 8,
       "handlers_bot_cmd": 0,
       "handlers_on": 14,
+      "on_patterns": [
+        {
+          "pattern": "(تجميع المليار|تجميع مليار)",
+          "command": null
+        },
+        {
+          "pattern": "(ايقاف التجميع|ايقاف تجميع)",
+          "command": null
+        },
+        {
+          "pattern": "(تجميع تيرمكس|تجميع T3rmx|تجميع الجوكر|تجميع جوكر)",
+          "command": null
+        },
+        {
+          "pattern": "(تجميع العقاب|تجميع عقاب)",
+          "command": null
+        },
+        {
+          "pattern": "(تجميع المليون|تجميع مليون)",
+          "command": null
+        },
+        {
+          "pattern": "(تجميع العرب|تجميع عرب)",
+          "command": null
+        },
+        {
+          "pattern": "تجميع دعمكم",
+          "command": null
+        }
+      ],
       "patterns": [
         {
           "pattern": "راتب وعد(?:\\s|$)([\\s\\S]*)",
@@ -692,6 +810,7 @@
       "handlers_ar_cmd": 7,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "sudo (on|off)$",
@@ -758,6 +877,7 @@
       "handlers_ar_cmd": 7,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": null,
@@ -818,17 +938,18 @@
       "handlers_ar_cmd": 7,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
-          "pattern": "جلب (.*)",
+          "pattern": "جلب (PRIVATE_GROUP_BOT_API_ID|PM_LOGGER_GROUP_ID|لون\\ الصوره\\ الوقتيه|MAX_FLOOD_IN_PMS|aljoker_message|digitalpiccolor|ALIVE_TEMPLATE|لون\\ صوره\\ وقتيه|اشتراك\\ الكروب|زخرفة\\ الارقام|زخرفه\\ الارقام|عدد\\ التحذيرات|كليشة\\ الحماية|كليشة\\ الحمايه|كليشه\\ الحماية|كليشه\\ الحمايه|pmpermit_pic|pmpermit_txt|اشتراك\\ الخاص|ايموجي\\ الفحص|صورة\\ الحماية|صورة\\ الحمايه|صوره\\ الحماية|صوره\\ الحمايه|ALIVE_EMOJI|DEFAULT_BIO|اشتراك\\ كروب|علامة\\ الاسم|كليشة\\ البوت|كليشة\\ الحظر|كليشة\\ الخاص|كليشة\\ الفحص|كليشه\\ البوت|كليشه\\ الحظر|كليشه\\ الخاص|كليشه\\ الفحص|ALIVE_TEXT|START_TEXT|اشتراك\\ خاص|صورة\\ البنك|صورة\\ الفحص|صوره\\ البنك|صوره\\ الفحص|لون\\ الوقتي|ALIVE_PIC|الاشعارات|امر\\ النشر|رمز\\ الاسم|كليشة\\ فحص|كليشه\\ فحص|MUKRR_ET|PING_PIC|PM_BLOCK|TIME_JEP|لون\\ وقتي|نص\\ الفحص|PM_TEXT|pmblock|اشعارات|التخزين|امر\\ نشر|PM_PIC|البايو|JP_FN|gchan|pchan|تخزين|بايو|لون)$",
           "command": null
         },
         {
-          "pattern": "اضف (.*)",
+          "pattern": "اضف (PRIVATE_GROUP_BOT_API_ID|PM_LOGGER_GROUP_ID|لون\\ الصوره\\ الوقتيه|MAX_FLOOD_IN_PMS|aljoker_message|digitalpiccolor|ALIVE_TEMPLATE|لون\\ صوره\\ وقتيه|اشتراك\\ الكروب|زخرفة\\ الارقام|زخرفه\\ الارقام|عدد\\ التحذيرات|كليشة\\ الحماية|كليشة\\ الحمايه|كليشه\\ الحماية|كليشه\\ الحمايه|pmpermit_pic|pmpermit_txt|اشتراك\\ الخاص|ايموجي\\ الفحص|صورة\\ الحماية|صورة\\ الحمايه|صوره\\ الحماية|صوره\\ الحمايه|ALIVE_EMOJI|DEFAULT_BIO|اشتراك\\ كروب|علامة\\ الاسم|كليشة\\ البوت|كليشة\\ الحظر|كليشة\\ الخاص|كليشة\\ الفحص|كليشه\\ البوت|كليشه\\ الحظر|كليشه\\ الخاص|كليشه\\ الفحص|ALIVE_TEXT|START_TEXT|اشتراك\\ خاص|صورة\\ البنك|صورة\\ الفحص|صوره\\ البنك|صوره\\ الفحص|لون\\ الوقتي|ALIVE_PIC|الاشعارات|امر\\ النشر|رمز\\ الاسم|كليشة\\ فحص|كليشه\\ فحص|MUKRR_ET|PING_PIC|PM_BLOCK|TIME_JEP|لون\\ وقتي|نص\\ الفحص|PM_TEXT|pmblock|اشعارات|التخزين|امر\\ نشر|PM_PIC|البايو|JP_FN|gchan|pchan|تخزين|بايو|لون)$",
           "command": null
         },
         {
-          "pattern": "حذف (.*)",
+          "pattern": "حذف (PRIVATE_GROUP_BOT_API_ID|PM_LOGGER_GROUP_ID|لون\\ الصوره\\ الوقتيه|MAX_FLOOD_IN_PMS|aljoker_message|digitalpiccolor|ALIVE_TEMPLATE|لون\\ صوره\\ وقتيه|اشتراك\\ الكروب|زخرفة\\ الارقام|زخرفه\\ الارقام|عدد\\ التحذيرات|كليشة\\ الحماية|كليشة\\ الحمايه|كليشه\\ الحماية|كليشه\\ الحمايه|pmpermit_pic|pmpermit_txt|اشتراك\\ الخاص|ايموجي\\ الفحص|صورة\\ الحماية|صورة\\ الحمايه|صوره\\ الحماية|صوره\\ الحمايه|ALIVE_EMOJI|DEFAULT_BIO|اشتراك\\ كروب|علامة\\ الاسم|كليشة\\ البوت|كليشة\\ الحظر|كليشة\\ الخاص|كليشة\\ الفحص|كليشه\\ البوت|كليشه\\ الحظر|كليشه\\ الخاص|كليشه\\ الفحص|ALIVE_TEXT|START_TEXT|اشتراك\\ خاص|صورة\\ البنك|صورة\\ الفحص|صوره\\ البنك|صوره\\ الفحص|لون\\ الوقتي|ALIVE_PIC|الاشعارات|امر\\ النشر|رمز\\ الاسم|كليشة\\ فحص|كليشه\\ فحص|MUKRR_ET|PING_PIC|PM_BLOCK|TIME_JEP|لون\\ وقتي|نص\\ الفحص|PM_TEXT|pmblock|اشعارات|التخزين|امر\\ نشر|PM_PIC|البايو|JP_FN|gchan|pchan|تخزين|بايو|لون)$",
           "command": null
         },
         {
@@ -863,6 +984,7 @@
       "handlers_ar_cmd": 3,
       "handlers_bot_cmd": 0,
       "handlers_on": 1,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "ترجمة ([\\s\\S]*)",
@@ -895,6 +1017,7 @@
       "handlers_ar_cmd": 4,
       "handlers_bot_cmd": 0,
       "handlers_on": 1,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "ترحيب(?:\\s|$)([\\s\\S]*)",
@@ -940,6 +1063,16 @@
       "handlers_ar_cmd": 1,
       "handlers_bot_cmd": 0,
       "handlers_on": 3,
+      "on_patterns": [
+        {
+          "pattern": "رحب(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "حذف رحب(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        }
+      ],
       "patterns": [
         {
           "pattern": "لستة الترحيب الخاص$",
@@ -964,6 +1097,7 @@
       "handlers_ar_cmd": 5,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "تقليد$",
@@ -1013,6 +1147,12 @@
       "handlers_ar_cmd": 9,
       "handlers_bot_cmd": 0,
       "handlers_on": 1,
+      "on_patterns": [
+        {
+          "pattern": "مكرر",
+          "command": null
+        }
+      ],
       "patterns": [
         {
           "pattern": "كرر (.*)",
@@ -1066,6 +1206,7 @@
       "handlers_ar_cmd": 22,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "م17$",
@@ -1171,6 +1312,55 @@
             "بنات1",
             "extra"
           ]
+        },
+        {
+          "pattern": "بنات2$",
+          "command": [
+            "بنات2",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "قنوات$",
+          "command": [
+            "قنوات",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اختصارات1$",
+          "command": [
+            "اختصارات1",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اختصارات2$",
+          "command": [
+            "اختصارات2",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اختصارات3$",
+          "command": [
+            "اختصارات3",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اختصارات4$",
+          "command": [
+            "اختصارات4",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اختصارات5$",
+          "command": [
+            "اختصارات5",
+            "extra"
+          ]
         }
       ],
       "error_type": null,
@@ -1185,10 +1375,18 @@
       "file": "التنظيف.py",
       "name": "التنظيف",
       "exec_ok": true,
-      "handlers_ar_cmd": 3,
+      "handlers_ar_cmd": 4,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
+        {
+          "pattern": "حذف رسائلي$",
+          "command": [
+            "حذف رسائلي",
+            "utils"
+          ]
+        },
         {
           "pattern": "مسح(\\s*| \\d+)$",
           "command": [
@@ -1226,6 +1424,12 @@
       "handlers_ar_cmd": 0,
       "handlers_bot_cmd": 0,
       "handlers_on": 6,
+      "on_patterns": [
+        {
+          "pattern": "مود التكبر (\\d+)",
+          "command": null
+        }
+      ],
       "patterns": [],
       "error_type": null,
       "error": null,
@@ -1242,6 +1446,12 @@
       "handlers_ar_cmd": 0,
       "handlers_bot_cmd": 0,
       "handlers_on": 4,
+      "on_patterns": [
+        {
+          "pattern": "(?:حاسبة|حساب)(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        }
+      ],
       "patterns": [],
       "error_type": null,
       "error": null,
@@ -1255,9 +1465,10 @@
       "file": "الحماية.py",
       "name": "الحماية",
       "exec_ok": true,
-      "handlers_ar_cmd": 10,
+      "handlers_ar_cmd": 9,
       "handlers_bot_cmd": 0,
       "handlers_on": 5,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": null,
@@ -1265,10 +1476,6 @@
         },
         {
           "pattern": null,
-          "command": null
-        },
-        {
-          "pattern": "الحماية (تشغيل|تعطيل)$",
           "command": null
         },
         {
@@ -1315,6 +1522,20 @@
       "handlers_ar_cmd": 0,
       "handlers_bot_cmd": 0,
       "handlers_on": 4,
+      "on_patterns": [
+        {
+          "pattern": "(خط الغامق|خط غامق)",
+          "command": null
+        },
+        {
+          "pattern": "(خط المشطوب|خط مشطوب)",
+          "command": null
+        },
+        {
+          "pattern": "(خط رمز|خط الرمز)",
+          "command": null
+        }
+      ],
       "patterns": [],
       "error_type": null,
       "error": null,
@@ -1331,6 +1552,7 @@
       "handlers_ar_cmd": 5,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": null,
@@ -1380,6 +1602,7 @@
       "handlers_ar_cmd": 4,
       "handlers_bot_cmd": 0,
       "handlers_on": 3,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "الاشعارات تفعيل$",
@@ -1413,6 +1636,7 @@
       "handlers_ar_cmd": 1,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "صلاة(?: |$)(.*)",
@@ -1437,6 +1661,7 @@
       "handlers_ar_cmd": 7,
       "handlers_bot_cmd": 0,
       "handlers_on": 1,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "قفل (.*)",
@@ -1500,6 +1725,7 @@
       "handlers_ar_cmd": 1,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "صورة(?: |$)(.*)",
@@ -1524,6 +1750,7 @@
       "handlers_ar_cmd": 20,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "(الصيد|التثبيت)",
@@ -1584,6 +1811,26 @@
         {
           "pattern": "حالة تثبيت_القناة",
           "command": null
+        },
+        {
+          "pattern": "حالة تثبيت_الحساب",
+          "command": null
+        },
+        {
+          "pattern": "حالة تثبيت_البوت",
+          "command": null
+        },
+        {
+          "pattern": "ايقاف تثبيت_القناة",
+          "command": null
+        },
+        {
+          "pattern": "ايقاف تثبيت_الحساب",
+          "command": null
+        },
+        {
+          "pattern": "ايقاف تثبيت_البوت",
+          "command": null
         }
       ],
       "error_type": null,
@@ -1601,6 +1848,7 @@
       "handlers_ar_cmd": 8,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "حفظ_المحتوى (.+)",
@@ -1674,9 +1922,10 @@
       "handlers_ar_cmd": 7,
       "handlers_bot_cmd": 0,
       "handlers_on": 1,
+      "on_patterns": [],
       "patterns": [
         {
-          "pattern": "وضع (.*)",
+          "pattern": "وضع (توقيت|لون وقتي|اللون الوقتي|رمز الاسم|تحكم|التحكم|البايو|النبذة|بايو|امر نشر|امر النشر|مكرر|القروب|الكروب|كروب|صورة القروب|صورة الكروب|الصورة|الصوره|صورة|اللون|لون|زخرفة الارقام|زخرفه الارقام|زخرفة الصورة|اسم البوت|كروب التخزين|كروب الحفظ)$",
           "command": null
         },
         {
@@ -1719,9 +1968,10 @@
       "handlers_ar_cmd": 4,
       "handlers_bot_cmd": 0,
       "handlers_on": 1,
+      "on_patterns": [],
       "patterns": [
         {
-          "pattern": "كتم(?:\\s|$)([\\s\\S]*)",
+          "pattern": "كتم(?:_مؤقت)?(?:\\s|$)([\\s\\S]*)",
           "command": null
         },
         {
@@ -1752,6 +2002,7 @@
       "handlers_ar_cmd": 4,
       "handlers_bot_cmd": 0,
       "handlers_on": 1,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "المطور$",
@@ -1768,9 +2019,9 @@
           ]
         },
         {
-          "pattern": "تقييد(?:\\s|$)([\\s\\S]*)",
+          "pattern": "تقييد البوت(?:\\s|$)([\\s\\S]*)",
           "command": [
-            "تقييد",
+            "تقييد البوت",
             "tools"
           ]
         },
@@ -1797,6 +2048,16 @@
       "handlers_ar_cmd": 3,
       "handlers_bot_cmd": 0,
       "handlers_on": 2,
+      "on_patterns": [
+        {
+          "pattern": "حزمة",
+          "command": null
+        },
+        {
+          "pattern": "حزمه",
+          "command": null
+        }
+      ],
       "patterns": [
         {
           "pattern": "ملصق(?:\\s|$)([\\s\\S]*)",
@@ -1835,6 +2096,7 @@
       "handlers_ar_cmd": 1,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "موقع ([\\s\\S]*)",
@@ -1859,6 +2121,7 @@
       "handlers_ar_cmd": 2,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "توقيت(?:\\s|$)([\\s\\S]*)(?<![0-9])(?: |$)([0-9]+)?",
@@ -1890,6 +2153,28 @@
       "handlers_ar_cmd": 1,
       "handlers_bot_cmd": 0,
       "handlers_on": 5,
+      "on_patterns": [
+        {
+          "pattern": "الصورة الوقتية(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "كروب وقتي",
+          "command": null
+        },
+        {
+          "pattern": "كروب صورة وقتي",
+          "command": null
+        },
+        {
+          "pattern": "اسم وقتي(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "بايو وقتي(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        }
+      ],
       "patterns": [
         {
           "pattern": "انهاء ([\\s\\S]*)",
@@ -1914,6 +2199,56 @@
       "handlers_ar_cmd": 0,
       "handlers_bot_cmd": 0,
       "handlers_on": 12,
+      "on_patterns": [
+        {
+          "pattern": "كتابة(?: |$)(.*)",
+          "command": null
+        },
+        {
+          "pattern": "صوتية(?: |$)(.*)",
+          "command": null
+        },
+        {
+          "pattern": "فيد(?: |$)(.*)",
+          "command": null
+        },
+        {
+          "pattern": "لعبة(?: |$)(.*)",
+          "command": null
+        },
+        {
+          "pattern": "الرابط$",
+          "command": null
+        },
+        {
+          "pattern": "للكل تاك$",
+          "command": null
+        },
+        {
+          "pattern": "سبونج",
+          "command": null
+        },
+        {
+          "pattern": "كلب",
+          "command": null
+        },
+        {
+          "pattern": "ذئب",
+          "command": null
+        },
+        {
+          "pattern": "فيل",
+          "command": null
+        },
+        {
+          "pattern": "هومر",
+          "command": null
+        },
+        {
+          "pattern": "بك",
+          "command": null
+        }
+      ],
       "patterns": [],
       "error_type": null,
       "error": null,
@@ -1930,6 +2265,7 @@
       "handlers_ar_cmd": 2,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "من القاتل(|بريء) ([\\s\\S]*)",
@@ -1961,6 +2297,7 @@
       "handlers_ar_cmd": 4,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "تقييد_مؤقت(?:\\s|$)([\\s\\S]*)",
@@ -1977,7 +2314,7 @@
           ]
         },
         {
-          "pattern": "تقييد(?:\\s|$)([\\s\\S]*)",
+          "pattern": "تقييد(?!\\s*البوت)(?:\\s|$)([\\s\\S]*)",
           "command": [
             "تقييد",
             "admin"
@@ -2006,11 +2343,12 @@
       "handlers_ar_cmd": 3,
       "handlers_bot_cmd": 0,
       "handlers_on": 2,
+      "on_patterns": [],
       "patterns": [
         {
-          "pattern": "اعادة تشغيل$",
+          "pattern": "اعادة تشغيل كاملة$",
           "command": [
-            "اعادة تشغيل",
+            "اعادة تشغيل كاملة",
             "tools"
           ]
         },
@@ -2044,6 +2382,7 @@
       "handlers_ar_cmd": 24,
       "handlers_bot_cmd": 0,
       "handlers_on": 5,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "ارسل(?:\\s|$)([\\s\\S]*)",
@@ -2122,6 +2461,42 @@
         {
           "pattern": "تصفية البوتات",
           "command": null
+        },
+        {
+          "pattern": "ذكاء(.*)",
+          "command": null
+        },
+        {
+          "pattern": "الذكاء تفعيل",
+          "command": null
+        },
+        {
+          "pattern": "الذكاء تعطيل",
+          "command": null
+        },
+        {
+          "pattern": "المميز تفعيل",
+          "command": null
+        },
+        {
+          "pattern": "المميز تعطيل",
+          "command": null
+        },
+        {
+          "pattern": "منع_التفليش",
+          "command": null
+        },
+        {
+          "pattern": "سماح_التفليش",
+          "command": null
+        },
+        {
+          "pattern": "النشر تعطيل",
+          "command": null
+        },
+        {
+          "pattern": "النشر تفعيل",
+          "command": null
         }
       ],
       "error_type": null,
@@ -2139,6 +2514,7 @@
       "handlers_ar_cmd": 4,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": null,
@@ -2181,6 +2557,12 @@
       "handlers_ar_cmd": 0,
       "handlers_bot_cmd": 0,
       "handlers_on": 14,
+      "on_patterns": [
+        {
+          "pattern": "اوامري",
+          "command": null
+        }
+      ],
       "patterns": [],
       "error_type": null,
       "error": null,
@@ -2197,6 +2579,16 @@
       "handlers_ar_cmd": 7,
       "handlers_bot_cmd": 0,
       "handlers_on": 2,
+      "on_patterns": [
+        {
+          "pattern": "(فلوسي|اموالي) ?(.*)",
+          "command": null
+        },
+        {
+          "pattern": "(بنكي|مصرفي) ?(.*)",
+          "command": null
+        }
+      ],
       "patterns": [
         {
           "pattern": "tdata",
@@ -2248,6 +2640,7 @@
       "handlers_ar_cmd": 1,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "تاريخ(معرفات)?(?: |$)(.*)",
@@ -2272,6 +2665,7 @@
       "handlers_ar_cmd": 1,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "تحديث(?:\\s+(.*))?$",
@@ -2296,6 +2690,7 @@
       "handlers_ar_cmd": 3,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "تحذير(?:\\s|$)([\\s\\S]*)",
@@ -2334,6 +2729,7 @@
       "handlers_ar_cmd": 9,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "نسبة الحب(?:\\s|$)([\\s\\S]*)",
@@ -2413,7 +2809,121 @@
       "exec_ok": true,
       "handlers_ar_cmd": 2,
       "handlers_bot_cmd": 0,
-      "handlers_on": 28,
+      "handlers_on": 29,
+      "on_patterns": [
+        {
+          "pattern": "رفع مرتي(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "رفع جلب(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "رفع تاج(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "رفع قرد(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "رفع بكلبي(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "رفع مطي(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "رفع زوجي(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "رفع زاحف(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "رفع كحبة(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "رفع فرخ(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "رفع حاته(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "رفع هايشة(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "رفع صاك(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "سيد(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "رفع ايجة(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "رفع زبال(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "رفع كواد(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "رفع ديوث(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "رفع مميز(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "رفع ادمن(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "رفع منشئ(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "رفع مالك(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "رفع مجنب(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "رفع وصخ(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "رفع بقره(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "زواج(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "طلاك(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        },
+        {
+          "pattern": "همسه(?:\\s|$)([\\s\\S]*)",
+          "command": null
+        }
+      ],
       "patterns": [
         {
           "pattern": "رزله(?:\\s|$)([\\s\\S]*)",
@@ -2445,6 +2955,7 @@
       "handlers_ar_cmd": 2,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "test(?:\\s|$)([\\s\\S]*)",
@@ -2470,6 +2981,7 @@
       "handlers_ar_cmd": 10,
       "handlers_bot_cmd": 0,
       "handlers_on": 1,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "غبي$",
@@ -2557,6 +3069,7 @@
       "handlers_ar_cmd": 11,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "افكر$",
@@ -2651,6 +3164,7 @@
       "handlers_ar_cmd": 11,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "نجمه$",
@@ -2745,6 +3259,7 @@
       "handlers_ar_cmd": 11,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "قاتل(?: |$)(.*)",
@@ -2839,6 +3354,7 @@
       "handlers_ar_cmd": 12,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "تحميل$",
@@ -2869,9 +3385,9 @@
           ]
         },
         {
-          "pattern": "قلب$",
+          "pattern": "قلب سريع$",
           "command": [
-            "قلب",
+            "قلب سريع",
             "fun"
           ]
         },
@@ -2940,6 +3456,7 @@
       "handlers_ar_cmd": 5,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "ترامب(?:\\s|$)([\\s\\S]*)",
@@ -2992,6 +3509,7 @@
       "handlers_ar_cmd": 4,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "تراش$",
@@ -3037,6 +3555,7 @@
       "handlers_ar_cmd": 6,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "نص(?:\\s|$)([\\s\\S]*)",
@@ -3096,6 +3615,7 @@
       "handlers_ar_cmd": 1,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "تشكيل(?:\\s|$)([\\s\\S]*)",
@@ -3120,6 +3640,7 @@
       "handlers_ar_cmd": 1,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "app ([\\s\\S]*)",
@@ -3144,6 +3665,7 @@
       "handlers_ar_cmd": 69,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "اوامر الحظر$",
@@ -3160,9 +3682,9 @@
           ]
         },
         {
-          "pattern": "اوامر التثبيت$",
+          "pattern": "اوامر تثبيت الرسائل$",
           "command": [
-            "اوامر التثبيت ",
+            "اوامر تثبيت الرسائل",
             "extra"
           ]
         },
@@ -3249,6 +3771,384 @@
             "اوامر التحميل",
             "extra"
           ]
+        },
+        {
+          "pattern": "اوامر الترجمة$",
+          "command": [
+            "اوامر الترجمة",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اوامر النطق$",
+          "command": [
+            "اوامر النطق",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اوامر القفل$",
+          "command": [
+            "اوامر القفل",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اوامر الفتح$",
+          "command": [
+            "اوامر الفتح",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اوامر المنع$",
+          "command": [
+            "اوامر المنع",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "تسلية 1$",
+          "command": [
+            "تسلية 1",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "تسلية 2$",
+          "command": [
+            "تسلية 2",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "تسلية 3$",
+          "command": [
+            "تسلية 3",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "تسلية 4$",
+          "command": [
+            "تسلية 4",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "تسلية 5$",
+          "command": [
+            "تسلية 5",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "تسلية 6$",
+          "command": [
+            "تسلية 6",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "تسلية 7$",
+          "command": [
+            "تسلية 7",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "تسلية 8$",
+          "command": [
+            "تسلية 8",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اوامر الملصقات$",
+          "command": [
+            "اوامر الملصقات",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اوامر التكرار$",
+          "command": [
+            "اوامر التكرار",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اوامر السبام$",
+          "command": [
+            "اوامر السبام",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اوامر التنظيف$",
+          "command": [
+            "اوامر التنظيف",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اوامر المسح$",
+          "command": [
+            "اوامر المسح",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اوامر الوقت والتاريخ$",
+          "command": [
+            "اوامر الوقت والتاريخ",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اوامر كورونا$",
+          "command": [
+            "اوامر كورونا",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اوامر الصلاة$",
+          "command": [
+            "اوامر الصلاة",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اوامر مساعدة$",
+          "command": [
+            "اوامر مساعدة",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "فارغ $",
+          "command": [
+            "فارغ ",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اوامر الروابط$",
+          "command": [
+            "اوامر الروابط",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اوامر التحذيرات$",
+          "command": [
+            "اوامر التحذيرات",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اوامر اللستة$",
+          "command": [
+            "اوامر اللستة",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اوامر الملكية$",
+          "command": [
+            "اوامر الملكية",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اوامر السليب$",
+          "command": [
+            "اوامر السليب",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اوامر الاسم$",
+          "command": [
+            "اوامر الاسم",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اوامر البايو$",
+          "command": [
+            "اوامر البايو",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اوامر الكروب الوقتي$",
+          "command": [
+            "اوامر الكروب الوقتي",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اوامر التشغيل$",
+          "command": [
+            "اوامر التشغيل",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اوامر الاطفاء$",
+          "command": [
+            "اوامر الاطفاء",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اوامر الكشف$",
+          "command": [
+            "اوامر الكشف",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اوامر كوكل$",
+          "command": [
+            "اوامر كوكل",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اوامر الاذاعه$",
+          "command": [
+            "اوامر الاذاعه",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "امر الصورة الذاتية$",
+          "command": [
+            " امر الصورة الذاتية",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اوامر التسلية$",
+          "command": [
+            "اوامر التسلية",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اوامر التحشيش$",
+          "command": [
+            "اوامر التحشيش",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اوامر التحويل$",
+          "command": [
+            "اوامر التحويل",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اوامر الجهات$",
+          "command": [
+            "اوامر الجهات",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اوامر الحساب$",
+          "command": [
+            "اوامر الحساب",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اوامر الترفيه$",
+          "command": [
+            "اوامر الترفيه",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "بصمات ميمز$",
+          "command": [
+            "بصمات ميمز",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "بصمات ميمز2$",
+          "command": [
+            "بصمات ميمز2",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "بصمات ميمز3$",
+          "command": [
+            "بصمات ميمز3",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "بصمات ميمز4$",
+          "command": [
+            "بصمات ميمز4",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "بصمات ميمز5$",
+          "command": [
+            "بصمات ميمز5",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اوامر الفارات",
+          "command": [
+            "اوامر الفارات",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اوامر الوهمي",
+          "command": [
+            "اوامر الوهمي",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "بصمات انمي$",
+          "command": [
+            "بصمات انمي",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اوامر التجميع$",
+          "command": [
+            "اوامر التجميع",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اوامر التخصيص$",
+          "command": [
+            "اوامر التخصيص",
+            "extra"
+          ]
+        },
+        {
+          "pattern": "اوامر وعد$",
+          "command": [
+            "اوامر وعد",
+            "extra"
+          ]
         }
       ],
       "error_type": null,
@@ -3266,6 +4166,7 @@
       "handlers_ar_cmd": 1,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "(ت(ل)?ك(راف)?) ?(m|t|ميديا|نص)(?:\\s|$)([\\s\\S]*)",
@@ -3290,6 +4191,7 @@
       "handlers_ar_cmd": 1,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "تنصيب$",
@@ -3314,6 +4216,7 @@
       "handlers_ar_cmd": 2,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "تهكير$",
@@ -3345,9 +4248,10 @@
       "handlers_ar_cmd": 1,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
-          "pattern": "تك",
+          "pattern": "تك(?:\\s+|$)([\\s\\S]*)",
           "command": null
         }
       ],
@@ -3366,6 +4270,20 @@
       "handlers_ar_cmd": 0,
       "handlers_bot_cmd": 0,
       "handlers_on": 4,
+      "on_patterns": [
+        {
+          "pattern": "(جلب الصورة|جلب الصوره|ذاتيه|ذاتية)$",
+          "command": null
+        },
+        {
+          "pattern": "(الذاتية تشغيل|ذاتية تشغيل)",
+          "command": null
+        },
+        {
+          "pattern": "(الذاتية تعطيل|ذاتية تعطيل)",
+          "command": null
+        }
+      ],
       "patterns": [],
       "error_type": null,
       "error": null,
@@ -3382,6 +4300,7 @@
       "handlers_ar_cmd": 1,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "مؤقت (\\d*) ([\\s\\S]*)",
@@ -3406,6 +4325,7 @@
       "handlers_ar_cmd": 2,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "رسالة(?:\\s|$)([\\s\\S]*)",
@@ -3434,6 +4354,7 @@
       "handlers_ar_cmd": 11,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "زغرفة1(?:\\s|$)([\\s\\S]*)",
@@ -3528,6 +4449,7 @@
       "handlers_ar_cmd": 1,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "سرعة النت(?:\\s|$)([\\s\\S]*)",
@@ -3552,6 +4474,7 @@
       "handlers_ar_cmd": 3,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "جد بكج (.*)",
@@ -3561,9 +4484,9 @@
           ]
         },
         {
-          "pattern": "تنصيب$",
+          "pattern": "تنصيب بلجن$",
           "command": [
-            "تنصيب",
+            "تنصيب بلجن",
             "tools"
           ]
         },
@@ -3590,6 +4513,7 @@
       "handlers_ar_cmd": 1,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "صور(?: |$)(\\d*)? ?([\\s\\S]*)",
@@ -3614,6 +4538,7 @@
       "handlers_ar_cmd": 2,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": null,
@@ -3642,6 +4567,7 @@
       "handlers_ar_cmd": 1,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "الطقس(?:\\s|$)([\\s\\S]*)",
@@ -3666,6 +4592,7 @@
       "handlers_ar_cmd": 1,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "كورونا(?:\\s|$)([\\s\\S]*)",
@@ -3690,6 +4617,7 @@
       "handlers_ar_cmd": 1,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "فحص(?:\\s|$)([\\s\\S]*)",
@@ -3711,6 +4639,7 @@
       "handlers_ar_cmd": 2,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "فلم",
@@ -3736,6 +4665,7 @@
       "handlers_ar_cmd": 5,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "كشف(?:\\s|$)([\\s\\S]*)",
@@ -3788,6 +4718,7 @@
       "handlers_ar_cmd": 3,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "كوكل بحث ([\\s\\S]*)",
@@ -3826,6 +4757,7 @@
       "handlers_ar_cmd": 1,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "لستة(?: |$)(.*)",
@@ -3850,6 +4782,7 @@
       "handlers_ar_cmd": 9,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "س1$",
@@ -3930,6 +4863,7 @@
       "handlers_ar_cmd": 7,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "ك1$",
@@ -3996,6 +4930,16 @@
       "handlers_ar_cmd": 2,
       "handlers_bot_cmd": 0,
       "handlers_on": 2,
+      "on_patterns": [
+        {
+          "pattern": "قائمه (جميع القنوات|القنوات المشرف عليها|قنواتي)",
+          "command": null
+        },
+        {
+          "pattern": "قائمه (جميع المجموعات|مجموعات اديرها|كروباتي)$",
+          "command": null
+        }
+      ],
       "patterns": [
         {
           "pattern": "معلوماتي$",
@@ -4027,6 +4971,7 @@
       "handlers_ar_cmd": 4,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "المشرفين(?: |$)(.*)",
@@ -4072,6 +5017,7 @@
       "handlers_ar_cmd": 2,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "تخزين الكروب(?:\\s|$)([\\s\\S]*)",
@@ -4103,6 +5049,7 @@
       "handlers_ar_cmd": 5,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "المكاتب",
@@ -4149,6 +5096,7 @@
       "handlers_ar_cmd": 0,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [],
       "error_type": null,
       "error": null,
@@ -4165,6 +5113,7 @@
       "handlers_ar_cmd": 1,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "ملكية (.*)",
@@ -4189,6 +5138,7 @@
       "handlers_ar_cmd": 4,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "منشن(?:\\s|$)([\\s\\S]*)",
@@ -4222,6 +5172,56 @@
       "handlers_ar_cmd": 3,
       "handlers_bot_cmd": 0,
       "handlers_on": 14,
+      "on_patterns": [
+        {
+          "pattern": "صلاه(?: |$)(.*)",
+          "command": null
+        },
+        {
+          "pattern": "دعوه للمكالمه(?: |$)(.*)",
+          "command": null
+        },
+        {
+          "pattern": "بدء مكالمه(?: |$)(.*)",
+          "command": null
+        },
+        {
+          "pattern": "بلي$",
+          "command": null
+        },
+        {
+          "pattern": "اذكار$",
+          "command": null
+        },
+        {
+          "pattern": "كت$",
+          "command": null
+        },
+        {
+          "pattern": "خيروك$",
+          "command": null
+        },
+        {
+          "pattern": "اذكار عشر$",
+          "command": null
+        },
+        {
+          "pattern": "شنو رأيك بهذا$",
+          "command": null
+        },
+        {
+          "pattern": "بوسة$",
+          "command": null
+        },
+        {
+          "pattern": "فك الحظر$",
+          "command": null
+        },
+        {
+          "pattern": "(تاريخه|تاريخة)$",
+          "command": null
+        }
+      ],
       "patterns": [
         {
           "pattern": "توليد(.*)",
@@ -4251,6 +5251,7 @@
       "handlers_ar_cmd": 9,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "^\\:/$",
@@ -4330,7 +5331,325 @@
       "exec_ok": true,
       "handlers_ar_cmd": 2,
       "handlers_bot_cmd": 0,
-      "handlers_on": 84,
+      "handlers_on": 80,
+      "on_patterns": [
+        {
+          "pattern": "حالتي ?(.*)",
+          "command": null
+        },
+        {
+          "pattern": "الاغنية ?(.*)",
+          "command": null
+        },
+        {
+          "pattern": "ايميل وهمي(?: |$)(.*)",
+          "command": null
+        },
+        {
+          "pattern": "غنيلي$",
+          "command": null
+        },
+        {
+          "pattern": "شعر$",
+          "command": null
+        },
+        {
+          "pattern": "قران$",
+          "command": null
+        },
+        {
+          "pattern": "ثيم$",
+          "command": null
+        },
+        {
+          "pattern": "لاتغلط$",
+          "command": null
+        },
+        {
+          "pattern": "بجيت$",
+          "command": null
+        },
+        {
+          "pattern": "نشاقة$",
+          "command": null
+        },
+        {
+          "pattern": "احب الله$",
+          "command": null
+        },
+        {
+          "pattern": "روح$",
+          "command": null
+        },
+        {
+          "pattern": "انمي1$",
+          "command": null
+        },
+        {
+          "pattern": "انمي2$",
+          "command": null
+        },
+        {
+          "pattern": "انمي3$",
+          "command": null
+        },
+        {
+          "pattern": "انمي4$",
+          "command": null
+        },
+        {
+          "pattern": "انمي5$",
+          "command": null
+        },
+        {
+          "pattern": "انمي6$",
+          "command": null
+        },
+        {
+          "pattern": "انمي7$",
+          "command": null
+        },
+        {
+          "pattern": "انمي8$",
+          "command": null
+        },
+        {
+          "pattern": "انمي9$",
+          "command": null
+        },
+        {
+          "pattern": "انمي10$",
+          "command": null
+        },
+        {
+          "pattern": "زيج2$",
+          "command": null
+        },
+        {
+          "pattern": "زيج$",
+          "command": null
+        },
+        {
+          "pattern": "(شيله عبود|شيلة عبود)",
+          "command": null
+        },
+        {
+          "pattern": "تخوني$",
+          "command": null
+        },
+        {
+          "pattern": "(?:احب )?العراق$",
+          "command": null
+        },
+        {
+          "pattern": "مستمرة الكلاوات$",
+          "command": null
+        },
+        {
+          "pattern": "اخت التنيج$",
+          "command": null
+        },
+        {
+          "pattern": "اذا اكمشك$",
+          "command": null
+        },
+        {
+          "pattern": "اسكت$",
+          "command": null
+        },
+        {
+          "pattern": "افتهمنا$",
+          "command": null
+        },
+        {
+          "pattern": "اكل خرا$",
+          "command": null
+        },
+        {
+          "pattern": "الكعده وياكم",
+          "command": null
+        },
+        {
+          "pattern": "الكمر اني$",
+          "command": null
+        },
+        {
+          "pattern": "اللهم لا شماته$",
+          "command": null
+        },
+        {
+          "pattern": "اني مااكدر$",
+          "command": null
+        },
+        {
+          "pattern": "بقولك ايه$",
+          "command": null
+        },
+        {
+          "pattern": "تف على شرفك$",
+          "command": null
+        },
+        {
+          "pattern": "شجلبت$",
+          "command": null
+        },
+        {
+          "pattern": "شكد شفت ناس$",
+          "command": null
+        },
+        {
+          "pattern": "صباح القنادر$",
+          "command": null
+        },
+        {
+          "pattern": "ضحكة فيطية$",
+          "command": null
+        },
+        {
+          "pattern": "طاهر القلب",
+          "command": null
+        },
+        {
+          "pattern": "غطيلي$",
+          "command": null
+        },
+        {
+          "pattern": "في منتصف الجبهة$",
+          "command": null
+        },
+        {
+          "pattern": "لاتقتل المتعه$",
+          "command": null
+        },
+        {
+          "pattern": "لا لتغلط$",
+          "command": null
+        },
+        {
+          "pattern": "لا يمه لا$",
+          "command": null
+        },
+        {
+          "pattern": "لحد يحجي وياي$",
+          "command": null
+        },
+        {
+          "pattern": "ماادري يعني$",
+          "command": null
+        },
+        {
+          "pattern": "منو انت$",
+          "command": null
+        },
+        {
+          "pattern": "مو صوجكم$",
+          "command": null
+        },
+        {
+          "pattern": "خوش تسولف",
+          "command": null
+        },
+        {
+          "pattern": "يع$",
+          "command": null
+        },
+        {
+          "pattern": "يعني مااعرف$",
+          "command": null
+        },
+        {
+          "pattern": "يامرحبا$",
+          "command": null
+        },
+        {
+          "pattern": "منو انتة$",
+          "command": null
+        },
+        {
+          "pattern": "ماتستحي$",
+          "command": null
+        },
+        {
+          "pattern": "عيب$",
+          "command": null
+        },
+        {
+          "pattern": "عنعانم$",
+          "command": null
+        },
+        {
+          "pattern": "طبك مرض$",
+          "command": null
+        },
+        {
+          "pattern": "سييي$",
+          "command": null
+        },
+        {
+          "pattern": "سبيدر مان",
+          "command": null
+        },
+        {
+          "pattern": "خاف حرام$",
+          "command": null
+        },
+        {
+          "pattern": "تحيه لاختك$",
+          "command": null
+        },
+        {
+          "pattern": "امشي كحبة$",
+          "command": null
+        },
+        {
+          "pattern": "امداك$",
+          "command": null
+        },
+        {
+          "pattern": "الحس$",
+          "command": null
+        },
+        {
+          "pattern": "اطلع برا$",
+          "command": null
+        },
+        {
+          "pattern": "اوني تشان$",
+          "command": null
+        },
+        {
+          "pattern": "اوني تشان2$",
+          "command": null
+        },
+        {
+          "pattern": "كعدت الديوث$",
+          "command": null
+        },
+        {
+          "pattern": "خبز يابس$",
+          "command": null
+        },
+        {
+          "pattern": "خيار بصل$",
+          "command": null
+        },
+        {
+          "pattern": "ماي ارو$",
+          "command": null
+        },
+        {
+          "pattern": "ميمز (\\S+) (.+)",
+          "command": null
+        },
+        {
+          "pattern": "قائمة الميمز",
+          "command": null
+        },
+        {
+          "pattern": "ازالة_البصمات",
+          "command": null
+        }
+      ],
       "patterns": [
         {
           "pattern": "ازالة(?:\\s|$)([\\s\\S]*)",
@@ -4356,6 +5675,16 @@
       "handlers_ar_cmd": 1,
       "handlers_bot_cmd": 0,
       "handlers_on": 2,
+      "on_patterns": [
+        {
+          "pattern": "(نشر_تلقائي|النشر_التلقائي)",
+          "command": null
+        },
+        {
+          "pattern": "(ايقاف_نشر|ايقاف_النشر)",
+          "command": null
+        }
+      ],
       "patterns": [
         {
           "pattern": null,
@@ -4377,6 +5706,12 @@
       "handlers_ar_cmd": 0,
       "handlers_bot_cmd": 0,
       "handlers_on": 1,
+      "on_patterns": [
+        {
+          "pattern": "تحويل نص ?(.*)",
+          "command": null
+        }
+      ],
       "patterns": [],
       "error_type": null,
       "error": null,
@@ -4393,6 +5728,7 @@
       "handlers_ar_cmd": 3,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": null,
@@ -4425,6 +5761,24 @@
       "handlers_ar_cmd": 0,
       "handlers_bot_cmd": 0,
       "handlers_on": 4,
+      "on_patterns": [
+        {
+          "pattern": "همسة ?(.*)",
+          "command": null
+        },
+        {
+          "pattern": "م27",
+          "command": null
+        },
+        {
+          "pattern": "الهمسة",
+          "command": null
+        },
+        {
+          "pattern": "اكس او$",
+          "command": null
+        }
+      ],
       "patterns": [],
       "error_type": null,
       "error": null,
@@ -4441,13 +5795,19 @@
       "handlers_ar_cmd": 3,
       "handlers_bot_cmd": 0,
       "handlers_on": 1,
+      "on_patterns": [
+        {
+          "pattern": "هاك",
+          "command": null
+        }
+      ],
       "patterns": [
         {
-          "pattern": "اشتراك",
+          "pattern": "اشتراك (كروب|خاص)$",
           "command": null
         },
         {
-          "pattern": "تعطيل",
+          "pattern": "تعطيل (كروب|خاص)$",
           "command": null
         },
         {
@@ -4470,6 +5830,12 @@
       "handlers_ar_cmd": 4,
       "handlers_bot_cmd": 0,
       "handlers_on": 1,
+      "on_patterns": [
+        {
+          "pattern": "تيك توك(?: |$)(.*)",
+          "command": null
+        }
+      ],
       "patterns": [
         {
           "pattern": "تحميل ص(?: |$)(.*)",
@@ -4515,6 +5881,7 @@
       "handlers_ar_cmd": 1,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
+      "on_patterns": [],
       "patterns": [
         {
           "pattern": "بنك(?:\\s|$)([\\s\\S]*)",

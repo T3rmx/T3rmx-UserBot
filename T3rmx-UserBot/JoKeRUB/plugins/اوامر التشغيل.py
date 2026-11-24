@@ -22,11 +22,11 @@ LOGS = logging.getLogger(__name__)
 plugin_category = "tools"
 
 @l313l.ar_cmd(
-    pattern="اعادة تشغيل$",
-    command=("اعادة تشغيل", plugin_category),
+    pattern="اعادة تشغيل كاملة$",
+    command=("اعادة تشغيل كاملة", plugin_category),
     info={
-        "header": "Restarts the bot (owner only).",
-        "usage": "{tr}اعادة تشغيل",
+        "header": "Restarts the bot with progress animation (owner only).",
+        "usage": "{tr}اعادة تشغيل كاملة",
     },
     disable_errors=True,
 )

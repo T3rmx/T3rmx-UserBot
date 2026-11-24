@@ -84,7 +84,7 @@ def _safe_calc_eval(expr: str):
     return _eval(tree)
 
 
-@l313l.on(admin_cmd(pattern="حاسبة(?:\s|$)([\s\S]*)"))
+@l313l.on(admin_cmd(pattern=r"(?:حاسبة|حساب)(?:\s|$)([\s\S]*)"))
 async def icalc(e):
     if getattr(e.client, "_bot", False):
         return await e.reply(
@@ -206,5 +206,5 @@ async def _(e):
     await e.edit("**الحاسبة العلمية لـ T3rmx UserBot\n@t3rmx_official**", buttons=lst)
 
 CMD_HELP.update(
-    {"الحسابة": ".حاسبة" "\n فقط اكتب الامر لعرض حاسبة علميه تحتاج الى تفعيل وضع الانلاين اولا\n\n"}
+    {"الحسابة": ".حاسبة / .حساب" "\n فقط اكتب الامر لعرض حاسبة علميه تحتاج الى تفعيل وضع الانلاين اولا\n\n"}
 )

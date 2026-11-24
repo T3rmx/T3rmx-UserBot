@@ -42,6 +42,28 @@ purgetype = {
 
 
 @l313l.ar_cmd(
+    pattern=r"حذف رسائلي$",
+    command=("حذف رسائلي", plugin_category),
+    info={
+        "header": "حذف جميع رسائل الحساب في المحادثة الحالية.",
+        "usage": "{tr}حذف رسائلي",
+    },
+)
+async def delete_my_messages(event):
+    status = await edit_or_reply(event, "**جاري حذف رسائلي في هذه المحادثة...**")
+    ids = [
+        message.id
+        async for message in event.client.iter_messages(event.chat_id, from_user="me")
+        if message.id != status.id
+    ]
+    for index in range(0, len(ids), 100):
+        await event.client.delete_messages(event.chat_id, ids[index : index + 100])
+    await status.edit(f"**تم حذف {len(ids)} رسالة من رسائلي في هذه المحادثة.**")
+    await sleep(4)
+    await status.delete()
+
+
+@l313l.ar_cmd(
     pattern="مسح(\s*| \d+)$",
     command=("مسح", plugin_category),
     info={

@@ -56,18 +56,14 @@ async def repo(event):
     await response[0].click(event.chat_id)
     await event.delete()
 
-@l313l.ar_cmd(pattern="اشتراك")
+@l313l.ar_cmd(pattern="اشتراك (كروب|خاص)$")
 async def t3rmx(event):
-    ty = event.text
-    ty = ty.replace(".اشتراك", "")
-    ty = ty.replace(" ", "")
-    if len (ty) < 2:
-        return await edit_delete(event, "**᯽︙ قم بكتابة نوع الاشتراك الاجباري كروب او خاص 🤔**")
+    ty = (event.pattern_match.group(1) or "").strip()
     if ty == "كروب":
         if not event.is_group:
-            return await edit_delete("**᯽︙ استعمل الأمر في الجروب المراد تفعيل الاشتراك الاجباري به**")
+            return await edit_delete(event, "**᯽︙ استعمل الأمر في الجروب المراد تفعيل الاشتراك الاجباري به**")
         if event.is_group:
-            if gvarstatus ("subgroup") == event.chat_id:
+            if str(gvarstatus("subgroup")) == str(event.chat_id):
                 return await edit_delete(event, "**᯽︙ الاشتراك الاجباري مفعل لهذا الكروب**")
             if gvarstatus("subgroup"):
                 return await edit_or_reply(event, "**᯽︙ الاشتراك الاجباري مفعل لكروب اخر قم بالغائه لتفعيله في كروب اخر**")
@@ -79,14 +75,9 @@ async def t3rmx(event):
         if not gvarstatus ("subprivate"):
             addgvar ("subprivate", True)
             await edit_or_reply(event, "**᯽︙ تم تفعيل الاشتراك الاجباري للخاص ✓**")
-    if ty not in ["خاص", "كروب"]:
-        return await edit_delete(event, "**᯽︙ قم بكتابة نوع الاشتراك الاجباري خاص او كروب 🤔**")
-@l313l.ar_cmd(pattern="تعطيل")
+@l313l.ar_cmd(pattern="تعطيل (كروب|خاص)$")
 async def t3rmx (event):
-    cc = event.text.replace(".تعطيل", "")
-    cc = cc.replace(" ", "")
-    if len (cc) < 2:
-        return await edit_delete(event, "**᯽︙ قم بكتابة نوع الاشتراك الاجباري لإلغائه**")
+    cc = (event.pattern_match.group(1) or "").strip()
     if cc == "كروب":
         if not gvarstatus ("subgroup"):
             return await edit_delete(event, "**᯽︙ لم تفعل الاشتراك الاجباري للكروب لإلغائه**")
@@ -99,8 +90,6 @@ async def t3rmx (event):
         if gvarstatus ("subprivate"):
             delgvar ("subprivate")
             return await edit_delete(event, "**᯽︙ تم إلغاء الاشتراك الاجباري للخاص ✓**")
-    if cc not in ["خاص", "كروب"]:
-        return await edit_delete(event, "**᯽︙ قم بكتابة نوع الاشتراك الاجباري لإلغائه ✓**")
 
 @l313l.ar_cmd(incoming=True)
 async def t3rmx(event):

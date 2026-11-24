@@ -92,12 +92,12 @@ async def _(event):
 # urltools for l313l
   
 @l313l.ar_cmd(
-    pattern="اخفاء(?:\s|$)([\s\S]*)",
-    command=("اخفاء", plugin_category),
+    pattern=r"(?:اخفاء|رابط_مخفي)(?:\s|$)([\s\S]*)",
+    command=("اخفاء / رابط_مخفي", plugin_category),
     info={
         "header": "To hide the url with white spaces using hyperlink.",
-        "usage": "{tr}hl <url/reply to url>",
-        "examples": "{tr}hl https://da.gd/rm6qri",
+        "usage": "{tr}اخفاء <url|بالرد> أو {tr}رابط_مخفي <url|بالرد>",
+        "examples": "{tr}اخفاء https://da.gd/rm6qri",
     },
 )
 async def _(event):

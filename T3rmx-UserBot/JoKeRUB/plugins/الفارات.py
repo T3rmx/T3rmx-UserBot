@@ -28,7 +28,17 @@ HEROKU_APP_NAME = getattr(Config, "HEROKU_APP_NAME", None)
 HEROKU_API_KEY = getattr(Config, "HEROKU_API_KEY", None)
 
 
-@l313l.ar_cmd(pattern="وضع (.*)")
+# Only the variables this plugin actually owns. Keeping the list explicit stops
+# `.وضع اسم` from stealing the profile-name command in البروفايل.py.
+_VAR_NAMES = (
+    "توقيت|لون وقتي|اللون الوقتي|رمز الاسم|تحكم|التحكم|البايو|النبذة|بايو|"
+    "امر نشر|امر النشر|مكرر|القروب|الكروب|كروب|صورة القروب|صورة الكروب|"
+    "الصورة|الصوره|صورة|اللون|لون|زخرفة الارقام|زخرفه الارقام|"
+    "زخرفة الصورة|اسم البوت|كروب التخزين|كروب الحفظ"
+)
+
+
+@l313l.ar_cmd(pattern=rf"وضع ({_VAR_NAMES})$")
 async def variable(var):
     if Config.HEROKU_API_KEY is None:
         return await edit_delete(
@@ -207,7 +217,7 @@ async def variable(var):
                 "**⌔∮ تم بنجاح تغيير فار زخرفه الارقام\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**",
             )
         heroku_var[variable] = vra
-    if exe == "اسم" or exe == "الاسم":
+    if exe == "اسم البوت":
         variable = "ALIVE_NAME"
         await asyncio.sleep(1)
         if variable in heroku_var:
@@ -330,7 +340,7 @@ async def variable(event):
             "**⌔∮ تم بنجاح حذف فار الصورة\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**",
         )
         del heroku_var[variable]
-    if exe == "الاسم" or exe == "اسم":
+    if exe == "اسم البوت" or exe == "الاسم" or exe == "اسم":
         variable = "ALIVE_NAME"
         await asyncio.sleep(1)
         if variable not in heroku_var:

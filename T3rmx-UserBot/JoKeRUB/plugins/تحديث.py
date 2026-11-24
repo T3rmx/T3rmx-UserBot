@@ -1,5 +1,6 @@
 
 import asyncio
+import hashlib
 import io
 import json
 import os
@@ -9,6 +10,7 @@ import subprocess
 import sys
 import tempfile
 import urllib.error
+import urllib.parse
 import urllib.request
 import zipfile
 from pathlib import Path
@@ -28,6 +30,7 @@ _PROTECTED_NAMES = {
     "session.txt",
     "aljoker_links.json",
     "t3rmx_commit_id.txt",
+    "t3rmx_commit_id.txt.bak",
 }
 _PROTECTED_SUFFIXES = (
     ".session",
@@ -104,7 +107,7 @@ def _save_commit(sha: str) -> None:
         pass
 
 
-def _local_commit() -> str:
+def _local_commit(tree=None, remote_sha: str = "") -> str:
     saved = _saved_commit()
     if saved:
         return saved
@@ -130,6 +133,9 @@ def _local_commit() -> str:
             return out[:12]
     except Exception:
         pass
+    inferred = _commit_from_tree(tree, remote_sha, _repo_root())
+    if inferred:
+        return inferred
     return "غير معروف"
 
 
@@ -159,6 +165,73 @@ def _github_json(url: str, timeout: int = 12):
         return None, str(e)
 
 
+def _fetch_tree(repo: str, sha: str):
+    if not sha:
+        return [], "لا يوجد كوميت للمقارنة"
+    data, err = _github_json(
+        f"https://api.github.com/repos/{repo}/git/trees/{sha}?recursive=1"
+    )
+    if isinstance(data, dict) and isinstance(data.get("tree"), list):
+        if data.get("truncated"):
+            return [], "قائمة الملفات في الكوميت غير كاملة"
+        return data["tree"], None
+    return [], err or "تعذر جلب قائمة ملفات الكوميت"
+
+
+def _git_blob_sha(payload: bytes) -> str:
+    return hashlib.sha1(
+        b"blob " + str(len(payload)).encode("ascii") + b"\x00" + payload
+    ).hexdigest()
+
+
+def _local_blob_hashes(tree, root: str):
+    hashes = {}
+    for entry in tree or []:
+        if not isinstance(entry, dict) or entry.get("type") != "blob":
+            continue
+        path = str(entry.get("path") or "")
+        if not path or _is_protected(path) or path.startswith("docs/reports/"):
+            continue
+        local_path = os.path.join(root, *path.split("/"))
+        if not os.path.isfile(local_path):
+            continue
+        try:
+            payload = Path(local_path).read_bytes()
+        except Exception:
+            continue
+        hashes[path] = _git_blob_sha(payload)
+    return hashes
+
+
+def _commit_from_tree(tree, remote_sha: str, root: str) -> str:
+    """Infer the deployed commit from byte-for-byte source matches.
+
+    Fresh Railway deployments have no git metadata and no saved commit file.
+    Matching local source blobs against the GitHub tree gives a reliable answer
+    without trusting any environment variable value.
+    """
+    if not tree or not remote_sha:
+        return ""
+    hashes = _local_blob_hashes(tree, root)
+    if len(hashes) < 3:
+        return ""
+    matched = 0
+    mismatched = 0
+    for entry in tree:
+        if not isinstance(entry, dict) or entry.get("type") != "blob":
+            continue
+        path = str(entry.get("path") or "")
+        if path not in hashes:
+            continue
+        if str(entry.get("sha") or "").lower() == hashes[path].lower():
+            matched += 1
+        else:
+            mismatched += 1
+    if mismatched or matched < 3:
+        return ""
+    return str(remote_sha)[:12]
+
+
 def _fetch_latest_code(repo: str, branch: str):
     commit, err = _github_json(
         f"https://api.github.com/repos/{repo}/commits/{branch}"
@@ -166,8 +239,10 @@ def _fetch_latest_code(repo: str, branch: str):
     if commit is None:
         return {"__error__": err or "تعذر جلب آخر تحديث"}
 
+    full_sha = str(commit.get("sha") or "")
     info = {
-        "sha": (commit.get("sha") or "")[:12],
+        "sha": full_sha[:12],
+        "full_sha": full_sha,
         "message": ((commit.get("commit") or {}).get("message") or "").split("\n", 1)[0],
         "date": ((commit.get("commit") or {}).get("author") or {}).get("date")
         or ((commit.get("commit") or {}).get("committer") or {}).get("date")
@@ -175,6 +250,10 @@ def _fetch_latest_code(repo: str, branch: str):
         "url": commit.get("html_url") or f"https://github.com/{repo}/commits/{branch}",
         "branch": branch,
     }
+
+    tree, _tree_err = _fetch_tree(repo, full_sha)
+    if tree:
+        info["tree"] = tree
 
     raw_url = f"https://raw.githubusercontent.com/{repo}/{branch}/T3rmx-UserBot/JoKeRUB/t3rmx_config.py"
     req = urllib.request.Request(raw_url, headers={"User-Agent": "T3rmx-UserBot-Updater"})
@@ -240,7 +319,12 @@ def _download_source(repo: str, branch: str):
 def _is_protected(relative_path: str) -> bool:
     parts = Path(relative_path).parts
     for part in parts:
-        if part in _PROTECTED_NAMES or part.startswith(".git"):
+        lowered = part.lower()
+        if lowered in _PROTECTED_NAMES or lowered.startswith(".git"):
+            return True
+        # `.env`, `.env.local`, `.env.production` and friends are deployment
+        # secrets; Config.py is the live case-sensitive config file.
+        if lowered.startswith(".env"):
             return True
     return relative_path.lower().endswith(_PROTECTED_SUFFIXES)
 
@@ -295,7 +379,10 @@ def _install_requirements(root: str):
     requirements = _find_requirements(root)
     if not requirements:
         return False, "لم يتم العثور على requirements.txt في أحدث كود"
+    return _install_requirements_file(requirements)
 
+
+def _install_requirements_file(requirements: str):
     command = [
         sys.executable,
         "-m",
@@ -344,6 +431,195 @@ def _verify_dependencies():
     return True, ""
 
 
+def _clean_relative_path(value: str):
+    value = str(value or "").strip().strip("`").replace("\\", "/")
+    while value.startswith("./"):
+        value = value[2:]
+    if not value or value.startswith("/") or "\x00" in value:
+        return None
+    parts = value.split("/")
+    if any(part in ("", ".", "..") for part in parts):
+        return None
+    return "/".join(parts)
+
+
+def _resolve_selective_target(kind: str, value: str, tree):
+    """Resolve `.تحديث ملف/بلجن` to exactly one repository blob path."""
+    paths = {
+        str(entry.get("path") or "")
+        for entry in (tree or [])
+        if isinstance(entry, dict) and entry.get("type") == "blob"
+    }
+    value = str(value or "").strip().strip("`")
+    candidates = []
+
+    if kind == "بلجن":
+        name = value[:-3] if value.lower().endswith(".py") else value
+        if not name or not re.fullmatch(r"[\w\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\- ]+", name, re.UNICODE):
+            return None, "اسم البلجن غير صالح."
+        candidates = [
+            f"T3rmx-UserBot/JoKeRUB/plugins/{name}.py",
+            f"JoKeRUB/plugins/{name}.py",
+        ]
+    elif kind == "ملف":
+        cleaned = _clean_relative_path(value)
+        if not cleaned:
+            return None, "المسار غير صالح. استخدم مساراً نسبياً داخل المستودع."
+        candidates = [cleaned]
+        if cleaned == "requirements.txt":
+            candidates.append("T3rmx-UserBot/requirements.txt")
+        elif cleaned.startswith("JoKeRUB/"):
+            candidates.append("T3rmx-UserBot/" + cleaned)
+        elif cleaned.endswith(".py") and "/" not in cleaned:
+            candidates.append("T3rmx-UserBot/JoKeRUB/plugins/" + cleaned)
+    else:
+        return None, "نوع التحديث غير معروف."
+
+    matches = []
+    seen = set()
+    for candidate in candidates:
+        candidate = _clean_relative_path(candidate)
+        if not candidate or candidate in seen:
+            continue
+        seen.add(candidate)
+        if candidate in paths:
+            matches.append(candidate)
+    if not matches:
+        return None, f"الملف المطلوب غير موجود في أحدث كوميت: `{value}`"
+    if len(matches) > 1:
+        return None, "المسار متعدد المعاني، اكتب المسار الكامل من جذر المستودع."
+    target = matches[0]
+    if _is_protected(target):
+        return None, f"الملف `{target}` محمي ولا يمكن تحديثه جزئياً."
+    return target, None
+
+
+def _local_path_for_blob(relative_path: str, root: str):
+    root_real = os.path.realpath(root)
+    candidate = os.path.realpath(os.path.join(root_real, *relative_path.split("/")))
+    if candidate != root_real and not candidate.startswith(root_real + os.sep):
+        raise RuntimeError("تم رفض مسار خارج المستودع")
+    return candidate
+
+
+def _fetch_remote_file(repo: str, sha: str, path: str):
+    quoted = urllib.parse.quote(path, safe="/")
+    url = f"https://raw.githubusercontent.com/{repo}/{sha}/{quoted}"
+    req = urllib.request.Request(url, headers={"User-Agent": "T3rmx-UserBot-Updater"})
+    try:
+        with urllib.request.urlopen(req, timeout=60) as resp:
+            return resp.read(), None
+    except urllib.error.HTTPError as e:
+        return None, f"HTTP {getattr(e, 'code', 'خطأ')}"
+    except Exception as e:
+        return None, str(e)
+
+
+def _syntax_error(relative_path: str, payload: bytes):
+    if not relative_path.lower().endswith(".py"):
+        return ""
+    try:
+        compile(payload.decode("utf-8"), relative_path, "exec")
+    except (UnicodeDecodeError, SyntaxError) as e:
+        return str(e)
+    return ""
+
+
+def _atomic_write(path: str, payload: bytes) -> None:
+    directory = os.path.dirname(path) or "."
+    os.makedirs(directory, exist_ok=True)
+    fd, tmp = tempfile.mkstemp(prefix=".t3rmx-update-", dir=directory)
+    try:
+        with os.fdopen(fd, "wb") as fh:
+            fh.write(payload)
+            fh.flush()
+            os.fsync(fh.fileno())
+        os.replace(tmp, path)
+    except Exception:
+        try:
+            os.unlink(tmp)
+        except Exception:
+            pass
+        raise
+
+
+def _is_requirements_path(relative_path: str) -> bool:
+    return os.path.basename(relative_path).lower() == "requirements.txt"
+
+
+async def _apply_selective(event, msg, kind: str, value: str, latest: dict, repo: str):
+    if not authorized_for_update(event.sender_id):
+        return await edit_delete(
+            msg, "**تم رفض الطلب:** التحديث الجزئي مخصص لمالك البوت فقط.", 20
+        )
+
+    tree = latest.get("tree") or []
+    if not tree:
+        return await edit_delete(msg, "**تعذر جلب قائمة ملفات الكوميت.**", 20)
+
+    target, error = _resolve_selective_target(kind, value, tree)
+    if error:
+        return await edit_delete(msg, f"**فشل التحديث الجزئي:** {error}", 25)
+
+    sha = latest.get("full_sha") or latest.get("sha") or ""
+    if not sha:
+        return await edit_delete(msg, "**تعذر تحديد كوميت المصدر.**", 20)
+
+    await msg.edit(f"**جاري جلب `{target}` من الكوميت `{sha[:12]}`...**", link_preview=False)
+    payload, error = await asyncio.to_thread(_fetch_remote_file, repo, sha, target)
+    if error:
+        return await edit_delete(msg, f"**فشل جلب الملف:** `{error}`", 25)
+
+    syntax_error = _syntax_error(target, payload)
+    if syntax_error:
+        return await edit_delete(
+            msg,
+            f"**لم يتم تعديل أي ملف:** الملف الذي وصل به خطأ صياغة:\n`{syntax_error[:500]}`",
+            30,
+        )
+
+    lines = [
+        f"**{getattr(Config, 'T3RMX_DISPLAY_NAME', 'T3rmx UserBot')} - تحديث جزئي**",
+        "",
+        f"• الملف: `{target}`",
+        f"• الكوميت: `{sha[:12]}`",
+    ]
+
+    if _is_requirements_path(target):
+        await msg.edit("**جاري تثبيت المتطلبات من الملف الجديد...**", link_preview=False)
+        tmp_path = None
+        try:
+            fd, tmp_path = tempfile.mkstemp(prefix="t3rmx-req-", suffix=".txt")
+            with os.fdopen(fd, "wb") as fh:
+                fh.write(payload)
+            ok, detail = await asyncio.to_thread(_install_requirements_file, tmp_path)
+            if not ok:
+                lines.append(
+                    f"• فشل تثبيت المتطلبات، لم يتم تغيير أي ملف:\n```\n{detail[:1200]}\n```"
+                )
+                return await msg.edit("\n".join(lines), link_preview=False)
+            ok, missing = await asyncio.to_thread(_verify_dependencies)
+            if not ok:
+                lines.append(
+                    f"• مكتبات مفقودة بعد التثبيت: `{missing}`. لم يتم تغيير أي ملف."
+                )
+                return await msg.edit("\n".join(lines), link_preview=False)
+        finally:
+            if tmp_path:
+                try:
+                    os.unlink(tmp_path)
+                except Exception:
+                    pass
+        lines.append("• تم تثبيت والتحقق من المتطلبات بنجاح.")
+
+    local_path = _local_path_for_blob(target, _repo_root())
+    await asyncio.to_thread(_atomic_write, local_path, payload)
+    lines.append("• تم استبدال الملف بنجاح.")
+    lines.append("• لم يتم حفظ كوميت عام لأن هذا تحديث جزئي.")
+    lines.append("• أعد تشغيل البوت لتفعيل التغيير: `.اعادة تشغيل كاملة`.")
+    return await msg.edit("\n".join(lines), link_preview=False)
+
+
 def _restart():
     os.execv(sys.executable, [sys.executable, "-m", "JoKeRUB"])
 
@@ -353,22 +629,47 @@ def _restart():
     command=("تحديث", plugin_category),
     info={
         "header": "فحص تحديثات السورس وتثبيت تحديث كامل من مستودع GitHub.",
-        "description": "يقارن الكوميت المحفوظ بالكوميت الحالي في المستودع: إذا كانا متطابقين لا يحدث شيء، وإلا يتم التحديث الكامل. التحديث من الكود وليس من الإصدارات.",
+        "description": "يقارن الكوميت المحفوظ أو بصمات الملفات المحلية بالكوميت الحالي في المستودع. يدعم التحديث الكامل والتحديث الجزئي لملف أو بلجن واحد.",
         "options": {
-            "تنفيذ/الان": "خاص بالمالك فقط: تنزيل أحدث الملفات وتثبيتها وتحديث المتطلبات ثم إعادة التشغيل."
+            "تنفيذ/الان": "خاص بالمالك فقط: تنزيل أحدث الملفات وتثبيتها وتحديث المتطلبات ثم إعادة التشغيل.",
+            "ملف <path>": "خاص بالمالك فقط: تحديث ملف واحد من جذر المستودع.",
+            "بلجن <name>": "خاص بالمالك فقط: تحديث ملف بلجن واحد بالاسم.",
         },
-        "usage": ["{tr}تحديث", "{tr}تحديث الان", "{tr}تحديث تنفيذ"],
+        "usage": [
+            "{tr}تحديث",
+            "{tr}تحديث الان",
+            "{tr}تحديث تنفيذ",
+            "{tr}تحديث ملف T3rmx-UserBot/JoKeRUB/plugins/السجلات.py",
+            "{tr}تحديث بلجن السجلات",
+        ],
     },
 )
 async def check_updates(event):
-    arg = (event.pattern_match.group(1) or "").strip().lower()
-    apply = _is_apply_request(arg)
+    arg = (event.pattern_match.group(1) or "").strip()
+    parts = arg.split(maxsplit=1)
+    selective_kind = parts[0] if parts else ""
+    selective_value = parts[1].strip() if len(parts) > 1 else ""
+    is_selective = selective_kind in {"ملف", "بلجن"}
+    apply = _is_apply_request(arg.lower())
+
+    if is_selective and not selective_value:
+        return await edit_delete(
+            event,
+            "**الاستخدام:** `.تحديث ملف <مسار من جذر المستودع>` أو `.تحديث بلجن <اسم الملف>`.",
+            25,
+        )
+    if arg and not apply and not is_selective:
+        return await edit_delete(
+            event,
+            "**أمر غير صالح.** الاستخدام: `.تحديث` أو `.تحديث تنفيذ` أو `.تحديث ملف <path>` أو `.تحديث بلجن <name>`.",
+            25,
+        )
+
     msg = await edit_or_reply(event, "**جاري فحص التحديثات...**")
 
     repo = _repo()
     branch = _branch()
     current_version = _current_version()
-    local_commit = _local_commit()
 
     latest = await asyncio.to_thread(_fetch_latest_code, repo, branch)
     if not latest:
@@ -382,6 +683,12 @@ async def check_updates(event):
             25,
         )
 
+    if is_selective:
+        return await _apply_selective(
+            event, msg, selective_kind, selective_value, latest, repo
+        )
+
+    local_commit = _local_commit(latest.get("tree") or [], latest.get("full_sha") or "")
     remote_commit = latest.get("sha") or "غير معروف"
     remote_version = latest.get("remote_version")
     commit_url = latest.get("url") or f"https://github.com/{repo}/commits/{branch}"

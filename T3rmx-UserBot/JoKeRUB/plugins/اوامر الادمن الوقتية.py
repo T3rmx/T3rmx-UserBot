@@ -201,7 +201,7 @@ async def tban(event):  # sourcery no-metrics
             )
 
 @l313l.ar_cmd(
-    pattern="تقييد(?:\s|$)([\s\S]*)",
+    pattern=r"تقييد(?!\s*البوت)(?:\s|$)([\s\S]*)",
     command=("تقييد", plugin_category),
     info={
         "header": "لتقييد المستخدم في المجموعة بدون مدة زمنية",

@@ -15,7 +15,7 @@
 
 ## Authorization and safety controls (verified)
 - Centralized owner/developer identity: `@vvsks` / `6023224495` (`T3rmx-UserBot/JoKeRUB/core/auth.py`); unauthorized configured IDs are ignored.
-- Developer controls: `plugins/المطور.py` — `.sec` gated by `authorized_for_sec`, `.تقييد` and `.اعادة تشغيل` gated by `is_owner`.
+- Developer controls: `plugins/المطور.py` — `.sec` gated by `authorized_for_sec`, `.تقييد البوت` and `.اعادة تشغيل` gated by `is_owner`.
 - Restart/shutdown: `plugins/اوامر التشغيل.py` restricted to `is_owner` (hardcoded legacy dev IDs removed).
 - Updates: `plugins/تحديث.py` read-only GitHub Releases check; manual guidance owner-gated; no auto git/pip/heroku mutation or arbitrary execution.
 - VC: no unverified backend bundled/fetched; unavailable/unconfigured status and graceful command handling.
@@ -220,13 +220,13 @@
 
 ### Additional hardening applied (owner-gating / correctness, behavior-preserving intent)
 - `T3rmx-UserBot/JoKeRUB/plugins/اوامر التشغيل.py`: `التحديثات (تشغيل|ايقاف)` handler now enforces `is_owner` (previously missing explicit owner check in handler body); missing `edit_delete` import fixed.
-- `T3rmx-UserBot/JoKeRUB/plugins/سي ام دي.py`: external plugin install (`تنصيب`) and uninstall (`الغاء التنصيب`) handlers now enforce `is_owner` and include safer downloaded-file cleanup on failure (reduces risk from untrusted users triggering file write/load/remove operations in bot plugin directory).
+- `T3rmx-UserBot/JoKeRUB/plugins/سي ام دي.py`: external plugin install (`تنصيب بلجن`) and uninstall (`الغاء التنصيب`) handlers now enforce `is_owner` and include safer downloaded-file cleanup on failure (reduces risk from untrusted users triggering file write/load/remove operations in bot plugin directory).
 - `T3rmx-UserBot/JoKeRUB/plugins/ملفات السورس.py`: `فاراتي` (environment variable dump to saved messages) now enforces `is_owner` (reduces sensitive-information exposure risk).
 - `T3rmx-UserBot/JoKeRUB/helpers/utils/extdl.py`: corrected Config import (`from ..Config` -> `from ...Config`) with `tests/test_runtime_safety_flags.py` updated to match guarded runtime-install interface expectations.
 
 ### Mocked runtime owner-auth verification (harnessed handler execution)
 - Artifact: `docs/reports/owner_auth_runtime_verification.json` (all checked keys `ok: true`).
-- **Verified (mocked/stubbed execution paths, not full Telethon event pipeline/E2E):** `.sec` (`plugins/المطور.py`), developer restriction toggle `تقييد` (`plugins/المطور.py`), restart (`plugins/المطور.py`), restart (`plugins/اوامر التشغيل.py`), shutdown/stop (`plugins/اوامر التشغيل.py`), remote reply restart/shutdown handlers (`plugins/اوامر التشغيل.py`), `تحديث تنفيذ` owner gate (`plugins/تحديث.py`), and auth helpers. Unauthorized identity `27356743` denied; authorized owner `6023224495` allowed in applicable cases.
+- **Verified (mocked/stubbed execution paths, not full Telethon event pipeline/E2E):** `.sec` (`plugins/المطور.py`), developer restriction toggle `تقييد البوت` (`plugins/المطور.py`), restart (`plugins/المطور.py`), restart (`plugins/اوامر التشغيل.py`), shutdown/stop (`plugins/اوامر التشغيل.py`), remote reply restart/shutdown handlers (`plugins/اوامر التشغيل.py`), `تحديث تنفيذ` owner gate (`plugins/تحديث.py`), and auth helpers. Unauthorized identity `27356743` denied; authorized owner `6023224495` allowed in applicable cases.
 - **Code-reviewed/static, not fully DB-backed Telethon E2E simulated:** `blockedfrom` core guard behavior in `T3rmx-UserBot/JoKeRUB/core/client.py` and `T3rmx-UserBot/JoKeRUB/core/events.py` (`docs/reports/owner_auth_runtime_verification.json` key `blockedfrom_core_guard_review`).
 
 ### Automated test evidence (Python 3.11.18, `.venv311`)

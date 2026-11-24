@@ -30,12 +30,12 @@ async def findpkg(event):
          await edit_or_reply(event, f"᯽︙ الباكج غير موجود X \n{pkgname}")
 
 @l313l.ar_cmd(
-    pattern="تنصيب$",
-    command=("تنصيب", plugin_category),
+    pattern="تنصيب بلجن$",
+    command=("تنصيب بلجن", plugin_category),
     info={
         "header": "To install an external plugin.",
         "description": "Reply to any external plugin(supported by cat) to install it in your bot.",
-        "usage": "{tr}install",
+        "usage": "{tr}تنصيب بلجن",
     },
 )
 async def install(event):

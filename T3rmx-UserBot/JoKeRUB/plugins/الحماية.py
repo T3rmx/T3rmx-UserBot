@@ -633,36 +633,18 @@ async def pmpermit_on(event):
     if input_str == "تشغيل":
         if gvarstatus("pmpermit") is None:
             addgvar("pmpermit", "true")
-            await edit_delete(event, "-  تم تفعيل امر الحماية لحسابك بنجاح ✅")
-        else:
-            await edit_delete(event, "- امر الحمايه بالفعل مُمكن لحسابك 🌿")
-    elif gvarstatus("pmpermit") is not None:
-        delgvar("pmpermit")
-        await edit_delete(event, "-  تم تعطيل امر الحماية لحسابك بنجاح ✅")
-    else:
-        await edit_delete(event, "- امر الحمايه بالفعل مُعطل لحسابك 🌿")
-
-
-@l313l.ar_cmd(pattern="الحماية (تشغيل|تعطيل)$")  # T3rmx UserBot (ترجمة/تنسيق)
-async def pmpermit_on(event):
-    input_str = event.pattern_match.group(1)
-    if input_str == "تعطيل":
-        if gvarstatus("pmmenu") is None:  # T3rmx UserBot (ترجمة/تنسيق)
-            addgvar("pmmenu", "false")
-            await edit_delete(
-                event,
-                "-  تم تعطيل امر الحماية لحسابك بنجاح ✅",
-            )
-        else:
-            await edit_delete(event, "- امر الحمايه بالفعل مُعطل لحسابك 🌿")
-    elif gvarstatus("pmmenu") is not None:
-        delgvar("pmmenu")
+        if gvarstatus("pmmenu") is not None:
+            delgvar("pmmenu")
         await edit_delete(event, "-  تم تفعيل امر الحماية لحسابك بنجاح ✅")
     else:
-        await edit_delete(event, "- امر الحمايه بالفعل مُمكن لحسابك 🌿")
+        if gvarstatus("pmpermit") is not None:
+            delgvar("pmpermit")
+        if gvarstatus("pmmenu") is None:
+            addgvar("pmmenu", "false")
+        await edit_delete(event, "-  تم تعطيل امر الحماية لحسابك بنجاح ✅")
 
 
-@l313l.ar_cmd(pattern="(س|سماح)(?:\s|$)([\s\S]*)")
+@l313l.ar_cmd(pattern=r"(س|سماح)(?:\s|$)([\s\S]*)")
 async def approve_p_m(event):
     if gvarstatus("pmpermit") is None:
         return await edit_delete(
@@ -730,7 +712,7 @@ async def approve_p_m(event):
 # T3rmx UserBot (ترجمة/تنسيق)
 
 
-@l313l.ar_cmd(pattern="(ر|رفض)(?:\s|$)([\s\S]*)")
+@l313l.ar_cmd(pattern=r"(ر|رفض)(?:\s|$)([\s\S]*)")
 async def disapprove_p_m(event):
     if gvarstatus("pmpermit") is None:
         return await edit_delete(
@@ -765,7 +747,7 @@ async def disapprove_p_m(event):
         )
 
 
-@l313l.ar_cmd(pattern="بلوك(?:\s|$)([\s\S]*)")
+@l313l.ar_cmd(pattern=r"بلوك(?:\s|$)([\s\S]*)")
 async def block_p_m(event):
     if gvarstatus("pmpermit") is None:
         return await edit_delete(
@@ -810,7 +792,7 @@ async def block_p_m(event):
     )
 
 
-@l313l.ar_cmd(pattern="الخاص بلوك(?:\s|$)([\s\S]*)")
+@l313l.ar_cmd(pattern=r"الخاص بلوك(?:\s|$)([\s\S]*)")
 async def block_p_m(event):
     if gvarstatus("pmpermit") is None:
         return await edit_or_reply(
@@ -855,7 +837,7 @@ async def block_p_m(event):
     )
 
 
-@l313l.ar_cmd(pattern="انبلوك(?:\s|$)([\s\S]*)")
+@l313l.ar_cmd(pattern=r"انبلوك(?:\s|$)([\s\S]*)")
 async def unblock_pm(event):
     if gvarstatus("pmpermit") is None:
         return await edit_delete(

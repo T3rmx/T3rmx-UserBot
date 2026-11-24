@@ -15,7 +15,7 @@ from JoKeRUB.utils import admin_cmd
 from ..Config import Config
 from JoKeRUB import CMD_HELP, l313l
 up_admin = Config.UP_ET or "ارفع"
-down_admin = Config.DOWN_ET or "تزل"
+down_admin = Config.DOWN_ET or "نزل"
 async def get_full_user(event):  
     args = event.pattern_match.group(1).split(':', 1)
     extra = None
@@ -42,7 +42,10 @@ async def get_full_user(event):
         try:
             user_obj = await event.client.get_entity(user)
         except Exception as err:
-            return await event.edit("▾∮ هنالك خطأ يرجى تبليغنا @t3rmx_official", str(err))           
+            return await event.edit("▾∮ هنالك خطأ يرجى تبليغنا @t3rmx_official", str(err))
+    else:
+        await event.edit("▾∮ يجب الرد على المستخدم أو كتابة معرفه مع الأمر")
+        return None
     return user_obj, extra
 
 global hawk,moth
@@ -57,7 +60,7 @@ async def get_user_from_id(user, event):
         await event.edit(str(err))
         return None
     return user_obj
-@l313l.on(admin_cmd(pattern="{up_admin} ?(.*)"))
+@l313l.on(admin_cmd(pattern=rf"{up_admin}(?:\s|$)([\s\S]*)"))
 async def gben(JoKeRUB):
     dc = razan = JoKeRUB
     i = 0
@@ -73,9 +76,12 @@ async def gben(JoKeRUB):
     else:
         JoKeRUB.chat.title
     try:
-        user, rank = await get_full_user(JoKeRUB)
-    except:
-        pass
+        result = await get_full_user(JoKeRUB)
+        if not result:
+            return
+        user, rank = result
+    except Exception:
+        return await razan.edit("**▾∮ هنالك شي خطأ**")
     if me == user:
        l313l = await razan.edit("▾∮ لا استطيع رفع نفسي 🧸🤍،")
        return
@@ -108,7 +114,7 @@ async def gben(JoKeRUB):
         f"**▾∮المستخدم [{user.first_name}](tg://user?id={user.id})\n▾∮ تم رفعه في : {i} من المجموعات**"
     )
 
-@l313l.on(admin_cmd(pattern="{down_admin} ?(.*)"))
+@l313l.on(admin_cmd(pattern=rf"{down_admin}(?:\s|$)([\s\S]*)"))
 async def gben(JoKeRUB):
     dc = razan = JoKeRUB
     i = 0
@@ -124,9 +130,12 @@ async def gben(JoKeRUB):
     else:
         JoKeRUB.chat.title
     try:
-        user, rank = await get_full_user(JoKeRUB)
-    except:
-        pass
+        result = await get_full_user(JoKeRUB)
+        if not result:
+            return
+        user, rank = result
+    except Exception:
+        return await razan.edit("**▾∮ هنالك شي خطأ**")
     if me == user:
        l313l = await razan.edit("▾∮ لا استطيع تنزيل نفسي 🧸🤍")
        return

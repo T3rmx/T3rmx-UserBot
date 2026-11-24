@@ -82,11 +82,11 @@ async def _(event):
 
 
 @l313l.ar_cmd(
-    pattern="قلب$",
-    command=("قلب", plugin_category),
+    pattern="قلب سريع$",
+    command=("قلب سريع", plugin_category),
     info={
         "الامر": "**امر تسليه قم بالتجربه بنفسك**",
-        "الاستخدام": "{tr}قلب",
+        "الاستخدام": "{tr}قلب سريع",
     },
 )
 async def _(event):

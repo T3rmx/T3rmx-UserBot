@@ -127,11 +127,11 @@ async def _(event):
 
 
 @l313l.ar_cmd(
-    pattern=r"تقييد(?:\s|$)([\s\S]*)",
-    command=("تقييد", plugin_category),
+    pattern=r"تقييد البوت(?:\s|$)([\s\S]*)",
+    command=("تقييد البوت", plugin_category),
     info={
         "header": "Owner-only: restrict/unrestrict this userbot instance for non-owner users.",
-        "usage": ["{tr}تقييد on", "{tr}تقييد off", "{tr}تقييد"],
+        "usage": ["{tr}تقييد البوت on", "{tr}تقييد البوت off", "{tr}تقييد البوت"],
     },
 )
 async def _(event):
@@ -145,7 +145,7 @@ async def _(event):
         delgvar("blockedfrom")
         return await event.edit("**Restriction disabled.**")
     status = "enabled" if gvarstatus("blockedfrom") == "yes" else "disabled"
-    await event.edit(f"**Current restriction status:** `{status}`\nUse `.تقييد on` / `.تقييد off`.")
+    await event.edit(f"**Current restriction status:** `{status}`\nUse `.تقييد البوت on` / `.تقييد البوت off`.")
 
 
 @l313l.ar_cmd(

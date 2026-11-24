@@ -9,7 +9,7 @@
 - Coverage includes:
   - config defaults/env normalization and bot username normalization (`sample_config.py`, core config handling)
   - centralized auth/owner enforcement: only `@vvsks` / `6023224495` authorized; unauthorized configured IDs (including `27356743`) rejected/ignored; sudo helper behavior
-  - **mocked owner-privileged handler execution** for key commands (`tests/test_owner_auth_privileged_commands.py`): `.sec`, developer restriction toggle `تقييد`, restart in `plugins/المطور.py`, restart/shutdown in `plugins/اوامر التشغيل.py`, remote reply `_owner_remote_restart`/`_owner_remote_shutdown`, and `تحديث تنفيذ` owner gate — unauthorized `27356743` denied, owner `6023224495` allowed in harnessed execution paths
+  - **mocked owner-privileged handler execution** for key commands (`tests/test_owner_auth_privileged_commands.py`): `.sec`, developer restriction toggle `تقييد البوت`, restart in `plugins/المطور.py`, restart/shutdown in `plugins/اوامر التشغيل.py`, remote reply `_owner_remote_restart`/`_owner_remote_shutdown`, and `تحديث تنفيذ` owner gate — unauthorized `27356743` denied, owner `6023224495` allowed in harnessed execution paths
   - VC adapter unavailable-backend status/behavior and graceful VC command registration/status helpers
   - runtime safety flags/guards (runtime pip install blocked by default, external repo interface guarded) where implemented; `helpers.utils.extdl` Config import fix covered by `tests/test_runtime_safety_flags.py`
   - deployment/static config presence and basic invariants (Dockerfile/Procfile/app.json/railway.json/VPS assets, no remote clone in Dockerfile, core env declarations)

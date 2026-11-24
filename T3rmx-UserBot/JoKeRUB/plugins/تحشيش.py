@@ -391,6 +391,19 @@ async def permalink(mention):
     my_mention = f"[{me.first_name}](tg://user?id={me.id})"
     await edit_or_reply(mention, f"** ᯽︙  المستخدم => • ** [{JoKeRUB}](tg://user?id={user.id}) \n ☑️ **᯽︙  تم رفعه وصخ الكروب 🤢 بواسطه  :**{my_mention} .\n**᯽︙  لك دكوم يلوصخ اسبح مو ريحتك كتلتنا 🤮 ** ")
 
+@l313l.on(admin_cmd(pattern="رفع بقره(?:\s|$)([\s\S]*)"))
+async def permalink(mention):
+    user, custom = await get_user_from_event(mention)
+    if not user:
+        return
+    if user.id == int(getattr(Config, "T3RMX_OWNER_ID", 6023224495) or 6023224495):
+        return await edit_or_reply(mention, "**- لكك دي هذا المطور**")
+    JoKeRUB = user.first_name.replace("\u2060", "") if user.first_name else user.username
+    me = await mention.client.get_me()
+    my_mention = f"[{me.first_name}](tg://user?id={me.id})"
+    await edit_or_reply(mention, f"**᯽︙ المستخدم** [{JoKeRUB}](tg://user?id={user.id}) \n**᯽︙  تم رفع المتهم بقره 🐄 بواسطة :** {my_mention} \n**᯽︙  لك بقره ارتاح شوي 😂**")
+
+
 @l313l.on(admin_cmd(pattern="زواج(?:\s|$)([\s\S]*)"))
 async def permalink(mention):
     user, custom = await get_user_from_event(mention)

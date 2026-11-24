@@ -23,7 +23,7 @@ joker_mute = "https://telegra.ph/file/c5ef9550465a47845c626.jpg"
 joker_unmute = "https://telegra.ph/file/e9473ddef0b58cdd7f9e7.jpg"
 #=================== الكـــــــــــــــتم  ===================  #
 
-@l313l.ar_cmd(pattern=f"كتم(?:\s|$)([\s\S]*)")
+@l313l.ar_cmd(pattern=r"كتم(?:_مؤقت)?(?:\s|$)([\s\S]*)")
 async def mutejep(event):
     await event.delete()
     if event.is_private:
