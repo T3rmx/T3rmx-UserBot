@@ -192,13 +192,18 @@ def _local_blob_hashes(tree, root: str):
         path = str(entry.get("path") or "")
         if not path or _is_protected(path) or path.startswith("docs/reports/"):
             continue
-        local_path = os.path.join(root, *path.split("/"))
-        if not os.path.lexists(local_path):
+        candidates = [os.path.join(root, *path.split("/"))]
+        # Deployed images can be flattened: GitHub keeps files under the
+        # T3rmx-UserBot/ prefix while the container imports from its root.
+        if path.startswith("T3rmx-UserBot/"):
+            candidates.append(os.path.join(root, *path.split("/")[1:]))
+        local_path = next((p for p in candidates if os.path.lexists(p)), None)
+        if not local_path:
             continue
         git_link = str(entry.get("mode") or "") == "120000"
         local_link = os.path.islink(local_path)
-        # Deployment snapshots may dereference symlinks. A type mismatch is
-        # not a source change, so leave that path out of the fingerprint.
+        # Deployment snapshots may dereference or rewrite symlinks. A type
+        # mismatch is not a source change, so leave that path out.
         if git_link != local_link:
             continue
         try:
@@ -211,7 +216,10 @@ def _local_blob_hashes(tree, root: str):
             )
         except Exception:
             continue
-        hashes[path] = _git_blob_sha(payload)
+        blob_hash = _git_blob_sha(payload)
+        if git_link and blob_hash.lower() != str(entry.get("sha") or "").lower():
+            continue
+        hashes[path] = blob_hash
     return hashes
 
 

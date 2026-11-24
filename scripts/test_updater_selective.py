@@ -167,6 +167,34 @@ def main():
             "dereferenced symlink was treated as a regular source file",
         )
 
+        (root / "moved.py").symlink_to("target.py")
+        rewritten = [
+            {
+                "type": "blob",
+                "path": "moved.py",
+                "mode": "120000",
+                "sha": module._git_blob_sha(b"old-target"),
+            }
+        ]
+        check(
+            module._local_blob_hashes(rewritten, tmp) == {},
+            "rewritten symlink target was treated as a source change",
+        )
+
+        (root / "flat.py").write_bytes(b"print('flat')\n")
+        flat_tree = [
+            {
+                "type": "blob",
+                "path": "T3rmx-UserBot/flat.py",
+                "sha": module._git_blob_sha(b"print('flat')\n"),
+            }
+        ]
+        check(
+            module._local_blob_hashes(flat_tree, tmp).get("T3rmx-UserBot/flat.py")
+            == module._git_blob_sha(b"print('flat')\n"),
+            "flattened deployment path alias was not resolved",
+        )
+
     tree = make_tree()
     target, error = module._resolve_selective_target(
         "بلجن", "السجلات", tree
