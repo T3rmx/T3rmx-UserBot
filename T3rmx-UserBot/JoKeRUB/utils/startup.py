@@ -371,8 +371,11 @@ async def verifyLoggerGroup():
     try:
         from .logchannel import ensure_t3rmx_folder
 
-        _, included, _ = await ensure_t3rmx_folder(l313l)
-        LOGS.info(f"T3rmx chat folder ready with {included} chats")
+        _, included, archived, restored = await ensure_t3rmx_folder(l313l)
+        LOGS.info(
+            f"T3rmx chat folder ready with {included} bot chats "
+            f"(archived {archived}, restored {restored})"
+        )
     except Exception as e:
         LOGS.warning(f"Auto T3rmx folder sync skipped: {e}")
 

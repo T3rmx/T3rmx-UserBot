@@ -242,44 +242,48 @@ def _entity_key(entity) -> tuple | None:
 
 
 async def _folder_entities(client):
-    """Collect every group/channel the bot is in or uses via its commands."""
+    """Collect only chats the bot creates/uses: log channel and storage group."""
     entities = {}
+    candidates = []
 
+    try:
+        configured_log = await get_log_channel_id()
+        if configured_log:
+            candidates.append(configured_log)
+    except Exception:
+        pass
+    for value in (
+        gvarstatus(LOG_CHANNEL_GVAR),
+        gvarstatus(STORAGE_GROUP_GVAR),
+        getattr(Config, "PRIVATE_GROUP_BOT_API_ID", None),
+        getattr(Config, "PM_LOGGER_GROUP_ID", None),
+    ):
+        cid = _normalize_chat_id(value)
+        if cid and cid != -100:
+            candidates.append(cid)
+
+    owned_titles = {
+        LOG_CHANNEL_TITLE: "broadcast",
+        "تخزين T3rmx": "megagroup",
+        "مجموعة التخزين6023224495": "megagroup",
+    }
     try:
         async for dialog in client.iter_dialogs():
             entity = dialog.entity
-            if isinstance(entity, types.User):
+            wanted = owned_titles.get(getattr(entity, "title", None))
+            if not wanted:
                 continue
-            if not (
-                getattr(dialog, "is_group", False)
-                or getattr(dialog, "is_channel", False)
-                or getattr(entity, "megagroup", False)
-                or getattr(entity, "broadcast", False)
-            ):
+            if wanted == "broadcast" and not getattr(entity, "broadcast", False):
+                continue
+            if wanted == "megagroup" and not getattr(entity, "megagroup", False):
                 continue
             key = _entity_key(entity)
             if key:
                 entities.setdefault(key, entity)
     except Exception as exc:
-        LOGS.debug("تعذر تعداد محادثات مجلد T3rmx: %s", exc)
+        LOGS.debug("تعذر البحث عن محادثات T3rmx المملوكة: %s", exc)
 
-    extra_ids = []
-    try:
-        configured_log = await get_log_channel_id()
-        if configured_log:
-            extra_ids.append(configured_log)
-    except Exception:
-        pass
-    for value in (
-        gvarstatus(STORAGE_GROUP_GVAR),
-        getattr(Config, "PM_LOGGER_GROUP_ID", None),
-        getattr(Config, "PRIVATE_GROUP_BOT_API_ID", None),
-    ):
-        cid = _normalize_chat_id(value)
-        if cid:
-            extra_ids.append(cid)
-
-    for cid in extra_ids:
+    for cid in candidates:
         try:
             entity = await client.get_entity(cid)
             if isinstance(entity, types.User):
@@ -313,13 +317,47 @@ async def _folder_entities(client):
     return list(entities.values()), peers
 
 
-async def ensure_t3rmx_folder(client):
-    """Create or refresh the T3rmx chat folder and archive its chats.
+async def _unarchive_non_bot_chats(client, keep_keys):
+    """Undo the broad archive and restore every other group/channel to main."""
+    restored = 0
+    try:
+        async for dialog in client.iter_dialogs():
+            entity = dialog.entity
+            if isinstance(entity, types.User):
+                continue
+            if not (
+                getattr(dialog, "is_group", False)
+                or getattr(dialog, "is_channel", False)
+                or getattr(entity, "megagroup", False)
+                or getattr(entity, "broadcast", False)
+            ):
+                continue
+            if not getattr(dialog, "folder_id", 0):
+                continue
+            key = _entity_key(entity)
+            if key and key in keep_keys:
+                continue
+            try:
+                await client.edit_folder(entity, 0)
+                restored += 1
+            except Exception as exc:
+                LOGS.debug(
+                    "تعذر إرجاع `%s` إلى القائمة الرئيسية: %s",
+                    getattr(entity, "title", entity.id),
+                    exc,
+                )
+    except Exception as exc:
+        LOGS.debug("تعذر إلغاء أرشفة محادثات T3rmx: %s", exc)
+    return restored
 
-    Returns ``(folder_id, included_count, archived_count)``. Existing folders
-    are reused so repeated startup runs never create duplicates.
+
+async def ensure_t3rmx_folder(client):
+    """Refresh T3rmx with only the bot's log/storage chats and undo the rest.
+
+    Returns ``(folder_id, included_count, archived_count, restored_count)``.
     """
     entities, peers = await _folder_entities(client)
+    keep_keys = {key for key in (_entity_key(entity) for entity in entities) if key}
 
     filters = []
     try:
@@ -377,6 +415,8 @@ async def ensure_t3rmx_folder(client):
     if folder_id is None:
         raise last_error or RuntimeError("No free Telegram folder slot")
 
+    restored = await _unarchive_non_bot_chats(client, keep_keys)
+
     archived = 0
     for entity in entities:
         try:
@@ -385,8 +425,13 @@ async def ensure_t3rmx_folder(client):
         except Exception as exc:
             LOGS.debug("تعذر أرشفة `%s`: %s", getattr(entity, "title", entity.id), exc)
 
-    LOGS.info("مجلد T3rmx جاهز: %s محادثة، تم أرشفة %s منها", len(peers), archived)
-    return folder_id, len(peers), archived
+    LOGS.info(
+        "مجلد T3rmx جاهز: %s محادثة، أرشفة %s، إرجاع %s إلى الرئيسية",
+        len(peers),
+        archived,
+        restored,
+    )
+    return folder_id, len(peers), archived, restored
 
 
 async def send_log_alert(client, text: str) -> bool:
