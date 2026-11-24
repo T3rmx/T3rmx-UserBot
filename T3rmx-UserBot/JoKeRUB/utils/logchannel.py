@@ -374,6 +374,32 @@ async def _find_backup_messages(client, chat_id):
     return messages
 
 
+def is_backup_message(message) -> bool:
+    """True when a message is one of our settings backup documents."""
+    return bool(
+        message is not None
+        and getattr(message, "document", None)
+        and BACKUP_MARKER in (getattr(message, "message", None) or "")
+    )
+
+
+async def _resolve_backup_message(client, chat_id, message_id=None, reply_message=None):
+    """Pick a backup by reply, by numeric id, or fall back to the newest one."""
+    if reply_message is not None:
+        return reply_message if is_backup_message(reply_message) else None
+    if message_id:
+        try:
+            found = await client.get_messages(chat_id, ids=[int(message_id)])
+        except Exception as e:
+            LOGS.debug("تعذر جلب النسخة الاحتياطية بالمعرّف: %s", e)
+            return None
+        if found and is_backup_message(found[0]):
+            return found[0]
+        return None
+    backups = await _find_backup_messages(client, chat_id)
+    return max(backups, key=lambda message: message.id) if backups else None
+
+
 async def _delete_old_backups(client, chat_id, keep_id=None):
     for message in await _find_backup_messages(client, chat_id):
         if keep_id is not None and message.id == keep_id:
@@ -384,11 +410,14 @@ async def _delete_old_backups(client, chat_id, keep_id=None):
             LOGS.debug("تعذر حذف نسخة احتياطية قديمة: %s", e)
 
 
-async def restore_settings_if_empty(client, force: bool = False) -> bool:
+async def restore_settings_if_empty(
+    client, force: bool = False, message_id=None, reply_message=None
+) -> bool:
     """Restore settings/config from the log channel.
 
     Normally runs only on an empty database. ``force=True`` is used by the
-    owner's explicit restore command.
+    owner's explicit restore command. A specific backup can be chosen with
+    ``message_id`` or by replying to its document with ``reply_message``.
     """
     from ..sql_helper.globals import addgvar, get_all_gvars, gvarstatus
 
@@ -406,15 +435,16 @@ async def restore_settings_if_empty(client, force: bool = False) -> bool:
     chat_id, _ = await ensure_log_channel(client)
     if not chat_id:
         return False
-    backups = await _find_backup_messages(client, chat_id)
-    if not backups:
+    chosen = await _resolve_backup_message(
+        client, chat_id, message_id=message_id, reply_message=reply_message
+    )
+    if not chosen:
         return False
 
-    latest = max(backups, key=lambda message: message.id)
     fd, temp_path = tempfile.mkstemp(prefix="t3rmx-backup-", suffix=".json")
     os.close(fd)
     try:
-        await latest.download_media(file=temp_path)
+        await chosen.download_media(file=temp_path)
         data = json.loads(Path(temp_path).read_text(encoding="utf-8"))
     except Exception as e:
         LOGS.debug("تعذر قراءة النسخة الاحتياطية: %s", e)
@@ -440,10 +470,14 @@ async def restore_settings_if_empty(client, force: bool = False) -> bool:
         setattr(Config, str(key), _jsonable(value))
 
     addgvar(BACKUP_RESTORED_GVAR, "1")
-    addgvar(BACKUP_MSG_GVAR, str(latest.id))
+    addgvar(BACKUP_MSG_GVAR, str(chosen.id))
     addgvar(BACKUP_FP_GVAR, str(data.get("fingerprint") or ""))
-    await _delete_old_backups(client, chat_id, keep_id=latest.id)
-    LOGS.info("تمت استعادة الإعدادات من النسخة الاحتياطية (%d مفاتيح)", restored)
+    await _delete_old_backups(client, chat_id, keep_id=chosen.id)
+    LOGS.info(
+        "تمت استعادة الإعدادات من النسخة الاحتياطية %s (%d مفاتيح)",
+        chosen.id,
+        restored,
+    )
     return True
 
 
@@ -495,21 +529,34 @@ async def refresh_backup(client, force: bool = False) -> bool:
     return True
 
 
-async def delete_backups(client) -> int:
-    """Delete all backup documents from the log channel. Returns the count."""
-    from ..sql_helper.globals import delgvar
+async def delete_backups(client, message_id=None, reply_message=None) -> int:
+    """Delete a chosen backup (or all backups) from the log channel."""
+    from ..sql_helper.globals import delgvar, gvarstatus
 
     chat_id, _ = await ensure_log_channel(client)
     if not chat_id:
         return 0
+
+    specific = message_id is not None or reply_message is not None
+    if specific:
+        chosen = await _resolve_backup_message(
+            client, chat_id, message_id=message_id, reply_message=reply_message
+        )
+        targets = [chosen] if chosen else []
+    else:
+        targets = await _find_backup_messages(client, chat_id)
+
+    stored_id = str(gvarstatus(BACKUP_MSG_GVAR) or "")
     deleted = 0
-    for message in await _find_backup_messages(client, chat_id):
+    for message in targets:
         try:
             await message.delete()
             deleted += 1
         except Exception as e:
             LOGS.debug("تعذر حذف النسخة الاحتياطية: %s", e)
-    for key in (BACKUP_MSG_GVAR, BACKUP_FP_GVAR, BACKUP_RESTORED_GVAR):
-        delgvar(key)
+
+    if not specific or (targets and stored_id == str(targets[0].id)):
+        for key in (BACKUP_MSG_GVAR, BACKUP_FP_GVAR, BACKUP_RESTORED_GVAR):
+            delgvar(key)
     LOGS.info("تم حذف نسخ الإعدادات الاحتياطية (%d)", deleted)
     return deleted

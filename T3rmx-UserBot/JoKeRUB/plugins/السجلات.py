@@ -11,6 +11,7 @@ from ..utils.logchannel import (
     apply_backup_config,
     delete_backups,
     ensure_log_channel,
+    is_backup_message,
     refresh_backup,
     restore_settings_if_empty,
     send_log_alert,
@@ -22,6 +23,17 @@ LOGS = logging.getLogger("t3rmx.logs")
 
 def _log_path() -> str:
     return os.path.abspath(os.environ.get("T3RMX_LOG_FILE", "logs/t3rmx.log"))
+
+
+async def _replied_backup(event):
+    """Return the replied backup document, or None if the reply is not one."""
+    if not event.reply_to_msg_id:
+        return None
+    try:
+        reply = await event.get_reply_message()
+    except Exception:
+        return None
+    return reply if is_backup_message(reply) else None
 
 
 @l313l.on(events.NewMessage(outgoing=True, pattern=r"^/log(?:\s+(\S+))?$"))
@@ -77,30 +89,50 @@ async def _refresh_backup_command(event):
     )
 
 
-@l313l.ar_cmd(pattern="استعادة النسخة$")
+@l313l.ar_cmd(pattern=r"استعادة النسخة(?:\s+(\d+))?$")
 async def _restore_backup_command(event):
     if not is_owner(event.sender_id):
         return
-    await event.edit("**جاري استعادة الإعدادات من النسخة الاحتياطية...**")
-    ok = await restore_settings_if_empty(event.client, force=True)
+    message_id = (event.pattern_match.group(1) or "").strip() or None
+    reply_message = await _replied_backup(event)
+    if event.reply_to_msg_id and not reply_message:
+        await event.edit("**الرد يجب أن يكون على ملف النسخة الاحتياطية في قناة السجلات.**")
+        return
+    label = f" `{message_id}`" if message_id else (" المحدد بالرد" if reply_message else "")
+    await event.edit(f"**جاري استعادة الإعدادات من النسخة الاحتياطية{label}...**")
+    ok = await restore_settings_if_empty(
+        event.client,
+        force=True,
+        message_id=message_id,
+        reply_message=reply_message,
+    )
     if ok:
         apply_backup_config()
     await event.edit(
         "**تمت استعادة الإعدادات من النسخة الاحتياطية بنجاح.**"
         if ok
-        else "**لم يتم العثور على نسخة احتياطية صالحة.**"
+        else "**لم يتم العثور على نسخة احتياطية صالحة بهذا المعرّف.**"
     )
 
 
-@l313l.ar_cmd(pattern="حذف النسخة$")
+@l313l.ar_cmd(pattern=r"حذف النسخة(?:\s+(\d+))?$")
 async def _delete_backup_command(event):
     if not is_owner(event.sender_id):
         return
-    count = await delete_backups(event.client)
+    message_id = (event.pattern_match.group(1) or "").strip() or None
+    reply_message = await _replied_backup(event)
+    if event.reply_to_msg_id and not reply_message:
+        await event.edit("**الرد يجب أن يكون على ملف النسخة الاحتياطية في قناة السجلات.**")
+        return
+    count = await delete_backups(
+        event.client,
+        message_id=message_id,
+        reply_message=reply_message,
+    )
     await event.edit(
         f"**تم حذف {count} نسخة احتياطية من قناة السجلات.**"
         if count
-        else "**لم يتم العثور على نسخ احتياطية لحذفها.**"
+        else "**لم يتم العثور على نسخة احتياطية صالحة بهذا المعرّف.**"
     )
 
 

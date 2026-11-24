@@ -1390,11 +1390,11 @@
           "command": null
         },
         {
-          "pattern": "استعادة النسخة$",
+          "pattern": "استعادة النسخة(?:\\s+(\\d+))?$",
           "command": null
         },
         {
-          "pattern": "حذف النسخة$",
+          "pattern": "حذف النسخة(?:\\s+(\\d+))?$",
           "command": null
         }
       ],
