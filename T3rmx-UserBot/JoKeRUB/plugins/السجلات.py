@@ -73,7 +73,26 @@ async def _enable_notifications_command(event):
         if created
         else "- تم استخدام قناة الإشعارات الحالية بدون إنشاء قناة جديدة ✓\n"
     )
-    await event.edit(note + f"**تم تفعيل الإشعارات. المعرّف:** `{chat_id}`")
+
+    # Give the owner a clickable link instead of a raw numeric chat id.
+    try:
+        entity = await event.client.get_entity(chat_id)
+    except Exception:
+        entity = None
+    title = getattr(entity, "title", None) or "قناة السجلات"
+    username = getattr(entity, "username", None)
+    if username:
+        link = f"https://t.me/{username}"
+    else:
+        numeric = str(abs(chat_id))
+        if numeric.startswith("100"):
+            numeric = numeric[3:]
+        link = f"https://t.me/c/{numeric}/1"
+
+    await event.edit(
+        note + f"**تم تفعيل الإشعارات. افتح القناة: [{title}]({link})**",
+        link_preview=False,
+    )
 
 
 @l313l.ar_cmd(pattern="النسخة الاحتياطية$")
