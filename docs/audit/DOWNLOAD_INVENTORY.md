@@ -8,11 +8,11 @@
 
 | Local snapshot | Upstream | Branch/ref | HEAD commit | License | Imported/used |
 |---|---|---|---|---|---|
-| `/tmp/opencode/t3rmx-audit/jepthon` | https://github.com/jepthoniq/jepthon | `master` | `becff9b70efa494d06439743d45d2476167e815e` | AGPL-3.0 (`LICENSE`) | **Yes (primary baseline).** Application/runtime code, plugins, handlers, assistant, core, sql helpers, helpers/utils, media utilities, scripts, config/deployment logic references imported into `T3rmx-UserBot/` (compatibility layout) and reworked. `.git`/`.github` not copied. |
-| `/tmp/opencode/t3rmx-audit/lMl10l` | https://github.com/jepthoniq/lMl10l | `lMl10l` | `9498ab580ae1bdb106d463fcd8d37ad28854dfc2` | License present in snapshot (audited) | **Reference only.** Deployment/template/env concepts reviewed; insecure mutable runtime bootstrap/fetch patterns explicitly not reused. |
+| `/tmp/opencode/t3rmx-audit/t3rmx` | audited upstream snapshot (local copy) | `master` | `becff9b70efa494d06439743d45d2476167e815e` | AGPL-3.0 (`LICENSE`) | **Yes (primary baseline).** Application/runtime code, plugins, handlers, assistant, core, sql helpers, helpers/utils, media utilities, scripts, config/deployment logic references imported into `T3rmx-UserBot/` (compatibility layout) and reworked. `.git`/`.github` not copied. |
+| `/tmp/opencode/t3rmx-audit/lMl10l` | audited upstream snapshot (local copy) | `lMl10l` | `9498ab580ae1bdb106d463fcd8d37ad28854dfc2` | License present in snapshot (audited) | **Reference only.** Deployment/template/env concepts reviewed; insecure mutable runtime bootstrap/fetch patterns explicitly not reused. |
 | `/tmp/opencode/t3rmx-audit/nekopack` | https://github.com/TgCatUB/nekopack | `master` | `ec24a75d4b24626d013fefbf84e117c8a189a1bf` | (audited lineage) | **Reference/attribution only.** CatUserBot/nekopack lineage reviewed for provenance and dependency context; no direct runtime assets copied beyond attribution awareness. |
 
-## 2. Imported application content (from jepthon baseline)
+## 2. Imported application content (from T3rmx baseline)
 
 | Area | Destination (logical) | Notes |
 |---|---|---|

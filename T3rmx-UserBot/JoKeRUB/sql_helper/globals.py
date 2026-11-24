@@ -32,6 +32,19 @@ def gvarstatus(variable):
         SESSION.close()
 
 
+def get_all_gvars():
+    """Return every stored global setting as a dictionary."""
+    try:
+        return {
+            row.variable: row.value
+            for row in SESSION.query(Globals).all()
+        }
+    except BaseException:
+        return {}
+    finally:
+        SESSION.close()
+
+
 def addgvar(variable, value):
     if SESSION.query(Globals).filter(Globals.variable == str(variable)).one_or_none():
         delgvar(variable)

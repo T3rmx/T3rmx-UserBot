@@ -1,7 +1,6 @@
-"""Username hunting / username installation plugin (T3rmx rebrand).
+"""Username hunting / username installation plugin (T3rmx).
 
-Source: TheRepthon/RepthonAr repthon/plugins/الصيد.py
-Rebranded for JoKeRUB: l313l client, ar_cmd decorator, T3rmx branding.
+Rebranded for T3rmx UserBot: l313l client and ar_cmd decorator.
 """
 
 import random
@@ -1001,6 +1000,10 @@ async def rcustom_cmd(baqir):
 async def rchecker_cmd(baqir):
     await edit_or_reply(baqir, BaqirChecker_cmd)
 
+@l313l.ar_cmd(pattern="صيد$")
+async def rchecker_alias(baqir):
+    await edit_or_reply(baqir, BaqirChecker_cmd)
+
 @l313l.ar_cmd(pattern="اوامر التثبيت")
 async def rpin_cmd(baqir):
     await edit_or_reply(baqir, BaqirPin_cmd)
@@ -1012,7 +1015,12 @@ async def rtype_cmd(baqir):
 
 @l313l.ar_cmd(pattern="مخصص (.*)")
 async def customhunter(event):
-    choice = str(event.pattern_match.group(1))
+    choice = str(event.pattern_match.group(1)).strip()
+    if choice == "ايقاف":
+        issclim.clear()
+        issclim.append("off")
+        srys[0] = 0
+        return await edit_or_reply(event, "**- تم إيقـاف عمليـة الصيـد المخصص .. بنجـاح ✓**")
     replly = await event.get_reply_message()
     if not choice:
         return await edit_or_reply(event, "⚈ **امـر خاطـئ .. تصفح اوامـر الصيـد**\n⚈ **لـ الاوامـر العامـه .. ارسـل** ( `.الصيد` )\n⚈ **لـ انـواع اليـوزرات .. ارسـل** ( `.الانواع` )")
@@ -1024,7 +1032,7 @@ async def customhunter(event):
             baq = f"@{l313l.me.username}" if l313l.me.username else ""
             ch = await l313l(
                 functions.channels.CreateChannelRequest(
-                    title="⎉ صيـد ريـبثون 𝗧𝟯𝗿𝗺𝘅 ⎉",
+                    title="⎉ صيـد 𝗧𝟯𝗿𝗺𝘅 ⎉",
                     about=f"This channel to custom hunt username by - @T3rmx_Support_channel | {baq}",
                 )
             )
@@ -1050,10 +1058,8 @@ async def customhunter(event):
     issclim.clear()
     issclim.append("on")
     vesmod = True
-    while vesmod:
+    while vesmod and "on" in issclim:
         username = ""
-        if choice == "ايقاف":
-            break
         username = generate_random_string(choice)
         t = Thread(target=lambda q, arg1: q.put(
             check_user(arg1)), args=(que, username))
@@ -1122,7 +1128,12 @@ async def customhunter(event):
 
 @l313l.ar_cmd(pattern="صيد (.*)")
 async def hunterusername(event):
-    choice = str(event.pattern_match.group(1))
+    choice = str(event.pattern_match.group(1)).strip()
+    if choice == "ايقاف":
+        itsclim.clear()
+        itsclim.append("off")
+        trys[0] = 0
+        return await edit_or_reply(event, "**- تم إيقـاف عمليـة الصيـد .. بنجـاح ✓**")
     replly = await event.get_reply_message()
     if not choice:
         return await edit_or_reply(event, "⚈ **امـر خاطـئ .. تصفح اوامـر الصيـد**\n⚈ **لـ الاوامـر العامـه .. ارسـل** ( `.الصيد` )\n⚈ **لـ انـواع اليـوزرات .. ارسـل** ( `.الانواع` )")
@@ -1134,7 +1145,7 @@ async def hunterusername(event):
             baq = f"@{l313l.me.username}" if l313l.me.username else ""
             ch = await l313l(
                 functions.channels.CreateChannelRequest(
-                    title="⎉ صيـد ريبـثون 𝗧𝟯𝗿𝗺𝘅 ⎉",
+                    title="⎉ صيـد 𝗧𝟯𝗿𝗺𝘅 ⎉",
                     about=f"This channel to hunt username by - T3rmx | {baq}",
                 )
             )
@@ -1150,10 +1161,8 @@ async def hunterusername(event):
     itsclim.clear()
     itsclim.append("on")
     vedmod = True
-    while vedmod:
+    while vedmod and "on" in itsclim:
         username = ""
-        if choice == "ايقاف":
-            break
         #username = await gen_user(choice) تبعي
         username = gen_user(choice)
         if username == "stop":
@@ -1247,8 +1256,8 @@ async def _(event):
         baq = f"@{l313l.me.username}" if l313l.me.username else ""
         ch = await l313l(
             functions.channels.CreateChannelRequest(
-                title="⎉ تثبيت ريـبثون 𝗧𝟯𝗿𝗺𝘅 ⎉",
-                about=f"تم تثبيت اليـوزر بواسطـة سـورس ريبـثون - @T3rmx_Support_channel | {baq} ",
+                title="⎉ تثبيت 𝗧𝟯𝗿𝗺𝘅 ⎉",
+                about=f"تم تثبيت اليـوزر بواسطـة سـورس 𝗧𝟯𝗿𝗺𝘅 - @T3rmx_Support_channel | {baq} ",
             )
         )
         try:

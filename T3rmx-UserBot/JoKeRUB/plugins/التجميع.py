@@ -1,7 +1,4 @@
-#by Hussein For JoKeRUB-JoKeRUB
-# Hussein
-# يمنع منعاً باتاً تخمط الملف خلي عندك كرامه ولتسرقة
-# Added some f. by Reda
+
 
 import asyncio
 import time
@@ -27,7 +24,7 @@ JoKeRUB = ['yes']
 ConsoleJoker = getattr(Config, "T7KM", None)
 its_Reham = False
 its_hussein = False
-its_reda = False
+its_t3rmx = False
 its_joker = False
 @l313l.on(events.NewMessage(incoming=True))
 async def Hussein(event):
@@ -474,10 +471,10 @@ async def hussein(event):
     await event.edit("**᯽︙ تم تعطيل بخشيش وعد بنجاح ✓ **")
 @l313l.ar_cmd(pattern="سرقة وعد(?:\s|$)([\s\S]*)")
 async def hussein(event):
-    global its_reda
+    global its_t3rmx
     await event.delete()
-    if not its_reda:
-        its_reda = True
+    if not its_t3rmx:
+        its_t3rmx = True
         if event.is_group:
             message = event.pattern_match.group(1).strip()
             if message:
@@ -488,14 +485,14 @@ async def hussein(event):
 async def send_message(event, message):
     await event.respond(f"زرف {message}")
     await asyncio.sleep(660)
-    global its_reda
-    if its_reda:
+    global its_t3rmx
+    if its_t3rmx:
         await send_message(event, message)
 
 @l313l.ar_cmd(pattern="ايقاف سرقة وعد(?:\s|$)([\s\S]*)")
-async def Reda(event):
-    global its_reda
-    its_reda = False
+async def T3rmx(event):
+    global its_t3rmx
+    its_t3rmx = False
     await event.edit("** ᯽︙ تم ايقاف السرقة بنجاح ✓ **")
 @l313l.ar_cmd(pattern="استثمار وعد")
 async def w3d_joker(event):

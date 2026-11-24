@@ -45,7 +45,7 @@ async def btext(event):
         return
 
 @l313l.on(events.NewMessage(outgoing=True))
-async def reda(event):
+async def t3rmx(event):
     if event.message.text and not event.message.media and "." not in event.message.text:
         isbold = gvarstatus("bold")
         isramz = gvarstatus("ramz")

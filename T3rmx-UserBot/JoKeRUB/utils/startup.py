@@ -136,8 +136,8 @@ async def setup_bot():
             app = web.AppRunner(await web_server())
             await app.setup()
             bind_address = "0.0.0.0"
-            redaport = int(Config.PORT)
-            await web.TCPSite(app, bind_address, redaport).start()
+            t3rmx_port = int(Config.PORT)
+            await web.TCPSite(app, bind_address, t3rmx_port).start()
     except Exception as e:
         LOGS.debug(f"Web server bind skipped: {e}")
 
@@ -360,7 +360,7 @@ async def verifyLoggerGroup():
     if getattr(Config, "T3RMX_AUTO_LOG_CHANNEL", True):
         try:
             from .logchannel import ensure_log_channel
-            log_channel_id = await ensure_log_channel(l313l)
+            log_channel_id, _ = await ensure_log_channel(l313l)
             if log_channel_id and not getattr(Config, "BOTLOG", False):
                 addgvar("PRIVATE_GROUP_BOT_API_ID", str(log_channel_id))
                 flag = True

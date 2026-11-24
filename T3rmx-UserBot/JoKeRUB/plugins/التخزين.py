@@ -9,7 +9,7 @@ from ..helpers.tools import media_type
 from ..helpers.utils import _format
 from ..sql_helper import no_log_pms_sql
 from ..sql_helper.globals import addgvar, gvarstatus
-from . import BOTLOG, BOTLOG_CHATID
+from ..utils.logchannel import ensure_storage_group
 
 LOGS = logging.getLogger(__name__)
 
@@ -24,6 +24,12 @@ class LOG_CHATS:
 
 
 LOG_CHATS_ = LOG_CHATS()
+
+
+def _created_note(created):
+    if created:
+        return "- تم إنشاء كروب التخزين تلقائياً ✓\n"
+    return ""
 
 
 @l313l.ar_cmd(incoming=True, func=lambda e: e.is_private, edited=False, forword=None)
@@ -124,21 +130,25 @@ async def log_tagged_messages(event):
     },
 )
 async def log(log_text):
-    "To log the replied message to bot log group"
-    if BOTLOG:
-        if log_text.reply_to_msg_id:
-            reply_msg = await log_text.get_reply_message()
-            await reply_msg.forward_to(BOTLOG_CHATID)
-        elif log_text.pattern_match.group(1):
-            user = f"#التخــزين / ايـدي الدردشــه : {log_text.chat_id}\n\n"
-            textx = user + log_text.pattern_match.group(1)
-            await log_text.client.send_message(BOTLOG_CHATID, textx)
-        else:
-            await log_text.edit("**⌔┊بالــرد على اي رسـاله لحفظهـا في كـروب التخــزين**")
-            return
-        await log_text.edit("**⌔┊تـم الحفـظ في كـروب التخـزين .. بنجـاح ✓**")
+    "To log the replied message to the storage group"
+    storage_id, created = await ensure_storage_group(log_text.client)
+    if not storage_id:
+        await log_text.edit("**⌔┊تعذر تجهيز كروب التخزين .. حاول مرة أخرى**")
+        return
+    note = _created_note(created)
+    if log_text.reply_to_msg_id:
+        reply_msg = await log_text.get_reply_message()
+        await reply_msg.forward_to(storage_id)
+    elif log_text.pattern_match.group(1):
+        user = f"#التخــزين / ايـدي الدردشــه : {log_text.chat_id}\n\n"
+        textx = user + log_text.pattern_match.group(1)
+        await log_text.client.send_message(storage_id, textx)
     else:
-        await log_text.edit("**⌔┊عـذراً .. هـذا الامـر يتطلـب تفعيـل فـار التخـزين اولاً**")
+        await log_text.edit(
+            note + "**⌔┊بالــرد على اي رسـاله لحفظهـا في كـروب التخــزين**"
+        )
+        return
+    await log_text.edit(note + "**⌔┊تـم الحفـظ في كـروب التخـزين .. بنجـاح ✓**")
     await asyncio.sleep(2)
     await log_text.delete()
 
@@ -155,13 +165,22 @@ async def log(log_text):
 )
 async def set_no_log_p_m(event):
     "To turn on logging of messages from that chat."
-    if Config.PM_LOGGER_GROUP_ID != -100:
-        chat = await event.get_chat()
-        if no_log_pms_sql.is_approved(chat.id):
-            no_log_pms_sql.disapprove(chat.id)
-            await edit_delete(
-                event, "**⌔┊تـم تفعيـل التخـزين لهـذه الدردشـه .. بنجـاح ✓**", 5
-            )
+    storage_id, created = await ensure_storage_group(event.client)
+    if not storage_id:
+        return await edit_delete(
+            event, "**⌔┊تعذر تجهيز كروب التخزين .. حاول مرة أخرى**", 10
+        )
+    note = _created_note(created)
+    chat = await event.get_chat()
+    if no_log_pms_sql.is_approved(chat.id):
+        no_log_pms_sql.disapprove(chat.id)
+        await edit_delete(
+            event, note + "**⌔┊تـم تفعيـل التخـزين لهـذه الدردشـه .. بنجـاح ✓**", 5
+        )
+    else:
+        await edit_delete(
+            event, note + "**⌔┊التخـزين مفعّل لهـذه الدردشـه بالفعـل ✓**", 5
+        )
 
 
 @l313l.ar_cmd(
@@ -176,13 +195,22 @@ async def set_no_log_p_m(event):
 )
 async def set_no_log_p_m(event):
     "To turn off logging of messages from that chat."
-    if Config.PM_LOGGER_GROUP_ID != -100:
-        chat = await event.get_chat()
-        if not no_log_pms_sql.is_approved(chat.id):
-            no_log_pms_sql.approve(chat.id)
-            await edit_delete(
-                event, "**⌔┊تـم تعطيـل التخـزين لهـذه الدردشـه .. بنجـاح ✓**", 5
-            )
+    storage_id, created = await ensure_storage_group(event.client)
+    if not storage_id:
+        return await edit_delete(
+            event, "**⌔┊تعذر تجهيز كروب التخزين .. حاول مرة أخرى**", 10
+        )
+    note = _created_note(created)
+    chat = await event.get_chat()
+    if not no_log_pms_sql.is_approved(chat.id):
+        no_log_pms_sql.approve(chat.id)
+        await edit_delete(
+            event, note + "**⌔┊تـم تعطيـل التخـزين لهـذه الدردشـه .. بنجـاح ✓**", 5
+        )
+    else:
+        await edit_delete(
+            event, note + "**⌔┊التخـزين معطّل لهـذه الدردشـه بالفعـل ✓**", 5
+        )
 
 
 @l313l.ar_cmd(
@@ -198,12 +226,12 @@ async def set_no_log_p_m(event):
 )
 async def set_pmlog(event):
     "To turn on or turn off logging of Private messages"
-    if Config.PM_LOGGER_GROUP_ID == -100:
+    storage_id, created = await ensure_storage_group(event.client)
+    if not storage_id:
         return await edit_delete(
-            event,
-            "__For functioning of this you need to set PM_LOGGER_GROUP_ID in config vars__",
-            10,
+            event, "**⌔┊تعذر تجهيز كروب التخزين .. حاول مرة أخرى**", 10
         )
+    note = _created_note(created)
     input_str = event.pattern_match.group(1)
     if input_str == "تعطيل":
         h_type = False
@@ -212,15 +240,15 @@ async def set_pmlog(event):
     PMLOG = not gvarstatus("PMLOG") or gvarstatus("PMLOG") != "false"
     if PMLOG:
         if h_type:
-            await event.edit("**- تخزين الخاص بالفعـل ممكـن ✓**")
+            await event.edit(note + "**- تخزين الخاص بالفعـل ممكـن ✓**")
         else:
             addgvar("PMLOG", h_type)
-            await event.edit("**- تـم تعطيـل تخـزين رسـائل الخـاص .. بنجـاح✓**")
+            await event.edit(note + "**- تـم تعطيـل تخـزين رسـائل الخـاص .. بنجـاح✓**")
     elif h_type:
         addgvar("PMLOG", h_type)
-        await event.edit("**- تـم تفعيـل تخـزين رسـائل الخـاص .. بنجـاح✓**")
+        await event.edit(note + "**- تـم تفعيـل تخـزين رسـائل الخـاص .. بنجـاح✓**")
     else:
-        await event.edit("**- تخزين الخاص بالفعـل معطـل ✓**")
+        await event.edit(note + "**- تخزين الخاص بالفعـل معطـل ✓**")
 
 
 @l313l.ar_cmd(
@@ -236,12 +264,12 @@ async def set_pmlog(event):
 )
 async def set_grplog(event):
     "To turn on or turn off group tags logging"
-    if Config.PM_LOGGER_GROUP_ID == -100:
+    storage_id, created = await ensure_storage_group(event.client)
+    if not storage_id:
         return await edit_delete(
-            event,
-            "__For functioning of this you need to set PM_LOGGER_GROUP_ID in config vars__",
-            10,
+            event, "**⌔┊تعذر تجهيز كروب التخزين .. حاول مرة أخرى**", 10
         )
+    note = _created_note(created)
     input_str = event.pattern_match.group(1)
     if input_str == "تعطيل":
         h_type = False
@@ -250,12 +278,12 @@ async def set_grplog(event):
     GRPLOG = not gvarstatus("GRPLOG") or gvarstatus("GRPLOG") != "false"
     if GRPLOG:
         if h_type:
-            await event.edit("**- تخزين الكـروبات بالفعـل ممكـن ✓**")
+            await event.edit(note + "**- تخزين الكـروبات بالفعـل ممكـن ✓**")
         else:
             addgvar("GRPLOG", h_type)
-            await event.edit("**- تـم تعطيـل تخـزين تاكـات الكـروبات .. بنجـاح✓**")
+            await event.edit(note + "**- تـم تعطيـل تخـزين تاكـات الكـروبات .. بنجـاح✓**")
     elif h_type:
         addgvar("GRPLOG", h_type)
-        await event.edit("**- تـم تفعيـل تخـزين تاكـات الكـروبات .. بنجـاح✓**")
+        await event.edit(note + "**- تـم تفعيـل تخـزين تاكـات الكـروبات .. بنجـاح✓**")
     else:
-        await event.edit("**- تخزين الكـروبات بالفعـل معطـل ✓**")
+        await event.edit(note + "**- تخزين الكـروبات بالفعـل معطـل ✓**")

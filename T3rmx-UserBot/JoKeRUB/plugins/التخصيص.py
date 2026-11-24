@@ -187,13 +187,13 @@ async def custom_HuRe(event):
             )
         delgvar("ALIVE_EMOJI")
     if input_str == "التخزين" or input_str == "تخزين":
-    	if gvatstatus("PM_LOGGER_GROUP_ID") is None:
-    	    return await edit_delete(event, "**⎙ :: عزيزي المستخدم انت لم تقوم باضافه هذا الفار اصلا**")
-    	delgvar("PM_LOGGER_GROUP_ID")
+        if gvarstatus("PM_LOGGER_GROUP_ID") is None:
+            return await edit_delete(event, "**⎙ :: عزيزي المستخدم انت لم تقوم باضافه هذا الفار اصلا**")
+        delgvar("PM_LOGGER_GROUP_ID")
     if input_str == "اشعارات" or input_str == "الاشعارات":
-    	if gvatstatus("PRIVATE_GROUP_BOT_API_ID") is None:
-    	    return await edit_delete(event, "**⎙ :: عزيزي المستخدم انت لم تقوم باضافه هذا الفار اصلا**")
-    	delgvar("PRIVATE_GROUP_BOT_API_ID")
+        if gvarstatus("PRIVATE_GROUP_BOT_API_ID") is None:
+            return await edit_delete(event, "**⎙ :: عزيزي المستخدم انت لم تقوم باضافه هذا الفار اصلا**")
+        delgvar("PRIVATE_GROUP_BOT_API_ID")
     if input_str == "نص الفحص":
         if gvarstatus("ALIVE_TEXT") is None:
             return await edit_delete(

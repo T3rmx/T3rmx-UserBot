@@ -1,6 +1,6 @@
 # T3rmx UserBot — Feature Inventory (Imported Baseline)
 
-**Source:** audited `jepthon` application baseline (`becff9b70efa494d06439743d45d2476167e815e`)  
+**Source:** audited `T3rmx` application baseline (`becff9b70efa494d06439743d45d2476167e815e`)
 **Inventory date:** 2026-11-18  
 **Status:** comprehensive baseline inventory for preservation during T3rmx migration/rebrand. All listed feature areas are in-scope to preserve unless unsafe mechanics require redesign (with equivalent functionality/behavior where feasible).
 
@@ -41,7 +41,7 @@
 ## 6. Voice chat / music (partially backend-dependent)
 - Configuration flags and user-facing command/help surfaces for VC/music mode (enable/disable, join/leave/play/queue/control concepts in legacy UX).
 - In-repo music helper utilities (download/lyrics/search helpers) present.
-- **External runtime VC backend dependency in legacy (`JepVc`/`jepthonvc`) not verified/bundled:** call-control/playback in voice chats requires a verified backend; preserved via T3rmx-VC adapter interface and graceful status reporting.
+- **External runtime VC backend dependency in legacy (`JepVc`/`t3rmxvc`) not verified/bundled:** call-control/playback in voice chats requires a verified backend; preserved via T3rmx-VC adapter interface and graceful status reporting.
 
 ## 7. Utilities & miscellaneous plugin surface
 Large plugin collection (104 plugin files, 12 assistant modules) covering (representative, non-exhaustive):

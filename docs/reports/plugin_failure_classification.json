@@ -567,7 +567,7 @@
       "traceback_tail": null,
       "missing_module_or_attribute": null,
       "handlers": {
-        "ar_cmd": 21,
+        "ar_cmd": 23,
         "bot_cmd": 0,
         "on": 0
       },
@@ -1667,11 +1667,28 @@
       "traceback_tail": null,
       "missing_module_or_attribute": null,
       "handlers": {
-        "ar_cmd": 0,
+        "ar_cmd": 4,
         "bot_cmd": 0,
         "on": 3
       },
-      "patterns_sample": [],
+      "patterns_sample": [
+        {
+          "pattern": "الاشعارات تفعيل$",
+          "command": null
+        },
+        {
+          "pattern": "النسخة الاحتياطية$",
+          "command": null
+        },
+        {
+          "pattern": "استعادة النسخة$",
+          "command": null
+        },
+        {
+          "pattern": "حذف النسخة$",
+          "command": null
+        }
+      ],
       "config_attributes_referenced": [],
       "config_attributes_missing_from_config": [],
       "required_external_services": [],
@@ -1834,7 +1851,7 @@
       "traceback_tail": null,
       "missing_module_or_attribute": null,
       "handlers": {
-        "ar_cmd": 19,
+        "ar_cmd": 20,
         "bot_cmd": 0,
         "on": 0
       },
@@ -1849,6 +1866,10 @@
         },
         {
           "pattern": "اوامر الصيد",
+          "command": null
+        },
+        {
+          "pattern": "صيد$",
           "command": null
         },
         {
@@ -1873,10 +1894,6 @@
         },
         {
           "pattern": "تثبيت_قناة (.*)",
-          "command": null
-        },
-        {
-          "pattern": "تثبيت_حساب (.*)",
           "command": null
         }
       ],

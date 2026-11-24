@@ -4,7 +4,7 @@
 
 ## 1. Current/legacy dependency sources
 
-### 1.1 Root `requirements.txt` (imported jepthon baseline)
+### 1.1 Root `requirements.txt` (imported T3rmx baseline)
 | Dependency | Spec | Notes / risk | T3rmx action |
 |---|---|---|---|
 | `googletrans` | `==3.1.0a0` | Alpha/unofficial API client; instability risk | Keep only if required by features; evaluate maintained alternative; pin explicitly and document |

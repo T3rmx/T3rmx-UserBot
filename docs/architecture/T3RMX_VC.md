@@ -1,7 +1,7 @@
 # T3rmx-VC Architecture & Status
 
 ## Summary
-Voice chat/music command UX exists in the legacy feature set, but the original implementation depended on runtime installation of an external `JepVc` repository (`jepthonvc`) that is **not verified or bundled** in this migration. T3rmx replaces that unsafe mechanism with an in-repo adapter module.
+Voice chat/music command UX exists in the legacy feature set, but the original implementation depended on runtime installation of an external `JepVc` repository (`t3rmxvc`) that is **not verified or bundled** in this migration. T3rmx replaces that unsafe mechanism with an in-repo adapter module.
 
 ## Components
 - `T3rmx-VC/t3rmx_vc/adapter.py`: backend selection, status/capability reporting, and base interface.

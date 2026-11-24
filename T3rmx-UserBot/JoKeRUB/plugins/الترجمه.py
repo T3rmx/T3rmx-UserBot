@@ -88,16 +88,16 @@ async def _(event):
 
 
 @l313l.ar_cmd(pattern="(الترجمة الفورية|الترجمه الفوريه|ايقاف الترجمة|ايقاف الترجمه)")
-async def reda(event):
+async def t3rmx(event):
     if gvarstatus("transnow"):
         delgvar("transnow")
         await edit_delete(event, "**᯽︙ تم تعطيل الترجمه الفورية **")
     else:
-        addgvar("transnow", "Reda") 
+        addgvar("transnow", "T3rmx")
         await edit_delete(event, "**᯽︙ تم تفعيل الترجمه الفورية**")
 
 @l313l.ar_cmd(pattern="لغة الترجمة")
-async def Reda_is_Here(event):
+async def T3rmx_is_Here(event):
     t = event.text.replace(".لغة الترجمة", "")
     t = t.replace(" ", "")
     try:  
@@ -107,9 +107,9 @@ async def Reda_is_Here(event):
     addgvar("translang", lang)
     await edit_delete(event, f"**᯽︙ تم تغير لغة الترجمة الى {lang} بنجاح ✓ **")
 
-# Reda
+# T3rmx
 @l313l.on(events.NewMessage(outgoing=True))
-async def reda(event):
+async def t3rmx(event):
     if gvarstatus("transnow"):
         if event.media or isinstance(event.media, types.MessageMediaDocument) or isinstance(event.media, types.MessageMediaInvoice):
             print ("JoKeRUB")

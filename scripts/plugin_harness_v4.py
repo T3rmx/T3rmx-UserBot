@@ -309,7 +309,7 @@ def enrich_config(cls):
         'JP_FN': None, 'TIME_JEP': None, 'ID_EM': None, 'ID_ET': None, 'COLOR_TIME': None,
         'DEFAULT_PIC': None, 'DIGITAL_PIC': None, 'DIGITAL_PIC_COLOR': None, 'DIGITAL_GROUP_PIC': None,
         'DIGITAL_GROUP_PIC_COLOR': None, 'CHANGE_TIME': 60, 'PMBOT_START_MSSG': None, 'JOKER_START': None,
-        'PMPERMIT_TEXT_Jepthon': None, 'P_PIC': None, 'P_TEXT': None, 'BOT_PIC': None,
+        'PMPERMIT_TEXT_T3rmx': None, 'P_PIC': None, 'P_TEXT': None, 'BOT_PIC': None,
         'A_PIC': None, 'A_TEXT': None, 'ALIVE_PIC': 'assets/branding/t3rmx-logo.jpg', 'PING_PIC': None,
         'SPAMWATCH_API': None, 'G_DRIVE_CLIENT_ID': None, 'G_DRIVE_CLIENT_SECRET': None, 'G_DRIVE_DATA': None,
         'G_DRIVE_FOLDER_ID': None, 'G_DRIVE_INDEX_LINK': None, 'OCR_SPACE_API_KEY': None, 'REM_BG_API_KEY': None,
@@ -588,6 +588,7 @@ def setup_base_packages(client):
     # specific APIs
     gl = sys.modules['JoKeRUB.sql_helper.globals']
     gl.gvarstatus = lambda k, default=None: default
+    gl.get_all_gvars = lambda: {}
     gl.addgvar = lambda k, v: None
     gl.delgvar = lambda k: None
     pm = sys.modules['JoKeRUB.sql_helper.pmpermit_sql']

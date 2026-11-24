@@ -56,7 +56,7 @@ async def catbroadcast_add(event):
     await edit_delete(event, "• تـم ارسال رسالتك بنجاح ✅ •")
 
 @l313l.ar_cmd(pattern="ازالة التوجيه")
-async def Reda (event):
+async def T3rmx (event):
     if event.message.reply_to_msg_id:
         
         replied_msg = await event.get_reply_message()

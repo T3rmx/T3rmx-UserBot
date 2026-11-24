@@ -26,7 +26,7 @@ from . import deEmojify, reply_id
 
 
 @l313l.ar_cmd(pattern="test(?:\s|$)([\s\S]*)")
-async def reda(event):
+async def t3rmx(event):
     try:
         tr = translate("انا عراقي", lang_tgt="fa").replace("\ N", "\n")
     except Exception:

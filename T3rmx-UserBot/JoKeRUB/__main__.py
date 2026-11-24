@@ -52,6 +52,25 @@ Catcheck = CatCheck()
 async def startup_process():
     # Log groups and optional features are controlled by configuration (safe defaults).
     await verifyLoggerGroup()
+
+    # Settings/config backup lives in the same private log channel. Restore only
+    # on an empty database, then refresh it when anything changed.
+    from .utils.logchannel import (
+        apply_backup_config,
+        refresh_backup,
+        restore_settings_if_empty,
+    )
+
+    apply_backup_config()
+    try:
+        await restore_settings_if_empty(l313l)
+    except Exception as e:
+        LOGS.debug(f"Backup restore skipped: {e}")
+    try:
+        await refresh_backup(l313l)
+    except Exception as e:
+        LOGS.debug(f"Backup refresh skipped: {e}")
+
     await load_plugins("plugins")
     # Every assistant command must be registered. Login status never skips a
     # plugin; Arabic failure messages are only sent when a command is used.

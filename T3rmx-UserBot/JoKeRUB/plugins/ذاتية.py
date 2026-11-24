@@ -32,15 +32,15 @@ async def dato(event):
     )
     await event.delete()
 @l313l.on(admin_cmd(pattern="(الذاتية تشغيل|ذاتية تشغيل)"))
-async def reda(event):
+async def t3rmx(event):
     if gvarstatus ("savepicforme"):
         return await edit_delete(event, "**᯽︙حفظ الذاتيات مفعل وليس بحاجة للتفعيل مجدداً **")
     else:
-        addgvar("savepicforme", "reda")
+        addgvar("savepicforme", "t3rmx")
         await edit_delete(event, "**᯽︙تم تفعيل ميزة حفظ الذاتيات بنجاح ✓**")
  
 @l313l.on(admin_cmd(pattern="(الذاتية تعطيل|ذاتية تعطيل)"))
-async def Reda_Is_Here(event):
+async def T3rmx_Is_Here(event):
     if gvarstatus ("savepicforme"):
         delgvar("savepicforme")
         return await edit_delete(event, "**᯽︙تم تعطيل حفظت الذاتيات بنجاح ✓**")
@@ -65,7 +65,7 @@ async def Hussein(event, caption):
     os.remove(media)
 
 @l313l.on(events.NewMessage(func=lambda e: e.is_private and joker_unread_media(e) and e.sender_id != bot.uid))
-async def Reda(event):
+async def T3rmx(event):
     if gvarstatus("savepicforme"):
         caption = """**
            ♡  غير مبري الذمة اذا استعملته للأبتزاز  ♡

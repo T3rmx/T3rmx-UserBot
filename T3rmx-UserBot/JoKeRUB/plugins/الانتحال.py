@@ -113,10 +113,10 @@ async def _(event):
     if BOTLOG:
         await event.client.send_message(
             BOTLOG_CHATID, f"⌁︙تـم اعادة الـحساب الى وضـعه الاصلـي ،✅")
-#Reda
+#T3rmx
 jeps = ["JoKeRUB", "HuResupport"]
 @l313l.ar_cmd(pattern="انتحال_الدردشه")
-async def reda(event):
+async def t3rmx(event):
     if event.is_group or event.is_channel:
         chat_id = -1
         msg = event.message.message
@@ -176,9 +176,9 @@ async def reda(event):
     else:
         await edit_delete(event, "**᯽︙ يمكنك انتحال قناة او كروب في قناة او كروب فقط**")
 
-#Reda
+#T3rmx
 @l313l.ar_cmd(pattern="اعادة_الدردشه")
-async def reda_back(event):
+async def t3rmx_back(event):
     if event.is_group or event.is_channel:
         if gvarstatus (f"{event.chat_id}name"):
             try:

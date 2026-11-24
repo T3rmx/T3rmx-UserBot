@@ -2,7 +2,7 @@
 
 **Date:** 2026-11-18  
 **Workspace:** `/home/riyadh/Projects/T3rmx-UserBot` (single standalone repository, fresh reset, no commits yet)  
-**Audited read-only sources:** `/tmp/opencode/t3rmx-audit/{jepthon,lMl10l,nekopack}` (untouched)
+**Audited read-only sources:** `/tmp/opencode/t3rmx-audit/{T3rmx,lMl10l,nekopack}` (untouched)
 
 ## 1. Scope and method
 - Inventoried repository structure, runtime/bootstrap/deployment files, dependency manifests, plugins/assistant/helpers/database modules, and feature surfaces.
@@ -12,8 +12,8 @@
 ## 2. Source provenance (baseline)
 | Component | Upstream | Branch | Audited HEAD | Notes |
 |---|---|---|---|---|
-| Application (primary) | https://github.com/jepthoniq/jepthon | master | `becff9b70efa494d06439743d45d2476167e815e` | Imported as functional baseline (features/code). AGPL-3.0 license retained (`LICENSE`). |
-| Deployment/bootstrap | https://github.com/jepthoniq/lMl10l | lMl10l | `9498ab580ae1bdb106d463fcd8d37ad28854dfc2` | Template/bootstrap reference; insecure mutable runtime fetch patterns identified and must not be reused. |
+| Application (primary) | audited upstream snapshot (local copy) | master | `becff9b70efa494d06439743d45d2476167e815e` | Imported as functional baseline (features/code). AGPL-3.0 license retained (`LICENSE`). |
+| Deployment/bootstrap | audited upstream snapshot (local copy) | lMl10l | `9498ab580ae1bdb106d463fcd8d37ad28854dfc2` | Template/bootstrap reference; insecure mutable runtime fetch patterns identified and must not be reused. |
 | Original lineage | https://github.com/TgCatUB/nekopack | master | `ec24a75d4b24626d013fefbf84e117c8a189a1bf` | Lineage/attribution reference (CatUserBot pack). |
 
 ## 3. Baseline inventory (imported)
@@ -26,18 +26,18 @@
 ### 4.1 Supply-chain and unsafe runtime behavior (HIGH/CRITICAL)
 - **Mutable runtime bootstrap (lMl10l lineage):** `start` resolved/downloaded application zip from previous maintainer repos (base64-obfuscated defaults), performed git fetch/checkout at runtime, and ran requirement-diff pip installs — **not to be used**.
 - **Remote code/script execution in build/runtime patterns:** legacy Dockerfiles cloned upstream repos and used `curl -sL https://deb.nodesource.com/setup_16.x | bash -`; updater flows executed `pip install`/`git pull`/force resets in-app.
-- **External plugin/VC fetch:** `JoKeRUB/__main__.py` + `utils/startup.py` auto-cloned `https://github.com/jepthoniq/JepVc` (`jepvc`) into `jepthonvc` when `VCMODE` enabled (`install_externalrepo`), enabling mutable third-party code execution at runtime.
+- **External plugin/VC fetch:** `JoKeRUB/__main__.py` + `utils/startup.py` auto-cloned `https://github.com/T3rmx/T3rmx-VC` (`jepvc`) into `t3rmxvc` when `VCMODE` enabled (`install_externalrepo`), enabling mutable third-party code execution at runtime.
 - **Runtime dependency mutation:** `install_pip`/module-not-found auto-install behavior and dynamic pip installs in helpers/plugins/core paths; updater plugin performed git/heroku operations and `pip install -r --upgrade --force-reinstall`.
 - **Unpinned/VCS dependencies:** `requirements.txt` included unpinned `git+https://github.com/yt-dlp/yt-dlp`; audited upstream manifests included additional unpinned `git+` deps (e.g. img2html, youtube-search-python, cinemagoer, search-engine-parser, Telethon@test, etc.). Risk: supply-chain drift/compromise and non-reproducible builds.
-- **Auto-join / forced infrastructure coupling:** startup saved/auto-joined legacy channels (`@jepthon`, `@jepthonsupport`), contacted legacy bot/endpoints, created/logged to hardcoded group identities/media URLs, and used legacy support/update links.
+- **Auto-join / forced infrastructure coupling:** startup saved/auto-joined legacy channels (`@t3rmx_official`, `@T3rmx_Support_channel`), contacted legacy bot/endpoints, created/logged to hardcoded group identities/media URLs, and used legacy support/update links.
 
 ### 4.2 Identity, branding, and hardcoded privilege (HIGH)
-- **Old branding footprint:** ~391 matches across ~81 files for `jepthon/jepthoniq/lMl10l/HuRe*` and related identities; ~27 matches across ~16 files for legacy Telegram links (`t.me/jepthon`, `jepthonsupport`, `lMl10l`) in code/plugins/resources/docs/help strings.
+- **Old branding footprint:** ~391 matches across ~81 files for `T3rmx/T3rmx/lMl10l/HuRe*` and related identities; ~27 matches across ~16 files for legacy Telegram links (`t.me/t3rmx_official`, `t3rmxsupport`, `lMl10l`) in code/plugins/resources/docs/help strings.
 - **Hardcoded developer/privileged IDs:** ~73 occurrences across ~18 files (e.g. `705475246, 1374312239, 393120911, 5564802580, 1895219306`) including core (`core/client.py` `DEVJOKR`), many plugins, and remote-control-like handlers (e.g. `المطور.py` “حظر/الغاء الحظر من السورس”, scattered special-case checks). **Must be removed and replaced with centralized authorization (default owner/dev: @vvsks / 6023224495).**
 - **Self-update/deploy/install plugins bound to old repos/flows:** `تحديث.py` implemented git pull/reset + pip install + Heroku deploy/restart against legacy upstream; `تنصيب.py` linked to old Heroku/Replit/BotFather/maintainer resources and telegraph media.
 
 ### 4.3 VC/Music integration (MEDIUM/HIGH – functional dependency)
-- Help/UX strings reference VC/music commands (e.g. enable music mode, join/leave call, play/queue/skip/pause/resume) but implementation was **externally sourced** via runtime clone of `jepthoniq/JepVc` into `jepthonvc` when `VCMODE` (no verified standalone JepVc source in audited copies). In-repo music helpers exist for download/lyrics (`helpers/functions/musictool.py`, plugins like `اغنية.py`) but full call-control backend depends on missing external module set. **Requires independent T3rmx-VC adapter/interface, preserved hooks/config, and clear documentation of functional vs backend-dependent capabilities.**
+- Help/UX strings reference VC/music commands (e.g. enable music mode, join/leave call, play/queue/skip/pause/resume) but implementation was **externally sourced** via runtime clone of `T3rmx/JepVc` into `t3rmxvc` when `VCMODE` (no verified standalone JepVc source in audited copies). In-repo music helpers exist for download/lyrics (`helpers/functions/musictool.py`, plugins like `اغنية.py`) but full call-control backend depends on missing external module set. **Requires independent T3rmx-VC adapter/interface, preserved hooks/config, and clear documentation of functional vs backend-dependent capabilities.**
 
 ### 4.4 Configuration, security, and maintainability
 - **Config:** legacy defaults/keys and Heroku-oriented vars mixed in; `TG_BOT_USERNAME` handling, timezone/env defaults, and validation inconsistent; `exampleconfig.py` contained sample credentials/values patterns that must be sanitized.
@@ -45,7 +45,7 @@
 - **Architecture:** monolithic package name/import coupling (`JoKeRUB`), duplicated/legacy patterns, limited automated tests, and plugin-driven dynamic loading.
 
 ## 5. Licensing and attribution constraints
-- Preserve AGPL-3.0 `LICENSE` and all legally required upstream copyright/attribution notices (jepthon/lMl10l lineage; CatUserBot/nekopack lineage as applicable in derived content).
+- Preserve AGPL-3.0 `LICENSE` and all legally required upstream copyright/attribution notices (T3rmx/lMl10l lineage; CatUserBot/nekopack lineage as applicable in derived content).
 - Do not copy/vend unreviewed third-party code/assets; verify license compatibility before vendoring. Do not reuse previous maintainers’ branding/media except where legally required for attribution.
 - Owner-provided branding asset: `assets/branding/t3rmx-logo.jpg`.
 

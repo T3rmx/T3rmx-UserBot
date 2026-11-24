@@ -57,7 +57,7 @@ async def repo(event):
     await event.delete()
 
 @l313l.ar_cmd(pattern="اشتراك")
-async def reda(event):
+async def t3rmx(event):
     ty = event.text
     ty = ty.replace(".اشتراك", "")
     ty = ty.replace(" ", "")
@@ -82,7 +82,7 @@ async def reda(event):
     if ty not in ["خاص", "كروب"]:
         return await edit_delete(event, "**᯽︙ قم بكتابة نوع الاشتراك الاجباري خاص او كروب 🤔**")
 @l313l.ar_cmd(pattern="تعطيل")
-async def reda (event):
+async def t3rmx (event):
     cc = event.text.replace(".تعطيل", "")
     cc = cc.replace(" ", "")
     if len (cc) < 2:
@@ -103,7 +103,7 @@ async def reda (event):
         return await edit_delete(event, "**᯽︙ قم بكتابة نوع الاشتراك الاجباري لإلغائه ✓**")
 
 @l313l.ar_cmd(incoming=True)
-async def reda(event):
+async def t3rmx(event):
     if gvarstatus("subprivate"):
         if event.is_private:
             try:

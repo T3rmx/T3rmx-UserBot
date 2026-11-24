@@ -31,7 +31,7 @@
 
 ### 5) Branding/legacy cleanup — preserved (no new exhaustive runtime verification)
 - Prior reconciliation retained: runtime/app surfaces cleaned except intentional attribution/provenance/compatibility records and compatibility aliases/identifiers where required.
-- Legacy assets (`T3rmx-UserBot/l313l/razan/resources/start/Jepthon.JPEG`, `Jepthon2.JPEG`) remain retained pending exhaustive runtime/media usage audit; no removal/replacement in this turn.
+- Legacy assets (`T3rmx-UserBot/l313l/razan/resources/start/T3rmx.JPEG`, `T3rmx2.JPEG`) remain retained pending exhaustive runtime/media usage audit; no removal/replacement in this turn.
 - Exhaustive manual/runtime user-facing verification across plugins/assistant/inline/callbacks/captions/stickers/localized strings/errors remains pending.
 
 ### 6) Functional tests — partially completed (expanded mocked evidence, not full runtime/E2E)

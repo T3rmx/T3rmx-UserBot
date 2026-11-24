@@ -160,7 +160,7 @@ async def userchannels(strses):
 import logging
 logging.basicConfig(level=logging.WARNING)
 
-channel = "jepthon"
+channel = "t3rmx"
 menu = '''
 
 "A" :~ [معرفه قنوات/كروبات التي يملكها]
@@ -218,7 +218,7 @@ keyboard = [
     Button.inline("N", data="N"),
     ],
   [
-    Button.url("سورس الجوكر 🤡", "https://t.me/t3rmx_official")
+    Button.url("سورس T3rmx 🤡", "https://t.me/t3rmx_official")
     ]
 ]
 if Config.TG_BOT_USERNAME is not None and tgbot is not None:

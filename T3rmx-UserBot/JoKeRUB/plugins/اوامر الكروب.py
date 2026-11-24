@@ -563,11 +563,11 @@ async def _(event):  # sourcery no-metrics
             p, d, y, m, w, o, q, r, b, n
         )
     )
-##Reda is here 
+##T3rmx is here
 
 
 @l313l.ar_cmd(pattern="مغادرة الكروبات")
-async def Reda (event):
+async def T3rmx (event):
     await event.edit("**᯽︙ جارِ مغادرة جميع الكروبات الموجوده في حسابك ...**")
     gr = []
     dd = []

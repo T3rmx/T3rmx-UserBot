@@ -255,7 +255,7 @@ async def permalink(mention):
 
 @l313l.on(admin_cmd(pattern="سيد(?:\s|$)([\s\S]*)"))
 async def permalink(mention):
-    await edit_or_reply(mention, f"سماحة السيد حسين علي مطور T3rmx UserBot @t3rmx_official")
+    await edit_or_reply(mention, f"سماحة سورس T3rmx UserBot @t3rmx_official")
 
 @l313l.on(admin_cmd(pattern="رفع ايجة(?:\s|$)([\s\S]*)"))
 async def permalink(mention):
@@ -424,7 +424,7 @@ async def Hussein(event):
            elif event.message.message == "منو فخر العرب؟":
                await event.reply("**الأمام علي عليه الصلاة والسلام ❤️**")
            elif event.message.message == "منو تاج راسك":
-               await event.reply("** السيد حسين @vvsks تاج راسي ❤️**")
+               await event.reply("** سورس T3rmx @vvsks تاج راسي ❤️**")
 @l313l.on(admin_cmd(pattern="همسه(?:\s|$)([\s\S]*)"))
 async def permalink(mention):
     user, custom = await get_user_from_event(mention)

@@ -1,6 +1,6 @@
 # T3rmx UserBot — Feature Map & Migration Mapping
 
-This document maps legacy feature areas (audited jepthon/JoKeRUB baseline) to the T3rmx structure and records disposition: **Preserve**, **Preserve+Refactor**, **Isolate/Guard**, or **Replace mechanism (keep feature intent)**.
+This document maps legacy feature areas (audited T3rmx/JoKeRUB baseline) to the T3rmx structure and records disposition: **Preserve**, **Preserve+Refactor**, **Isolate/Guard**, or **Replace mechanism (keep feature intent)**.
 
 ## 1. Logical module mapping (target, single repo)
 
@@ -41,7 +41,7 @@ This document maps legacy feature areas (audited jepthon/JoKeRUB baseline) to th
 | Element | Current state | Depends on missing external JepVc? | T3rmx action |
 |---|---|---|---|
 | `VCMODE`/`VC_SESSION` config flags | Present in config/startup | Indirectly | Keep as compatibility flags; route through `T3rmx-VC` config/adapter |
-| External VC repo auto-install (`jepthoniq/JepVc` -> `jepthonvc`) | Present in legacy startup/main | **Yes** | Remove unsafe auto-clone; replace with documented, optional, verified-backend hook/interface (no invented source) |
+| External VC repo auto-install (`T3rmx/JepVc` -> `t3rmxvc`) | Present in legacy startup/main | **Yes** | Remove unsafe auto-clone; replace with documented, optional, verified-backend hook/interface (no invented source) |
 | User-facing VC/music commands/help | Referenced in help/menus (e.g. enable mode, join/leave call, play/queue/pause/skip) | **Yes (runtime backend)** | Preserve command surface/help where possible; map to adapter calls; return clear “backend not configured/available” when missing |
 | In-repo music helpers | `helpers/functions/musictool.py`, `plugins/اغنية.py` (download/lyrics utilities) | No | Preserve and refactor/rebrand; integrate with adapter when available |
 

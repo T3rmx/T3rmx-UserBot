@@ -16,7 +16,7 @@ plugin_category = "tools"
 
 
 @l313l.ar_cmd(pattern="المكاتب")
-async def reda(event):
+async def t3rmx(event):
     if pkg_resources is None:
         try:
             from importlib import metadata as importlib_metadata
@@ -93,7 +93,7 @@ async def _(event):
         event, f"**᯽︙ نـشـرت هـذه الـرسالة فـي  :** `{yaml_format(result)}`"
     )
 @l313l.ar_cmd(pattern="رابط مباشر")
-async def upload_reda(event):
+async def upload_t3rmx(event):
     r = await event.get_reply_message()
     if r is None:
         return await edit_delete(event, "**᯽︙قم بالرد على ملف لرفعهُ**")

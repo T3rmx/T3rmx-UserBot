@@ -33,8 +33,8 @@ This document is the authoritative reference for T3rmx project identity, ownersh
 
 ## Upstream attribution (legal/provenance)
 This repository is an independent T3rmx project built from audited application/deployment lineage code with rebranding and modernization. Required attribution must be preserved per licenses:
-- **Application source lineage:** https://github.com/jepthoniq/jepthon (audited snapshot commit `becff9b70efa494d06439743d45d2476167e815e`)
-- **Deployment/bootstrap lineage:** https://github.com/jepthoniq/lMl10l (audited snapshot commit `9498ab580ae1bdb106d463fcd8d37ad28854dfc2`)
+- **Application source lineage:** audited upstream snapshot (commit `becff9b70efa494d06439743d45d2476167e815e`)
+- **Deployment/bootstrap lineage:** audited upstream snapshot (commit `9498ab580ae1bdb106d463fcd8d37ad28854dfc2`)
 - **Original deployment/pack lineage:** https://github.com/TgCatUB/nekopack (audited snapshot commit `ec24a75d4b24626d013fefbf84e117c8a189a1bf`, CatUserBot lineage)
 
 See `docs/audit/SOURCE_PROVENANCE.md` and retained `LICENSE`/notice files for details.

@@ -186,6 +186,6 @@ python3 -m JoKeRUB
 
 ## Attribution
 
-This project is derived from audited upstream Telegram userbot codebases (including Jepthon/CatUserBot lineage). See [BRANDING.md](BRANDING.md) and [docs/audit/SOURCE_PROVENANCE.md](docs/audit/SOURCE_PROVENANCE.md).
+T3rmx UserBot is an independent project built on audited, rebranded upstream Telegram userbot codebases (CatUserBot lineage). See [BRANDING.md](BRANDING.md) and [docs/audit/SOURCE_PROVENANCE.md](docs/audit/SOURCE_PROVENANCE.md).
 
 **Disclaimer:** Use responsibly and in compliance with Telegram’s Terms of Service and applicable laws. You are responsible for your account, credentials, and deployment.

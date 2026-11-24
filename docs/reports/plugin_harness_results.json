@@ -3,7 +3,7 @@
     "total": 106,
     "exec_ok": 106,
     "failed": 0,
-    "with_ar_cmd": 93,
+    "with_ar_cmd": 94,
     "with_bot_cmd": 0,
     "with_on": 34,
     "by_classification": {
@@ -417,7 +417,7 @@
       "file": "الاوامر.py",
       "name": "الاوامر",
       "exec_ok": true,
-      "handlers_ar_cmd": 21,
+      "handlers_ar_cmd": 23,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
       "patterns": [
@@ -1377,10 +1377,27 @@
       "file": "السجلات.py",
       "name": "السجلات",
       "exec_ok": true,
-      "handlers_ar_cmd": 0,
+      "handlers_ar_cmd": 4,
       "handlers_bot_cmd": 0,
       "handlers_on": 3,
-      "patterns": [],
+      "patterns": [
+        {
+          "pattern": "الاشعارات تفعيل$",
+          "command": null
+        },
+        {
+          "pattern": "النسخة الاحتياطية$",
+          "command": null
+        },
+        {
+          "pattern": "استعادة النسخة$",
+          "command": null
+        },
+        {
+          "pattern": "حذف النسخة$",
+          "command": null
+        }
+      ],
       "error_type": null,
       "error": null,
       "traceback_tail": null,
@@ -1504,7 +1521,7 @@
       "file": "الصيد.py",
       "name": "الصيد",
       "exec_ok": true,
-      "handlers_ar_cmd": 19,
+      "handlers_ar_cmd": 20,
       "handlers_bot_cmd": 0,
       "handlers_on": 0,
       "patterns": [
@@ -1518,6 +1535,10 @@
         },
         {
           "pattern": "اوامر الصيد",
+          "command": null
+        },
+        {
+          "pattern": "صيد$",
           "command": null
         },
         {
@@ -1562,10 +1583,6 @@
         },
         {
           "pattern": "حالة تثبيت_القناة",
-          "command": null
-        },
-        {
-          "pattern": "حالة تثبيت_الحساب",
           "command": null
         }
       ],

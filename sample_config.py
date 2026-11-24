@@ -156,7 +156,7 @@ class Config(object):
     PHOTO_ET = os.environ.get("PHOTO_ET", None)
     LOAD_MYBOT = os.environ.get("LOAD_MYBOT", "True")
     JOKER_START = os.environ.get("JOKER_START", None)
-    PMPERMIT_TEXT_Jepthon = os.environ.get("PMPERMIT_TEXT_Jepthon", None)
+    PMPERMIT_TEXT_T3rmx = os.environ.get("PMPERMIT_TEXT_T3rmx", None)
     UB_BLACK_LIST_CHAT = {int(x) for x in os.environ.get("UB_BLACK_LIST_CHAT", "").split() if str(x).strip().lstrip('-').isdigit()}
     TAG_LOGGER = _get_int("TAG_LOGGER", 0)
     P_PIC = os.environ.get("P_PIC", None)
