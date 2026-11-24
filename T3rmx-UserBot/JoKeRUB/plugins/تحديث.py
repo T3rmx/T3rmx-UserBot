@@ -193,10 +193,15 @@ def _local_blob_hashes(tree, root: str):
         if not path or _is_protected(path) or path.startswith("docs/reports/"):
             continue
         local_path = os.path.join(root, *path.split("/"))
-        if not os.path.isfile(local_path):
+        if not os.path.lexists(local_path):
             continue
         try:
-            payload = Path(local_path).read_bytes()
+            # Git stores symlinks as the link target bytes, not the target
+            # file's contents. Follow that rule so fresh deployments match.
+            if os.path.islink(local_path):
+                payload = os.readlink(local_path).encode("utf-8")
+            else:
+                payload = Path(local_path).read_bytes()
         except Exception:
             continue
         hashes[path] = _git_blob_sha(payload)
