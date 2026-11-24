@@ -144,11 +144,27 @@ def main():
         (root / "target.py").write_bytes(b"target contents\n")
         (root / "link.py").symlink_to("target.py")
         link_sha = module._git_blob_sha(b"target.py")
-        link_tree = [{"type": "blob", "path": "link.py", "sha": link_sha}]
+        link_tree = [
+            {"type": "blob", "path": "link.py", "mode": "120000", "sha": link_sha}
+        ]
         hashes = module._local_blob_hashes(link_tree, tmp)
         check(
             hashes.get("link.py") == link_sha,
             "symlink blob hash followed the target instead of hashing the link",
+        )
+
+        (root / "plain.py").write_bytes(b"target contents\n")
+        dereferenced = [
+            {
+                "type": "blob",
+                "path": "plain.py",
+                "mode": "120000",
+                "sha": module._git_blob_sha(b"target contents\n"),
+            }
+        ]
+        check(
+            module._local_blob_hashes(dereferenced, tmp) == {},
+            "dereferenced symlink was treated as a regular source file",
         )
 
     tree = make_tree()

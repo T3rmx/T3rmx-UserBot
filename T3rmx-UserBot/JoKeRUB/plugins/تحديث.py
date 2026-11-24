@@ -195,13 +195,20 @@ def _local_blob_hashes(tree, root: str):
         local_path = os.path.join(root, *path.split("/"))
         if not os.path.lexists(local_path):
             continue
+        git_link = str(entry.get("mode") or "") == "120000"
+        local_link = os.path.islink(local_path)
+        # Deployment snapshots may dereference symlinks. A type mismatch is
+        # not a source change, so leave that path out of the fingerprint.
+        if git_link != local_link:
+            continue
         try:
             # Git stores symlinks as the link target bytes, not the target
             # file's contents. Follow that rule so fresh deployments match.
-            if os.path.islink(local_path):
-                payload = os.readlink(local_path).encode("utf-8")
-            else:
-                payload = Path(local_path).read_bytes()
+            payload = (
+                os.readlink(local_path).encode("utf-8")
+                if local_link
+                else Path(local_path).read_bytes()
+            )
         except Exception:
             continue
         hashes[path] = _git_blob_sha(payload)
