@@ -215,6 +215,24 @@ def _local_blob_hashes(tree, root: str):
     return hashes
 
 
+def _fingerprint_stats(tree, root: str):
+    """Return (matched, mismatched, sample paths) for update diagnostics."""
+    hashes = _local_blob_hashes(tree, root)
+    matched = 0
+    mismatched = []
+    for entry in tree or []:
+        if not isinstance(entry, dict) or entry.get("type") != "blob":
+            continue
+        path = str(entry.get("path") or "")
+        if path not in hashes:
+            continue
+        if str(entry.get("sha") or "").lower() == hashes[path].lower():
+            matched += 1
+        else:
+            mismatched.append(path)
+    return matched, mismatched
+
+
 def _commit_from_tree(tree, remote_sha: str, root: str) -> str:
     """Infer the deployed commit from byte-for-byte source matches.
 
@@ -729,6 +747,17 @@ async def check_updates(event):
         f"• الحالة: **{status}**",
         f"• رابط التحديث: {commit_url}",
     ]
+    if local_commit == "غير معروف":
+        matched, mismatched = await asyncio.to_thread(
+            _fingerprint_stats, latest.get("tree") or [], _repo_root()
+        )
+        if mismatched:
+            lines.append(
+                f"• تشخيص المصدر: تطابق {matched}، اختلاف {len(mismatched)} "
+                f"(أول ملف: `{mismatched[0]}`)"
+            )
+        else:
+            lines.append(f"• تشخيص المصدر: تطابق {matched}، لا اختلافات")
     if remote_version:
         lines.append(f"• نسخة السورس: `{remote_version}`")
     if latest.get("message"):
