@@ -1599,13 +1599,17 @@
       "file": "السجلات.py",
       "name": "السجلات",
       "exec_ok": true,
-      "handlers_ar_cmd": 4,
+      "handlers_ar_cmd": 5,
       "handlers_bot_cmd": 0,
       "handlers_on": 3,
       "on_patterns": [],
       "patterns": [
         {
           "pattern": "الاشعارات تفعيل$",
+          "command": null
+        },
+        {
+          "pattern": "المجلد$",
           "command": null
         },
         {

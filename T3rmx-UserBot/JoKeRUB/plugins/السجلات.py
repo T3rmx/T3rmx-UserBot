@@ -11,6 +11,7 @@ from ..utils.logchannel import (
     apply_backup_config,
     delete_backups,
     ensure_log_channel,
+    ensure_t3rmx_folder,
     is_backup_message,
     refresh_backup,
     restore_settings_if_empty,
@@ -92,6 +93,23 @@ async def _enable_notifications_command(event):
     await event.edit(
         note + f"**تم تفعيل الإشعارات. افتح القناة: [{title}]({link})**",
         link_preview=False,
+    )
+
+
+@l313l.ar_cmd(pattern="المجلد$")
+async def _t3rmx_folder_command(event):
+    if not is_owner(event.sender_id):
+        return
+    await event.edit("**جاري تجهيز مجلد T3rmx وضم المجموعات والقنوات إليه...**")
+    try:
+        _, included, archived = await ensure_t3rmx_folder(event.client)
+    except Exception as exc:
+        LOGS.exception("تعذر تجهيز مجلد T3rmx")
+        await event.edit(f"**تعذر تجهيز المجلد:** `{type(exc).__name__}`")
+        return
+    await event.edit(
+        f"**تم تجهيز مجلد T3rmx وضم {included} مجموعة/قناة إليه، "
+        f"وأرشفة {archived} منها خارج القائمة الرئيسية.**"
     )
 
 

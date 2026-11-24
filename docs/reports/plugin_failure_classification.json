@@ -1669,13 +1669,17 @@
       "traceback_tail": null,
       "missing_module_or_attribute": null,
       "handlers": {
-        "ar_cmd": 4,
+        "ar_cmd": 5,
         "bot_cmd": 0,
         "on": 3
       },
       "patterns_sample": [
         {
           "pattern": "الاشعارات تفعيل$",
+          "command": null
+        },
+        {
+          "pattern": "المجلد$",
           "command": null
         },
         {

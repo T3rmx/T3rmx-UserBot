@@ -10,7 +10,9 @@ import os
 import tempfile
 from pathlib import Path
 
+from telethon.tl import functions, types
 from telethon.tl.functions.channels import CreateChannelRequest
+from telethon.utils import get_input_peer
 
 from ..Config import Config
 from ..core.logger import logging
@@ -26,6 +28,8 @@ BACKUP_FP_GVAR = "T3RMX_SETTINGS_BACKUP_FINGERPRINT"
 BACKUP_RESTORED_GVAR = "T3RMX_SETTINGS_RESTORED"
 CONFIG_PREFIX = "T3RMX_CFG_"
 BACKUP_MARKER = "#T3RMX_BACKUP"
+FOLDER_TITLE = "T3rmx"
+FOLDER_EMOJI = "📁"
 
 # Never include credentials or connection secrets in the backup file.
 _SECRET_KEY_PARTS = (
@@ -228,6 +232,150 @@ async def ensure_storage_group(client):
     Config.PM_LOGGER_GROUP_ID = cid
     LOGS.info("تم إنشاء كروب التخزين بنجاح")
     return cid, True
+
+
+def _entity_key(entity) -> tuple | None:
+    try:
+        return (type(entity).__name__, int(entity.id))
+    except Exception:
+        return None
+
+
+async def _folder_entities(client):
+    """Collect every group/channel the bot is in or uses via its commands."""
+    entities = {}
+
+    try:
+        async for dialog in client.iter_dialogs():
+            entity = dialog.entity
+            if isinstance(entity, types.User):
+                continue
+            if not (
+                getattr(dialog, "is_group", False)
+                or getattr(dialog, "is_channel", False)
+                or getattr(entity, "megagroup", False)
+                or getattr(entity, "broadcast", False)
+            ):
+                continue
+            key = _entity_key(entity)
+            if key:
+                entities.setdefault(key, entity)
+    except Exception as exc:
+        LOGS.debug("تعذر تعداد محادثات مجلد T3rmx: %s", exc)
+
+    extra_ids = []
+    try:
+        configured_log = await get_log_channel_id()
+        if configured_log:
+            extra_ids.append(configured_log)
+    except Exception:
+        pass
+    for value in (
+        gvarstatus(STORAGE_GROUP_GVAR),
+        getattr(Config, "PM_LOGGER_GROUP_ID", None),
+        getattr(Config, "PRIVATE_GROUP_BOT_API_ID", None),
+    ):
+        cid = _normalize_chat_id(value)
+        if cid:
+            extra_ids.append(cid)
+
+    for cid in extra_ids:
+        try:
+            entity = await client.get_entity(cid)
+            if isinstance(entity, types.User):
+                continue
+            key = _entity_key(entity)
+            if key:
+                entities.setdefault(key, entity)
+        except Exception as exc:
+            LOGS.debug("تعذر إضافة `%s` إلى مجلد T3rmx: %s", cid, exc)
+
+    peers = []
+    seen = set()
+    for entity in entities.values():
+        try:
+            peer = get_input_peer(entity)
+        except Exception:
+            continue
+        if not peer or isinstance(peer, types.InputPeerUser):
+            continue
+        marker = getattr(peer, "channel_id", None)
+        if marker is None:
+            marker = getattr(peer, "chat_id", None)
+        if marker is None:
+            continue
+        identity = (type(peer).__name__, marker)
+        if identity in seen:
+            continue
+        seen.add(identity)
+        peers.append(peer)
+
+    return list(entities.values()), peers
+
+
+async def ensure_t3rmx_folder(client):
+    """Create or refresh the T3rmx chat folder and archive its chats.
+
+    Returns ``(folder_id, included_count, archived_count)``. Existing folders
+    are reused so repeated startup runs never create duplicates.
+    """
+    entities, peers = await _folder_entities(client)
+
+    filters = []
+    try:
+        result = await client(functions.messages.GetDialogFiltersRequest())
+        filters = getattr(result, "filters", []) or []
+    except Exception as exc:
+        LOGS.debug("تعذر قراءة مجلدات المحادثات: %s", exc)
+
+    existing = next(
+        (
+            item
+            for item in filters
+            if isinstance(item, types.DialogFilter)
+            and getattr(item, "title", None) == FOLDER_TITLE
+        ),
+        None,
+    )
+    used_ids = {
+        int(item.id)
+        for item in filters
+        if getattr(item, "id", None) is not None and int(item.id) > 0
+    }
+    if existing is not None:
+        folder_id = int(existing.id)
+    else:
+        folder_id = next(
+            (index for index in range(1, 11) if index not in used_ids),
+            max(used_ids or [0]) + 1,
+        )
+
+    dialog_filter = types.DialogFilter(
+        id=folder_id,
+        title=FOLDER_TITLE,
+        pinned_peers=[],
+        include_peers=peers,
+        exclude_peers=[],
+        emoticon=FOLDER_EMOJI,
+        exclude_archived=False,
+    )
+    await client(
+        functions.messages.UpdateDialogFilterRequest(
+            id=folder_id,
+            filter=dialog_filter,
+        )
+    )
+
+    archived = 0
+    for entity in entities:
+        try:
+            await client.edit_folder(entity, 1)
+            archived += 1
+        except Exception as exc:
+            LOGS.debug("تعذر أرشفة `%s`: %s", getattr(entity, "title", entity.id), exc)
+
+    LOGS.info("مجلد T3rmx جاهز: %s محادثة، تم أرشفة %s منها", len(peers), archived)
+    return folder_id, len(peers), archived
 
 
 async def send_log_alert(client, text: str) -> bool:

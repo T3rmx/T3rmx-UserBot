@@ -367,6 +367,15 @@ async def verifyLoggerGroup():
         except Exception as e:
             LOGS.debug(f"Auto log channel creation skipped: {e}")
 
+    # Keep the T3rmx folder in sync with every group/channel the bot uses.
+    try:
+        from .logchannel import ensure_t3rmx_folder
+
+        _, included, _ = await ensure_t3rmx_folder(l313l)
+        LOGS.info(f"T3rmx chat folder ready with {included} chats")
+    except Exception as e:
+        LOGS.debug(f"Auto T3rmx folder sync skipped: {e}")
+
     if BOTLOG:
         try:
             entity = await l313l.get_entity(BOTLOG_CHATID)
