@@ -73,7 +73,12 @@ def _branch() -> str:
 
 
 def _repo_root() -> str:
-    return os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
+    # The container uses a top-level JoKeRUB symlink (COPY . /app), so __file__
+    #can point through that link. Resolve it first; otherwise updates would be
+    #written to the filesystem root while Python keeps importing the old code.
+    return os.path.abspath(
+        os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "..", "..")
+    )
 
 
 def _commit_state_path() -> str:
