@@ -393,6 +393,14 @@ def _copy_tree(source: str, destination: str) -> int:
             os.makedirs(os.path.dirname(dst), exist_ok=True)
             shutil.copy2(src, dst)
             copied += 1
+    # Stale bytecode from an older deploy can survive a file copy and keep
+    # loading removed handlers (e.g. the old inline photo result). Drop it so
+    # the restarted process always compiles the code that was just installed.
+    for root, dirs, _ in os.walk(destination):
+        dirs[:] = [d for d in dirs if d != "__pycache__"]
+        if os.path.basename(root) == "__pycache__":
+            shutil.rmtree(root, ignore_errors=True)
+            dirs[:] = []
     return copied
 
 
@@ -672,7 +680,8 @@ async def _apply_selective(event, msg, kind: str, value: str, latest: dict, repo
 
 
 def _restart():
-    os.execv(sys.executable, [sys.executable, "-m", "JoKeRUB"])
+    executable = sys.executable.replace(" ", "\\ ")
+    os.execle(executable, executable, "-m", "JoKeRUB", os.environ)
 
 
 @l313l.ar_cmd(
