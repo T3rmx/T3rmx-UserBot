@@ -1,10 +1,18 @@
-# T3rmx UserBot assistant - session management commands.
-# Use /hack to list the numbered commands, then /hack <number>.
+# T3rmx UserBot - session management commands.
+#
+# Works in two places:
+#   * Userbot: send /hack (or .هاك) in any chat, including Saved Messages.
+#   * Assistant bot: send /hack in its private chat.
+#
+# Numbered commands: /hack 1 ... /hack 14, with /hack 0 (or plain /hack) for help.
+# Save your session once with: /hack session <termux-code>
+# Or pass it inline for a single command: /hack 2 <termux-code>
 
-from JoKeRUB import bot
+from JoKeRUB import bot, l313l
 from ..core.session import tgbot
 from ..core.auth import is_owner
 from ..core.logger import logging
+from ..sql_helper.globals import addgvar, delgvar, gvarstatus
 from telethon import events, functions, types, Button
 from JoKeRUB.utils import admin_cmd
 from ..Config import Config
@@ -28,7 +36,41 @@ Bot_Username = Config.TG_BOT_USERNAME or "sessionHackBot"
 SUPPORT_URL = "https://t.me/t3rmx_official"
 BROADCAST_SKIP_CHAT_IDS = {-1001606996743}
 BROADCAST_DELAY = 0.5
-REPLY_TIMEOUT = 300
+SESSION_KEY = "t3rmx_hack_session"
+
+HACK_PATTERN = r"^/hack(?:\s+(\S+))?(?:\s+(.*))?$"
+
+HELP = """᯽︙ أوامر إدارة الجلسات - أرسل الأمر ثم الرقم:
+
+/hack 0  عرض هذه القائمة
+/hack session <كود التيرمكس>  حفظ الجلسة مرة واحدة لكل الأوامر
+
+/hack 1  عرض قنوات/كروبات التي تملكها الجلسة
+/hack 2  معلومات الحساب (الاسم، المعرف، الإيدي)
+/hack 3  حظر جميع أعضاء كروب/قناه  [يحتاج: يوزر/إيدي الكروب]
+/hack 4  جلب آخر رسالة تحتوي كود دخول من تليجرام
+/hack 5  انضمام الجلسة إلى كروب/قناه  [يحتاج: يوزر/إيدي الكروب]
+/hack 6  مغادرة الجلسة من كروب/قناه  [يحتاج: يوزر/إيدي الكروب]
+/hack 7  حذف كروب/قناه تملكها الجلسة  [يحتاج: يوزر/إيدي الكروب]
+/hack 8  فحص حالة التحقق بخطوتين (بدون تغييرها)
+/hack 9  إنهاء جميع جلسات الحساب عدا الحالية
+/hack 10 حذف الحساب نهائياً
+/hack 11 عزل جميع مشرفين كروب/قناه  [يحتاج: يوزر/إيدي الكروب]
+/hack 12 ترقية عضو إلى مشرف  [يحتاج: يوزر الكروب + يوزر العضو]
+/hack 13 تغيير رقم الحساب  [يحتاج: الرقم + phone_code_hash + OTP]
+/hack 14 إذاعة رسالة  [يحتاج: all|groups|private + الرسالة]
+
+أمثلة:
+/hack session <كود التيرمكس>
+/hack 1
+/hack 14 groups مرحباً من T3rmx
+/hack 2 <كود التيرمكس>  (جلسة لمرة واحدة)
+
+قناة السورس: https://t.me/t3rmx_official"""
+
+
+class HackError(Exception):
+    """User-facing error raised by a numbered command."""
 
 
 # ---------------------------------------------------------------------------
@@ -203,231 +245,213 @@ async def _broadcast(strses, msg, scope):
 
 
 # ---------------------------------------------------------------------------
-# Command plumbing
+# Dispatcher
 # ---------------------------------------------------------------------------
 
-class HackError(Exception):
-    """User-facing error raised by a numbered command."""
-
-
-async def ask(x, prompt):
-    await x.send_message(prompt)
-    try:
-        return await x.get_response(timeout=REPLY_TIMEOUT)
-    except asyncio.TimeoutError as err:
-        raise HackError("انتهت مهلة الانتظار. أعد الأمر وأرسل الرد المطلوب.") from err
-
-
-async def session_from(x):
-    reply = await ask(x, "أرسل كود التيرمكس (الجلسة) الآن.")
-    code = (reply.text or "").strip()
+async def _resolve_session(event, inline_session=None):
+    code = (inline_session or gvarstatus(SESSION_KEY) or "").strip()
+    if not code:
+        raise HackError("لم يتم حفظ جلسة. أرسل: /hack session <كود التيرمكس>")
     if not await cu(code):
-        raise HackError("هذه الجلسة غير صالحة أو منتهية.")
-    LOGS.info("session accepted for a /hack command")
+        raise HackError("الجلسة غير صالحة أو منتهية. أعد حفظها بـ /hack session.")
     return code
 
 
-HELP = """᯽︙ أوامر إدارة الجلسات - أرسل الأمر ثم الرقم:
-
-/hack 1  عرض قنوات/كروبات التي تملكها الجلسة
-/hack 2  معلومات الحساب (الاسم، المعرف،-Id)
-/hack 3  طرد جميع أعضاء كروب/قناه
-/hack 4  جلب آخر رسالة تحتوي كود دخول من تليجرام
-/hack 5  انضمام الجلسة إلى كروب/قناه
-/hack 6  مغادرة الجلسة من كروب/قناه
-/hack 7  حذف كروب/قناه تملكها الجلسة
-/hack 8  فحص حالة التحقق بخطوتين (بدون تغييرها)
-/hack 9  إنهاء جميع جلسات الحساب عدا الحالية
-/hack 10 حذف الحساب نهائياً
-/hack 11 عزل جميع مشرفين كروب/قناه
-/hack 12 ترقية عضو إلى مشرف
-/hack 13 تغيير رقم الحساب
-/hack 14 إذاعة رسالة (الكل / كروبات / خاص)
-
-/hack 0 يعرض نفس القائمة."""
+def _need(args, index, label):
+    if index >= len(args) or not args[index].strip():
+        raise HackError(f"ينقص هذا الأمر إدخال: {label}")
+    return args[index].strip()
 
 
-async def cmd_channels(event, x):
-    code = await session_from(x)
-    try:
+async def execute(event, number, inline_session, args):
+    code = await _resolve_session(event, inline_session)
+
+    if number == 1:
         text = await userchannels(code)
-    except Exception as err:
-        LOGS.exception("could not list channels")
-        raise HackError(f"تعذر جلب القنوات: {type(err).__name__}") from err
-    if len(text) > 1:
-        path = "session.txt"
-        with open(path, "w", encoding="utf-8") as fh:
-            fh.write(text + "\n\nDetails BY @vvsks")
-        try:
-            await tgbot.send_file(event.chat_id, path)
-        finally:
+        if len(text) > 1:
+            path = "session.txt"
+            with open(path, "w", encoding="utf-8") as fh:
+                fh.write(text + "\n\nDetails BY @vvsks")
             try:
-                os.remove(path)
-            except OSError:
-                pass
-        return "تم إرسال قائمة القنوات في ملف."
-    return text or "لا توجد قنوات لهذه الجلسة."
+                await event.client.send_file(event.chat_id, path)
+            finally:
+                try:
+                    os.remove(path)
+                except OSError:
+                    pass
+            return "تم إرسال قائمة القنوات في ملف."
+        return text or "لا توجد قنوات لهذه الجلسة."
 
+    if number == 2:
+        return await userinfo(code)
 
-async def cmd_info(event, x):
-    code = await session_from(x)
-    return await userinfo(code)
+    if number == 3:
+        await userbans(code, _need(args, 0, "يوزر/إيدي الكروب أو القناة"))
+        return "تم حظر جميع أعضاء الكروب/القناة."
 
-
-async def cmd_ban_all(event, x):
-    code = await session_from(x)
-    target = (await ask(x, "أرسل يوزر/ايدي الكروب أو القناة.")).text.strip()
-    await userbans(code, target)
-    return "تم حظر جميع أعضاء الكروب/القناة."
-
-
-async def cmd_login_code(event, x):
-    code = await session_from(x)
-    try:
+    if number == 4:
         return await usermsgs(code)
-    except Exception as err:
-        LOGS.exception("could not read service messages")
-        raise HackError(f"تعذر جلب الرسالة: {type(err).__name__}") from err
 
+    if number == 5:
+        await joingroup(code, _need(args, 0, "يوزر/إيدي الكروب أو القناة"))
+        return "تم الانضمام إلى الكروب/القناة."
 
-async def cmd_join(event, x):
-    code = await session_from(x)
-    target = (await ask(x, "أرسل يوزر/ايدي الكروب أو القناة.")).text.strip()
-    await joingroup(code, target)
-    return "تم الانضمام إلى الكروب/القناة."
+    if number == 6:
+        await leavegroup(code, _need(args, 0, "يوزر/إيدي الكروب أو القناة"))
+        return "تم مغادرة الكروب/القناة."
 
+    if number == 7:
+        await delgroup(code, _need(args, 0, "يوزر/إيدي الكروب أو القناة"))
+        return "تم حذف الكروب/القناة."
 
-async def cmd_leave(event, x):
-    code = await session_from(x)
-    target = (await ask(x, "أرسل يوزر/ايدي الكروب أو القناة.")).text.strip()
-    await leavegroup(code, target)
-    return "تم مغادرة الكروب/القناة."
+    if number == 8:
+        state = await user2fa(code)
+        if state is None:
+            return "تعذر فحص حالة التحقق بخطوتين. راجع السجلات."
+        return "التحقق بخطوتين مفعل." if state else "التحقق بخطوتين غير مفعل."
 
+    if number == 9:
+        return "تم إنهاء جميع الجلسات الأخرى." if await terminate(code) else "تعذر إنهاء الجلسات."
 
-async def cmd_delete_chat(event, x):
-    code = await session_from(x)
-    target = (await ask(x, "أرسل يوزر/ايدي الكروب أو القناة.")).text.strip()
-    await delgroup(code, target)
-    return "تم حذف الكروب/القناة."
-
-
-async def cmd_2fa(event, x):
-    code = await session_from(x)
-    state = await user2fa(code)
-    if state is None:
-        return "تعذر فحص حالة التحقق بخطوتين. راجع السجلات."
-    return "التحقق بخطوتين مفعل." if state else "التحقق بخطوتين غير مفعل."
-
-
-async def cmd_terminate(event, x):
-    code = await session_from(x)
-    return "تم إنهاء جميع الجلسات الأخرى." if await terminate(code) else "تعذر إنهاء الجلسات."
-
-
-async def cmd_delete_account(event, x):
-    code = await session_from(x)
-    try:
+    if number == 10:
         await delacc(code)
-    except Exception as err:
-        LOGS.exception("account deletion failed")
-        raise HackError(f"تعذر حذف الحساب: {type(err).__name__}") from err
-    return "تم حذف الحساب."
+        return "تم حذف الحساب."
+
+    if number == 11:
+        await demall(code, _need(args, 0, "يوزر/إيدي الكروب أو القناة"))
+        return "تم عزل جميع مشرفين الكروب/القناة."
+
+    if number == 12:
+        grp = _need(args, 0, "يوزر/إيدي الكروب أو القناة")
+        member = _need(args, 1, "يوزر/إيدي العضو")
+        await promote(code, grp, member)
+        return "تم ترقية العضو إلى مشرف."
+
+    if number == 13:
+        phone = _need(args, 0, "الرقم الجديد")
+        phone_hash = _need(args, 1, "phone_code_hash")
+        otp = _need(args, 2, "OTP")
+        result = await change_number(code, phone)
+        await event.reply(str(result))
+        return "تم تغيير الرقم." if await change_number_code(code, phone, phone_hash, otp) else "تعذر تغيير الرقم."
+
+    if number == 14:
+        scope = _need(args, 0, "all | groups | private").lower()
+        if scope not in ("all", "groups", "private"):
+            raise HackError("اختر واحداً من: all, groups, private.")
+        msg = " ".join(args[1:]).strip()
+        if not msg:
+            raise HackError("أرسل الرسالة المراد إذاعتها بعد النطاق.")
+        sent = await _broadcast(code, msg, scope)
+        return f"تم الإرسال إلى {sent} محادثة."
+
+    raise HackError("رقم غير معروف. أرسل /hack لعرض القائمة.")
 
 
-async def cmd_demote_admins(event, x):
-    code = await session_from(x)
-    target = (await ask(x, "أرسل يوزر/ايدي الكروب أو القناة.")).text.strip()
-    await demall(code, target)
-    return "تم عزل جميع مشرفين الكروب/القناة."
-
-
-async def cmd_promote(event, x):
-    code = await session_from(x)
-    target = (await ask(x, "أرسل يوزر/ايدي الكروب أو القناة.")).text.strip()
-    member = (await ask(x, "أرسل يوزر/ايدي العضو.")).text.strip()
-    await promote(code, target, member)
-    return "تم ترقية العضو إلى مشرف."
-
-
-async def cmd_change_number(event, x):
-    code = await session_from(x)
-    number = (await ask(x, "أرسل الرقم الجديد (بدون أرقام وهمية).")).text.strip()
-    result = await change_number(code, number)
-    await event.reply(str(result))
-    phone_hash = (await ask(x, "أرسل phone_code_hash.")).text.strip()
-    otp = (await ask(x, "أرسل رمز التحقق OTP.")).text.strip()
-    return "تم تغيير الرقم بنجاح." if await change_number_code(code, number, phone_hash, otp) else "تعذر تغيير الرقم."
-
-
-async def cmd_broadcast(event, x):
-    code = await session_from(x)
-    msg = (await ask(x, "أرسل الرسالة المراد إذاعتها.")).text
-    scope = (await ask(x, "اكتب: all للكل، groups للكروبات، private للخاص.")).text.strip().lower()
-    if scope not in ("all", "groups", "private"):
-        raise HackError("اختر واحداً من: all, groups, private.")
-    sent = await _broadcast(code, msg, scope)
-    return f"تم الإرسال إلى {sent} محادثة."
-
-
-COMMANDS = {
-    1: (cmd_channels, "قنوات/كروبات الجلسة"),
-    2: (cmd_info, "معلومات الحساب"),
-    3: (cmd_ban_all, "حظر جميع الأعضاء"),
-    4: (cmd_login_code, "آخر كود دخول"),
-    5: (cmd_join, "انضمام لكروب/قناه"),
-    6: (cmd_leave, "مغادرة كروب/قناه"),
-    7: (cmd_delete_chat, "حذف كروب/قناه"),
-    8: (cmd_2fa, "فحص التحقق بخطوتين"),
-    9: (cmd_terminate, "إنهاء الجلسات الأخرى"),
-    10: (cmd_delete_account, "حذف الحساب"),
-    11: (cmd_demote_admins, "عزل المشرفين"),
-    12: (cmd_promote, "ترقية عضو"),
-    13: (cmd_change_number, "تغيير رقم الحساب"),
-    14: (cmd_broadcast, "إذاعة رسالة"),
+LABELS = {
+    1: "قنوات/كروبات الجلسة", 2: "معلومات الحساب", 3: "حظر جميع الأعضاء",
+    4: "آخر كود دخول", 5: "انضمام لكروب/قناه", 6: "مغادرة كروب/قناه",
+    7: "حذف كروب/قناه", 8: "فحص التحقق بخطوتين", 9: "إنهاء الجلسات الأخرى",
+    10: "حذف الحساب", 11: "عزل المشرفين", 12: "ترقية عضو",
+    13: "تغيير رقم الحساب", 14: "إذاعة رسالة",
 }
 
 
-# ---------------------------------------------------------------------------
-# Handlers
-# ---------------------------------------------------------------------------
+async def handle_hack(event, is_userbot=False):
+    """Shared handler for the userbot and assistant bot clients."""
+    arg = (event.pattern_match.group(1) or "").strip()
+    rest = (event.pattern_match.group(2) or "").strip()
 
-async def show_help(event):
-    await event.reply(HELP)
-
-
-@tgbot.on(events.NewMessage(pattern=r"^/hack(?:@[\w_]+)?(?:\s+(\d{1,2}))?$", func=lambda e: e.is_private))
-async def hack_command(event):
-    if not is_owner(event.sender_id):
-        await event.reply("هذا البوت خاص. يمكنك نشر نسختك من مستودع T3rmx UserBot.")
+    if not arg or arg.lower() in ("0", "help", "مساعدة"):
+        await event.reply(HELP, link_preview=False)
         return
-    raw = event.pattern_match.group(1)
-    number = int(raw) if raw else 0
-    if number == 0 or number not in COMMANDS:
-        await show_help(event)
+
+    if arg.lower() == "session":
+        if not rest:
+            await event.reply("أرسل: /hack session <كود التيرمكس>")
+            return
+        if not await cu(rest):
+            await event.reply("الجلسة غير صالحة أو منتهية.")
+            return
+        addgvar(SESSION_KEY, rest)
+        await event.reply("تم حفظ الجلسة بنجاح. يمكنك الآن استخدام /hack 1 إلى /hack 14.")
+        LOGS.info("hack session saved")
         return
-    handler, label = COMMANDS[number]
-    LOGS.info("/hack %s (%s) from %s", number, label, event.sender_id)
+
+    if arg.lower() in ("clear", "حذف"):
+        delgvar(SESSION_KEY)
+        await event.reply("تم حذف الجلسة المحفوظة.")
+        return
+
+    if not arg.isdigit():
+        await event.reply(HELP, link_preview=False)
+        return
+
+    number = int(arg)
+    if number not in LABELS:
+        await event.reply("رقم غير صحيح. أرسل /hack لعرض القائمة.")
+        return
+
+    # If the first word after the number looks like a session string, treat it
+    # as a one-off session; otherwise the rest are command arguments.
+    inline_session = None
+    parts = rest.split()
+    if parts and len(parts[0]) > 100 and "=" in parts[0]:
+        inline_session = parts[0]
+        parts = parts[1:]
+
+    LOGS.info("/hack %s (%s) from %s", number, LABELS[number], event.sender_id)
     try:
-        async with tgbot.conversation(event.chat_id, timeout=REPLY_TIMEOUT) as x:
-            result = await handler(event, x)
+        result = await execute(event, number, inline_session, parts)
         if result:
-            await event.reply(str(result))
+            await event.reply(str(result), link_preview=False)
         LOGS.info("/hack %s completed", number)
     except HackError as err:
         LOGS.warning("/hack %s user error: %s", number, err)
         await event.reply(str(err))
     except asyncio.TimeoutError:
         LOGS.exception("/hack %s timed out", number)
-        await event.reply("انتهت مهلة الانتظار. أعد الأمر.")
+        await event.reply("انتهت مهلة الانتظار. أعد المحاولة.")
     except Exception as err:
         LOGS.exception("/hack %s failed", number)
         await event.reply(f"حدث خطأ في الأمر {number}: {type(err).__name__}: {err}")
 
 
+# ---------------------------------------------------------------------------
+# Userbot handlers - always available, no assistant bot required
+# ---------------------------------------------------------------------------
+
+@l313l.on(events.NewMessage(outgoing=True, pattern=HACK_PATTERN))
+async def hack_userbot(event):
+    if event.fwd_from:
+        return
+    await handle_hack(event, is_userbot=True)
+
+
+@bot.on(admin_cmd(outgoing=True, pattern="هاك"))
+async def repo(event):
+    if event.fwd_from:
+        return
+    await event.delete()
+    await event.reply(HELP, link_preview=False)
+
+
+# ---------------------------------------------------------------------------
+# Assistant bot handlers - work too when the assistant is connected
+# ---------------------------------------------------------------------------
+
+@tgbot.on(events.NewMessage(pattern=HACK_PATTERN, func=lambda e: e.is_private))
+async def hack_assistant(event):
+    if not is_owner(event.sender_id):
+        await event.reply("هذا البوت خاص. يمكنك نشر نسختك من مستودع T3rmx UserBot.")
+        return
+    await handle_hack(event)
+
+
 @tgbot.on(events.NewMessage(pattern=r"^/start(?:@[\w_]+)?\s+hack$", func=lambda e: e.is_private))
 async def start_hack_payload(event):
     if is_owner(event.sender_id):
-        await show_help(event)
+        await event.reply(HELP, link_preview=False)
 
 
 if Config.TG_BOT_USERNAME is not None and tgbot is not None:
@@ -443,15 +467,3 @@ if Config.TG_BOT_USERNAME is not None and tgbot is not None:
                 buttons=Button.url("فتح البوت", f"https://t.me/{joker}?start=hack"),
             )
         await event.answer([result] if result else None)
-
-
-@bot.on(admin_cmd(outgoing=True, pattern="هاك"))
-async def repo(event):
-    if event.fwd_from:
-        return
-    try:
-        await bot.send_message(Config.TG_BOT_USERNAME, "/hack")
-        await event.delete()
-    except Exception as err:
-        LOGS.exception("could not open hack menu")
-        await event.reply(f"تعذر فتح القائمة: {err}")
