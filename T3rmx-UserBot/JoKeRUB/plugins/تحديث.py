@@ -679,6 +679,31 @@ async def _apply_selective(event, msg, kind: str, value: str, latest: dict, repo
     return await msg.edit("\n".join(lines), link_preview=False)
 
 
+def _sync_runtime_package(source_dir: str, destination: str) -> int:
+    """Mirror the JoKeRUB package into the directory Python actually imports.
+
+    Some deployments have a real ``/app/JoKeRUB`` directory while the updater
+    writes to ``/app/T3rmx-UserBot/JoKeRUB``. Without this, a restart reloads
+    the old files and the update looks installed but has no effect.
+    """
+    src = os.path.join(source_dir, "T3rmx-UserBot", "JoKeRUB")
+    if not os.path.isdir(src):
+        src = os.path.join(source_dir, "JoKeRUB")
+    if not os.path.isdir(src):
+        return 0
+
+    targets = {os.path.join(destination, "T3rmx-UserBot", "JoKeRUB")}
+    live = os.path.realpath(os.path.join(destination, "JoKeRUB"))
+    targets.add(live)
+
+    copied = 0
+    for target in targets:
+        if not target or not os.path.isdir(os.path.dirname(target)):
+            continue
+        copied += _copy_tree(src, target)
+    return copied
+
+
 def _restart():
     executable = sys.executable.replace(" ", "\\ ")
     os.execle(executable, executable, "-m", "JoKeRUB", os.environ)
@@ -845,7 +870,9 @@ async def check_updates(event):
                 lines.append(f"• تم تثبيت والتحقق من {len(_REQUIRED_MODULES)} مكتبة مطلوبة بنجاح.")
 
                 await msg.edit("**جاري استبدال ملفات السورس...**", link_preview=False)
-                count = await asyncio.to_thread(_copy_tree, source_dir, _repo_root())
+                destination = _repo_root()
+                count = await asyncio.to_thread(_copy_tree, source_dir, destination)
+                count += await asyncio.to_thread(_sync_runtime_package, source_dir, destination)
                 lines.append(f"• تم تحديث `{count}` ملفاً.")
 
                 _save_commit(remote_commit)
