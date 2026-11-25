@@ -26,8 +26,11 @@ from JoKeRUB.sql_helper.idadder_sql import (
 )
 from l313l.razan.resources.assistant import *
 #start 
-@tgbot.on(events.NewMessage(pattern="^/start"))
+@tgbot.on(events.NewMessage(pattern=r"^/start(?:@[\w_]+)?(?:\s+(\S+))?$"))
 async def start(event):
+    if event.pattern_match.group(1):
+        # Deep-link payloads (e.g. ?start=hack) are handled by their own module.
+        return
     rehu = await tgbot.get_me()
     bot_id = rehu.first_name
     bot_username = rehu.username

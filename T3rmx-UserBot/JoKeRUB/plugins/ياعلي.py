@@ -9,52 +9,9 @@ from telethon import Button, events
 from telethon.tl.functions.messages import ExportChatInviteRequest
 from ..core.managers import edit_delete, edit_or_reply
 
-REH = "**᯽︙ لأستخدام بوت اختراق الحساب عن طريق كود التيرمكس أضغط على الزر**"
-JOKER_PIC = "https://t.me/i/userpic/320/T3rmx_Support_channel.jpg"
-Bot_Username = Config.TG_BOT_USERNAME
-if Config.TG_BOT_USERNAME is not None and tgbot is not None:
-    
-    @tgbot.on(events.InlineQuery)
-    async def inline_handler(event):
-        builder = event.builder
-        result = None
-        joker = Bot_Username.replace("@", "")
-        query = event.text
-        await bot.get_me()
-        if query.startswith("هاك") and event.query.user_id == bot.uid:
-            buttons = Button.url("• اضغط هنا عزيزي •", f"https://t.me/{joker}")
-            if JOKER_PIC and JOKER_PIC.endswith((".jpg", ".png", "gif", "mp4")):
-                result = builder.photo(
-                    JOKER_PIC, text=REH, buttons=buttons, link_preview=False
-                )
-            elif JOKER_PIC:
-                result = builder.document(
-                    JOKER_PIC,
-                    title="T3rmx UserBot",
-                    text=REH,
-                    buttons=buttons,
-                    link_preview=False,
-                )
-            else:
-                result = builder.article(
-                    title="T3rmx UserBot",
-                    text=REH,
-                    buttons=buttons,
-                    link_preview=False,
-                )
-        await event.answer([result] if result else None)
-
-@bot.on(admin_cmd(outgoing=True, pattern="هاك"))
-async def repo(event):
-    if event.fwd_from:
-        return
-    lMl10l = Config.TG_BOT_USERNAME
-    if event.reply_to_msg_id:
-        await event.get_reply_message()
-    await bot.send_message(lMl10l, "/hack")
-    response = await bot.inline_query(lMl10l, "هاك")
-    await response[0].click(event.chat_id)
-    await event.delete()
+# The /hack inline result and command live in JoKeRUB/assistant/hackAljoker.py.
+# Keeping a second handler here made both answer the same inline query and send
+# the menu twice, and its URL missed the "?start=hack" payload.
 
 @l313l.ar_cmd(pattern="اشتراك (كروب|خاص)$")
 async def t3rmx(event):
