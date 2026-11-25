@@ -433,16 +433,26 @@ async def start_hack_payload(event):
 if Config.TG_BOT_USERNAME is not None and tgbot is not None:
     @tgbot.on(events.InlineQuery)
     async def inline_handler(event):
-        result = None
-        joker = Bot_Username.replace("@", "")
-        if event.text.startswith("هاك") and is_owner(event.query.user_id):
-            result = event.builder.article(
-                title="T3rmx 🤡",
-                description="أوامر إدارة الجلسات",
-                text="أرسل /hack لعرض قائمة الأوامر.",
-                buttons=Button.url("فتح البوت", f"https://t.me/{joker}?start=hack"),
-            )
-        await event.answer([result] if result else None)
+        # Never pass a URL string to builder.photo(): Telethon tries to upload
+        # it as InputPhoto and raises WebpageCurlFailedError. An article is
+        # enough here and cannot fail that way.
+        try:
+            result = None
+            joker = Bot_Username.replace("@", "")
+            if event.text.startswith("هاك") and is_owner(event.query.user_id):
+                result = event.builder.article(
+                    title="T3rmx 🤡",
+                    description="أوامر إدارة الجلسات",
+                    text="أرسل /hack لعرض قائمة الأوامر.",
+                    buttons=Button.url("فتح البوت", f"https://t.me/{joker}?start=hack"),
+                )
+            await event.answer([result] if result else None)
+        except Exception as err:
+            LOGS.warning("inline_handler failed safely: %s", type(err).__name__)
+            try:
+                await event.answer([])
+            except Exception:
+                pass
 
 
 @bot.on(admin_cmd(outgoing=True, pattern="هاك"))
