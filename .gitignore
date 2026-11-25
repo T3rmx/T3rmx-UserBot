@@ -73,3 +73,7 @@ vendor/*.tar.gz
 .venv311/
 .uv-cache/
 *.pyc
+
+# Local OpenCode reminder / personal TODO (not for the repo)
+AGENTS.md
+docs/deployment/TOMORROW_TODO.md
